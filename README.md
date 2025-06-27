@@ -163,7 +163,7 @@ Run this command to install `MacTahoe` into `gtk-4.0 configuration folder` ($HOM
 ```
 
 ## <p align="center"> <b> Change theme color and accent </b> </p>
-<p align="center"> <img src="https://github.com/vinceliuice/MacTahoe-gtk-theme/blob/pictures/pictures/colors-themes.png"/> </p>
+<p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/colors-themes.png"/> </p>
 
 #### - Install theme accent
 Parameter: `--theme` `-t` (repeatable)
@@ -175,13 +175,6 @@ Example:
 ./install.sh -t red -t green   # install red and green theme accents
 ./install.sh -t all            # install all available theme accents
 ```
-
-## <p align="center"> <b> Change Nautilus style </b> </p>
-<p align="center"> <img src="https://github.com/vinceliuice/MacTahoe-gtk-theme/blob/pictures/pictures/nautilus.png"/> </p>
-
-Parameter: `--nautilus` `-N`
-
-Example: `./install.sh -N mojave`
 
 ## <p align="center"> <b> Explore more customization features! </b> </p>
 You can run `./install.sh -h` to explore more customization features we have
@@ -280,7 +273,7 @@ OPTIONS:
 ### <p align="center"> <b> Install and edit Firefox theme </b> </p>
 
 <p align="center"> <a href="src/other/firefox">
-<img src="https://github.com/vinceliuice/MacTahoe-gtk-theme/blob/pictures/pictures/firefox.svg"/>
+<img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox.svg"/>
 </a> </p>
 
 #### - [Install Firefox theme](src/other/firefox)
@@ -302,7 +295,7 @@ Example:
 ##
 
 ### <p align="center"> <b> Install and customize GDM theme </b> </p>
-<p align="center"> <img src="https://github.com/vinceliuice/MacTahoe-gtk-theme/blob/pictures/pictures/gdm.png"/> </p>
+<p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/gdm.png"/> </p>
 
 #### - Install GDM theme
 Parameter: `--gdm` `-g` (requires to be run as root)
