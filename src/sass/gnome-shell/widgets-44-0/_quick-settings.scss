@@ -15,44 +15,51 @@
   spacing-columns: $container_padding * 2;
 }
 
+$toggle_bg_color: rgba(white, 0.15);
+$toggle_hover_bg_color: rgba(white, 0.2);
+$toggle_active_bg_color: rgba(white, 0.25);
+$toggle_checked_bg_color: rgba(white, 0.15);
+
 .quick-toggle, .quick-menu-toggle {
-  border-radius: $circular_radius;
-  min-width: 12em;
-  max-width: 12em;
+  min-width: 13em;
+  max-width: 13em;
   min-height: $scalable_icon_size * 3;
   border: none;
+  box-shadow: inset 0 0 4px rgba(white, 0.35) !important;
+  color: white;
 }
 
 .quick-toggle {
-  background-color: $fill_color !important;
+  background-color: $toggle_bg_color !important;
+  border-radius: $circular_radius;
 
   &:hover {
-    background-color: $divider_color !important;
+    background-color: $toggle_hover_bg_color !important;
   }
 
   &:active {
-    background-color: $visit_color !important;
+    background-color: $toggle_active_bg_color !important;
   }
 
   &:checked {
-    background-color: $primary_color !important;
-    color: $light_fg_color;
+    background-color: $light_fg_color !important;
+    color: $primary_color;
 
     &:hover {
-      color: $light_fg_color;
+      color: $primary_color;
       @if $shell_version == 'old' {
-        background-color: mix($text_color, $primary_color, 6%) !important;
+        background-color: mix($text_color, $light_fg_color, 6%) !important;
       } @else {
-        background-color: st-mix($text_color, $primary_color, 6%) !important;
+        background-color: st-mix($text_color, $light_fg_color, 6%) !important;
       }
     }
 
     &:active {
-      color: $light_fg_color;
+      color: $primary_color;
       @if $shell_version == 'old' {
-        background-color: mix($text_color, $primary_color, 15%) !important;
+        background-color: mix($text_color, $light_fg_color, 15%) !important;
       } @else {
-        background-color: st-mix($text_color, $primary_color, 15%) !important;
+        background-color: st-mix($text_color, $light_fg_color, 15%) !important;
       }
     }
   }
@@ -77,13 +84,35 @@
 }
 
 .quick-menu-toggle {
+  background-color: $toggle_bg_color !important;
+  border-radius: $circular_radius;
+  padding: $base_padding * 2;
+
+  &:hover {
+    background-color: $toggle_hover_bg_color !important;
+  }
+
+  &:active {
+    background-color: $toggle_active_bg_color !important;
+  }
+
+  &:checked {
+    background-color: $toggle_checked_bg_color !important;
+  }
+
   & .quick-toggle {
     min-width: auto;
     max-width: auto;
 
-    &:ltr { border-radius: $circular_radius 0 0 $circular_radius; }
+    &, &:hover, &:active, &:checked {
+      background: none !important;
+      box-shadow: none !important;
+      color: white;
+    }
+
+    &:ltr { border-radius: $circular_radius; }
     &:ltr > StBoxLayout { padding-right: $base_padding * 2; }
-    &:rtl { border-radius: 0 $circular_radius $circular_radius 0; }
+    &:rtl { border-radius: $circular_radius; }
     &:rtr > StBoxLayout { padding-left: $base_padding * 2; }
 
     &:ltr:last-child { border-radius: $circular_radius; }
@@ -91,54 +120,42 @@
   }
 
   & .quick-toggle-arrow {
-    padding: $scaled_padding $scaled_padding * 2;
+    padding: 0;
+    min-width: 3.4em !important;
     border: none;
-    background-color: $fill_color !important;
+    background-color: $toggle_bg_color !important;
 
     &:hover {
-      background-color: $divider_color !important;
+      background-color: $toggle_hover_bg_color !important;
     }
   
     &:active {
-      background-color: $visit_color !important;
+      background-color: $toggle_active_bg_color !important;
     }
   
     &:checked {
-      background-color: $primary_color !important;
-      color: $light_fg_color;
-  
-      &:hover {
-        color: $light_fg_color;
-        @if $shell_version == 'old' {
-          background-color: mix($text_color, $primary_color, 6%) !important;
-        } @else {
-          background-color: st-mix($text_color, $primary_color, 6%) !important;
-        }
-      }
-  
-      &:active {
-        color: $light_fg_color;
-        @if $shell_version == 'old' {
-          background-color: mix($text_color, $primary_color, 15%) !important;
-        } @else {
-          background-color: st-mix($text_color, $primary_color, 15%) !important;
-        }
-      }
+      background-color: white !important;
+      color: $primary_color;
     }
 
     &:ltr {
-      border-radius: 0 $circular_radius $circular_radius 0;
+      border-radius: $circular_radius;
       border-left-width: 0;
     }
 
     &:rtl {
-      border-radius: $circular_radius 0 0 $circular_radius;
+      border-radius: $circular_radius;
       border-right-width: 0;
     }
   }
 }
 
 .quick-slider {
+  background-color: $toggle_bg_color;
+  border-radius: $wm_radius;
+  box-shadow: inset 0 0 4px rgba(white, 0.35) !important;
+  padding: $scaled_padding * 4 $scaled_padding * 2;
+
   & > StBoxLayout { spacing: $base_padding; }
 
   .icon-button { padding: $scaled_padding * 1.5; }
@@ -156,7 +173,7 @@
   color: $text_color !important;
   border-radius: $base_border_radius * 3;
   padding: $base_padding * 3;
-  margin: $base_padding * 2 $base_padding * 6 0;
+  margin: $base_padding * 2 $base_padding * 7 0;
   border: none !important;
 
   .popup-menu-item {
@@ -180,7 +197,7 @@
       icon-size: $base_icon_size * 1.5; // a non-standard symbolic size but ok
       border-radius: $circular_radius;
       padding: 1.5 * $base_padding;
-      background-color: transparentize($fg_color, 0.8);
+      background-color: $toggle_bg_color;
 
       &.active {
         background-color: $selected_bg_color;
@@ -202,15 +219,17 @@
   & > StBoxLayout { spacing: 2 * $base_padding; }
 
   .icon-button {
-    background-color: $fill_color;
-    color: $text_color;
+    background-color: $toggle_bg_color;
+    color: white;
     border-radius: $circular_radius;
     min-height: $menuitem_size !important;
     min-width: $menuitem_size !important;
-    // padding: $container_padding;
+    padding: $scaled_padding * 2;
+    box-shadow: inset 0 0 4px rgba(white, 0.35) !important;
 
-    &:hover { @include button(flat-hover); }
-    &:active { @include button(flat-active); }
+    &:hover { background-color: $toggle_hover_bg_color; }
+
+    &:active { background-color: $toggle_active_bg_color; }
 
     > StIcon {
      -st-icon-style: symbolic;
@@ -223,7 +242,7 @@
     min-width: 0;
 
     &:insensitive {
-      @include button(normal);
+      color: rgba(white, 0.35);
       background-color: transparent;
     }
   }

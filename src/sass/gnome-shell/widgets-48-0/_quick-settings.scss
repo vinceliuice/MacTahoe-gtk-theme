@@ -130,14 +130,14 @@ $toggle_checked_bg_color: rgba(white, 0.15);
     padding: 0;
     min-width: 3.4em !important;
     border: none;
-    background-color: $fill_color !important;
+    background-color: $toggle_bg_color !important;
 
     &:hover {
-      background-color: $divider_color !important;
+      background-color: $toggle_hover_bg_color !important;
     }
   
     &:active {
-      background-color: $visit_color !important;
+      background-color: $toggle_active_bg_color !important;
     }
   
     &:checked {
