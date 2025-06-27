@@ -547,7 +547,7 @@ spinner {
 }
 
 entry {
-  min-height: $menuitem_size;
+  min-height: $menuitem_size - 4px;
   padding: 2px $container_padding + 2px;
   border-radius: $bt_radius;
   border: none;
