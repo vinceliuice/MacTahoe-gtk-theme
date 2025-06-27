@@ -1,0 +1,67 @@
+/* Entries */
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* Entries */
+#searchbar,
+#search-box,
+#loginTextbox,
+#password1Textbox {
+	-moz-appearance: none !important;
+	background-color: var(--gnome-urlbar-background) !important;
+	border: 1px solid var(--gnome-urlbar-border-color) !important;
+	outline: 2px solid transparent;
+	outline-offset: -2px;
+	border-radius: 8px !important;
+	box-shadow: none !important;
+	color: var(--gnome-urlbar-color) !important;
+	height: 28px !important;
+	max-height: 28px !important;
+	margin: 0 !important;
+	padding: 6px !important;
+	box-sizing: padding-box;
+	background-clip: padding-box !important;
+	transition: outline 100ms ease-out;
+}
+
+/* Entries focused */
+#searchbar:focus-within,
+#search-box[focused],
+#loginTextbox:focus,
+#password1Textbox:focus {
+	border: 1px solid transparent !important;
+	border-radius: 8px !important;
+	outline: 2px solid var(--gnome-focused-urlbar-border-color) !important;
+	outline-offset: -2px;
+	-moz-outline-radius: 8px;
+	transition: outline 100ms ease-out;
+}
+
+/* Inactive window entries */
+#searchbar:-moz-window-inactive,
+#search-box:-moz-window-inactive,
+#loginTextbox:-moz-window-inactive,
+#password1Textbox:-moz-window-inactive {
+	background-color: var(--gnome-inactive-urlbar-background) !important;
+	border-color: var(--gnome-inactive-urlbar-border-color) !important;
+	color: var(--gnome-inactive-urlbar-color) !important;
+}
+
+/* Entries fixes */
+#urlbar-container, #search-container {
+	padding: 0 !important;
+	margin: 0 3px !important;
+}
+#urlbar, #searchbar {
+	margin: 0 3px !important;
+	padding: 0 !important;
+}
+.searchbar-textbox {
+	border: 0 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	min-height: auto !important;
+}
+#searchbar > .searchbar-textbox[focused] .searchbar-search-button:not(#hack) {
+	margin: 0 !important;
+}

@@ -1,0 +1,62 @@
+
+.popup-menu-item {
+  &:ltr { padding-right: $base_padding * 2; padding-left: $base_padding * 2; }
+  &:rtl { padding-left: $base_padding * 2; padding-right: $base_padding * 2; }
+}
+
+// separator
+.popup-separator-menu-item {
+  border: none !important;
+
+  &:ltr { margin-right: $base_padding; }
+  &:rtl { margin-left: $base_padding; }
+
+  .popup-separator-menu-item-separator {
+    height: 1px; //not really the whole box
+    background-color: $borders_color;
+  }
+
+  .popup-menu-ornament {
+    width: 0 !important;
+  }
+
+  // separators in submenus
+  .popup-sub-menu & {
+    background-color: transparent;
+
+    // account for ornament
+    &:ltr { margin-right: 2.5em; }
+    &:rtl { margin-left: 2.5em; }
+
+    .popup-separator-menu-item-separator {
+      background-color: $menu_bd;
+    }
+  }
+}
+
+// system status popover menu
+.aggregate-menu {
+  // this is unneeded at the top-level in this menu, hide it
+  .popup-menu-ornament, .popup-sub-menu .popup-menu-ornament { width: 0 !important; }
+
+  .popup-sub-menu .popup-menu-item > :first-child {
+    &:ltr { margin-left: 10px; }
+    &:rtl { margin-right: 10px; }
+  }
+}
+
+// right-click (and panel) app menu
+.app-menu {
+  max-width: 27.25em;
+
+  // this is unneeded at the top-level in this menu, hide it
+  .popup-menu-ornament { width: 0 !important; }
+
+  .popup-inactive-menu-item:first-child {
+    // "Open Windows" label
+    > StLabel {
+      &:ltr { margin-right: $base_margin * 2; }
+      &:rtl { margin-left: $base_margin * 2; }
+    }
+  }
+}

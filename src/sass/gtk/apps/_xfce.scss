@@ -1,0 +1,303 @@
+//
+// Xfce4
+//
+$text_shadow: 0 0 1px rgba(0, 0, 0, 0.26),
+              0 1px 2px rgba(0, 0, 0, 0.32),
+              0 2px 3px rgba(0, 0, 0, 0.12);
+
+.XfceHeading {
+  border: 0 none transparent;
+  background-color: $bg_color;
+  color: $fg_color;
+}
+
+.xfce4-panel.background {
+  background-color: $panel_bg;
+  color: $panel_fg;
+  font-weight: 700;
+  text-shadow: none;
+  -gtk-icon-shadow: none;
+  box-shadow: none;
+
+  &, // unset borders
+  frame > border { border-width: 0; }
+
+  &#XfcePanelWindow { // main panel container >= 4.13.3?
+    // FIXME: unneeded 1px borders are reserved by its code itself
+    border: none;
+
+    &, &.marching-ants { transition: none; } // unset transitions
+  }
+
+  button, button.flat {
+    font-weight: 700;
+    @extend %panel_button;
+    // -gtk-icon-style: symbolic;
+
+    &#launcher-arrow { // launcher applet
+      // FIXME: quite weird pseudo-classe transitions, especially :hover
+      // state can't be cleared properly ( -> an upstream issue)
+      &, + button.toggle {
+        &:hover { box-shadow: none; } // hide indicators
+      }
+
+      + button.toggle:checked { // 'arrow' toggle button
+        color: $selected_bg_color;
+        box-shadow: none;
+      }
+    }
+
+    &#xfce4-notification-plugin {
+      padding: 0 1px; // for 4.12.2
+    }
+
+    // &#whiskermenu-button {
+    //   &:active, &:checked {
+    //   }
+    // }
+  }
+
+  menu {
+    font-weight: 400; // for enforcing regular weight
+    text-shadow: none;
+  }
+
+  menubar.-vala-panel-appmenu-private { // xfce4 appmenu plugin
+    > menuitem {
+      font-weight: normal;
+    }
+  }
+
+  widget.tasklist {
+    > button.toggle {
+      font-weight: 400;
+      @extend %panel_button;
+      // -gtk-icon-style: symbolic;
+    }
+  }
+}
+
+XfdesktopIconView.view {
+  border-radius: $bt_radius;
+  background: transparent;
+  color: $selected_fg_color;
+  text-shadow: $text_shadow;
+
+  &:active, &:checked {
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+    text-shadow: none;
+  }
+
+  .rubberband {
+    @extend %rubberband;
+    border-radius: 0;
+  }
+}
+
+window#whiskermenu-window {
+  border-radius: $wm_radius;
+  background-color: transparent;
+  border: none;
+
+  entry.search:focus { background-color: $base_color; }
+
+  // Need to set Whisker menu background opacity less than 100
+  > frame > border {
+    border-radius: $wm_radius;
+    padding: 6px;
+    margin: 6px;
+    border: none;
+    background-color: if($trans == 'false', $bg_color, rgba($bg_color, 0.95));
+    box-shadow: 0 3px 3px 0 $wm_shadow,
+                inset 0 0 0 1px $header_highlight,
+                $wm_outline;
+  }
+
+  box.categories > button.radio { // sidebar categories button
+    padding: $container_padding / 2 $container_padding;
+    margin: 1px 0;
+
+    &:hover { background-color: if($variant == 'light', rgba(black, 0.12), rgba(white, 0.12)); }
+
+    &:checked, &:active {
+      background-color: if($variant=='light', rgba(black, 0.2), rgba(white, 0.2));
+      color: $fg_color;
+
+      &:hover { background-image: none; }
+    }
+  }
+
+  scrolledwindow.frame { // App list (tree)
+    padding: $container_padding / 2;
+    background-color: $base_color;
+    border-radius: $bt_radius;
+
+    treeview.view {
+      border-radius: $bt_radius;
+
+      &:not(:hover):not(:selected) { background: none; }
+
+      &:selected:hover {
+        background-color: if($variant == 'light', rgba(black, 0.1), rgba(white, 0.1));
+        color: $fg_color;
+      }
+    }
+
+    // iconview.view { border-radius: 0; }
+  }
+
+  .title-area > .commands-area > button.flat.command-button { // Bottom command buttons
+    &:checked, &:active {
+      background-color: if($variant=='light', rgba(black, 0.25), rgba(white, 0.25));
+      color: $fg_color;
+    }
+  }
+}
+
+// Thunar
+window.background.csd.thunar {
+  > grid.horizontal > paned.horizontal > scrolledwindow.frame.sidebar.shortcuts-pane {
+    border-bottom-left-radius: $wm_radius;
+    background-color: $dark_sidebar_bg;
+
+    treeview.view:not(:hover):not(:selected) {
+      background-color: transparent;
+    }
+  }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > grid.horizontal > paned.horizontal > scrolledwindow.frame.sidebar.shortcuts-pane {
+      border-bottom-left-radius: $maximized_radius;
+    }
+  }
+}
+
+window.thunar {
+  > grid.horizontal > paned.horizontal {
+    > scrolledwindow.frame.sidebar.shortcuts-pane {
+      border-top: none;
+      background-color: $dark_sidebar_bg;
+
+      treeview.view {
+        background-color: $dark_sidebar_bg;
+
+        &:hover { background-color: if($variant == 'light', rgba(black, 0.08), rgba(white, 0.08)); }
+
+        &:selected, &:selected:hover, &:active:hover {
+          color: $fg_color;
+          background-color: $sidebar_theme_color;
+        }
+      }
+    }
+
+    > separator {
+      background-image: image($solid_borders_color);
+    }
+  }
+
+  toolbar#location-toolbar {
+    border-bottom: 1px solid $header_border;
+
+    button.path-bar-button,
+    button.flat {
+      @include button(header-normal);
+      margin-left: 0;
+      margin-right: 0;
+      border-radius: $bt_radius;
+      min-height: 28px;
+
+      &:hover { @include button(header-hover); }
+
+      &:checked { @include button(header-checked); }
+
+      &:active { @include button(header-active); }
+
+      &:disabled { @include button(header-insensitive); }
+
+      &:disabled:active, &:disabled:checked { @include button(header-insensitive-active); }
+    }
+
+    > toolbutton#open-parent > button.image-button.flat:not(.toggle) {
+      margin-left: 10px;
+    }
+
+    > toolbutton#open-home > button.image-button.flat:not(.toggle) {
+      margin-right: 10px;
+    }
+
+    // FIXME: need to unset for weird allocation height
+    entry {
+      min-height: if($variant == 'light', 22px, 24px);
+    }
+  }
+
+  > grid > toolbar > toolitem > widget > box > entry {
+    min-height: if($variant == 'light', 22px, 24px);
+    margin-left: $container_padding / 2; // Not use!
+    -gtk-icon-style: symbolic;
+  }
+
+  notebook {
+    // hide unneeded border
+    stack > scrolledwindow.frame.standard-view {
+      border-top-width: 0;
+      border-right-width: 0;
+    }
+
+    // an allocation height of label node affects to close button's
+    // image height (it's quite weird).
+    header.top tab.reorderable-page > box > label { min-height: 0; }
+  }
+
+  .standard-view.frame {
+    border: none;
+
+    widget.view {
+      &:selected {
+        background-color: rgba($fg_color, 0.12);
+        color: $fg_color;
+        border-radius: $bt_radius;
+      }
+    }
+  }
+
+  paned paned paned > notebook.frame {
+    border: none;
+    border-radius: 0;
+
+    .standard-view.frame > widget.view {
+      border-radius: 0;
+      box-shadow: inset 0 0 0 3px lighten($selected_bg_color, 25%);
+    }
+  }
+}
+
+
+//
+// Xfsm dialog
+//
+dialog.xfsm-logout-dialog {
+  border: 1px solid if($variant=='light', rgba(black, 0.15), rgba(black, 0.75));
+  box-shadow: none;
+}
+
+
+//
+// mousepad
+//
+
+window.background.csd {
+  > box.vertical > notebook > stack > scrolledwindow.frame {
+    border: none;
+
+    > textview {
+      background-color: $base_color;
+
+      > text {
+        background-color: transparent;
+        border-radius: 0 0 $wm_radius $wm_radius;
+      }
+    }
+  }
+}

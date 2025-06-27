@@ -1,0 +1,167 @@
+/* App Grid */
+
+$app_icon_size: 96px;
+$app_folder_size: 720px;
+
+// app icons
+.icon-grid {
+  row-spacing: 12px;
+  column-spacing: 12px;
+  max-row-spacing: 36px;
+  max-column-spacing: 36px;
+  page-padding-top: 24px;
+  page-padding-bottom: 24px;
+  page-padding-left: 18px;
+  page-padding-right: 18px;
+}
+
+/* App Icons */
+
+// items in the app grid and dash
+.overview-tile {
+  color: $light_alt_fg_color;
+  background-color: transparent;
+
+  &:focus { color: $light_fg_color; background-color: $light_divider_color; }
+  &:hover { color: $light_fg_color; background-color: $light_divider_color; }
+  &:active { color: $light_fg_color; background-color: $light_track_color; }
+  &:highlighted,&:selected,
+  &:checked { color: $light_fg_color; background-color: $light_track_color; }
+  &:insensitive { color: $light_alt_disabled_fg_color; background-color: transparent; }
+
+  // override the %tile style
+  border-radius: $wm_radius * 1.5;
+  padding: 12px;
+  spacing: $base_padding;
+  text-align: center;
+  transition-duration: 100ms;
+
+  // the icon itself
+  .overview-icon {
+    // item with a label
+    &.overview-icon-with-label {
+      > StBoxLayout {
+        spacing: 6px;
+      }
+    }
+  }
+}
+
+// Running app indicator (also shown in dash)
+.app-grid-running-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: $light_alt_fg_color;
+  margin-bottom: 0 !important;
+  offset-y: 6px;
+
+  StWidget.focused & {
+    background-color: $primary_color;
+  }
+}
+
+.app-folder {
+  background-color: $light_divider_color;
+
+  &:focus { background-color: $light_divider_color; }
+  &:hover { background-color: rgba(white, 0.2); }
+  &:active { background-color: rgba(white, 0.3); }
+  &:highlighted,&:selected,
+  &:checked { background-color: rgba(white, 0.3); }
+  &:insensitive { background-color: transparent; }
+}
+
+.app-folder-dialog-container {
+  // pad the top with panel height so the folder doesn't overlap the panel on smaller resolutions
+  padding-top: $menuitem_size;
+}
+
+// Expanded app folder dialog
+.app-folder-dialog {
+  width: $app_folder_size;
+  height: $app_folder_size;
+
+  & .page-indicators {
+    margin-bottom: $base_padding * 4;
+  }
+
+  & .icon-button, & .page-navigation-arrow {
+    color: $light_alt_fg_color;
+    background-color: transparent;
+    border: none !important;
+
+    &:hover {
+      background-color: $light_divider_color;
+      color: $light_fg_color;
+    }
+
+    &:active {
+      background-color: $light_track_color;
+      color: $light_fg_color;
+    }
+  }
+}
+
+.apps-scroll-view {
+  padding: 0;
+}
+
+// shutdown and other actions in the grid
+.system-action-icon {
+  background-color: $light_fill_color;
+  color: $light_fg_color;
+  border-radius: $circular_radius;
+  icon-size: $app_icon_size * 0.5;
+}
+
+.page-navigation-hint {
+  width: if($laptop == 'true', 220px, 300px);
+
+  &.dnd {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &.next:ltr,
+  &.previous:rtl {
+    background-gradient-start: $light_divider_color;
+    background-gradient-end: transparent;
+    background-gradient-direction: horizontal;
+    border-radius: $modal_radius 0px 0px $modal_radius;
+  }
+
+  &.previous:ltr,
+  &.next:rtl {
+    background-gradient-start: transparent;
+    background-gradient-end: $light_divider_color;
+    background-gradient-direction: horizontal;
+    border-radius: 0px $modal_radius $modal_radius 0px;
+  }
+}
+
+.page-navigation-arrow {
+  margin: $base_padding;
+  padding: $base_padding * 3;
+  width: 24px;
+  height: 24px;
+  border-radius: $circular_radius;
+  color: $light_alt_fg_color;
+  background-color: transparent;
+
+  > StIcon { color: $light_fg_color; }
+
+  &:insensitive {
+    background-color: $light_fill_color;
+    color: $light_alt_disabled_fg_color;
+  }
+
+  &:hover {
+   background-color: $light_divider_color;
+   color: $light_fg_color;
+  }
+
+  &:active {
+   background-color: $light_track_color;
+   color: $light_fg_color;
+  }
+}

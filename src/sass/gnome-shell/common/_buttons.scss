@@ -1,0 +1,97 @@
+/* Buttons */
+
+%button {
+  @include button(flat-normal);
+  &:hover { @include button(flat-hover); }
+  &:selected, &:active { @include button(flat-active); }
+  &:checked { @include button(checked); }
+  &:insensitive { @include button(flat-insensitive); }
+  &:focus { @include button(flat-focus); }
+}
+
+%flat_button {
+  @include button(flat-normal);
+  &:hover { @include button(flat-hover); }
+  &:selected, &:active { @include button(flat-active); }
+  &:checked { @include button(flat-checked); }
+  &:insensitive { @include button(flat-insensitive); }
+  &:focus { @include button(flat-focus); }
+}
+
+%default_button {
+  @include button(normal, $c:$selected_bg_color, $tc:$selected_fg_color);
+  &:hover { @include button(hover, $c:$selected_bg_color, $tc:$selected_fg_color); }
+  &:active { @include button(active, $c:$selected_bg_color, $tc:$selected_fg_color); }
+  &:insensitive { @include button(insensitive, $c:$selected_bg_color, $tc:$selected_fg_color); }
+  &:focus { @include button(focus, $c:$selected_bg_color, $tc:$selected_fg_color); }
+}
+
+.button {
+  min-height: to_em(22px);
+  padding: $container_padding $container_padding * 2;
+  border-radius: $bt_radius;
+  border: none;
+  @extend %button;
+
+  // default style
+  &.default {
+    @extend %default_button;
+  }
+
+  // flat style
+  &.flat {
+    @extend %flat_button;
+  }
+}
+
+.icon-button {
+  min-height: $scalable_icon_size;
+  min-width: $scalable_icon_size;
+  padding: $scaled_padding * 2;
+  border-radius: $circular_radius;
+  border: none;
+  @extend %button;
+
+  StIcon {
+    icon-size: $scalable_icon_size;
+    -st-icon-style: symbolic;
+  }
+
+  // default style
+  &.default {
+    @extend %default_button;
+  }
+
+  // flat style
+  &.flat {
+    @extend %flat_button;
+  }
+}
+
+%osd_button {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  color: rgba(white, 0.75);
+
+  &:hover {
+    background-color: rgba(white, 0.1);
+    color: white;
+  }
+
+  &:active {
+    background-color: rgba(white, 0.25);
+    color: white;
+  }
+
+  &:checked {
+    background-color: $primary_color;
+    color: white;
+  }
+
+  &:insensitive {
+    background-color: transparent;
+    color: rgba(white, 0.35);
+  }
+}

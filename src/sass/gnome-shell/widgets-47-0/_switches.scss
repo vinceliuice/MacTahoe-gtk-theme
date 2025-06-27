@@ -1,0 +1,40 @@
+/* Switches */
+
+.toggle-switch {
+  width: 40px;
+  height: 18px;
+  border-radius: $circular_radius;
+  background: rgba($fg_color, 0.1);
+
+  &:hover {
+    background: rgba($fg_color, 0.2);
+  }
+
+  StIcon {
+    icon-size: 0;
+  }
+
+  .handle {
+    margin: 2px;
+    width: 22px;
+    height: 14px;
+    background: white;
+    border-radius: $circular_radius;
+    box-shadow: 0 2px 4px transparentize(black, .9);
+    transition-duration: 100ms;
+  }
+
+  &:checked {
+    background: $primary_color;
+    color: $primary_color;
+
+    &:hover {
+      background: st-lighten($primary_color, 10%);
+      color: $primary_color;
+    }
+
+    .handle {
+      background: white;
+    }
+  }
+}

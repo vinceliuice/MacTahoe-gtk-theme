@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="context-fill" fill-opacity="context-fill-opacity">
+ <g opacity=".5">
+  <rect x="7.3636" y="1" width="1.2727" height="4.4536" rx=".63636" ry=".63622" style="paint-order:fill markers stroke"/>
+  <rect x="7.3636" y="10.546" width="1.2727" height="4.4536" rx=".63636" ry=".63622" opacity=".4" style="paint-order:fill markers stroke"/>
+  <rect transform="matrix(.86607 .49992 -.50008 .86598 0 0)" x="10.289" y="-4.0809" width="1.2727" height="4.4539" rx=".63632" ry=".63625" opacity=".05" style="paint-order:fill markers stroke"/>
+  <rect transform="matrix(.86607 .49992 -.50008 .86598 0 0)" x="10.289" y="5.466" width="1.2727" height="4.4539" rx=".63632" ry=".63625" opacity=".5" style="paint-order:fill markers stroke"/>
+  <rect transform="matrix(.50008 .86598 -.86607 .49992 0 0)" x="10.289" y="-9.9379" width="1.2725" height="4.4544" rx=".63625" ry=".63632" opacity=".1" style="paint-order:fill markers stroke"/>
+  <rect transform="matrix(.50008 .86598 -.86607 .49992 0 0)" x="10.289" y="-.38993" width="1.2725" height="4.4544" rx=".63625" ry=".63632" opacity=".6" style="paint-order:fill markers stroke"/>
+  <rect transform="rotate(90)" x="7.3483" y="-15" width="1.2725" height="4.4546" rx=".63622" ry=".63636" opacity=".15" style="paint-order:fill markers stroke"/>
+  <rect transform="rotate(90)" x="7.3483" y="-5.4546" width="1.2725" height="4.4546" rx=".63622" ry=".63636" opacity=".7" style="paint-order:fill markers stroke"/>
+  <rect transform="matrix(-.50008 .86598 -.86607 -.49992 0 0)" x="2.2917" y="-17.937" width="1.2725" height="4.4544" rx=".63625" ry=".63632" opacity=".2" style="paint-order:fill markers stroke"/>
+  <rect transform="matrix(-.50008 .86598 -.86607 -.49992 0 0)" x="2.2917" y="-8.3888" width="1.2725" height="4.4544" rx=".63625" ry=".63632" opacity=".8" style="paint-order:fill markers stroke"/>
+  <rect transform="matrix(-.86607 .49992 -.50008 -.86598 0 0)" x="-3.5646" y="-17.912" width="1.2727" height="4.4539" rx=".63632" ry=".63625" opacity=".3" style="paint-order:fill markers stroke"/>
+  <rect transform="matrix(-.86607 .49992 -.50008 -.86598 0 0)" x="-3.5646" y="-8.3897" width="1.2727" height="4.4539" rx=".63632" ry=".63625" opacity=".9" style="paint-order:fill markers stroke"/>
+ </g>
+</svg>

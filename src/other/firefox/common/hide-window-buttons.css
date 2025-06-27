@@ -1,0 +1,18 @@
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+:root[tabsintitlebar], :root[customtitlebar] {
+	&[sizemode="maximized"] {
+		#nav-bar, #titlebar {
+			.titlebar-buttonbox-container {
+				display: none !important;
+				padding: 0 !important;
+				right: 0 !important;
+			}
+		}
+
+		&:not([inFullscreen]) #nav-bar {
+			padding-left: 8px !important;
+			padding-right: 8px !important;
+		}
+	}
+}

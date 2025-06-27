@@ -1,0 +1,147 @@
+// Drawing mixins
+
+// generic drawing of more complex things
+
+// Mixin to convert provided font size in pt to em units
+@mixin fontsize($size, $base: 16px, $unit: pt) {
+  // if pt, convert into unitless value with the assumption: 1pt = 1.091px
+  $adjusted_size: if($unit == pt, $size * 1.091, $size) * 1000;
+  $rounded_size: round($adjusted_size / $base) / 1000;
+  font-size: $rounded_size * 1em;
+  // font-size: round($size) + pt;
+}
+
+// Entries
+
+@mixin entry($t, $dark:false) {
+//
+// Entries drawing function
+//
+  //@extend %reset_style;
+
+  @if $t==normal {
+    color: $text_color;
+    border: 2px solid transparent;
+    background-color: $entry_bg;
+  }
+
+  @if $t==focus {
+    color: $text_color;
+    border: 2px solid $entry_highlight;
+    background-color: $entry_bg;
+  }
+
+  @if $t==insensitive {
+    color: $disabled_fg_color;
+    background-color: rgba($entry_bg, 0.45);
+  }
+
+  @if $t==osd {
+    color: $osd_fg_color;
+    background-color: $osd_entry_bg;
+    box-shadow: inset 0 2px 4px transparentize(black, 0.95);
+  }
+
+  @if $t==osd-focus {
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+    box-shadow: inset 0 2px 4px transparentize(black, 0.95);
+  }
+
+  @if $t==osd-insensitive {
+    color: transparentize($osd_fg_color, 0.45);
+    background-color: rgba($osd_entry_bg, 0.85);
+    box-shadow: inset 0 2px 4px transparentize(black, 0.95);
+  }
+}
+
+// Buttons
+
+@mixin button($t) {
+//
+// Button drawing function
+//
+  //@extend %reset_style;
+
+  text-shadow: none;
+
+  @if $t==normal {
+    color: $fg_color;
+    border: 1px solid $button_borders;
+    background-color: $button_bg;
+    box-shadow: inset 0 1px $button_highlight;
+  }
+
+  @else if $t==hover {
+    color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
+    border: 1px solid $button_borders;
+    background-color: if($variant=='light', #ffffff, lighten($button_bg, 3%));
+    box-shadow: inset 0 1px rgba(white, 0.12);
+  }
+
+  @else if $t==focus {
+    color: $fg_color;
+    background-color: $button_bg;
+    border: 1px solid $selected_bg_color;
+    box-shadow: inset 0 1px rgba(white, 0.12);
+  }
+
+  @else if $t==focus-hover {
+    color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
+    background-color: if($variant=='light', #ffffff, lighten($button_bg, 3%));
+    border: 1px solid $selected_bg_color;
+    box-shadow: inset 0 1px rgba(white, 0.12);
+  }
+
+  @else if $t==active {
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+    border: 1px solid $button_borders;
+  }
+
+  @else if $t==insensitive {
+    color: $disabled_fg_color;
+    border: 1px solid if($variant == 'light', $button_border, $dark_borders_color);
+    background-color: rgba($button_bg, 0.55);
+  }
+
+  @else if $t==flat {
+    color: $fg_color;
+    background-color: transparent;
+  }
+
+  @else if $t==flat-hover {
+    color: $fg_color;
+    background-color: rgba($fg_color, 0.1);
+  }
+
+  @else if $t==flat-active {
+    color: $fg_color;
+    background-color: rgba($fg_color, 0.2);
+  }
+
+  @else if $t==flat-insensitive {
+    color: $disabled_fg_color;
+    background-color: transparent;
+  }
+
+  @else if $t==osd {
+    color: $osd_fg_color;
+    background-color: $osd_button_bg;
+  }
+
+  @else if $t==osd-hover {
+    color: $osd_fg_color;
+    background-color: rgba(mix($osd_fg_color, $osd_button_bg, 7%), 0.1);
+  }
+
+  @else if $t==osd-active {
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+  }
+
+  @else if $t==osd-insensitive {
+    color: $osd_disabled_fg_color;
+    background-color: rgba($osd_button_bg, 0.85);
+  }
+}

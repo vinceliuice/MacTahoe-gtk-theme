@@ -1,0 +1,633 @@
+//
+// Elementary Apps
+//
+
+// Wingpanel
+.menubar.panel {
+  .panel {
+    &, &.color-light, &.color-dark {
+      background-color: transparent;
+      background-image: image(rgba($panel_bg, 0.1));
+      border-bottom: none;
+      transition: all 100ms ease-in-out;
+      color: $panel_fg;
+    }
+
+    &.maximized {
+      background-color: rgba($panel_bg, 0.2);
+      background-image: none;
+      border: none;
+    }
+
+    &.translucent {
+      background-color: rgba($panel_bg, 0.1);
+      background-image: none;
+      border: none;
+    }
+
+    menubar {
+      background: none;
+      box-shadow: none;
+      border: none;
+    }
+  }
+
+  popover {
+    padding: 2px 4px;
+    margin: 0 6px 15px 6px;
+    border: 1px solid if($variant == 'light', rgba(black, 0.35), rgba(black, 0.45));
+    box-shadow: 0 3px 5px rgba(black, 0.12), 0 5px 8px rgba(black, 0.08);
+
+    button {
+      @include button(undecorated);
+      &:hover { @include button(flat-hover); }
+      &:active { @include button(flat-active); label { color: white; } }
+      &:checked { @include button(flat-checked); label { color: white; } }
+      &:disabled { @include button(flat-insensitive); }
+      &, &:hover, &:active, &:checked, &:disabled { border-color: transparent; }
+    }
+
+    .linked > button {
+      @include button(normal);
+      &:hover { @include button(hover); }
+      &:active, &:checked { @include button(active); }
+      &:disabled { @include button(insensitive); }
+    }
+
+    list {
+      background-color: transparent;
+
+      row.activatable {
+        margin: 0;
+
+        &:not(:selected) {
+          background: none;
+        }
+
+        > widget > revealer > deck > overlay > grid {
+          background-color: $menu_bg;
+          border-radius: $bt_radius;
+          box-shadow: 0 2px 3px rgba(black, 0.15), inset 0 1px $header_highlight, $wm_outline;
+        }
+      }
+    }
+
+    separator.horizontal {
+      margin: 0 -4px;
+    }
+
+    separator.vertical {
+      background: none;
+    }
+
+    .sidebar {
+      border-style: none;
+      background: none;
+
+      .view {
+        background: none;
+
+        &:hover {
+          border-radius: $bt_radius;
+          background-color: if($variant=='light', rgba(black, 0.1), rgba(white, 0.1));
+        }
+
+        &:selected {
+          &, &:focus, &:backdrop {
+            text-shadow: none;
+            transition: all 200ms $ease-out-quad;
+            background-color: if($variant=='light', rgba(black, 0.65), rgba(white, 0.35));
+            border-radius: $bt_radius;
+          }
+        }
+      }
+    }
+  }
+}
+
+.composited-indicator {
+  padding: 0 6px;
+
+  > revealer label,
+  > revealer image,
+  > revealer spinner {
+    color: $panel_fg;
+    font-weight: normal;
+    transition: all 200ms ease-in-out;
+    text-shadow: none;
+    -gtk-icon-shadow: none;
+  }
+
+  > revealer image,
+  > revealer spinner {
+    padding: 3px 0;
+  }
+
+  > revealer label {
+    padding: 3px 6px;
+  }
+
+  .keyboard {
+    background-color: $panel_fg;
+    border-radius: 2px;
+    color: $panel_bg;
+    padding: 0 3px;
+    font-weight: normal;
+    box-shadow: none;
+    text-shadow: none;
+  }
+}
+
+// Popover switcher dots
+button.flat.toggle.switcher {
+  &:hover, &:active, &:checked, &:selected {
+    image {
+      color: $selected_bg_color;
+    }
+  }
+}
+
+// Calendar Popover
+.circular { // Calendar popover date button
+  label:disabled { color: $disabled_fg_color; }
+
+  &.accent { // Today button
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+  }
+}
+
+label.circular { border-radius: $circular_radius; }
+
+// Marlin / Pantheon Files
+MarlinViewWindow {
+  *:selected, *:selected:focus {
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+    outline-color: transparent;
+  }
+
+  GtkIconView.view:selected {
+    &, &:focus, &:hover, &:focus:hover { background-color: transparent; }
+  }
+
+  FMListView, FMColumnView { outline-color: transparent; }
+}
+
+.marlin-pathbar.pathbar {
+  padding-left: 4px;
+  padding-right: 4px;
+
+  @include entry(header-normal);
+  &:focus { @include entry(header-focus) }
+  &:disabled { @include entry(header-insensitive) }
+}
+
+// Checkbutton
+checkbutton.color-button {
+  border: 1px solid $borders_color;
+  border-radius: $circular_radius;
+  background-clip: border-box;
+  padding: 0;
+
+  > check {
+    -gtk-icon-source: none;
+    background: none;
+    margin-right: 0;
+  }
+
+  &.none {
+    > check {
+      background-color: transparent;
+      border-radius: $circular_radius;
+      -gtk-icon-source: -gtk-icontheme("close-symbolic");
+    }
+  }
+
+  &.blue {
+    background-color: blue;
+  }
+
+  &.mint {
+    background-color: mix(blue, green, 35%);
+  }
+
+  &.green {
+    background-color: green;
+  }
+
+  &.yellow {
+    background-color: yellow;
+  }
+
+  &.blue {
+    background-color: blue;
+  }
+
+  &.orange {
+    background-color: orange;
+  }
+
+  &.red {
+    background-color: red;
+  }
+
+  &.pink {
+    background-color: pink;
+  }
+
+  &.purple {
+    background-color: purple;
+  }
+
+  &.brown {
+    background-color: brown;
+  }
+
+  &.slate {
+    background-color: grey;
+  }
+}
+
+radiobutton.color-button {
+  > radio {
+    -gtk-icon-source: none;
+    margin-right: 0;
+    border: 1px solid rgba(black, 0.15);
+    border-radius: $circular_radius;
+    background-clip: border-box;
+  }
+
+  &:active > radio {
+    border: 1px solid rgba(black, 0.35);
+  }
+}
+
+window.background.csd {
+  > paned.horizontal {
+    > separator {
+      &:dir(ltr) { margin-left: -1px; }
+      &:dir(rtl) { margin-right: -1px; }
+    }
+
+    > scrolledwindow {
+      > viewport.frame {
+        > box.vertical treeview.view {
+          border-right: 1px solid $header_border;
+          color: $dark_sidebar_fg;
+          padding-top: 3px;
+          padding-bottom: 3px;
+          border-right: 1px solid $header_border;
+
+          &:not(:hover):not(:selected) {
+            border-bottom-left-radius: $wm_radius;
+            background: none;
+          }
+
+          &:not(:selected):hover { background-color: if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05)); }
+
+          &:selected, &:selected:hover, &:selected:focus {
+            color: $fg_color;
+            background-color: $sidebar_theme_color;
+            &, label { color: $fg_color; }
+          }
+
+          image {
+            color: $dark_sidebar_fg;
+            &:selected { color: $selected_fg_color; }
+            &:disabled { color: rgba($dark_sidebar_fg, 0.45); }
+          }
+
+          &.trough {
+            color: $fg_color;
+            background-color: $button_border;
+            border-radius: $bt_radius;
+            border-width: 0;
+
+            &:selected, &:selected:focus {
+              color: $selected_fg_color;
+              background-color: transparentize(black, 0.8);
+              border-radius: $bt_radius;
+              border-width: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  > stack > stack {
+    > paned.horizontal {
+      > scrolledwindow > viewport.frame {
+        list {
+          border-bottom-left-radius: $wm_radius;
+        }
+      }
+    }
+  }
+
+  &.unified > deck > grid > paned {
+    > separator { background-image: image($header_border); }
+
+    > .sidebar {
+      button.expander { color: $disabled_fg_color; }
+
+      actionbar button { @extend %flat_button; }
+
+      list {
+        padding: $container_padding;
+
+        > row.activatable {
+          border-radius: $bt_radius;
+          padding: ($container_padding - 2px) $container_padding * 1.5;
+          margin: 1px 0;
+          -gtk-icon-style: symbolic;
+
+          button {
+            @extend %sidebar_button;
+          }
+
+          levelbar {
+            block {
+              border: none;
+
+              &.low {
+                background-color: $warning_color;
+              }
+
+              &.high {
+                background-color: $selected_bg_color;
+              }
+
+              &.full {
+                background-color: $error_color;
+              }
+
+              &.empty {
+                background-color: if($variant=='light', transparentize($fg_color,0.8), $base_color);
+              }
+            }
+
+            trough {
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > stack > stack {
+      > paned.horizontal {
+        > scrolledwindow > viewport.frame {
+          list {
+            border-bottom-left-radius: $maximized_radius;
+          }
+        }
+      }
+    }
+  }
+}
+
+// keycap on menuitem
+label.keycap {
+  min-height: 16px;
+  padding: 0 $container_padding;
+  border-radius: $bt_radius - 2px;
+  color: $hint_fg_color;
+  font-size: small;
+}
+
+// Dynamic-notebook
+.dynamic-notebook {
+  > notebook {
+    > header {
+      border-color: $solid_borders_color;
+
+      @if $monterey == 'false' {
+        background-color: darken($header_bg, 10%);
+      } @else {
+        background-color: $header_bg;
+      }
+
+      > tabs > tab {
+        padding: 0 10px;
+        min-height: 0;
+
+        label, image {
+          @if $monterey == 'false' {
+            margin-bottom: -$container_padding / 2;
+          } @else {
+            margin-bottom: -$container_padding * 1.5;
+          }
+        }
+
+        > widget > grid > revealer > button.image-button.flat {
+          @if $monterey == 'false' {
+            margin-top: $container_padding;
+            margin-right: $container_padding;
+            margin-bottom: 0;
+            margin-left: 0;
+          } @else {
+            margin-top: $container_padding * 1.5;
+            margin-right: $container_padding;
+            margin-bottom: 0;
+            margin-left: 0;
+          }
+        }
+      }
+
+      > box > button.flat {
+        margin: 0 $container_padding;
+      }
+    }
+
+    > stack {
+      border-bottom-right-radius: $wm_radius;
+      background-color: $base_color;
+
+      scrolledwindow.view.h2 {
+        background-color: transparent;
+      }
+
+      treeview.view,
+      iconview.view {
+        &:not(:hover):not(:selected) { background: none; }
+        &:hover { background-color: if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05)); }
+        &:selected {
+          color: $fg_color;
+          background-color: if($variant == 'light', rgba(black, 0.1), rgba(white, 0.1));
+        }
+      }
+    }
+
+    treeview.view {
+      > frame.cell {
+        > entry {
+          border-image-width: 0;
+          background-color: $bg_color;
+
+          &:focus { background-color: $base_color; }
+        }
+
+        > border { border: none; }
+      }
+    }
+  }
+}
+
+headerbar.titlebar {
+  > box.horizontal > entry.pathbar {
+    min-height: 20px;
+    padding: 2px 6px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  > button.flat.image-button.toggle:dir(ltr) {
+    min-height: 0;
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    &:not(:checked):not(:active) {
+      background-clip: if($variant=='light', padding-box, padding-box);
+    }
+
+    @if $variant == 'light' {
+      border-width: 1px;
+      border-style: solid;
+      border-color: $borders_color;
+    }
+
+    @include button(header-normal);
+    &:hover { @include button(header-hover); }
+    &:active { @include button(header-active); }
+    &:checked { @include button(header-checked); }
+    &:disabled { color: transparentize($header_fg, 0.4); }
+    &:backdrop { opacity: 0.7; background-image: none;}
+
+    + button.flat.image-button.toggle { margin-right: if($variant=='light', -6px, -5px); }
+  }
+
+  > .linked.raised > button.toggle {
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  // Hide Code header format-bar
+  > grid.linked.horizontal.format-bar {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    border: none;
+
+    button.toggle {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    &:backdrop {
+      transition: $backdrop_transition;
+      background-image: none;
+      background-color: $header_bg_backdrop;
+    }
+  }
+
+  &.windowhandle > button {
+    -gtk-icon-style: symbolic;
+  }
+}
+
+// Gala
+.gala-notification,
+window.notification .draw-area {
+  border: 1px solid rgba(black, 0.75);
+  border-radius: $wm_radius;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2),
+              0 3px 8px 2px rgba(0, 0, 0, 0.1),
+              0 5px 5px -3px rgba(0, 0, 0, 0.4),
+              0 8px 5px 1px rgba(0, 0, 0, 0.1),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  background-image: _solid($osd_bg_color);
+  background-color: transparent;
+
+  &, .title, .label, image {
+    color: $osd_fg_color;
+  }
+
+  .urgent label.title {
+    color: $error_color;
+  }
+}
+
+// Nightlight warmth trough
+scale.warmth trough {
+  min-height: 4px;
+  border-radius: 3px;
+  background-image: linear-gradient(to right, $suggested_color, $destructive_color);
+  box-shadow: inset 0 0 0 1px rgba(black, 0.25);
+}
+
+// Terminal
+.terminal-window {
+  headerbar.titlebar.default-decoration {
+    background-color: $header_bg;
+    border-bottom: 1px solid $header_border;
+    box-shadow: inset 0 1px $highlight_color;
+
+    &:backdrop {
+      transition: $backdrop_transition;
+      color: transparentize($header_fg, 0.3);
+      background-image: none;
+      background-color: $header_bg_backdrop;
+    }
+  }
+
+  .search-bar {
+    background-color: $bg_color;
+    border-bottom: 1px solid $solid_borders_color;
+  }
+}
+
+// Popovers
+popover.background {
+  menuitem.toggle {
+    margin: $container_padding $container_padding * 2;
+  }
+}
+
+// actionbar
+actionbar.inline-toolbar {
+  border: none;
+  border-top: 1px solid $borders_color;
+
+  > revealer > box {
+    border-top: none;
+  }
+
+  button { // Reset buttons
+    border-radius: $bt_radius;
+    // border: 1px solid $dark_borders_color;
+
+    &, &:first-child {
+      border-right-style: solid;
+    }
+
+    &:last-child {
+      border-left-style: solid;
+    }
+  }
+}
+
+actionbar.bottom-toolbar {
+  button { -gtk-icon-style: symbolic; }
+}
+
+.sidebar > treeview.view.source-list {
+  -gtk-icon-style: symbolic;
+
+  &:selected {
+    background-color: rgba($fg_color, 0.15);
+    color: $fg_color;
+  }
+}

@@ -1,0 +1,407 @@
+/* Top Bar */
+// a.k.a. the panel
+
+$panel_height: $menuitem_size;
+
+@if $panel_size == 'smaller' {
+  $panel_height: $menuitem_size - 4px;
+}
+
+@if $panel_size == 'bigger' {
+  $panel_height: $menuitem_size + 4px;
+}
+
+#panel.login-screen {
+  @if $scale != 'default' {
+    @include fontsize($base_font_size * 2 - 2);
+    height: $panel_height * 2 !important;
+
+    .panel-button {
+      -natural-hpadding: $container_padding * 2 + 4px !important;
+      -minimum-hpadding: $container_padding * 2 + 4px !important;
+      border-radius: $bt_radius * 2 !important;
+
+      &.clock-display {
+        StLabel { padding: 0 $base_padding * 2 !important; }
+
+        .clock {
+          border-radius: $bt_radius * 2 !important;
+        }
+      }
+
+      // status area icons
+      .system-status-icon {
+        icon-size: $base_icon_size * 2 !important;
+        padding: $base_padding * 2 !important;
+        margin: 0 $base_padding * 2 !important;
+      }
+
+      .panel-status-menu-box StLabel { padding: 0 0 0 $base_padding !important; }
+
+      .appindicator-trayicons-box { margin: 0 $base_padding * 2 !important; }
+
+      StIcon {
+        icon-size: 32px !important;
+      }
+    }
+  }
+}
+
+%normal_activites {
+  -natural-hpadding: $base_padding * 3;
+  color: $panel_fg;
+
+  StBoxLayout {
+    padding: 0 $scaled_padding * 0.5;
+    spacing: $container_padding;
+  }
+
+  .workspace-dot {
+    border-radius: $circular_radius;
+    min-width: $scalable_icon_size * 0.5;
+    min-height: $scalable_icon_size * 0.5;
+    background-color: $panel_fg;
+  }
+
+  &:overview {
+    .workspace-dot {
+      background-color: $light_fg_color;
+    }
+  }
+}
+
+%apple_activites {
+  -natural-hpadding: $base_padding * 2;
+  background-image: url("assets/activities.svg");
+  background-position: center center;
+  background-size: 24px 24px;
+  width: 24px;
+  height: 24px;
+  color: transparent;
+  font-size: 0;
+
+  > * { width: $medium_size; }
+
+  StBoxLayout {
+    spacing: 0;
+  }
+
+  .workspace-dot {
+    background-color: transparent;
+  }
+
+  &:active, &:overview, &:focus, &:checked {
+    border: none;
+    color: transparent;
+  }
+
+  &:overview { background-color: transparent; }
+
+  @if $variant == 'light' {
+    @if $panel_font == 'black' or $trans == 'false' {
+      &:overview {
+        background-image: url("assets/activities-white.svg");
+      }
+    }
+  }
+}
+
+#panel {
+  background-color: $panel_bg;
+  font-weight: 500;
+  @extend %numeric;
+  color: $panel_fg;
+  transition-duration: 250ms;
+  // @include font(body-1);
+  // box-shadow: 0 5px 16px rgba(black, 0.05);
+
+  @if $panel_style == 'default' {
+    height: $panel_height + $container_padding * 2 !important;
+  } @else {
+    height: $panel_height !important;
+  }
+
+  // the rounded outset corners
+  .panel-corner {
+    -panel-corner-radius: $panel-corner-radius;
+    -panel-corner-background-color: $panel_bg;
+    -panel-corner-border-width: 2px;
+    -panel-corner-border-color: transparent;
+    -panel-corner-opacity: 1;
+    transition-duration: 250ms;
+  }
+
+  // panel menus
+  .panel-button {
+    -natural-hpadding: 12px;
+    -minimum-hpadding: 12px;
+    color: $panel_fg;
+    transition-duration: 150ms;
+
+    @if $panel_style == 'default' {
+      border: $container_padding solid transparent !important;
+      border-radius: $circular_radius;
+    } @else {
+      border: none;
+      border-radius: $bt_radius;
+    }
+
+    StLabel {
+      padding: 0;
+      margin: 0;
+    }
+
+    .popup-menu-arrow { width: 0; height: 0; } // Remove arrow on panel button
+
+    &, &:hover, &:active, &:overview, &:focus, &:checked {
+      text-shadow: $panel_asset_shadow;
+
+      .system-status-icon,
+      .app-menu-icon > StIcon,
+      .popup-menu-arrow {
+        icon-shadow: $panel_asset_shadow;
+      }
+    }
+
+    &:hover {
+      color: $panel_fg;
+      background-color: transparent;
+      box-shadow: inset 0 0 0 1000px $panel_divider;
+
+      &.clock-display {
+        background: none;
+
+        .clock {
+          background-color: transparent;
+          box-shadow: inset 0 0 0 1000px $panel_divider;
+        }
+      }
+    }
+
+    &:active, &:overview, &:focus, &:checked {
+      color: $panel_fg;
+      background-color: transparent;
+      box-shadow: inset 0 0 0 1000px $panel_track;
+
+      &.clock-display {
+        background: none;
+
+        .clock {
+          background-color: transparent;
+          box-shadow: inset 0 0 0 1000px $panel_track;
+        }
+      }
+    }
+
+    .unlock-screen &,
+    .login-screen &,
+    .lock-screen & {
+      &, &:focus, &:hover, &:active { color: $panel_fg; }
+    }
+
+    .login-screen &,
+    .lock-screen & {
+      box-shadow: none;
+    }
+
+    &.clock-display {
+      background-color: transparent;
+      box-shadow: none;
+
+      &, .clock-display-box {
+        spacing: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .clock {
+        // transition-duration: 150ms;
+        border-radius: $circular_radius;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0 $base_padding + 12px !important;
+        margin: 0 !important;
+        border: $container_padding solid transparent !important;
+      }
+
+      .messages-indicator {
+        icon-size: $scalable_icon_size;
+      }
+    }
+
+    &:hover, &:active, &:overview, &:focus, &:checked {
+      // The clock display needs to have the background on .clock because
+      // we want to exclude the do-not-disturb indicator from the background
+      &.clock-display {
+        box-shadow: none !important;
+        background-color: transparent !important;
+      }
+    }
+
+    // status area icons
+    .system-status-icon {
+      icon-size: $base_icon_size;
+      padding: $base_padding;
+      margin: 0;
+    }
+
+    // .panel-status-menu-box .system-status-icon { margin: 0; }
+    .panel-status-menu-box StLabel { padding: 0 0 0 $base_padding / 2; }
+
+    .appindicator-trayicons-box { margin: 0 $base_padding; }
+
+    // .appindicator-box { margin: 0; }
+
+    // .panel-status-indicators-box,
+    // .panel-status-menu-box {
+    //   spacing: 2px;
+    // }
+
+    // spacing between power icon and (optional) percentage label
+    // .power-status.panel-status-indicators-box {
+    //   spacing: 0;
+    // }
+
+    // app menu icon
+    .app-menu-icon {
+      -st-icon-style: symbolic;
+      // dimensions of the icon are hardcoded
+    }
+
+    &#panelActivities { // Activities button
+      background-gradient-direction: none;
+      // border: none;
+
+      @if $activities == 'icon' {
+        @extend %apple_activites;
+      } @else {
+        @extend %normal_activites;
+      }
+    }
+
+    // screen activity indicators
+    &.screen-recording-indicator,
+    &.screen-sharing-indicator {
+      border: $container_padding solid transparent;
+      background-color: transparent;
+
+      StBoxLayout {
+        spacing: $scaled_padding;
+      }
+
+      StIcon {
+        icon-size: $scalable_icon_size;
+      }
+    }
+
+    &.screen-recording-indicator {
+      box-shadow: inset 0 0 0 1000px $error_color !important;
+
+      &:hover {
+        box-shadow: inset 0 0 0 1000px mix($panel_fg, $error_color, 12%) !important;
+      }
+
+      &:active {
+        box-shadow: inset 0 0 0 1000px mix($panel_fg, $error_color, 24%) !important;
+      }
+    }
+
+    &.screen-sharing-indicator {
+      box-shadow: inset 0 0 0 1000px $warning_color !important;
+
+      &:hover {
+        box-shadow: inset 0 0 0 1000px mix($panel_fg, $warning_color, 12%) !important;
+      }
+
+      &:active {
+        box-shadow: inset 0 0 0 1000px mix($panel_fg, $warning_color, 24%) !important;
+      }
+    }
+  }
+
+  Gjs_AggregateMenu.panel-button,
+  Gjs_ui_panel_AggregateMenu.panel-button,
+  Gjs_ui_panel_QuickSettings.panel-button {
+    .system-status-icon {
+      margin: 0 $base_padding / 2 !important;
+    }
+  }
+
+  Gjs_ui_panel_AppMenuButton.panel-button,
+  // .menubar-button, // For Fildem global menu
+  .desktop-name-label { // For Unite
+    font-weight: bold !important;
+  }
+
+  // Input indicators
+  Gjs_status_keyboard_InputSourceIndicator.panel-button, // Ibus
+  Gjs_appindicatorsupport_rgcjonas_gmail_com_indicatorStatusIcon_IndicatorStatusIcon.panel-button,
+  Gjs_appindicatorsupport_rgcjonas_gmail_com_indicatorStatusIcon_AppIndicatorsIndicatorStatusIcon.panel-button { // Fcitx
+    -natural-hpadding: 12px + $base_padding !important;
+    -minimum-hpadding: 12px + $base_padding !important;
+  }
+
+  // transparent panel on lock & login screens
+  &:overview,
+  &.unlock-screen,
+  &.login-screen,
+  &.lock-screen {
+    background-color: transparent;
+    box-shadow: none;
+
+    StLabel, StIcon { color: $light_alt_fg_color; }
+
+    .panel-button {
+      &:hover {
+        color: $light_fg_color;
+        background-color: transparent;
+        box-shadow: inset 0 0 0 1000px $light_divider_color;
+
+        &.clock-display {
+          .clock {
+            background-color: transparent;
+            box-shadow: inset 0 0 0 1000px $light_divider_color;
+          }
+        }
+      }
+
+      &:active, &:overview, &:focus, &:checked {
+        &, &:hover {
+          color: $light_fg_color;
+          background-color: transparent;
+          box-shadow: inset 0 0 0 1000px $light_track_color;
+        }
+
+        &.clock-display {
+          .clock {
+            background-color: transparent;
+            box-shadow: inset 0 0 0 1000px $light_track_color;
+          }
+        }
+      }
+
+      @if $activities == 'default' {
+        &#panelActivities {
+          color: $light_fg_color;
+
+          .workspace-dot {
+            background-color: $light_fg_color;
+          }
+        }
+      }
+    }
+
+    .panel-corner {
+      -panel-corner-radius: 0;
+      -panel-corner-background-color: transparent;
+      -panel-corner-border-color: transparent;
+    }
+  }
+
+  // indicator for active
+  .screencast-indicator,
+  .remote-access-indicator { color: $warning_color; }
+
+  // important privacy related indicators
+  .privacy-indicator { color: $warning_color; }
+}

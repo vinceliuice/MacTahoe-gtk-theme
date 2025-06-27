@@ -1,0 +1,146 @@
+/* Toolbox, a container for all toolbars (toolbox#navigator-toolbox):
+ * - menu bar (toolbar#toolbar-menubar)
+ * - tab bar (toolbar#TabsToolbar)
+ * - header bar (toolbar#nav-bar)
+ * - bookmark bar (toolbar#PersonalToolbar)
+ * - add-ons can add their own toolbars (toolbar) */
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* Toolbox colors */
+#navigator-toolbox, #PersonalToolbar, #toolbar-menubar, .notificationbox-stack {
+	border: none !important;
+	color: var(--gnome-toolbar-color);
+	background: var(--gnome-toolbar-background) !important;
+}
+
+#navigator-toolbox {
+	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
+}
+
+#nav-bar {
+	border: none !important;
+	color: var(--gnome-toolbar-color);
+	background: var(--gnome-headerbar-background) !important;
+}
+
+#nav-bar:-moz-window-inactive {
+	background: var(--gnome-inactive-toolbar-background) !important;
+}
+
+#navigator-toolbox:-moz-window-inactive, .notificationbox-stack:-moz-window-inactive,
+#PersonalToolbar:-moz-window-inactive, #toolbar-menubar:-moz-window-inactive,
+#TabsToolbar:-moz-window-inactive, findbar:-moz-window-inactive {
+	background: var(--gnome-inactive-toolbar-background) !important;
+}
+
+#navigator-toolbox:-moz-window-inactive label, #navigator-toolbox:-moz-window-inactive image,
+#downloads-indicator-anchor:-moz-window-inactive,
+findbar:-moz-window-inactive image:not(#hack),
+findbar:-moz-window-inactive label,
+#viewButton:-moz-window-inactive dropmarker {
+	opacity: 0.7 !important;
+}
+
+#TabsToolbar {
+	border: none !important;
+	background: var(--gnome-tabstoolbar-background) !important;
+	box-shadow: inset 0 1px var(--gnome-toolbar-border-color) !important;
+}
+
+.container.infobar {
+	background: var(--gnome-browser-before-load-background) !important;
+}
+
+.tab-icon-overlay {
+  :is(:root[uidensity="compact"], #tabbrowser-tabs[secondarytext-unsupported], :root:not([uidensity="compact"]) #tabbrowser-tabs:not([secondarytext-unsupported]) .tabbrowser-tab:hover) .tab-icon-stack[indicator-replaces-favicon] > :not(&), :root:not([uidensity="compact"]) #tabbrowser-tabs:not([secondarytext-unsupported]) .tabbrowser-tab:not(:hover) &[indicator-replaces-favicon] {
+    opacity: 0 !important;
+  }
+}
+
+#toolbar-menubar:not([inactive=true]) {
+	margin-bottom: 0 !important;
+}
+
+#PersonalToolbar {
+	height: 28px !important;
+	max-height: 28px !important;
+	padding: 0 2px !important;
+	--bookmarks-toolbar-overlapping-browser-height: auto;
+}
+
+/* Overrides: Remove border below the menu bar / above the header bar */
+#TabsToolbar:not([collapsed="true"]) + #nav-bar {
+	border-top-width: 0 !important;
+}
+
+#navigator-toolbox::after {
+	border-bottom-width: 0 !important;
+}
+
+/* Reorder toolbars */
+#navigator-toolbox #nav-bar, findbar {
+	-moz-box-ordinal-group: 0;
+	order: 0;
+}
+#navigator-toolbox #PersonalToolbar {
+	-moz-box-ordinal-group: 1;
+	order: 1;
+}
+#navigator-toolbox #titlebar {
+	-moz-box-ordinal-group: 2;
+	order: 2;
+}
+#navigator-toolbox toolbar {
+	-moz-box-ordinal-group: 10;
+	order: 10;
+}
+#navigator-toolbox #TabsToolbar {
+	-moz-box-ordinal-group: 20;
+	order: 20;
+}
+.container.infobar {
+	-moz-box-ordinal-group: 100;
+	order: 100;
+}
+
+/* Overrides: Don't shift other toolbars on tab drag and drop */
+#TabsToolbar[movingtab] {
+	padding-bottom: 0 !important;
+}
+#TabsToolbar[movingtab] > .tabbrowser-tabs {
+	padding-bottom: 0 !important;
+	margin-bottom: 0 !important;
+}
+#TabsToolbar[movingtab] + #nav-bar {
+	margin-top: 0 !important;
+}
+
+/* Customization page */
+#customization-container:-moz-lwtheme {
+	background-image: linear-gradient(var(--gnome-browser-before-load-background), var(--gnome-browser-before-load-background)) !important;
+}
+
+#customization-footer {
+	border-top: 1px solid var(--gnome-toolbar-border-color) !important;
+	color: var(--gnome-toolbar-color) !important;
+	background: var(--gnome-toolbar-background) !important;
+	border-radius: 0 0 12px 12px !important;
+}
+
+/* Buttons */
+toolbar .toolbarbutton-1 {
+	> .toolbarbutton-icon,
+	> .toolbarbutton-text,
+	> .toolbarbutton-badge-stack {
+		border-radius: 0 !important;
+	}
+}
+/* bookmark-item */
+toolbarbutton.bookmark-item {
+	padding: 3px 6px !important;
+	margin: 0 2px !important;
+	border-radius: 3px !important;
+	max-height: 24px !important;
+	color: var(--gnome-toolbar-color) !important;
+}

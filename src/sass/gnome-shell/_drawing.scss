@@ -1,0 +1,325 @@
+// generic drawing of more complex things
+
+// provide font size in pt, with px fallback
+@function pt($size: $root-font-size) {
+  @return ($size * 0.75 / 1px) + pt;
+}
+
+// provide icon size in em, with px fallback
+@function em($size: 16px) {
+  @return ($size / $root-font-size) + em;
+}
+
+// Function to convert px values to em
+@function to_em($input, $base: 16px) {
+  // multiplied and divided by 1000 to make up for round() shortcoming
+  $em_value: ($input / $base) * 1.091 * 1000;
+  @return round($em_value) / 1000 * 1em;
+}
+
+// Mixin to convert provided font size in pt to em units
+@mixin fontsize($size, $base: 16px, $unit: pt) {
+  // if pt, convert into unitless value with the assumption: 1pt = 1.091px
+  $adjusted_size: if($unit == pt, $size * 1.091, $size) * 1000;
+  $rounded_size: round($adjusted_size / $base) / 1000;
+  font-size: $rounded_size * 1em;
+  // font-size: round($size) + pt;
+}
+
+// Typography
+// based on:
+// https://material.io/guidelines/style/typography.html#typography-styles
+
+@mixin font($size) {
+  @if $size == display-4 {
+    // font-family: $large-font-family;
+    font-size: 112px;
+    font-weight: 300;
+    // line-height: 1;
+  }
+
+  @if $size == display-3 {
+    // font-family: $large-font-family;
+    font-size: 56px;
+    font-weight: 400;
+    // line-height: 1;
+  }
+
+  @if $size == display-2 {
+    // font-family: $large-font-family;
+    font-size: 45px;
+    font-weight: 400;
+    // line-height: 48px;
+  }
+
+  @if $size == display-1 {
+    // font-family: $large-font-family;
+    font-size: 34px;
+    font-weight: 400;
+    // line-height: 40px;
+  }
+
+  @if $size == headline {
+    font-size: pt(24px);
+    font-weight: 400;
+    // line-height: 32px;
+  }
+
+  @if $size == title {
+    font-size: pt(20px);
+    font-weight: 500;
+    // line-height: 1;
+  }
+
+  @if $size == subheading {
+    font-size: pt($subheading-size);
+    font-weight: 400;
+    // line-height: 24px;
+  }
+
+  @if $size == body-2 {
+    font-size: pt($root-font-size);
+    font-weight: 500;
+    // line-height: 24px;
+  }
+
+  @if $size == body-1 {
+    font-size: pt($root-font-size);
+    font-weight: 400;
+    // line-height: 20px;
+  }
+
+  @if $size == caption {
+    font-size: pt(12px);
+    font-weight: 400;
+    // line-height: 1;
+  }
+
+  @if $size == button {
+    font-size: pt($root-font-size);
+    font-weight: 500;
+    // line-height: 20px;
+  }
+}
+
+$entry_shell_bg: if($variant == 'light', rgba(black, 0.1), rgba(white, 0.1));
+
+@mixin entry($t, $fc: $primary_color, $tc: $fg_color, $c: $entry_shell_bg) {
+//
+// entry
+//
+// $t: entry type
+// $fc: focus color
+//
+
+  @if $t == normal {
+    background-color: $c;
+    border-radius: $circular_radius;
+    border: 2px solid transparent !important;
+    box-shadow: inset 0 0 0 1px transparent !important;
+    outline: none;
+  }
+
+  @if $t == hover {
+    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.1) !important;
+    border: 2px solid transparent !important;
+  }
+
+  @if $t == focus {
+    box-shadow: inset 0 0 0 1px transparent !important;
+    @if $shell_version == 'old' {
+      border: 2px solid lighten($fc, 15%) !important;
+    } @else {
+      border: 2px solid st-lighten($fc, 15%) !important;
+    }
+  }
+
+  @if $t == insensitive {
+    background-color: rgba($c, 0.05);
+    color: $disabled_fg_color;
+  }
+
+  @if $t == flat-normal {
+    background-color: $c;
+    border-radius: $circular_radius;
+    border: none !important;
+    box-shadow: none !important;
+    color: $tc;
+  }
+
+  @if $t == flat-hover {
+    background-color: $c;
+    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.05) !important;
+    color: $tc;
+  }
+
+  @if $t == flat-focus {
+    border: none !important;
+    background-color: rgba($c, 0.2);
+    color: $tc;
+  }
+
+  @if $t == flat-insensitive {
+    border: none !important;
+    background-color: rgba($c, 0.05);
+    color: rgba($tc, 0.45);
+  }
+}
+
+@mixin search_entry($t, $fc: $primary_color) {
+//
+// search_entry
+//
+// $t: search_entry type
+// $fc: focus color
+//
+
+  @if $t == normal {
+    background-color: rgba(white, 0.12);
+    border-radius: $bd_radius;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  @if $t == focus {
+    border-color: transparent !important;
+    background-color: rgba(white, 0.18);
+    box-shadow: none !important;
+  }
+
+  @if $t == hover {
+    background-color: rgba(white, 0.2);
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  @if $t == insensitive {
+    color: $disabled_fg_color;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+}
+
+$button_shell: if($variant == 'light', $bg_color, $base_color);
+$button_shell_bg: if($variant == 'light', mix(black, $button_shell, 6%), mix(white, $button_shell, 6%));
+
+@mixin button($t, $c: $button_shell_bg, $tc: $fg_color) {
+//
+// button
+//
+// $t: button type
+// $c: base color
+// $tc: text color
+//
+
+  @if $t == normal {
+    color: $tc;
+    background-color: $c;
+    border: none;
+    text-shadow: none;
+    icon-shadow: none;
+  }
+
+  @if $t == focus {
+    color: $tc;
+    // background-color: $c;
+    text-shadow: none;
+    icon-shadow: none;
+    box-shadow: none !important;
+  }
+
+  @if $t == hover {
+    color: $tc;
+    border: none;
+    text-shadow: none;
+    icon-shadow: none;
+    @if $shell_version == 'old' {
+      background-color: mix($tc, $c, 6%);
+    } @else {
+      background-color: st-mix($tc, $c, 6%);
+    }
+  }
+
+  @if $t == active {
+    color: $tc;
+    border: none;
+    text-shadow: none;
+    icon-shadow: none;
+    @if $shell_version == 'old' {
+      background-color: mix($tc, $c, 12%);
+    } @else {
+      background-color: st-mix($tc, $c, 12%);
+    }
+  }
+
+  @if $t == checked {
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+    border: none;
+    text-shadow: none;
+    icon-shadow: none;
+  }
+
+  @if $t == insensitive {
+    color: if($tc == $fg_color, $disabled_fg_color, $tc);
+    background-color: if($c == $button_bg, $divider_color, $c);
+    border: none;
+    text-shadow: none;
+    icon-shadow: none;
+  }
+
+  @if $t == flat-normal {
+    color: $tc;
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    text-shadow: none;
+    icon-shadow: none;
+  }
+
+  @if $t == flat-focus {
+    color: $tc;
+    text-shadow: none;
+    icon-shadow: none;
+
+    &, &:hover, &:active {
+      box-shadow: none !important;
+    }
+  }
+
+  @if $t == flat-hover {
+    color: $tc;
+    background-color: $divider_color;
+    border-color: transparent;
+    box-shadow: none;
+    text-shadow: none;
+    icon-shadow: none;
+  }
+
+  @if $t == flat-active {
+    color: $tc;
+    background-color: $track_color;
+    border-color: transparent;
+    box-shadow: none;
+    text-shadow: none;
+    icon-shadow: none;
+  }
+
+  @if $t == flat-checked {
+    color: $tc;
+    background-color: $divider_color;
+    border-color: transparent;
+    box-shadow: none;
+    text-shadow: none;
+    icon-shadow: none;
+  }
+
+  @if $t == flat-insensitive {
+    color: if($tc == $fg_color, $disabled_fg_color, $tc);
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    text-shadow: none;
+    icon-shadow: none;
+  }
+}

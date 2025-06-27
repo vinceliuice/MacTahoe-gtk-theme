@@ -1,0 +1,142 @@
+// Simple Dock
+#dash:desktop {
+  background-color: $panel_bg;
+}
+
+//  OpenWeather Extension
+.openweather {
+  &-button,
+  &-button-action,
+  &-menu-button-container,
+  &-button-box {
+    border: 1px solid transparent !important;
+  }
+
+  &-provider {
+    // generic text buttons are allocated with y-expand-ed
+    padding: 0 16px;
+    font-weight: 500;
+    @include button(flat-normal);
+    &:hover { @include button(flat-hover); }
+    &:focus { @include button(flat-focus); }
+    &:active { @include button(flat-active); }
+    &:insensitive { @include button(flat-disabled); }
+    border: 1px solid transparent !important;
+  }
+
+  &-current {
+    &-icon,
+    &-summary,
+    &-summarybox {
+      background: none;
+      color: $fg_color;
+    }
+
+    &-databox-values {
+      background: none;
+      color: $hint_fg_color;
+    }
+
+    &-databox-captions {
+      background: none;
+      color: $hint_fg_color;
+    }
+  }
+
+  &-forecast {
+    &-icon,
+    &-summary {
+      background: none;
+      color: $alt_fg_color;
+    }
+
+    &-day,
+    &-temperature {
+      background: none;
+      color: $hint_fg_color;
+    }
+  }
+
+  &-sunrise-icon,
+  &-sunset-icon,
+  &-build-icon { color: $alt_fg_color; }
+}
+
+//
+// Gsconnect
+//
+.gsconnect-device-menu {
+  background-color: if($variant == 'light', white, rgba(white, 0.06));
+  border-radius: $bt_radius;
+  margin: $container_padding / 2;
+  padding: $bt_radius 0;
+  box-shadow: 1px 2px 3px rgba(black, if($variant == 'light', 0.08, 0.35));
+
+  .popup-menu-item {
+    height: 16px !important;
+    border-radius: 0 !important;
+
+    &:hover {
+      color: $fg_color !important;
+      background-color: rgba($fg_color, 0.1) !important;
+    }
+
+    > :first-child {
+      &:ltr { padding-left: 0 !important; margin-left: 0 !important; }
+      &:rtl { padding-right: 0 !important; margin-right: 0 !important; }
+    }
+  }
+}
+
+//
+// Pop_OS cosmic widget styling
+//
+.cosmic-dock {
+  #dock {
+    background-color: $dash_bg;
+    border-radius: $dash_radius;
+    border: 1px solid if($variant == 'light', rgba(black, 0.03), rgba(black, 0.35));
+    box-shadow: inset 0 0 0 1px rgba(white, 0.05);
+    padding: $container_padding;
+    margin: 6px !important;
+  }
+
+  &.extended #dock {
+    border-radius: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+//
+// Places Menu
+//
+
+.place-menu-item {
+  &:ltr {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    padding-right: $base_padding * 5 !important;
+  }
+
+  &:rtl {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    padding-left: $base_padding * 5 !important;
+  }
+
+  StLabel { margin-left: $base_padding / 2; }
+
+  .button {
+    border-radius: $circular_radius;
+    padding: $base_padding / 2;
+
+    &:ltr { margin-left: 0 !important; }
+    &:rtl { margin-right: 0 !important; }
+  }
+
+  &:focus, &:hover, &:selected {
+    .button {
+      @extend %osd_button;
+    }
+  }
+}

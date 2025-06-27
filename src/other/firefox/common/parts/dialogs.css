@@ -1,0 +1,264 @@
+/* Dialogs */
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+window {
+	padding: 0 !important;
+}
+
+/* Browser dialog prompts center */
+.dialogOverlay {
+	display: grid;
+	place-content: center;
+	justify-content: center;
+	grid-auto-rows: min(90%, var(--doc-height-px));
+}
+
+.dialogOverlay[topmost="true"]:not(.dialogOverlay-window-modal-dialog-subdialog), #window-modal-dialog::backdrop {
+	background-color: rgba(0, 0, 0, .5) !important;
+}
+
+#window-modal-dialog {
+	margin-top: auto !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+/* Dialog */
+.dialogBox {
+	border-radius: 12px !important;
+	margin: 0 !important;
+}
+
+window[role="dialog"] {
+	background: none !important;
+	border: none !important;
+	box-shadow: none !important;
+	padding: 0 !important;
+}
+
+dialog {
+	padding: 0 !important;
+}
+
+dialog#handling {
+	padding: 8px 0 6px !important;
+}
+
+dialog[subdialog] {
+	background-color: var(--gnome-popover-background) !important;
+	border-radius: 12px !important;
+	border: none !important;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+}
+
+.dialogBox {
+	&:not(.spotlightBox) {
+		box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px #000000 !important;
+		border-radius: 12px !important;
+	}
+}
+
+/* Content */
+.dialog-content-box,
+#dialogGrid {
+	padding: 24px;
+	padding-bottom: 0;
+}
+
+#description {
+	margin: 8px 10px 16px !important;
+}
+
+#description-box {
+	margin: 24px 24px 0 !important;
+}
+
+#rememberContainer {
+	margin: 0 24px 16px !important;
+}
+
+#titleContainer {
+	padding: 6px !important;
+	margin-top: 6px !important;
+	justify-content: center !important;
+}
+
+.titleIcon {
+	background-color: transparent !important;
+}
+
+#bookmarkpropertiesdialog #editBookmarkPanelContent {
+	padding-inline: 6px !important;
+	margin-inline: 6px !important;
+}
+
+/* Buttons */
+.dialog-button-box {
+	display: flex !important;
+	background: none !important;
+	border-top: 1px solid var(--gnome-menu-border-color) !important;
+	padding: 3px !important;
+}
+
+.dialog-button-box button:not(#hack) {
+	height: auto !important;
+	max-height: unset !important;
+	padding: 10px 14px !important;
+	margin: 3px !important;
+	border-radius: 6px !important;
+	flex: 1;
+}
+
+.dialog-button-box spacer.button-spacer {
+	display: none;
+}
+
+/* Hadler dialog */
+#os-default-handler image {
+	display: none !important;
+}
+#os-default-handler .name {
+	font-weight: normal !important;
+}
+
+/* Print dialog */
+:root[dialogroot], :host(dialog) {
+	--in-content-page-background: var(--gnome-toolbar-background) !important;
+}
+
+#editBookmarkPanelContent > input,
+#editBookmarkPanelContent > hbox > input {
+	padding: 0 12px !important;
+	min-height: 26px !important;
+	border: 1px solid var(--gnome-button-border-color) !important;
+	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
+	background-color: var(--gnome-urlbar-background) !important;
+	background-clip: padding-box;
+	border-radius: 8px !important;
+}
+
+#editBookmarkPanelContent > input:focus-visible,
+#editBookmarkPanelContent > hbox > input:focus-visible {
+	outline: 2px solid var(--gnome-focused-urlbar-border-color) !important;
+	outline-offset: -2px;
+	-moz-outline-radius: 8px;
+}
+
+:root[dialogroot] select,
+:host(dialog) select {
+	background-image: url("chrome://global/skin/icons/arrow-down-12.svg") !important;
+	background-color: #ffffff !important;
+	background-position: right 12px center !important;
+	background-repeat: no-repeat !important;
+	background-size: auto 12px !important;
+	background-clip: padding-box !important;
+	border: 1px solid var(--gnome-button-border-color) !important;
+	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
+	border-radius: 8px !important;
+	padding: 2px 12px !important;
+	min-height: 28px !important;
+	min-width: 28px !important;
+	color: var(--gnome-toolbar-color) !important;
+	box-shadow: var(--gnome-button-box-shadow) !important;
+}
+
+#cancel-button,
+#print-button.primary {
+	min-width: 7em !important;
+	min-height: 28px !important;
+	border-radius: 8px !important;
+	border: 1px solid var(--gnome-button-border-color) !important;
+	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
+	color: var(--gnome-toolbar-color) !important;
+	background-clip: padding-box !important;
+}
+
+#print-button.primary {
+	background-color: var(--theme-primary-color) !important;
+	color: #ffffff !important;
+	border-color: var(--theme-primary-color) !important;
+}
+
+:root[dialogroot] select:not([disabled]):hover,
+:host(dialog) select:not([disabled]):hover {
+	background-color: #f5f5f5 !important;
+}
+
+#print-button.primary:hover {
+	background-color: var(--theme-primary-hover-color) !important;
+}
+
+:root[dialogroot] select:not([disabled]):active,
+:host(dialog) select:not([disabled]):active {
+	background-color: #efefef !important;
+}
+
+#print-button.primary:active {
+	background-color: var(--theme-primary-active-color) !important;
+}
+
+.toggle-group-label {
+	background-clip: padding-box !important;
+	border: 1px solid var(--gnome-button-border-color) !important;
+	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
+}
+
+.toggle-group-label:first-of-type {
+	border-start-start-radius: 8px !important;
+	border-end-start-radius: 8px !important;
+}
+
+.toggle-group-label:last-of-type {
+	border-end-end-radius: 8px !important;
+	border-start-end-radius: 8px !important;
+	border-left: none !important;
+}
+
+.toggle-group-input:enabled:checked + .toggle-group-label {
+	background-color: var(--theme-primary-color) !important;
+	color: #ffffff !important;
+	border-color: var(--theme-primary-color) !important;
+}
+
+.toggle-group-input:enabled:checked + .toggle-group-label:hover {
+	background-color: var(--theme-primary-hover-color) !important;
+	color: #ffffff !important;
+}
+
+#cancel-button,
+#print-button.primary {
+	box-shadow: var(--gnome-button-box-shadow) !important;
+}
+
+#print-button.primary {
+	border-color: var(--gnome-button-border-color) !important;
+	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
+}
+
+.toggle-group-label {
+	box-shadow: var(--gnome-button-box-shadow) !important;
+}
+
+.toggle-group-input:enabled:checked + .toggle-group-label {
+	border-color: var(--gnome-button-border-color) !important;
+	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
+}
+
+:root[dialogroot] select,
+:host(dialog) select {
+	background-color: #666666 !important;
+}
+
+:root[dialogroot] select:not([disabled]):hover,
+:host(dialog) select:not([disabled]):hover {
+	background-color: #777777 !important;
+}
+
+:root[dialogroot] select:not([disabled]):active,
+:host(dialog) select:not([disabled]):active {
+	background-color: #888888 !important;
+}
+}

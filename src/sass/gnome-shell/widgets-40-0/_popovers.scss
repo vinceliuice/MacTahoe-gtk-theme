@@ -1,0 +1,32 @@
+
+.popup-menu-item {
+  &:ltr { padding-right: 1.5em; padding-left: 0; }
+  &:rtl { padding-right: 0; padding-left: 1.5em; }
+}
+
+// separator
+.popup-separator-menu-item {
+  background: none;
+  border: none;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+
+  .popup-separator-menu-item-separator {
+    height: 1px; //not really the whole box
+    margin: 0;
+    background-color: $menu_bd;
+
+    .popup-sub-menu & { //submenu separators
+      margin: 0 32px 0 0;
+      height: 1px;
+    }
+  }
+}
+
+// system status popover menu
+.aggregate-menu {
+  .popup-sub-menu .popup-menu-item > :first-child {
+    &:ltr { padding-left: $base_padding * 2 + 4px; margin-left: 1em; }
+    &:rtl { padding-right: $base_padding * 2 + 4px; margin-right: 1em; }
+  }
+}

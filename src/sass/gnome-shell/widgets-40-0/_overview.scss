@@ -1,0 +1,10 @@
+.controls-manager, .secondary-monitor-workspaces {
+  spacing: $base_spacing * 2;
+}
+
+#overviewGroup {
+  background-color: $solid_osd_bg_color;
+  // background-image: url("assets/background.png");
+  // background-repeat: no-repeat;
+  // background-size: cover;
+}
