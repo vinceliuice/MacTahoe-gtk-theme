@@ -236,14 +236,6 @@ while [[ $# -gt 0 ]]; do
         prompt -e "'${1}' ERROR: There's no Flatpak installed in your system"
         has_any_error="true"
       fi; shift ;;
-#    -s|--snap)
-#      snap="true";
-
-#      if ! has_command snap; then
-#        prompt -e "'${1}' ERROR: There's no Snap installed in your system"
-#        has_any_error="true"
-#      fi; shift ;;
-
     -d|--dash-to-dock)
       if [[ ! -d "${DASH_TO_DOCK_DIR_HOME}" && ! -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
         prompt -e "'${1}' ERROR: There's no Dash to Dock installed in your system"
@@ -281,12 +273,6 @@ if [[ "${uninstall}" == 'true' ]]; then
       prompt -s "Done! '${name}' GDM theme has been removed. \n"
     fi
   fi
-
-#  if [[ "${snap}" == 'true' && "${gdm}" != 'true' ]]; then
-#    prompt -i "Disconnecting '${name}' theme from your installed snap apps... \n"
-#    disconnect_snap
-#    prompt -s "Done! '${name}' theme has been disconnected from your snap apps.\n"
-#  fi
 
   if [[ "${flatpak}" == 'true' && "${gdm}" != 'true' ]]; then
     prompt -i "Disconnecting '${name}' theme from your Flatpak... \n"

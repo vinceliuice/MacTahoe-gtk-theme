@@ -32,13 +32,16 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 .quick-toggle {
   background-color: $toggle_bg_color !important;
   border-radius: $circular_radius;
+  color: white;
 
   &:hover {
     background-color: $toggle_hover_bg_color !important;
+    color: white;
   }
 
   &:active {
     background-color: $toggle_active_bg_color !important;
+    color: white;
   }
 
   &:checked {
@@ -124,13 +127,16 @@ $toggle_checked_bg_color: rgba(white, 0.15);
     min-width: 3.4em !important;
     border: none;
     background-color: $toggle_bg_color !important;
+    color: white;
 
     &:hover {
       background-color: $toggle_hover_bg_color !important;
+      color: white;
     }
   
     &:active {
       background-color: $toggle_active_bg_color !important;
+      color: white;
     }
   
     &:checked {
@@ -155,13 +161,27 @@ $toggle_checked_bg_color: rgba(white, 0.15);
   border-radius: $wm_radius;
   box-shadow: inset 0 0 4px rgba(white, 0.35) !important;
   padding: $scaled_padding * 4 $scaled_padding * 2;
+  color: white;
 
   & > StBoxLayout { spacing: $base_padding; }
 
-  .icon-button { padding: $scaled_padding * 1.5; }
+  .icon-button {
+    padding: $scaled_padding * 1.5;
+    color: white;
+
+    &:hover {
+      background-color: $toggle_hover_bg_color;
+      color: white;
+    }
+
+    &:active {
+      background-color: $toggle_active_bg_color;
+      color: white;
+    }
+  }
 
   .slider-bin {
-    &:focus { @include button(focus); }
+    &:focus { color: white; }
     min-height: 16px; // slider size
     padding: $base_padding;
     border-radius: $circular_radius;
@@ -180,11 +200,6 @@ $toggle_checked_bg_color: rgba(white, 0.15);
     border-radius: $circular_radius !important;
     min-height: 20px;
 
-    &:focus, &:hover, &.selected {
-      color: $text_color !important;
-      background-color: $divider_color !important;
-    }
-
     > StIcon { -st-icon-style: symbolic; }
   }
 
@@ -192,12 +207,14 @@ $toggle_checked_bg_color: rgba(white, 0.15);
     spacing-rows: 0.5 * $base_padding;
     spacing-columns: $base_padding * 2;
     padding-bottom: 2 * $base_padding;
+    color: $fg_color;
 
     & .icon {
       icon-size: $base_icon_size * 1.5; // a non-standard symbolic size but ok
       border-radius: $circular_radius;
       padding: 1.5 * $base_padding;
-      background-color: $toggle_bg_color;
+      background-color: $fill_color;
+      color: $fg_color;
 
       &.active {
         background-color: $selected_bg_color;

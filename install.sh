@@ -28,28 +28,23 @@ usage() {
   helpify "-o, --opacity"                 "[$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"       "  Set theme opacity variants"                     "Repeatable. Default is all variants"
   helpify "-c, --color"                   "[$(IFS='|'; echo "${COMMAND_COLOR_VARIANTS[*]}")]" "  Set theme color variants"                       "Repeatable. Default is all variants"
   helpify "-a, --alt"                     "[$(IFS='|'; echo "${ALT_VARIANTS[*]}")|all]"       "  Set window control buttons variant"             "Repeatable. Default is 'normal'"
-  helpify "-t, --theme"                   "[$(IFS='|'; echo "${THEME_VARIANTS[*]}")|all]"     "  Set theme accent color"                         "Repeatable. Default is BigSur-like theme"
+  helpify "-t, --theme"                   "[$(IFS='|'; echo "${THEME_VARIANTS[*]}")|all]"     "  Set theme accent color"                         "Repeatable. Default is Tahoe-like theme"
   helpify "-s, --scheme"                  "[$(IFS='|'; echo "${SCHEME_VARIANTS[*]}")]"        "  Set theme colorscheme style"                    "Repeatable. Default is 'standard'"
-#  helpify "-s, --size"                    "[$(IFS='|'; echo "${SIDEBAR_SIZE_VARIANTS[*]}")]"  "  Set Nautilus (version < 40.0) sidebar minimum width" "Default is 200px"
 
-  helpify "-m, --monterey"                ""                                                  "  Set to MacOS Monterey style"                     ""
-  helpify "-N, --nautilus"                "[$(IFS='|'; echo "${NAUTILUS_STYLE_VARIANTS[*]}")]" "  Set Nautilus style"                             "Default is BigSur-like style (stabled sidebar)"
   helpify "-l, --libadwaita"              ""                                                  "  Install theme into gtk4.0 config for libadwaita" "Default is dark version"
   helpify "-f, --fixed"                   ""                                                  "  Install fixed accent color version"              "Default is adaptive version"
   helpify "-HD, --highdefinition"         ""                                                  "  Set to High Definition size"                     "Default is laptop size"
 
   helpify "--shell, --gnomeshell"         ""                                                  "  Tweaks for gnome-shell"                          "Options:"
   helpify "   1. -i, -icon"               "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"          "    Set gnome-shell panel 'Activities' icon"       "Default is 'standard'"
-  helpify "   2. -b, -background"         "[default|blank|IMAGE_PATH]"                        "    Set gnome-shell background image"              "Default is BigSur-like wallpaper"
+  helpify "   2. -b, -background"         "[default|blank|IMAGE_PATH]"                        "    Set gnome-shell background image"              "Default is Tahoe-like wallpaper"
   helpify "   3. -p, -panelopacity"       "[$(IFS='|'; echo "${PANEL_OPACITY_VARIANTS[*]}")]" "    Set gnome-shell panel transparency"            "Default is 15%"
   helpify "   4. -h, -panelheight"        "[$(IFS='|'; echo "${PANEL_SIZE_VARIANTS[*]}")]"    "    Set gnome-shell panel height size"             "Default is 32px"
   helpify "   5. -sf, -smallerfont"       ""                                                  "    Set gnome-shell font size to smaller (10pt)"   "Default is 11pt"
-  helpify "   6. normal, -normal"         ""                                                  "    Set gnome-shell show apps button style to normal" "Default is BigSur"
+  helpify "   6. normal, -normal"         ""                                                  "    Set gnome-shell show apps button style to normal" "Default is macOS icon"
 
   helpify "--round, --roundedmaxwindow"   ""                                                  "  Set maximized window to rounded"                 "Default is square"
-  helpify "--black, --blackfont"          ""                                                  "  Set panel font color to black"                   "Default is white"
   helpify "--darker, --darkercolor"       ""                                                  "  Install darker '${THEME_NAME}' dark themes"      ""
-  helpify "--dialog, --interactive"       ""                                                  "  Run this installer interactively, with dialogs"  ""
   helpify "--silent-mode"                 ""                                                  "  Meant for developers: ignore any confirm prompt and params become more strict" ""
   helpify "-r, --remove, -u, --uninstall" ""                                                  "  Remove all installed ${THEME_NAME} themes"       ""
   helpify "-h, --help"                    ""                                                  "  Show this help"                                  ""
@@ -92,9 +87,6 @@ while [[ $# -gt 0 ]]; do
       check_param "${1}" "${1}" "${2}" "must" "must" "not-at-all" && shift 2 || shift ;;
 #    -s|--size) # only works on gnome < 40.0
 #      check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
-    -N|--nautilus)
-      check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
-    # Parameters that require a second value
     --shell|--gnome-shell)
       shift
       for variant in "${@}"; do
@@ -120,14 +112,10 @@ while [[ $# -gt 0 ]]; do
       right_placement="true"; shift ;;
     --round|--roundedmaxwindow)
       max_round="true"; shift ;;
-    --black|--blackfont)
-      black_font="true"; shift ;;
     --darker|--darkercolor)
       darker="true"; shift ;;
     -HD|--highdefinition)
       compact="false"; shift ;;
-    -m|--monterey)
-      monterey="true"; shift ;;
     -l|--libadwaita)
       libadwaita="true"; shift ;;
     -f|--fixed)
@@ -136,8 +124,6 @@ while [[ $# -gt 0 ]]; do
       uninstall='true'; shift ;;
     --silent-mode)
       full_sudo "${1}"; silent_mode='true'; shift ;;
-    --dialog|--interactive)
-      interactive='true'; shift ;;
     -h|--help)
       need_help="true"; shift ;;
     *)
@@ -190,7 +176,6 @@ else
   prompt -i "Alt variants     : $( IFS=';'; echo "${alts[*]}" )"
   prompt -i "Scheme variants  : $( IFS=';'; echo "${schemes[*]}" )"
   prompt -i "Start icon style : ${icon}"
-  prompt -i "Nautilus style   : ${nautilus_style}"
 
   echo; install_themes; echo; prompt -s "Done!"
 
