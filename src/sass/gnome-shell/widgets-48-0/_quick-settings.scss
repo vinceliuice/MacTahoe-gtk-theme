@@ -11,7 +11,7 @@
   .icon-button, .button {
     padding: $base_padding * 1.75;
 
-    StIcon { icon-size: $scalable_icon_size; }
+    StIcon { icon-size: $base_icon_size; }
   }
 }
 
@@ -28,7 +28,7 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 .quick-toggle, .quick-toggle-has-menu {
   min-width: 13em;
   max-width: 13em;
-  min-height: $scalable_icon_size * 3;
+  min-height: 3.4em;
   border: none;
   box-shadow: inset 0 0 4px rgba(white, 0.35) !important;
   color: white;
@@ -38,6 +38,7 @@ $toggle_checked_bg_color: rgba(white, 0.15);
   background-color: $toggle_bg_color !important;
   border-radius: $circular_radius;
   color: white;
+  padding: 0 $base_padding * 3;
 
   &:hover {
     background-color: $toggle_hover_bg_color !important;
@@ -72,14 +73,14 @@ $toggle_checked_bg_color: rgba(white, 0.15);
     }
   }
 
-  & > StBoxLayout { spacing: $base_padding * 1.5; }
+  & > StBoxLayout { spacing: $base_padding * 2; }
 
   /* Move padding into the box; this is to allow menu arrows
      to extend to the border */
   &.button { padding: 0; }
   & > StBoxLayout { padding: 0 $base_padding * 2; }
-  &:ltr > StBoxLayout { padding-left: $base_padding * 4; }
-  &:rtl > StBoxLayout { padding-right: $base_padding * 4; }
+  &:ltr > StBoxLayout { padding-left: $base_padding * 5; }
+  &:rtl > StBoxLayout { padding-right: $base_padding * 5; }
 
   .quick-toggle-title {
     @extend %heading;
@@ -90,13 +91,13 @@ $toggle_checked_bg_color: rgba(white, 0.15);
     font-weight: normal;
   }
 
-  .quick-toggle-icon { icon-size: $scalable_icon_size; }
+  .quick-toggle-icon { icon-size: $base_icon_size; }
 }
 
 .quick-toggle-has-menu {
   background-color: $toggle_bg_color !important;
   border-radius: $circular_radius;
-  padding: $base_padding * 2;
+  padding: $base_padding 0;
 
   &:hover {
     background-color: $toggle_hover_bg_color !important;
@@ -120,6 +121,22 @@ $toggle_checked_bg_color: rgba(white, 0.15);
       color: white;
     }
 
+    &:checked {
+      &:ltr > StBoxLayout { padding-left: $base_padding * 3; }
+      &:rtl > StBoxLayout { padding-right: $base_padding * 3; }
+
+      .quick-toggle-icon {
+        color: $primary_color;
+        background-color: white;
+        min-height: 3.4em !important;
+        min-width: 3.4em !important;
+      }
+    }
+
+    .quick-toggle-icon {
+      border-radius: $circular_radius;
+    }
+
     &:ltr { border-radius: $circular_radius; }
     &:ltr > StBoxLayout { padding-right: $base_padding * 2; }
     &:rtl { border-radius: $circular_radius; }
@@ -131,34 +148,30 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 
   & .quick-toggle-menu-button {
     padding: 0;
-    min-width: 3.4em !important;
+    min-width: 2.4em;
+    min-height: 2.4em;
+    margin: 1em;
+    border-radius: $circular_radius;
     border: none;
-    background-color: $toggle_bg_color !important;
     color: white;
+    background-color: transparent;
 
     &:hover {
-      background-color: $toggle_hover_bg_color !important;
+      background-color: $toggle_hover_bg_color;
       color: white;
     }
-  
+
     &:active {
-      background-color: $toggle_active_bg_color !important;
+      background-color: $toggle_active_bg_color;
       color: white;
-    }
-  
-    &:checked {
-      background-color: white !important;
-      color: $primary_color;
     }
 
     &:ltr {
       border-radius: $circular_radius;
-      border-left-width: 0;
     }
 
     &:rtl {
       border-radius: $circular_radius;
-      border-right-width: 0;
     }
   }
 
