@@ -7,7 +7,7 @@ $notification_banner_width: 34em;
 .notification-banner {
   min-height: $notification_banner_height;
   width: $notification_banner_width;
-  border-radius: $wm_radius;
+  border-radius: $bt_radius + $base_padding * 2;
   margin: $base_padding * 2;
   padding: $scaled_padding;
   border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
