@@ -18,12 +18,6 @@ do
   echo "    <file>assets/$i@2.png</file>" >> gtk.gresource.xml
 done
 
-for i in `cat $SINDEX`
-do
-  echo "    <file>assets/$i.png</file>" >> gtk.gresource.xml
-  echo "    <file>assets/$i@2.png</file>" >> gtk.gresource.xml
-done
-
 for i in `cat $WINDEX`
 do
   echo "    <file>windows-assets/$i.png</file>" >> gtk.gresource.xml

@@ -99,10 +99,8 @@ ALT_VARIANTS=('normal' 'alt')
 THEME_VARIANTS=('default' 'blue' 'purple' 'pink' 'red' 'orange' 'yellow' 'green' 'grey')
 SCHEME_VARIANTS=('standard' 'nord')
 ICON_VARIANTS=('apple' 'simple' 'gnome' 'ubuntu' 'tux' 'arch' 'manjaro' 'fedora' 'debian' 'void' 'opensuse' 'popos' 'mxlinux' 'zorin' 'budgie' 'gentoo')
-SIDEBAR_SIZE_VARIANTS=('default' '180' '220' '240' '260' '280')
 PANEL_OPACITY_VARIANTS=('default' '30' '45' '60' '75')
 PANEL_SIZE_VARIANTS=('default' 'smaller' 'bigger')
-NAUTILUS_STYLE_VARIANTS=('stable' 'normal' 'mojave' 'glassy' 'right')
 
 #--------Customization, default values----------#
 dest="${THEME_DIR}"
@@ -113,10 +111,8 @@ alts=("${ALT_VARIANTS[0]}")
 themes=("${THEME_VARIANTS[0]}")
 schemes=("${SCHEME_VARIANTS[0]}")
 icon="${ICON_VARIANTS[0]}"
-sidebar_size="${SIDEBAR_SIZE_VARIANTS[0]}"
 panel_opacity="${PANEL_OPACITY_VARIANTS[0]}"
 panel_size="${PANEL_SIZE_VARIANTS[0]}"
-nautilus_style="${NAUTILUS_STYLE_VARIANTS[0]}"
 background="blank"
 compact="true"
 
@@ -335,7 +331,7 @@ signal_error() {
   fi
 
   prompt -i "HINT: You can google or report to us the info above \n"
-  prompt -i "https://github.com/vinceliuice/WhiteSur-gtk-theme/issues \n"
+  prompt -i "https://github.com/vinceliuice/MacTahoe-gtk-theme/issues \n"
 
   rm -rf "${MACTAHOE_TMP_DIR}"; exit 1
 }
@@ -439,8 +435,6 @@ parsimplify() {
       echo "-t" ;;
     --scheme)
       echo "-s" ;;
-    --nautilus)
-      echo "-N" ;;
     -background)
       echo "-b" ;;
     -panelheight)
@@ -542,12 +536,6 @@ check_param() {
         remind_relative_path "${display_param}" "${value}"; variant_found="skip" ;;
       -n)
         name="${value}"; variant_found="skip" ;;
-#      -s)
-#        for i in {0..5}; do
-#          if [[ "${value}" == "${SIDEBAR_SIZE_VARIANTS[i]}" ]]; then
-#            sidebar_size="${value}"; variant_found="true"; break
-#          fi
-#        done ;;
       -p)
         for i in {0..4}; do
           if [[ "${value}" == "${PANEL_OPACITY_VARIANTS[i]}" ]]; then

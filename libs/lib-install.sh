@@ -328,24 +328,24 @@ install_beggy() {
 
   case "${background}" in
     blank)
-      cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blank.png"            "${MACTAHOE_TMP_DIR}/beggy.png" ;;
+      cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blank.jpeg"            "${MACTAHOE_TMP_DIR}/beggy.jpeg" ;;
     default)
       if [[ "${no_blur}" == "false" && "${no_darken}" == "true" ]]; then
-        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blur.png"           "${MACTAHOE_TMP_DIR}/beggy.png"
+        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blur.jpeg"           "${MACTAHOE_TMP_DIR}/beggy.jpeg"
       elif [[ "${no_blur}" == "false" && "${no_darken}" == "false" ]]; then
-        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blur-darken.png"    "${MACTAHOE_TMP_DIR}/beggy.png"
+        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blur-darken.jpeg"    "${MACTAHOE_TMP_DIR}/beggy.jpeg"
       elif [[ "${no_blur}" == "true" && "${no_darken}" == "true" ]]; then
-        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-default.png"        "${MACTAHOE_TMP_DIR}/beggy.png"
+        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-default.jpeg"        "${MACTAHOE_TMP_DIR}/beggy.jpeg"
       else
-        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-darken.png"         "${MACTAHOE_TMP_DIR}/beggy.png"
+        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-darken.jpeg"         "${MACTAHOE_TMP_DIR}/beggy.jpeg"
       fi
       ;;
     *)
       if [[ "${no_blur}" == "false" || "${darken}" == "true" ]]; then
         install_beggy_deps
-        convert "${background}" ${CONVERT_OPT}                                                "${MACTAHOE_TMP_DIR}/beggy.png"
+        convert "${background}" ${CONVERT_OPT}                                                 "${MACTAHOE_TMP_DIR}/beggy.jpeg"
       else
-        cp -r "${background}"                                                                 "${MACTAHOE_TMP_DIR}/beggy.png"
+        cp -r "${background}"                                                                  "${MACTAHOE_TMP_DIR}/beggy.jpeg"
       fi
       ;;
   esac
@@ -377,7 +377,7 @@ install_shelly() {
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/theme${theme}${scheme}/"*".svg"                  "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg"                "${TARGET_DIR}/assets/activities.svg"
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg"                "${TARGET_DIR}/assets/activities-white.svg"
-  cp -r "${MACTAHOE_TMP_DIR}/beggy.png"                                                       "${TARGET_DIR}/assets/background.png"
+  cp -r "${MACTAHOE_TMP_DIR}/beggy.jpeg"                                                      "${TARGET_DIR}/assets/background.jpeg"
 
   (
     cd "${TARGET_DIR}"
@@ -429,7 +429,6 @@ install_theemy() {
 
   mkdir -p                                                                                    "${TMP_DIR_T}"
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets"                                    "${TMP_DIR_T}"
-  cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/sidebar-assets/"*".png"                    "${TMP_DIR_T}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gtk/scalable"                                                "${TMP_DIR_T}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}${scheme}"               "${TMP_DIR_T}/windows-assets"
 
@@ -530,7 +529,6 @@ config_gtk4() {
   ln -sf "${TARGET_DIR}/gtk${color}.css"                                                      "${TARGET_DIR}/gtk.css"
   ln -sf "${TARGET_DIR}/gtk-Dark.css"                                                         "${TARGET_DIR}/gtk-dark.css"
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets"                                    "${TARGET_DIR}"
-  cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/sidebar-assets/"*".png"                    "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gtk/scalable"                                                "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}${scheme}"               "${TARGET_DIR}/windows-assets"
 
@@ -875,22 +873,6 @@ disconnect_flatpak() {
   done
 }
 
-#connect_snap() {
-#  sudo snap install MACTAHOE-gtk-theme
-
-#  for i in $(snap connections | grep gtk-common-themes | awk '{print $2}' | cut -f1 -d: | sort -u); do
-#    sudo snap connect "${i}:gtk-3-themes" "MACTAHOE-gtk-theme:gtk-3-themes"
-#    sudo snap connect "${i}:icon-themes" "MACTAHOE-gtk-theme:icon-themes"
-#  done
-#}
-
-#disconnect_snap() {
-#  for i in $(snap connections | grep gtk-common-themes | awk '{print $2}' | cut -f1 -d: | sort -u); do
-#    sudo snap disconnect "${i}:gtk-3-themes" "MACTAHOE-gtk-theme:gtk-3-themes"
-#    sudo snap disconnect "${i}:icon-themes" "MACTAHOE-gtk-theme:icon-themes"
-#  done
-#}
-
 #########################################################################
 #                               GTK BASE                                #
 #########################################################################
@@ -1024,35 +1006,10 @@ customize_theme() {
 
   if [[ "${compact}" == 'false' ]]; then
     prompt -s "Changing Definition mode to HD (Bigger font, Bigger size) ..."
-    #FIXME: @vince is it not implemented yet? (Only Gnome-shell and Gtk theme finished!)
   fi
 
   if [[ "${scale}" == 'x2' ]]; then
     prompt -s "Changing GDM scaling to 200% ...\n"
     sed $SED_OPT "/\$scale/s/default/x2/"                                       "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
-}
-
-#-----------------------------------DIALOGS------------------------------------#
-
-# The default values here should get manually set and updated. Some of default
-# values are taken from _variables.scss
-
-show_panel_opacity_dialog() {
-  dialogify panel_opacity "${THEME_NAME}" "Choose your panel opacity (Default is 15)" ${PANEL_OPACITY_VARIANTS[*]}
-}
-
-show_sidebar_size_dialog() {
-  dialogify sidebar_size "${THEME_NAME}" "Choose your Nautilus minimum sidebar size (default is 200px)" ${SIDEBAR_SIZE_VARIANTS[*]}
-}
-
-show_nautilus_style_dialog() {
-  dialogify nautilus_style "${THEME_NAME}" "Choose your Nautilus style (default is BigSur-like style)" ${NAUTILUS_STYLE_VARIANTS[*]}
-}
-
-show_needed_dialogs() {
-  install_dialog_deps
-  if [[ "${need_dialog["-p"]}" == "true" ]]; then show_panel_opacity_dialog; fi
-#  if [[ "${need_dialog["-s"]}" == "true" ]]; then show_sidebar_size_dialog; fi
-  if [[ "${need_dialog["-N"]}" == "true" ]]; then show_nautilus_style_dialog; fi
 }

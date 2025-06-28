@@ -77,16 +77,10 @@ OPTIONS:
    Set window control buttons variant. Repeatable. Default is 'normal'
 
   -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey|all]
-   Set theme accent color. Repeatable. Default is BigSur-like theme
+   Set theme accent color. Repeatable. Default is Tahoe-like theme
 
   -s, --scheme [standard|nord]
    Set theme colorscheme style. Repeatable. Default is 'standard'
-
-  -m, --monterey 
-   Set to MacOS Monterey style. 
-
-  -N, --nautilus [stable|normal|mojave|glassy|right]
-   Set Nautilus style. Default is BigSur-like style (stabled sidebar)
 
   -l, --libadwaita 
    Install theme into gtk4.0 config for libadwaita. Default is dark version
@@ -104,7 +98,7 @@ OPTIONS:
      Set gnome-shell panel 'Activities' icon. Default is 'standard'
 
      2. -b, -background [default|blank|IMAGE_PATH]
-     Set gnome-shell background image. Default is BigSur-like wallpaper
+     Set gnome-shell background image. Default is Tahoe-like wallpaper
 
      3. -p, -panelopacity [default|30|45|60|75]
      Set gnome-shell panel transparency. Default is 15%
@@ -116,19 +110,13 @@ OPTIONS:
      Set gnome-shell font size to smaller (10pt). Default is 11pt
 
      6. normal, -normal 
-     Set gnome-shell show apps button style to normal. Default is BigSur
+     Set gnome-shell show apps button style to normal. Default is macOS icon
 
   --round, --roundedmaxwindow 
    Set maximized window to rounded. Default is square
 
-  --black, --blackfont 
-   Set panel font color to black. Default is white
-
   --darker, --darkercolor 
    Install darker 'MacTahoe' dark themes. 
-
-  --dialog, --interactive 
-   Run this installer interactively, with dialogs. 
 
   --silent-mode 
    Meant for developers: ignore any confirm prompt and params become more strict. 
