@@ -115,26 +115,33 @@ $toggle_checked_bg_color: rgba(white, 0.15);
     min-width: auto;
     max-width: auto;
 
+    &:ltr > StBoxLayout { padding-left: $base_padding * 3; }
+    &:rtl > StBoxLayout { padding-right: $base_padding * 3; }
+
     &, &:hover, &:active, &:checked {
       background: none !important;
       box-shadow: none !important;
       color: white;
     }
 
-    &:checked {
-      &:ltr > StBoxLayout { padding-left: $base_padding * 3; }
-      &:rtl > StBoxLayout { padding-right: $base_padding * 3; }
-
-      .quick-toggle-icon {
-        color: $primary_color;
-        background-color: white;
-        min-height: 3.4em !important;
-        min-width: 3.4em !important;
-      }
-    }
-
     .quick-toggle-icon {
       border-radius: $circular_radius;
+      min-height: 3.4em !important;
+      min-width: 3.4em !important;
+      background-color: $toggle_bg_color;
+    }
+
+    &:hover .quick-toggle-icon {
+      background-color: $toggle_hover_bg_color;
+    }
+
+    &:active .quick-toggle-icon {
+      background-color: $toggle_active_bg_color;
+    }
+
+    &:checked .quick-toggle-icon {
+      color: $primary_color;
+      background-color: white;
     }
 
     &:ltr { border-radius: $circular_radius; }
@@ -224,29 +231,12 @@ $toggle_checked_bg_color: rgba(white, 0.15);
   .popup-menu-item {
     border-radius: $circular_radius !important;
     min-height: 20px;
-    // color: white;
+    padding: $base_padding * 2 $base_padding * 3;
 
-    // &:focus, &:hover, &.selected {
-    //   color: white !important;
-    //   background-color: $toggle_hover_bg_color !important;
-    // }
-
-    // &:insensitive {
-    //   color: rgba(white, 0.35) !important;
-    // }
-
-    > StIcon { -st-icon-style: symbolic; }
+    > StIcon {
+      -st-icon-style: symbolic;
+    }
   }
-
-  // .popup-inactive-menu-item { //all icons and other graphical elements
-  //   color: rgba(white, 0.65) !important;
-
-  //   &:insensitive { color: rgba(white, 0.35) !important; }
-  // }
-
-  // .popup-separator-menu-item-separator {
-  //   background-color: rgba(white, 0.1);
-  // }
 
   & .header {
     spacing-rows: 0.5 * $base_padding;
@@ -255,9 +245,9 @@ $toggle_checked_bg_color: rgba(white, 0.15);
     color: $fg_color;
 
     & .icon {
-      icon-size: $base_icon_size * 1.5; // a non-standard symbolic size but ok
+      icon-size: $base_icon_size; // a non-standard symbolic size but ok
       border-radius: $circular_radius;
-      padding: 1.5 * $base_padding;
+      padding: $base_padding * 2.5;
       background-color: $fill_color;
       color: $fg_color;
 
