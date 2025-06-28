@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+  <wallpaper deleted="false">
+    <name>MacTahoe Background</name>
+    <filename>@BACKGROUNDDIR@/MacTahoe/MacTahoe-day.jpeg</filename>
+    <filename-dark>@BACKGROUNDDIR@/MacTahoe/MacTahoe-night.jpeg</filename-dark>
+    <options>zoom</options>
+    <shade_type>solid</shade_type>
+    <pcolor>#51a2da</pcolor>
+    <scolor>#294172</scolor>
+  </wallpaper>
+</wallpapers>
