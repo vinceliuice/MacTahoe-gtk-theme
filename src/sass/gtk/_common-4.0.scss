@@ -19,6 +19,8 @@ $side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light',
     background-color: $dark_sidebar_bg;
     border: none;
   }
+
+  button { @extend %headerbar_buttons_flat; }
 }
 
 %side_headerbar_right {
@@ -448,6 +450,12 @@ window.assistant {
   &.circular { border-radius: 100%; }
 }
 
+.osd-box {
+  background-color: gtkalpha($base_color, 0.85);
+  border-radius: $mn_radius;
+  padding: $container_padding;
+}
+
 //
 // Spinner Animations
 //
@@ -560,9 +568,6 @@ entry {
 
   > image { // icons inside the entry
     color: $alt_fg_color;
-
-    &:first-child { padding-left: 0; padding-right: $container_padding; }
-    &:last-child { padding-right: 0; padding-left: $container_padding; }
   }
 
   > text > placeholder {
@@ -2057,7 +2062,7 @@ headerbar {
     border-spacing: $container_padding;
     min-height: 24px + $container_padding;
     min-width: 24px + $container_padding;
-    padding: $container_padding / 2 $container_padding * 1.5;
+    padding: $container_padding / 2 $container_padding * 2;
     border-radius: $circular_radius;
   }
 
@@ -2732,12 +2737,12 @@ popover {
       background-color: $base_color;
     }
 
-    listview {
+    listview, list {
       padding: 0;
       margin: 0;
 
       > row {
-        padding: $container_padding $container_padding * 2;
+        padding: $container_padding / 2 $container_padding * 1.5;
         margin: 0;
         border-radius: $bt_radius;
 
@@ -2783,6 +2788,16 @@ cursor-handle {
 //
 
 popover.menu {
+  &.background {
+    &, &:backdrop {
+      background-color: transparent;
+    }
+  }
+
+  &.suggestions {
+    > contents { padding: 0; }
+  }
+
   box.inline-buttons {
     padding: 0 $container_padding;
 
@@ -3272,22 +3287,22 @@ checkbutton, radiobutton {
   }
 }
 
-$check_radio_border: if($variant == 'light', rgba(black, 0.2), rgba(black, 0.1));
-
 check,
 radio {
   min-width: 14px;
   min-height: 14px;
   margin: 3px;
   padding: 1px;
-  color: transparent;
+  color: $fg_color;
   background-color: $button_bg;
   transition: $button_transition;
   background-clip: padding-box;
   border: none;
+  box-shadow: none;
   -gtk-icon-size: 14px;
 
   &:hover {
+    color: $fg_color;
     background-color: $button_hover_bg;
   }
 
@@ -3297,6 +3312,7 @@ radio {
   }
 
   &:disabled {
+    color: $fg_color;
     background-color: $button_disabled_bg;
   }
 

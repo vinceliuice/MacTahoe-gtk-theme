@@ -243,17 +243,9 @@ $panel_bg:                          if($variant == 'light', #f1f1f1, if($darker 
 @if $trans == 'true' {
   $panel_bg:                        if($variant == 'light', rgba(white, $panel_opacity/2 + 0.08), rgba(black, $panel_opacity));
 
-  @if $panel_font == 'black' {
-    $panel_bg:                      if($variant == 'light', rgba(white, $panel_opacity/2 + 0.08), rgba(black, $panel_opacity/2));
-  }
-
   @if $scheme == 'nord' {
     $panel_bg:                      if($variant == 'light', rgba(#9da8be, $panel_opacity/2 + 0.12), rgba(#1a1d23, $panel_opacity + 0.08));
   }
-}
-
-@if $panel_style == 'default' {
-  $panel_bg:                        transparent;
 }
 
 $panel_text:                        if($variant == 'light', #363636, white);
@@ -262,12 +254,14 @@ $panel_text:                        if($variant == 'light', #363636, white);
   $panel_text:                      if($variant == 'light', #2d333f, #fbfcfd);
 }
 
-$panel_fg:                          if($trans == 'true' and $panel_font == 'white', white, $panel_text);
-$panel_track:                       if(($trans == 'false' or $panel_font == 'black') and $variant == 'light', rgba(black, 0.15), rgba(white, 0.28));
-$panel_divider:                     if(($trans == 'false' or $panel_font == 'black') and $variant == 'light', rgba(black, 0.08), rgba(white, 0.15));
+$panel_fg:                          if($trans == 'true', white, $panel_text);
+$panel_track:                       if($trans == 'false' and $variant == 'light', rgba(black, 0.15), rgba(white, 0.28));
+$panel_divider:                     if($trans == 'false' and $variant == 'light', rgba(black, 0.08), rgba(white, 0.15));
+$panel_hover:                       if($trans == 'true', $panel_divider, if($variant == 'light', mix(black, $panel_bg, 8%), mix(white, $panel_bg, 15%)));
+$panel_active:                      if($trans == 'true', $panel_track, if($variant == 'light', mix(black, $panel_bg, 15%), mix(white, $panel_bg, 28%)));
 
 $dash_fg:                           if($variant == 'light', black, white);
-$dash_bg:                           rgba(white, 0.1);
+$dash_bg:                           if($trans == 'false',  $panel_bg, rgba(white, 0.1));
 
 // Entry colors
 $entry_bg:                          if($variant=='light', rgba(black, 0.06), rgba(white, 0.06));

@@ -156,14 +156,14 @@
     .overview-tile {
       &:hover .overview-icon,
       &:focus .overview-icon {
-        background-color: if($variant == 'light', rgba(white, 0.25), $light_divider_color);
+        background-color: if($trans == 'false', $panel_divider, $light_divider_color);
       }
 
       &:active .overview-icon,
       &:highlighted .overview-icon,
       &:selected .overview-icon,
       &:checked .overview-icon {
-        background-color: if($variant == 'light', rgba(white, 0.35), $light_track_color);
+        background-color: if($trans == 'false', $panel_track, $light_track_color);
       }
     }
 

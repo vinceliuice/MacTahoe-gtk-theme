@@ -107,7 +107,6 @@ $panel_height: $menuitem_size;
 }
 
 #panel {
-  background-color: $panel_bg;
   font-weight: 500;
   @extend %numeric;
   color: $panel_fg;
@@ -117,8 +116,10 @@ $panel_height: $menuitem_size;
 
   @if $panel_style == 'default' {
     height: $panel_height + $container_padding * 2 !important;
+    background-color: transparent;
   } @else {
     height: $panel_height !important;
+    background-color: $panel_bg;
   }
 
   // the rounded outset corners
@@ -141,6 +142,10 @@ $panel_height: $menuitem_size;
     @if $panel_style == 'default' {
       border: $container_padding solid transparent !important;
       border-radius: $circular_radius;
+
+      @if $trans == 'false' {
+        box-shadow: inset 0 0 0 1000px $panel_bg;
+      }
     } @else {
       border: none;
       border-radius: $bt_radius;
@@ -166,14 +171,14 @@ $panel_height: $menuitem_size;
     &:hover {
       color: $panel_fg;
       background-color: transparent;
-      box-shadow: inset 0 0 0 1000px $panel_divider;
+      box-shadow: inset 0 0 0 1000px $panel_hover;
 
       &.clock-display {
         background: none;
 
         .clock {
           background-color: transparent;
-          box-shadow: inset 0 0 0 1000px $panel_divider;
+          box-shadow: inset 0 0 0 1000px $panel_hover;
         }
       }
     }
@@ -181,14 +186,14 @@ $panel_height: $menuitem_size;
     &:active, &:overview, &:focus, &:checked {
       color: $panel_fg;
       background-color: transparent;
-      box-shadow: inset 0 0 0 1000px $panel_track;
+      box-shadow: inset 0 0 0 1000px $panel_active;
 
       &.clock-display {
         background: none;
 
         .clock {
           background-color: transparent;
-          box-shadow: inset 0 0 0 1000px $panel_track;
+          box-shadow: inset 0 0 0 1000px $panel_active;
         }
       }
     }
@@ -218,10 +223,13 @@ $panel_height: $menuitem_size;
         // transition-duration: 150ms;
         border-radius: $circular_radius;
         background-color: transparent;
-        box-shadow: none;
         padding: 0 $base_padding + 12px !important;
         margin: 0 !important;
         border: $container_padding solid transparent !important;
+
+        @if $panel_style == 'default' and $trans == 'false' {
+          box-shadow: inset 0 0 0 1000px $panel_bg;
+        } @else { box-shadow: none; }
       }
 
       .messages-indicator {
@@ -352,6 +360,14 @@ $panel_height: $menuitem_size;
     StLabel, StIcon { color: $light_alt_fg_color; }
 
     .panel-button {
+      box-shadow: none;
+
+      &.clock-display {
+        .clock {
+          box-shadow: none;
+        }
+      }
+
       &:hover {
         color: $light_fg_color;
         background-color: transparent;
@@ -400,8 +416,7 @@ $panel_height: $menuitem_size;
 
   // indicator for active
   .screencast-indicator,
-  .remote-access-indicator { color: $warning_color; }
-
+  .remote-access-indicator,
   // important privacy related indicators
   .privacy-indicator { color: $warning_color; }
 }

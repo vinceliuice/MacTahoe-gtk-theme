@@ -37,13 +37,16 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 .quick-toggle {
   background-color: $toggle_bg_color !important;
   border-radius: $circular_radius;
+  color: white;
 
   &:hover {
     background-color: $toggle_hover_bg_color !important;
+    color: white;
   }
 
   &:active {
     background-color: $toggle_active_bg_color !important;
+    color: white;
   }
 
   &:checked {
@@ -131,13 +134,16 @@ $toggle_checked_bg_color: rgba(white, 0.15);
     min-width: 3.4em !important;
     border: none;
     background-color: $toggle_bg_color !important;
+    color: white;
 
     &:hover {
       background-color: $toggle_hover_bg_color !important;
+      color: white;
     }
   
     &:active {
       background-color: $toggle_active_bg_color !important;
+      color: white;
     }
   
     &:checked {
@@ -166,13 +172,27 @@ $toggle_checked_bg_color: rgba(white, 0.15);
   border-radius: $wm_radius;
   box-shadow: inset 0 0 4px rgba(white, 0.35) !important;
   padding: $scaled_padding * 4 $scaled_padding * 2;
+  color: white;
 
   & > StBoxLayout { spacing: $base_padding; }
 
-  .icon-button { padding: $scaled_padding * 1.5; }
+  .icon-button {
+    padding: $scaled_padding * 1.5;
+    color: white;
+
+    &:hover {
+      background-color: $toggle_hover_bg_color;
+      color: white;
+    }
+
+    &:active {
+      background-color: $toggle_active_bg_color;
+      color: white;
+    }
+  }
 
   .slider-bin {
-    &:focus { @include button(focus); }
+    &:focus { color: white; }
     min-height: 16px; // slider size
     padding: $base_padding;
     border-radius: $circular_radius;
@@ -180,8 +200,9 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 }
 
 .quick-toggle-menu {
-  background-color: rgba(white, 0.35) !important;
-  color: white !important;
+  // background-color: rgba(white, 0.35) !important;
+  // color: white !important;
+  background-color: $popover_bg_color !important;
   border-radius: $base_border_radius * 3;
   padding: $base_padding * 3;
   margin: $base_padding * 2 $base_padding * 7 0;
@@ -190,25 +211,42 @@ $toggle_checked_bg_color: rgba(white, 0.15);
   .popup-menu-item {
     border-radius: $circular_radius !important;
     min-height: 20px;
+    // color: white;
 
-    &:focus, &:hover, &.selected {
-      color: white !important;
-      background-color: $toggle_hover_bg_color !important;
-    }
+    // &:focus, &:hover, &.selected {
+    //   color: white !important;
+    //   background-color: $toggle_hover_bg_color !important;
+    // }
+
+    // &:insensitive {
+    //   color: rgba(white, 0.35) !important;
+    // }
 
     > StIcon { -st-icon-style: symbolic; }
   }
+
+  // .popup-inactive-menu-item { //all icons and other graphical elements
+  //   color: rgba(white, 0.65) !important;
+
+  //   &:insensitive { color: rgba(white, 0.35) !important; }
+  // }
+
+  // .popup-separator-menu-item-separator {
+  //   background-color: rgba(white, 0.1);
+  // }
 
   & .header {
     spacing-rows: 0.5 * $base_padding;
     spacing-columns: $base_padding * 2;
     padding-bottom: 2 * $base_padding;
+    color: $fg_color;
 
     & .icon {
       icon-size: $base_icon_size * 1.5; // a non-standard symbolic size but ok
       border-radius: $circular_radius;
       padding: 1.5 * $base_padding;
-      background-color: $toggle_bg_color;
+      background-color: $fill_color;
+      color: $fg_color;
 
       &.active {
         background-color: $selected_bg_color;
