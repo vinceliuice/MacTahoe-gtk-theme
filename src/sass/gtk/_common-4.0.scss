@@ -20,7 +20,7 @@ $side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light',
     border: none;
   }
 
-  button { @extend %headerbar_buttons_flat; }
+  button:not(.close):not(.maximize):not(.minimize) { @extend %headerbar_buttons_flat; }
 }
 
 %side_headerbar_right {
@@ -3368,7 +3368,6 @@ scale {
 
   // The slider is inside the trough, negative margin to make it bigger
   > trough > slider {
-    margin: -8px;
     background-color: $selected_fg_color;
     border: 1px solid $button_border;
     border-radius: $circular_radius;
@@ -3385,13 +3384,9 @@ scale {
     }
 
     &:active {
-      margin: -11px;
       background-color: transparent;
       border-color: $button_border;
       box-shadow: $shadow_3, inset 1px 2px 1px -1px $selected_bg_color, inset -1px -1px 1px -1px white;
-      background-image: url('assets/scalable/slider-glass.svg');
-      background-repeat: no-repeat;
-      background-size: 40px 26px;
     }
 
     &:disabled {
@@ -3401,27 +3396,35 @@ scale {
     }
   }
 
-  &.horizontal {
+  &.horizontal:not(.marks-before):not(.marks-after) {
     > trough > slider {
+      margin: -8px;
       min-width: 30px;
       min-height: 20px;
 
       &:active {
+        margin: -11px;
         min-width: 40px;
         min-height: 26px;
+        background-image: url('assets/scalable/slider-glass.svg');
+        background-repeat: no-repeat;
+        background-size: 40px 26px;
       }
     }
   }
 
-  &.vertical {
+  &.vertical:not(.marks-before):not(.marks-after) {
     > trough > slider {
+      margin: -8px;
       min-width: 20px;
       min-height: 30px;
 
       &:active {
+        margin: -11px;
         min-width: 26px;
         min-height: 40px;
         background-image: url('assets/scalable/slider-glass-vertical.svg');
+        background-repeat: no-repeat;
         background-size: 26px 40px;  
       }
     }
