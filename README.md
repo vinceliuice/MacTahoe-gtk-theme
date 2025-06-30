@@ -1,5 +1,5 @@
 <h1 align="center"> MacTahoe GTK Theme </h1>
-<p align="center"> <img src="screenshot01.jpg"/> </p>
+<p align="center"> <img src="screenshot01.jpeg"/> </p>
 
 <br>
 <p align="center"> <b> A macOS like theme for Linux GTK Desktops </b> </p>
