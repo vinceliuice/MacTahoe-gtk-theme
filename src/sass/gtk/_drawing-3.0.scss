@@ -112,12 +112,7 @@
   //
     color: $selected_fg_color;
     background-color: $selected_bg_color;
-
-    @if $gnome_version == 'old' {
-      border-color: gtkmix(black, $selected_bg_color, 6%);
-    } @else {
-      border-color: color-mix(in srgb, black 25%, $selected_bg_color)
-    }
+    border-color: gtkmix(black, $selected_bg_color, 6%);
   }
 
   @else if $t==osd-insensitive {

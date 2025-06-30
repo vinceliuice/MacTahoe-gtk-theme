@@ -257,6 +257,11 @@ window.background.chromium {
 
     menuitem {
       border-radius: 0;
+
+      &:hover {
+        color: $selected_fg_color;
+        background-color: $selected_bg_color;
+      }
     }
   }
 }

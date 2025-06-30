@@ -428,33 +428,46 @@ install_theemy() {
   #--------------------GTK-3.0--------------------#
 
   mkdir -p                                                                                    "${TMP_DIR_T}"
-  cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets"                                    "${TMP_DIR_T}"
-  cp -r "${THEME_SRC_DIR}/assets/gtk/scalable"                                                "${TMP_DIR_T}/assets"
-  cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}${scheme}"               "${TMP_DIR_T}/windows-assets"
+  #cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets"                                    "${TMP_DIR_T}"
+  #cp -r "${THEME_SRC_DIR}/assets/gtk/scalable"                                                "${TMP_DIR_T}/assets"
+  #cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}${scheme}"               "${TMP_DIR_T}/windows-assets"
 
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk${color}.scss"                         "${TMP_DIR_T}/gtk.css"
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-Dark.scss"                            "${TMP_DIR_T}/gtk-dark.css"
+  #sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk${color}.scss"                         "${TMP_DIR_T}/gtk.css"
+  #sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-Dark.scss"                            "${TMP_DIR_T}/gtk-dark.css"
 
   mkdir -p                                                                                    "${TARGET_DIR}/gtk-3.0"
   cp -r "${THEME_SRC_DIR}/assets/gtk/thumbnails/thumbnail${color}${theme}${scheme}.png"       "${TARGET_DIR}/gtk-3.0/thumbnail.png"
-  echo '@import url("resource:///org/gnome/theme/gtk.css");' >                                "${TARGET_DIR}/gtk-3.0/gtk.css"
-  echo '@import url("resource:///org/gnome/theme/gtk-dark.css");' >                           "${TARGET_DIR}/gtk-3.0/gtk-dark.css"
-  glib-compile-resources --sourcedir="${TMP_DIR_T}" --target="${TARGET_DIR}/gtk-3.0/gtk.gresource" "${THEME_SRC_DIR}/main/gtk-3.0/gtk.gresource.xml"
+
+  #echo '@import url("resource:///org/gnome/theme/gtk.css");' >                                "${TARGET_DIR}/gtk-3.0/gtk.css"
+  #echo '@import url("resource:///org/gnome/theme/gtk-dark.css");' >                           "${TARGET_DIR}/gtk-3.0/gtk-dark.css"
+  #glib-compile-resources --sourcedir="${TMP_DIR_T}" --target="${TARGET_DIR}/gtk-3.0/gtk.gresource" "${THEME_SRC_DIR}/main/gtk-3.0/gtk.gresource.xml"
+
+  cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets"                                    "${TARGET_DIR}/gtk-3.0"
+  cp -r "${THEME_SRC_DIR}/assets/gtk/scalable"                                                "${TARGET_DIR}/gtk-3.0/assets"
+  cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}${scheme}"               "${TARGET_DIR}/gtk-3.0/windows-assets"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk${color}.scss"                         "${TARGET_DIR}/gtk-3.0/gtk.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-Dark.scss"                            "${TARGET_DIR}/gtk-3.0/gtk-dark.css"
 
   #--------------------GTK-4.0--------------------#
 
   mkdir -p                                                                                    "${TMP_DIR_F}"
-  cp -r "${TMP_DIR_T}/assets"                                                                 "${TMP_DIR_F}"
-  cp -r "${TMP_DIR_T}/windows-assets"                                                         "${TMP_DIR_F}"
+  #cp -r "${TMP_DIR_T}/assets"                                                                 "${TMP_DIR_F}"
+  #cp -r "${TMP_DIR_T}/windows-assets"                                                         "${TMP_DIR_F}"
 
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk${color}.scss"                         "${TMP_DIR_F}/gtk.css"
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-Dark.scss"                            "${TMP_DIR_F}/gtk-dark.css"
+  #sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk${color}.scss"                         "${TMP_DIR_F}/gtk.css"
+  #sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-Dark.scss"                            "${TMP_DIR_F}/gtk-dark.css"
 
   mkdir -p                                                                                    "${TARGET_DIR}/gtk-4.0"
   cp -r "${THEME_SRC_DIR}/assets/gtk/thumbnails/thumbnail${color}${theme}${scheme}.png"       "${TARGET_DIR}/gtk-4.0/thumbnail.png"
-  echo '@import url("resource:///org/gnome/theme/gtk.css");' >                                "${TARGET_DIR}/gtk-4.0/gtk.css"
-  echo '@import url("resource:///org/gnome/theme/gtk-dark.css");' >                           "${TARGET_DIR}/gtk-4.0/gtk-dark.css"
-  glib-compile-resources --sourcedir="${TMP_DIR_F}" --target="${TARGET_DIR}/gtk-4.0/gtk.gresource" "${THEME_SRC_DIR}/main/gtk-4.0/gtk.gresource.xml"
+  #echo '@import url("resource:///org/gnome/theme/gtk.css");' >                                "${TARGET_DIR}/gtk-4.0/gtk.css"
+  #echo '@import url("resource:///org/gnome/theme/gtk-dark.css");' >                           "${TARGET_DIR}/gtk-4.0/gtk-dark.css"
+  #glib-compile-resources --sourcedir="${TMP_DIR_F}" --target="${TARGET_DIR}/gtk-4.0/gtk.gresource" "${THEME_SRC_DIR}/main/gtk-4.0/gtk.gresource.xml"
+
+  cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets"                                    "${TARGET_DIR}/gtk-4.0"
+  cp -r "${THEME_SRC_DIR}/assets/gtk/scalable"                                                "${TARGET_DIR}/gtk-4.0/assets"
+  cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}${scheme}"               "${TARGET_DIR}/gtk-4.0/windows-assets"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk${color}.scss"                         "${TARGET_DIR}/gtk-4.0/gtk.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-Dark.scss"                            "${TARGET_DIR}/gtk-4.0/gtk-dark.css"
 
   #----------------Cinnamon-----------------#
 
@@ -535,6 +548,11 @@ config_gtk4() {
   prompt -s "\n  Installed ${name}${color}${opacity}${alt}${theme}${scheme} gtk-4.0 theme in '${HOME}/.config/gtk-4.0' for libadwaita!"
 }
 
+reset_gtk_base() {
+  libadwaita='true'
+  accent_type='fixed'
+}
+
 install_libadwaita() {
   color="${colors[0]}"
   opacity="${opacities[0]}"
@@ -545,6 +563,8 @@ install_libadwaita() {
   install_theme_deps
 
   gtk_base && config_gtk4 "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}"
+  
+  cp -rf "${THEME_SRC_DIR}/sass/_gtk-base"{".scss","-temp.scss"}
 }
 
 remove_libadwaita() {
@@ -934,24 +954,6 @@ customize_theme() {
   if [[ "${darker}" == 'true' ]]; then
     prompt -s "Changing dark color style to darker one ...\n"
     sed $SED_OPT "/\$darker/s/false/true/"                                      "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
-  fi
-
-  # Change Nautilus sidarbar size
-  if [[ "${sidebar_size}" != 'default' ]]; then
-    prompt -s "Changing Nautilus sidebar size ...\n"
-    sed $SED_OPT "/\$sidebar_size/s/200px/${sidebar_size}px/"                   "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
-  fi
-
-  # Change Nautilus style
-  if [[ "${nautilus_style}" != 'stable' ]]; then
-    prompt -s "Changing Nautilus style ...\n"
-    sed $SED_OPT "/\$nautilus_style/s/stable/${nautilus_style}/"                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
-  fi
-
-  # Change Nautilus titlebutton placement style
-  if [[ "${nautilus_style}" == 'right' ]]; then
-    prompt -s "Changing Nautilus titlebutton placement style ...\n"
-    sed $SED_OPT "/\$placement/s/left/right/"                                   "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change maximized window radius
