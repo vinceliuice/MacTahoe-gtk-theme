@@ -610,6 +610,20 @@ install_themes() {
   stop_animation; fix_whiskermenu
 }
 
+clean_themes() {
+  for color in "${colors[@]}"; do
+    for opacity in "${opacities[@]}"; do
+      for alt in "${alts[@]}"; do
+        for theme in "${themes[@]}"; do
+          for scheme in "${schemes[@]}"; do
+            remove_packy "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}"
+          done
+        done
+      done
+    done
+  done
+}
+
 remove_themes() {
   process_ids=()
 

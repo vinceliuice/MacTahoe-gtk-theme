@@ -1526,7 +1526,6 @@ headerbar {
 
   entry {
     @extend %headerbar_entrys;
-    border-spacing: $container_padding;
     min-height: 24px + $container_padding;
     min-width: 24px + $container_padding;
     padding: $container_padding / 2 $container_padding * 1.5;
@@ -2772,7 +2771,6 @@ radio {
   padding: 0;
   border-radius: $bt_radius;
   @extend %check_and_radio;
-  -gtk-icon-size: 40px;
 
   &:checked { -gtk-icon-source: -gtk-recolor(url("assets/scalable/checkbox-checked-big-symbolic.svg")); }
 }
@@ -2783,7 +2781,6 @@ radio {
   min-height: 14px;
   margin: 3px;
   padding: 1px;
-  -gtk-icon-size: 14px;
   @extend %check_and_radio;
 }
 
@@ -2878,7 +2875,6 @@ scale {
         margin: -11px;
         min-width: 40px;
         min-height: 26px;
-        background-image: url('assets/scalable/slider-glass.svg');
         background-repeat: no-repeat;
         background-size: 40px 26px;
       }
@@ -2898,9 +2894,18 @@ scale {
         margin: -11px;
         min-width: 26px;
         min-height: 40px;
-        background-image: url('assets/scalable/slider-glass-vertical.svg');
         background-repeat: no-repeat;
         background-size: 26px 40px;  
+      }
+    }
+  }
+
+  @each $dir_class, $dir_infix in ('horizontal', 'horz'),
+                                  ('vertical', 'vert') {
+    &.#{$dir_class}:not(.marks-before):not(.marks-after) {
+      slider:active {
+        $_scale_asset: 'assets/slider-#{$dir_infix}-glass#{$theme_suffix}#{$scheme_suffix}';
+        background-image: -gtk-scaled(url('#{$_scale_asset}.png'), url('#{$_scale_asset}@2.png'));
       }
     }
   }
@@ -3027,7 +3032,6 @@ scale {
             $_scale_asset: 'assets/slider-#{$dir_infix}-#{$marks_infix}#{$state_infix}';
             border-style: none;
             border-radius: 0;
-
             background-color: transparent;
             background-image: -gtk-scaled(url('#{$_scale_asset}.png'), url('#{$_scale_asset}@2.png'));
 

@@ -155,9 +155,9 @@ if [[ "${uninstall}" == 'true' ]]; then
     prompt -e "Find installed GDM theme, you need to run: 'sudo ./tweaks.sh -g -r' to remove it!"
   fi
 else
-  prompt -w "Removing the old '${name}' themes...\n"
+  #prompt -w "Removing the old '${name}' themes...\n"
 
-  remove_themes; customize_theme; avoid_variant_duplicates;
+  clean_themes; customize_theme; avoid_variant_duplicates;
 
   prompt -w "Installing '${name}' themes in '${dest}'...\n";
 

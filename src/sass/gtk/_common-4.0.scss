@@ -3406,9 +3406,10 @@ scale {
         margin: -11px;
         min-width: 40px;
         min-height: 26px;
-        background-image: url('assets/scalable/slider-glass.svg');
+        background-image: -gtk-recolor(url('assets/scalable/slider-glass.svg'));
         background-repeat: no-repeat;
         background-size: 40px 26px;
+        color: $selected_bg_color;
       }
     }
   }
@@ -3423,9 +3424,10 @@ scale {
         margin: -11px;
         min-width: 26px;
         min-height: 40px;
-        background-image: url('assets/scalable/slider-glass-vertical.svg');
+        background-image: -gtk-recolor(url('assets/scalable/slider-glass-vertical.svg'));
         background-repeat: no-repeat;
         background-size: 26px 40px;  
+        color: $selected_bg_color;
       }
     }
   }
@@ -3470,6 +3472,10 @@ scale {
     border-radius: $circular_radius;
     background-color: $selected_bg_color;
 
+    &:hover, &:active {
+      background-color: $selected_bg_color;
+    }
+
     &:disabled { background-color: gtkalpha($selected_bg_color, 0.55); }
   }
 
@@ -3480,6 +3486,14 @@ scale {
     background-color: gtkalpha($selected_bg_color, 0.5);
 
     &:disabled { background-color: transparent; }
+  }
+
+  &:hover, &:active {
+    > trough {
+      > highlight {
+        background-image: none;
+      }
+    }
   }
 
   > value { color: gtkalpha(currentColor, 0.4); }
