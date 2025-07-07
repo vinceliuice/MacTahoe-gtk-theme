@@ -1,9 +1,9 @@
-<img src="logo.png" alt="Logo" align="right" /> MacTahoe Icon Theme
-<p align="center"> <img src="screenshot01.jpeg"/> </p>
+<img src="logo.png" alt="Logo" align="right" /> MacTahoe GTK Theme
+======
 
-<br>
-<p align="center"> <b> A macOS like theme for Linux GTK Desktops </b> </p>
-<br>
+A macOS Tahoe like theme for Linux GTK Desktops
+
+<p align="center"> <img src="screenshot01.jpeg"/> </p>
 
 ## Donate
 
