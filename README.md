@@ -3,6 +3,10 @@
 
 A macOS Tahoe like theme for Linux GTK Desktops
 
+Based on WhiteSur GTK Theme: github.com/vinceliuice/WhiteSur-gtk-theme
+
+### screenshot
+
 <p align="center"> <img src="screenshot01.jpeg"/> </p>
 
 ## Donate
