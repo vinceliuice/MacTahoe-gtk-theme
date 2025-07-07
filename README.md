@@ -11,8 +11,8 @@ Based on WhiteSur GTK Theme:
 
 
 
-### screenshot
 
+### screenshot
 <p align="center"> <img src="screenshot01.jpeg"/> </p>
 
 ## Donate
