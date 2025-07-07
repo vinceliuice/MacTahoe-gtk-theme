@@ -1,4 +1,4 @@
-<h1 align="center"> MacTahoe GTK Theme </h1>
+<img src="logo.png" alt="Logo" align="right" /> MacTahoe Icon Theme
 <p align="center"> <img src="screenshot01.jpeg"/> </p>
 
 <br>
