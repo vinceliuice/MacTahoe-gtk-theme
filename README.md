@@ -1,4 +1,4 @@
-<img src="logo.png" alt="Logo" align="right" /> MacTahoe GTK Theme
+<img src="Tahoe.png" alt="Tahoe" align="right" /> MacTahoe GTK Theme
 ======
 
 A macOS Tahoe like theme for Linux GTK Desktops
