@@ -4,12 +4,12 @@
 A macOS Tahoe like theme for Linux GTK Desktops
 
 Based on WhiteSur GTK Theme:
-
-[github.com/vinceliuice/WhiteSur-gtk-theme](github.com/vinceliuice/WhiteSur-gtk-theme)
-
+[https://github.com/vinceliuice/WhiteSur-gtk-theme](https://github.com/vinceliuice/WhiteSur-gtk-theme)
 
 
-======
+
+
+
 
 ### screenshot
 
