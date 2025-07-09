@@ -115,9 +115,6 @@ $toggle_checked_bg_color: rgba(white, 0.15);
     min-width: auto;
     max-width: auto;
 
-    &:ltr > StBoxLayout { padding-left: $base_padding * 3; }
-    &:rtl > StBoxLayout { padding-right: $base_padding * 3; }
-
     &, &:hover, &:active, &:checked {
       background: none !important;
       box-shadow: none !important;

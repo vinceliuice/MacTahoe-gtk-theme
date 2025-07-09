@@ -1,7 +1,12 @@
 .quick-settings {
-  padding: $base_padding * 3;
-  border-radius: $modal_radius * 2;
+  padding: $base_padding * 5 !important;
+  padding-top: $base_padding * 2 !important;
+  border-radius: 21px + $base_padding * 3 !important;
   margin-top: $base_padding * 2 !important;
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-image: url("assets/menu.svg") 30 30 30 30;
 
   .icon-button, .button {
     padding: $container_padding;
@@ -15,77 +20,155 @@
   spacing-columns: 12px;
 }
 
-.quick-toggle {
-  border-radius: $circular_radius;
-  min-width: 12em;
-  max-width: 12em;
-  min-height: 40px;
+$toggle_bg_color: rgba(white, 0.15);
+$toggle_hover_bg_color: rgba(white, 0.2);
+$toggle_active_bg_color: rgba(white, 0.25);
+$toggle_checked_bg_color: rgba(white, 0.15);
+
+.quick-toggle, .quick-menu-toggle {
+  min-width: 13em;
+  max-width: 13em;
+  min-height: $scalable_icon_size * 3;
   border: none;
-  background-color: $fill_color !important;
+  box-shadow: inset 0 0 4px rgba(white, 0.35) !important;
+  color: white;
+}
+
+.quick-toggle {
+  background-color: $toggle_bg_color !important;
+  border-radius: $circular_radius;
+  color: white;
+  padding: 0 $base_padding * 3;
 
   &:hover {
-    background-color: $divider_color !important;
+    background-color: $toggle_hover_bg_color !important;
+    color: white;
   }
 
   &:active {
-    background-color: $visit_color !important;
+    background-color: $toggle_active_bg_color !important;
+    color: white;
   }
 
   &:checked {
-    background-color: $primary_color !important;
-    color: $light_fg_color;
+    background-color: $light_fg_color !important;
+    color: $primary_color;
 
     &:hover {
-      background-color: mix($text_color, $primary_color, 6%) !important;
-      color: $light_fg_color;
+      color: $primary_color;
+      @if $shell_version == 'old' {
+        background-color: mix($text_color, $light_fg_color, 6%) !important;
+      } @else {
+        background-color: st-mix($text_color, $light_fg_color, 6%) !important;
+      }
     }
 
     &:active {
-      background-color: mix($text_color, $primary_color, 15%) !important;
-      color: $light_fg_color;
+      color: $primary_color;
+      @if $shell_version == 'old' {
+        background-color: mix($text_color, $light_fg_color, 15%) !important;
+      } @else {
+        background-color: st-mix($text_color, $light_fg_color, 15%) !important;
+      }
     }
   }
 
-  > StBoxLayout {
-    spacing: $base_padding;
-    padding: 0 $base_padding * 2;
-  }
+  & > StBoxLayout { spacing: $base_padding * 2; }
 
   /* Move padding into the box; this is to allow menu arrows
      to extend to the border */
   &.button { padding: 0; }
-
-  &:ltr > StBoxLayout { padding-left: $base_padding * 2.5; }
-  &:rtl > StBoxLayout { padding-right: $base_padding * 2.5; }
+  & > StBoxLayout { padding: 0 $base_padding * 2; }
+  &:ltr > StBoxLayout { padding-left: $base_padding * 5; }
+  &:rtl > StBoxLayout { padding-right: $base_padding * 5; }
 
   .quick-toggle-label { font-weight: bold; }
   .quick-toggle-icon, .quick-toggle-arrow { icon-size: $base_icon_size !important; }
 }
 
 .quick-menu-toggle {
-  &:ltr > StBoxLayout { padding-right: 0; }
-  &:rtl > StBoxLayout { padding-left: 0; }
+  background-color: $toggle_bg_color !important;
+  border-radius: $circular_radius;
+  padding: $base_padding 0;
+
+  &:hover {
+    background-color: $toggle_hover_bg_color !important;
+  }
+
+  &:active {
+    background-color: $toggle_active_bg_color !important;
+  }
+
+  &:checked {
+    background-color: $toggle_checked_bg_color !important;
+  }
 
   .quick-toggle-arrow {
-    background-color: $fill_color !important;
-    padding: 0 $base_padding * 2.5;
+    min-width: auto;
+    max-width: auto;
 
-    &:active {
-      background-color: $divider_color !important;
+    &, &:hover, &:active, &:checked {
+      background: none !important;
+      box-shadow: none !important;
+      color: white;
     }
 
-    &:ltr { border-radius: 0 $circular_radius $circular_radius 0; }
-    &:rtl { border-radius: $circular_radius 0 0 $circular_radius; }
+    .quick-toggle-icon {
+      border-radius: $circular_radius;
+      min-height: 3.4em !important;
+      min-width: 3.4em !important;
+      background-color: $toggle_bg_color;
+    }
+
+    &:hover .quick-toggle-icon {
+      background-color: $toggle_hover_bg_color;
+    }
+
+    &:active .quick-toggle-icon {
+      background-color: $toggle_active_bg_color;
+    }
+
+    &:checked .quick-toggle-icon {
+      color: $primary_color;
+      background-color: white;
+    }
+
+    &:ltr { border-radius: $circular_radius; }
+    &:ltr > StBoxLayout { padding-right: $base_padding * 2; }
+    &:rtl { border-radius: $circular_radius; }
+    &:rtr > StBoxLayout { padding-left: $base_padding * 2; }
+
+    &:ltr:last-child { border-radius: $circular_radius; }
+    &:rtl:last-child { border-radius: $circular_radius; }
   }
 }
 
 .quick-slider {
-  padding: 0 $base_padding;
+  background-color: $toggle_bg_color;
+  border-radius: $wm_radius;
+  box-shadow: inset 0 0 4px rgba(white, 0.35) !important;
+  padding: $scaled_padding * 4 $scaled_padding * 2;
+  color: white;
 
   & > StBoxLayout { spacing: $base_padding; }
 
+  .icon-button {
+    padding: $scaled_padding * 1.5;
+    color: white;
+
+    &:hover {
+      background-color: $toggle_hover_bg_color;
+      color: white;
+    }
+
+    &:active {
+      background-color: $toggle_active_bg_color;
+      color: white;
+    }
+  }
+
   .slider-bin {
-    &:focus { @include button(focus); }
+    &:focus { color: white; }
     min-height: 16px; // slider size
     padding: $base_padding;
     border-radius: $circular_radius;
@@ -94,40 +177,34 @@
   .quick-toggle-icon, .quick-toggle-arrow {
     icon-size: $base_icon_size !important;
   }
-
-  .icon-button {
-    background-color: transparent;
-    color: $text_color !important;
-
-    &:hover {
-      background-color: $fill_color;
-    }
-
-    &:active {
-      background-color: $divider_color;
-    }
-
-    StIcon { icon-size: $base_icon_size !important; }
-  }
 }
 
 .quick-toggle-menu {
-  background-color: if($variant == 'light', $base_color, $bg_color) !important;
-  color: $text_color !important;
-  border-radius: $base_border_radius * 3;
+  background-color: $popover_bg_color !important;
+  border-radius: $popop_menuitem_radius + $base_padding * 3;
   padding: $base_padding * 3;
-  margin: $base_padding * 2 $base_padding * 6 0;
+  margin: $base_padding * 2 $base_padding * 7 0;
+  border: none !important;
+  box-shadow: 0 5px 10px 0 rgba(black, 0.18);
 
   .popup-menu-item {
-    border-radius: $circular_radius !important;
+    // border-radius: $base_border_radius !important;
     min-height: 20px;
+    padding: $base_padding * 2 $base_padding * 3;
 
-    &:focus, &:hover, &.selected {
-      color: $text_color !important;
+    &:focus, &:hover, &:selected {
       background-color: $divider_color !important;
+      color: $fg_color !important;
     }
 
-    > StIcon { -st-icon-style: symbolic; }
+    &:active {
+      background-color: $track_color !important;
+      color: $fg_color !important;
+    }
+
+    > StIcon {
+      -st-icon-style: symbolic;
+    }
   }
 
   & .header {
@@ -136,10 +213,11 @@
     padding-bottom: 2 * $container_padding;
 
     & .icon {
-      icon-size: $base_icon_size * 1.5; // a non-standard symbolic size but ok
+      icon-size: $base_icon_size; // a non-standard symbolic size but ok
       border-radius: $circular_radius;
-      padding: 1.5 * $container_padding;
-      background-color: $divider_color !important;
+      padding: $base_padding * 2.5;
+      background-color: $fill_color;
+      color: $fg_color;
 
       &.active {
         background-color: $primary_color !important;
@@ -148,11 +226,11 @@
     }
 
     & .title {
-      @include font(title);
+      @extend %title_3;
     }
 
     & .subtitle {
-      @include font(body-1);
+      @extend %caption_heading;
     }
   }
 }
@@ -161,15 +239,17 @@
   & > StBoxLayout { spacing: 2 * $base_padding; }
 
   .icon-button {
-    background-color: $fill_color;
-    color: $text_color;
+    background-color: $toggle_bg_color;
+    color: white;
     border-radius: $circular_radius;
     min-height: $menuitem_size !important;
     min-width: $menuitem_size !important;
-    // padding: $container_padding;
+    padding: $scaled_padding * 2;
+    box-shadow: inset 0 0 4px rgba(white, 0.35) !important;
 
-    &:hover { @include button(flat-hover); }
-    &:active { @include button(flat-active); }
+    &:hover { background-color: $toggle_hover_bg_color; }
+
+    &:active { background-color: $toggle_active_bg_color; }
 
     > StIcon {
      -st-icon-style: symbolic;
@@ -182,7 +262,7 @@
     min-width: 0;
 
     &:insensitive {
-      @include button(normal);
+      color: rgba(white, 0.35);
       background-color: transparent;
     }
   }

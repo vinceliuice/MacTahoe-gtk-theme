@@ -1,7 +1,12 @@
 .quick-settings {
-  padding: $base_padding * 3 !important;
+  padding: $base_padding * 5 !important;
+  padding-top: $base_padding * 2 !important;
   border-radius: 21px + $base_padding * 3 !important;
   margin-top: $base_padding * 2 !important;
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-image: url("assets/menu.svg") 30 30 30 30;
 
   .icon-button, .button {
     padding: $base_padding * 1.75;
@@ -23,7 +28,7 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 .quick-toggle, .quick-menu-toggle {
   min-width: 13em;
   max-width: 13em;
-  min-height: $scalable_icon_size * 3;
+  min-height: 3.4em;
   border: none;
   box-shadow: inset 0 0 4px rgba(white, 0.35) !important;
   color: white;
@@ -33,6 +38,7 @@ $toggle_checked_bg_color: rgba(white, 0.15);
   background-color: $toggle_bg_color !important;
   border-radius: $circular_radius;
   color: white;
+  padding: 0 $base_padding * 3;
 
   &:hover {
     background-color: $toggle_hover_bg_color !important;
@@ -67,18 +73,20 @@ $toggle_checked_bg_color: rgba(white, 0.15);
     }
   }
 
-  & > StBoxLayout { spacing: $base_padding * 1.5; }
+  & > StBoxLayout { spacing: $base_padding * 2; }
 
   /* Move padding into the box; this is to allow menu arrows
      to extend to the border */
   &.button { padding: 0; }
   & > StBoxLayout { padding: 0 $base_padding * 2; }
-  &:ltr > StBoxLayout { padding-left: $base_padding * 4; }
-  &:rtl > StBoxLayout { padding-right: $base_padding * 4; }
+  &:ltr > StBoxLayout { padding-left: $base_padding * 5; }
+  &:rtl > StBoxLayout { padding-right: $base_padding * 5; }
 
-  .quick-toggle-title { font-weight: bold; }
+  .quick-toggle-title {
+    @extend %heading;
+  }
 
-  & StBoxLayout > .quick-toggle-subtitle {
+  .quick-toggle-subtitle {
     @extend %caption;
     font-weight: normal;
   }
@@ -89,7 +97,7 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 .quick-menu-toggle {
   background-color: $toggle_bg_color !important;
   border-radius: $circular_radius;
-  padding: $base_padding * 2;
+  padding: $base_padding 0;
 
   &:hover {
     background-color: $toggle_hover_bg_color !important;
@@ -113,6 +121,26 @@ $toggle_checked_bg_color: rgba(white, 0.15);
       color: white;
     }
 
+    .quick-toggle-icon {
+      border-radius: $circular_radius;
+      min-height: 3.4em !important;
+      min-width: 3.4em !important;
+      background-color: $toggle_bg_color;
+    }
+
+    &:hover .quick-toggle-icon {
+      background-color: $toggle_hover_bg_color;
+    }
+
+    &:active .quick-toggle-icon {
+      background-color: $toggle_active_bg_color;
+    }
+
+    &:checked .quick-toggle-icon {
+      color: $primary_color;
+      background-color: white;
+    }
+
     &:ltr { border-radius: $circular_radius; }
     &:ltr > StBoxLayout { padding-right: $base_padding * 2; }
     &:rtl { border-radius: $circular_radius; }
@@ -124,18 +152,21 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 
   & .quick-toggle-arrow {
     padding: 0;
-    min-width: 3.4em !important;
+    min-width: 2.4em;
+    min-height: 2.4em;
+    margin: 1em;
+    border-radius: $circular_radius;
     border: none;
-    background-color: $toggle_bg_color !important;
     color: white;
+    background-color: transparent;
 
     &:hover {
-      background-color: $toggle_hover_bg_color !important;
+      background-color: $toggle_hover_bg_color;
       color: white;
     }
-  
+
     &:active {
-      background-color: $toggle_active_bg_color !important;
+      background-color: $toggle_active_bg_color;
       color: white;
     }
   
@@ -189,18 +220,31 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 }
 
 .quick-toggle-menu {
-  background-color: if($variant == 'light', $base_color, $bg_color) !important;
-  color: $text_color !important;
-  border-radius: $base_border_radius * 3;
+  background-color: $popover_bg_color !important;
+  border-radius: $popop_menuitem_radius + $base_padding * 3;
   padding: $base_padding * 3;
   margin: $base_padding * 2 $base_padding * 7 0;
   border: none !important;
+  box-shadow: 0 5px 10px 0 rgba(black, 0.18);
 
   .popup-menu-item {
-    border-radius: $circular_radius !important;
+    // border-radius: $base_border_radius !important;
     min-height: 20px;
+    padding: $base_padding * 2 $base_padding * 3;
 
-    > StIcon { -st-icon-style: symbolic; }
+    &:focus, &:hover, &:selected {
+      background-color: $divider_color !important;
+      color: $fg_color !important;
+    }
+
+    &:active {
+      background-color: $track_color !important;
+      color: $fg_color !important;
+    }
+
+    > StIcon {
+      -st-icon-style: symbolic;
+    }
   }
 
   & .header {
@@ -291,7 +335,8 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 // background apps
 
 .background-apps-quick-toggle {
-  min-height: 40px;
+  min-height: 38px;
+  padding: $scaled_padding * 2 !important;
   background-color: transparent;
 
   & StIcon { icon-size: $base_icon_size !important; }
