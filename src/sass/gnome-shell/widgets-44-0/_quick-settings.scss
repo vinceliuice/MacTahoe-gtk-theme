@@ -142,9 +142,9 @@ $toggle_checked_bg_color: rgba(white, 0.15);
     }
 
     &:ltr { border-radius: $circular_radius; }
-    &:ltr > StBoxLayout { padding-right: $base_padding * 2; }
+    &:ltr > StBoxLayout { padding-left: $base_padding * 3; padding-right: $base_padding * 2; }
     &:rtl { border-radius: $circular_radius; }
-    &:rtr > StBoxLayout { padding-left: $base_padding * 2; }
+    &:rtr > StBoxLayout { padding-left: $base_padding * 2; padding-right: $base_padding * 3; }
 
     &:ltr:last-child { border-radius: $circular_radius; }
     &:rtl:last-child { border-radius: $circular_radius; }
