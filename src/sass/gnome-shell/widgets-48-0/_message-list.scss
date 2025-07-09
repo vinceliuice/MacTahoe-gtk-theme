@@ -88,7 +88,7 @@
   }
 }
 
-$card_bg_color: if($variant == 'light', mix(white, $bg_color, 95%), lighten($base_color, 10%));
+$card_bg_color: if($variant == 'light', mix(white, $bg_color, 95%), lighten($base_color, 15%));
 
 %card {
   border-radius: $bt_radius + $base_padding * 1.5;
@@ -101,7 +101,7 @@ $card_bg_color: if($variant == 'light', mix(white, $bg_color, 95%), lighten($bas
 
   &:hover, &:focus {
     color: $fg_color;
-    background-color: if($variant == 'light', $card_bg_color, lighten($card_bg_color, 5%));
+    background-color: if($variant == 'light', lighten($card_bg_color, 10%), lighten($card_bg_color, 5%));
     box-shadow: 0 1px 3px rgba(black, 0.05) !important;
   }
 
@@ -120,19 +120,19 @@ $card_bg_color: if($variant == 'light', mix(white, $bg_color, 95%), lighten($bas
 
 // message bubbles
 .message {
-  border: 1px solid transparent;
+  border: none;
 
   .popup-menu & {
     @extend %card;
   }
 
   &:second-in-stack {
-    background-color: if($variant == 'light', darken($card_bg_color, 3%), darken($card_bg_color, 3%));
-    box-shadow: 0 1px 2px rgba(black, 0.05);
+    background-color: if($variant == 'light', darken($card_bg_color, 2%), darken($card_bg_color, 4%));
+    box-shadow: 0 1px 2px rgba(black, 0.02);
   }
 
   &:lower-in-stack {
-    background-color: if($variant == 'light', darken($card_bg_color, 6%), darken($card_bg_color, 6%));
+    background-color: if($variant == 'light', darken($card_bg_color, 4%), darken($card_bg_color, 8%));
     box-shadow: none;
     border-color: transparent; // a not ideal workaround for light theme
   }
