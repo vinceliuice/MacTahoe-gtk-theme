@@ -105,7 +105,7 @@ $dark_borders_color:                if($variant == 'light', rgba(black, 0.08), r
 $solid_borders_color:               if($variant == 'light', gtkmix(black, $base_color, 12%), gtkmix(white, $base_color, 12%));
 $dark_solid_borders_color:          if($variant == 'light', gtkmix(black, $base_color, 12%), gtkmix(white, $base_color, 15%));
 $highlight_color:                   if($variant == 'light', rgba(white, 0.15), rgba(white, 0.1));
-$sidebar_highlight_color:           if($variant == 'light', white, rgba(white, 0.06));
+$sidebar_highlight_color:           if($variant == 'light', $base_color, rgba(white, 0.06));
 
 // Gnome-shell background colors
 $dark_bg_color:                     rgba(black, 0.6);
@@ -280,8 +280,8 @@ $button_disabled_bg:                if($variant == 'light', rgba(black, 0.02), r
 $button_border:                     $borders_color;
 
 // Button borders and highlights colors
-$button_highlight:                  if($variant == 'light', white, rgba(white, 0.1));
-$button_outline:                    if($variant == 'light', white, rgba(white, 0.08));
+$button_highlight:                  if($variant == 'light', $base_color, rgba(white, 0.1));
+$button_outline:                    if($variant == 'light', $base_color, rgba(white, 0.08));
 $button_borders:                    if($variant == 'light', $button_border, $dark_borders_color);
 
 $button_shadow: 0 6px 20px rgba(black, if($variant == 'light', 0.1, 0.15)), inset 1px 2px 1px -1px $button_outline, inset -1px -1px 1px 0 $button_outline;

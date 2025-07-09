@@ -255,7 +255,7 @@ $dark_5: #000000;
   $progress_color: gtkcolor(accent_bg_color);
   $selection_mode_bg: color-mix(in srgb, white 25%, gtkcolor(accent_bg_color));
   $entry_highlight: color-mix(in srgb, gtkcolor(window_bg_color) 25%, $selection_mode_bg);
-  $sidebar_highlight_color: if($variant == 'light', $base_color, rgba(white, 0.06));
+  $sidebar_highlight_color: if($variant == 'light', gtkmix(white, gtkcolor(view_bg_color), 8%), rgba(white, 0.06));
 
   $bg_color: gtkcolor(window_bg_color);
   $base_color: gtkcolor(view_bg_color);
@@ -282,8 +282,12 @@ $dark_5: #000000;
   $button_checked_bg:                 if($variant == 'light', gtkalpha(currentColor, 0.12), gtkalpha(currentColor, 0.15));
   $button_disabled_bg:                if($variant == 'light', gtkalpha(currentColor, 0.02), gtkalpha(currentColor, 0.02));
   $button_border:                     $borders_color;
-  $button_highlight:                  if($variant == 'light', white, rgba(white, 0.1));
+  $button_highlight:                  if($variant == 'light', gtkmix(white, $base_color, 10%), rgba(white, 0.1));
+  $button_outline:                    if($variant == 'light', gtkmix(white, $base_color, 8%), rgba(white, 0.08));
   $button_borders:                    if($variant == 'light', $button_border, $dark_borders_color);
+
+  $button_shadow: 0 6px 20px rgba(black, if($variant == 'light', 0.1, 0.15)), inset 1px 2px 1px -1px $button_outline, inset -1px -1px 1px 0 $button_outline;
+  $button_hover_shadow: 0 8px 26px rgba(black, if($variant == 'light', 0.15, 0.2)), inset 1px 2px 1px -1px $button_outline, inset -1px -1px 1px 0 $button_outline;
 
   $header_bg: gtkcolor(headerbar_bg_color);
   $header_fg: gtkcolor(headerbar_fg_color);
