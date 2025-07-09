@@ -292,7 +292,7 @@ if [[ "${uninstall}" == 'true' ]]; then
     prompt -s "Done! '${firefoxtheme}' Firefox theme has been removed. \n"
   fi
 else
-  show_needed_dialogs; customize_theme
+  customize_theme
 
   if [[ "${gdm}" == 'true' ]]; then
     if [[ "${firefox}" == 'true' || "${edit_firefox}" == 'true' || "${flatpak}" == 'true' || "${snap}" == 'true' || "${dash_to_dock}" == 'true' ]]; then
