@@ -263,10 +263,10 @@ $dark_5: #000000;
 
   $text_color: gtkcolor(window_fg_color);
   $fg_color: gtkcolor(window_fg_color);
-  $alt_fg_color: gtkalpha($fg_color, 0.8);
-  $hint_fg_color: gtkalpha($fg_color, 0.6);
-  $disabled_fg_color: gtkalpha($fg_color, 0.45);
-  $alt_disabled_fg_color: gtkalpha($fg_color, 0.35);
+  $alt_fg_color: color-mix(in srgb, $fg_color 80%, transparent);
+  $hint_fg_color: color-mix(in srgb, $fg_color 60%, transparent);
+  $disabled_fg_color: color-mix(in srgb, $fg_color 45%, transparent);
+  $alt_disabled_fg_color: color-mix(in srgb, $fg_color 35%, transparent);
 
   $borders_color:                     gtkalpha(currentColor, 0.12);
   $light_borders_color:               if($variant == 'light', gtkalpha(currentColor, 0.08), gtkalpha(currentColor, 0.10));

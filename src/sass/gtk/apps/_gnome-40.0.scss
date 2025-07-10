@@ -87,7 +87,7 @@ $nautilus_borders_color: if($variant=='light', gtkmix(black, $dark_sidebar_bg, 1
               @if $gnome_version == 'old' {
                 color: if($variant == 'light', $selected_bg_color, lighten($selected_bg_color, 20%));
               } @else {
-                color: if($variant == 'light', $selected_bg_color, color-mix(in srgb, white 20%, $selected_bg_color));
+                color: if($variant == 'light', $selected_bg_color, color-mix(in srgb, #ffffff 20%, $selected_bg_color));
               }
             }
           }
@@ -1288,10 +1288,19 @@ panelresizer .top-bar {
   padding: 0;
   border: none;
   border-bottom: 1px solid $borders_color;
-  background-color: color-mix(in srgb, black 6%, $base_color);
 
-  &:backdrop {
-    background-color: color-mix(in srgb, black 7%, $base_color);
+  @if $gnome_version == 'old' {
+    background-color: gtkmix(black, $base_color, 6%);
+
+    &:backdrop {
+      background-color: gtkmix(black, $base_color, 7%);
+    }
+  } @else {
+    background-color: color-mix(in srgb, black 6%, $base_color);
+
+    &:backdrop {
+      background-color: color-mix(in srgb, black 7%, $base_color);
+    }
   }
 
   tabbar.inline {
