@@ -628,26 +628,6 @@ toolbarview.undershoot-bottom scrolledwindow {
     @include transition-shadows($dark_borders_color);
   }
 
-  scrolledwindow {
-    &.undershoot-top {
-      @include undershoot(top, $style: 'solid');
-    }
-
-    &.undershoot-bottom {
-      @include undershoot(bottom, $style: 'solid');
-    }
-
-    &.undershoot-start {
-      &:dir(ltr) { @include undershoot(left, $style: 'solid'); }
-      &:dir(rtl) { @include undershoot(right, $style: 'solid'); }
-    }
-
-    &.undershoot-end {
-      &:dir(ltr) { @include undershoot(right, $style: 'solid'); }
-      &:dir(rtl) { @include undershoot(left, $style: 'solid'); }
-    }
-  }
-
   banner > revealer > widget {
     background-color: gtkmix($selected_bg_color, $base_color, 30%);
     color: $text_color;
@@ -739,6 +719,26 @@ navigation-view-page,
 
   toolbarview.undershoot-bottom scrolledwindow {
     @include undershoot(bottom, $style: 'solid');
+  }
+
+  scrolledwindow {
+    &.undershoot-top {
+      @include undershoot(top, $style: 'solid');
+    }
+
+    &.undershoot-bottom {
+      @include undershoot(bottom, $style: 'solid');
+    }
+
+    &.undershoot-start {
+      &:dir(ltr) { @include undershoot(left, $style: 'solid'); }
+      &:dir(rtl) { @include undershoot(right, $style: 'solid'); }
+    }
+
+    &.undershoot-end {
+      &:dir(ltr) { @include undershoot(right, $style: 'solid'); }
+      &:dir(rtl) { @include undershoot(left, $style: 'solid'); }
+    }
   }
 }
 
@@ -846,18 +846,20 @@ toolbarview {
   }
 
   > .top-bar.raised {
-    box-shadow: none;
+    box-shadow: 0 1px $header_border,
+                0 2px 4px gtkalpha($header_border, 0.35);
 
     &.border {
-      box-shadow: none;
+      box-shadow: 0 1px $header_border;
     }
   }
 
   > .bottom-bar.raised {
-    box-shadow: none;
+    box-shadow: 0 -1px $header_border,
+                0 -2px 4px gtkalpha($header_border, 0.35);
 
     &.border {
-      box-shadow: none;
+      box-shadow: 0 -1px $header_border;
     }
   }
 }
