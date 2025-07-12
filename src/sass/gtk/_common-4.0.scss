@@ -46,63 +46,6 @@ $side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light',
   }
 }
 
-$list_shadow: if($variant == 'light', none, inset 0 0 8px rgba(black, 0.03));
-
-%circular_list {
-  border-radius: $mn_radius;
-  box-shadow: $list_shadow;
-  background-color: if($variant == 'light', rgba(black, 0.02), rgba(black, 0.1));
-  border: 1px solid $dark_borders_color;
-  color: $text_color;
-  background-clip: border-box;
-
-  > separator {
-    min-height: 0;
-    background-color: transparent;
-  }
-}
-
-%circular_row {
-  border: none;
-
-  &:first-child {
-    border-top-left-radius: $mn_radius + 2px;
-    border-top-right-radius: $mn_radius + 2px;
-  }
-
-  &:last-child { // Not use ?
-    border-bottom-left-radius: $mn_radius + 2px;
-    border-bottom-right-radius: $mn_radius + 2px;
-  }
-
-  &:only-child {
-    border-radius: $mn_radius + 2px;
-  }
-
-  & + row {
-    border-top: 1px solid transparent;
-    border-image: linear-gradient(to right,
-                                  transparent 0%,
-                                  transparent 2%,
-                                  $menu_bd 2%,
-                                  $menu_bd 98%,
-                                  transparent 98%,
-                                  transparent 100%) 1 0 0 0 / 1px 0 0 0 stretch;
-  }
-
-  &:hover, &:active, &:selected {
-    &, & + row {
-      border-image: none;
-    }
-  }
-}
-
-%sidebar_row {
-  margin: 2px 4px;
-  border-radius: $bd_radius;
-  -gtk-outline-radius : $bd_radius - 2px;
-}
-
 // catch all extend
 %selected_items {
   background-color: $selected_bg_color;
@@ -3904,32 +3847,6 @@ scrolledwindow {
         }
       }
     }
-
-    > box.vertical list.content.view {
-      border-top-left-radius: $mn_radius;
-      border-top-right-radius: $mn_radius;
-    }
-
-    > box.vertical list.frame {
-      @extend %circular_list;
-      padding: 0;
-
-      > row.activatable { @extend %circular_row; }
-
-      list {
-        border: none;
-        box-shadow: none;
-        border-radius: 0;
-        margin: 0;
-        background: none;
-
-        > row.activatable {
-          &, &:first-child, &:last-child {
-            border-radius: 0;
-          }
-        }
-      }
-    }
   }
 
   // This is used by GtkScrolledWindow, when content is touch-dragged past boundaries.
@@ -3991,6 +3908,71 @@ separator {
 //
 // Lists
 //
+
+$list_shadow: if($variant == 'light', none, inset 0 0 8px rgba(black, 0.03));
+$list_border: if($variant == 'light', rgba(black, 0.05), rgba(black, 0.15));
+$list_background: if($variant == 'light', rgba(black, 0.02), rgba(black, 0.12));
+
+@if $gnome_version == 'new' and $accent_type != 'fixed' {
+  $list_background: color-mix(in srgb, gtkcolor(shade_color) 48%, transparent);
+  $list_border: gtkcolor(shade_color);
+}
+
+%circular_list {
+  border-radius: $mn_radius;
+  box-shadow: $list_shadow;
+  background-color: $list_background;
+  border: 1px solid $list_border;
+  color: $text_color;
+  background-clip: border-box;
+
+  > separator {
+    min-height: 0;
+    background-color: transparent;
+  }
+}
+
+%circular_row {
+  border: none;
+
+  &:first-child {
+    border-top-left-radius: $mn_radius + 2px;
+    border-top-right-radius: $mn_radius + 2px;
+  }
+
+  &:last-child { // Not use ?
+    border-bottom-left-radius: $mn_radius + 2px;
+    border-bottom-right-radius: $mn_radius + 2px;
+  }
+
+  &:only-child {
+    border-radius: $mn_radius + 2px;
+  }
+
+  & + row {
+    border-top: 1px solid transparent;
+    border-image: linear-gradient(to right,
+                                  transparent 0%,
+                                  transparent 2%,
+                                  $menu_bd 2%,
+                                  $menu_bd 98%,
+                                  transparent 98%,
+                                  transparent 100%) 1 0 0 0 / 1px 0 0 0 stretch;
+  }
+
+  &:hover, &:active, &:selected {
+    &, & + row {
+      border-image: none;
+    }
+  }
+}
+
+%sidebar_row {
+  margin: 2px 4px;
+  border-radius: $bd_radius;
+  -gtk-outline-radius : $bd_radius - 2px;
+}
+
 listview,
 list {
   background-color: $base_color;
@@ -5399,9 +5381,9 @@ window {
     border-radius: $wm_radius;
     outline: 1px solid $highlight_color;
     outline-offset: -1px;
-    box-shadow: 0 3px 6px $wm_shadow,
-                0 7px 12px $wm_shadow,
-                0 12px 20px $wm_shadow,
+    box-shadow: 0 3px 6px RGB(0 0 0 / 15%),
+                0 7px 24px RGB(0 0 0 / 12%),
+                0 12px 32px RGB(0 0 0 / 8%),
                 $wm_outline;
     margin: 0;
 
@@ -5409,9 +5391,9 @@ window {
       transition: $shadow_transition;
       // the transparent shadow here is to enforce that the shadow extents don't
       // change when we go to backdrop, to prevent jumping windows
-      box-shadow: 0 3px 6px $wm_shadow_backdrop,
-                  0 7px 12px $wm_shadow_backdrop,
-                  0 12px 20px transparent,
+      box-shadow: 0 3px 6px RGB(0 0 0 / 10%),
+                  0 7px 24px RGB(0 0 0 / 6%),
+                  0 12px 32px transparent,
                   $wm_outline;
     }
 
