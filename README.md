@@ -268,7 +268,7 @@ OPTIONS:
 </details>
 
 ## <p align="center"> <b> Other recommended stuff </b> </p>
-### <p align="center"> <b> WhiteSur Icon Theme </b> </p>
+### <p align="center"> <b> MacTahoe Icon Theme </b> </p>
 <p align="center"> <a href="https://github.com/vinceliuice/MacTahoe-icon-theme">
   <img src="https://github.com/vinceliuice/MacTahoe-icon-theme/blob/main/preview.png"/>
 </a> </p>
@@ -278,7 +278,7 @@ OPTIONS:
 </a> </p>
 <br>
 
-### <p align="center"> <b> WhiteSur Wallpapers </b> </p>
+### <p align="center"> <b> MacTahoe Wallpapers </b> </p>
 <p align="center"> <a href="https://github.com/vinceliuice/MacTahoe-gtk-theme/tree/main/wallpaper">
   <img class="image" src="https://github.com/vinceliuice/MacTahoe-gtk-theme/blob/main/wallpaper/MacTahoe-day.jpeg"/>
 </a> </p>
