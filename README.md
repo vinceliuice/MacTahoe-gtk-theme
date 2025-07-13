@@ -267,6 +267,27 @@ OPTIONS:
 
 </details>
 
+## <p align="center"> <b> Other recommended stuff </b> </p>
+### <p align="center"> <b> WhiteSur Icon Theme </b> </p>
+<p align="center"> <a href="https://github.com/vinceliuice/MacTahoe-icon-theme">
+  <img src="https://github.com/vinceliuice/MacTahoe-icon-theme/blob/main/preview.png"/>
+</a> </p>
+<br>
+<p align="center"> <a href="https://github.com/vinceliuice/MacTahoe-icon-theme">
+  <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/download-button.svg"/>
+</a> </p>
+<br>
+
+### <p align="center"> <b> WhiteSur Wallpapers </b> </p>
+<p align="center"> <a href="https://github.com/vinceliuice/MacTahoe-gtk-theme/tree/main/wallpaper">
+  <img class="image" src="https://github.com/vinceliuice/MacTahoe-gtk-theme/blob/main/wallpaper/MacTahoe-day.jpeg"/>
+</a> </p>
+<br>
+<p align="center"> <a href="https://github.com/vinceliuice/MacTahoe-gtk-theme/tree/main/wallpaper">
+  <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/download-button.svg"/>
+</a> </p>
+<br>
+
 ## There's more themes you can try!
 ### <p align="center"> <b> Install and edit Firefox theme </b> </p>
 
