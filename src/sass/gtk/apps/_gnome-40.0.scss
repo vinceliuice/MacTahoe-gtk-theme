@@ -234,6 +234,12 @@ $nautilus_borders_color: if($variant=='light', gtkmix(black, $dark_sidebar_bg, 1
   }
 }
 
+#NautilusFileChooser {
+  multi-layout-view > box {
+    padding-left: $container_padding * 2;
+  }
+}
+
 navigation-view-page > toolbarview > scrolledwindow > viewport > clamp {
   > box > box > stack > button {
     margin-top: $container_padding * 2;

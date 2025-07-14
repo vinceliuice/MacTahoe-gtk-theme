@@ -812,7 +812,7 @@ toolbarview {
 
       tabbar {
         padding-top: 0;
-        padding-bottom: 0;
+        padding-bottom: $container_padding - 2px;
       }
     }
 
