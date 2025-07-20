@@ -56,7 +56,7 @@ pakitheme_gtk3() {
   rm -rf "$build_dir"
   mkdir -p "$build_dir/files"
 
-  cp -a "$theme_path/gtk-3.0/"{gtk.css,gtk-dark.css,gtk.gresource} "$build_dir/files"
+  cp -a "$theme_path/gtk-3.0/"{gtk.css,gtk-dark.css,thumbnail.png,assets,windows-assets} "$build_dir/files"
 
   mkdir -p "$build_dir/files/share/appdata"
   cat >"$build_dir/files/share/appdata/$gtk3_app_id.appdata.xml" <<EOF
