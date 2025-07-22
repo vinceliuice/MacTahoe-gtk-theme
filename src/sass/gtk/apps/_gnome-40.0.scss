@@ -32,6 +32,51 @@
 }
 
 .nautilus-window {
+  .nautilus-grid-view {
+    background-color: transparent;
+
+    gridview.view {
+      background-color: transparent;
+
+      > child.activatable {
+        @extend %nautilus_view;
+      }
+    }
+  }
+
+  .nautilus-list-view {
+    padding: 0;
+    margin: 0;
+    border-spacing: 0;
+    background-color: transparent;
+
+    columnview.view,
+    statuspage.view { background-color: transparent; }
+
+    listview.view {
+      padding: 0;
+      margin: 0;
+      border-spacing: $container_padding / 2;
+      background-color: transparent;
+
+      > row.activatable {
+        padding: 0;
+        margin: 0;
+        @extend %nautilus_view;
+
+        > cell {
+          padding: 0;
+
+          > widget#NautilusViewCell {
+            padding: $container_padding $container_padding * 1.5;
+          }
+        }
+      }
+    }
+  }
+}
+
+.nautilus-window, #NautilusFileChooser {
   headerbar > windowhandle > box {
     > widget > box.start > stack > widget > box {
       margin-left: $container_padding * 2;
@@ -59,6 +104,8 @@
       }
     }
   }
+
+  overlay-split-view.view { background-color: transparent; }
 
   .sidebar-pane {
     &:dir(ltr), &.end:dir(rtl) {
@@ -114,49 +161,6 @@
 
     &:backdrop {
       background-color: $backdrop_color;
-    }
-  }
-
-  .nautilus-grid-view {
-    background-color: transparent;
-
-    gridview.view {
-      background-color: transparent;
-
-      > child.activatable {
-        @extend %nautilus_view;
-      }
-    }
-  }
-
-  .nautilus-list-view {
-    padding: 0;
-    margin: 0;
-    border-spacing: 0;
-    background-color: transparent;
-
-    columnview.view,
-    statuspage.view { background-color: transparent; }
-
-    listview.view {
-      padding: 0;
-      margin: 0;
-      border-spacing: $container_padding / 2;
-      background-color: transparent;
-
-      > row.activatable {
-        padding: 0;
-        margin: 0;
-        @extend %nautilus_view;
-
-        > cell {
-          padding: 0;
-
-          > widget#NautilusViewCell {
-            padding: $container_padding $container_padding * 1.5;
-          }
-        }
-      }
     }
   }
 }
