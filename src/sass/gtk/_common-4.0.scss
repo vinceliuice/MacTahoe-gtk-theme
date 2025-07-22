@@ -8,7 +8,7 @@ $side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light',
 
 %side_style_left {
   background-image: $side_style_shadow;
-  background-color: $dark_sidebar_bg;
+  background-color: if($blur == 'true', transparent, $dark_sidebar_bg);
   box-shadow: none;
   border: none;
 }
@@ -16,7 +16,7 @@ $side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light',
 %side_headerbar_left {
   &, &:backdrop {
     background-image: $side_style_shadow;
-    background-color: $dark_sidebar_bg;
+    background-color: if($blur =='true', transparent, $dark_sidebar_bg);
     border: none;
   }
 
@@ -33,7 +33,7 @@ $side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light',
 
 %side_searchbar {
   > revealer > box {
-    background-color: $dark_sidebar_bg;
+    background-color: if($blur =='true', transparent, $dark_sidebar_bg);
     border-color: $dark_sidebar_border;
   }
 }
@@ -190,7 +190,10 @@ $side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light',
 //
 .background {
   color: $fg_color;
-  background-color: $base_color;
+
+  &, &.view {
+    background-color: $window_bg;
+  }
 
   &:backdrop {
     background-color: $backdrop_color;
@@ -4610,7 +4613,7 @@ list.boxed-list-separate {
   padding: $container_padding;
   margin: 6px 16px 16px 16px;
   color: $fg_color;
-  background-color: gtkalpha($header_bg, 0.85);
+  background-color: $menu_bg;
   border-radius: $mn_radius;
   border: none;
   box-shadow: 0 5px 15px 0 rgba(black, 0.25),

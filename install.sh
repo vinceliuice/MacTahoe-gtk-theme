@@ -23,14 +23,15 @@ usage() {
   # Please specify their default value manually, some of them come from _variables.scss
   # You also have to check and update them regularly
   helpify_title
-  helpify "-d, --dest"                    "DIR"                                               "  Set destination directory"                      "Default is '${THEME_DIR}'"
-  helpify "-n, --name"                    "NAME"                                              "  Set theme name"                                 "Default is '${THEME_NAME}'"
-  helpify "-o, --opacity"                 "[$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"       "  Set theme opacity variants"                     "Repeatable. Default is all variants"
-  helpify "-c, --color"                   "[$(IFS='|'; echo "${COMMAND_COLOR_VARIANTS[*]}")]" "  Set theme color variants"                       "Repeatable. Default is all variants"
-  helpify "-a, --alt"                     "[$(IFS='|'; echo "${ALT_VARIANTS[*]}")|all]"       "  Set window control buttons variant"             "Repeatable. Default is 'normal'"
-  helpify "-t, --theme"                   "[$(IFS='|'; echo "${THEME_VARIANTS[*]}")|all]"     "  Set theme accent color"                         "Repeatable. Default is Tahoe-like theme"
-  helpify "-s, --scheme"                  "[$(IFS='|'; echo "${SCHEME_VARIANTS[*]}")]"        "  Set theme colorscheme style"                    "Repeatable. Default is 'standard'"
+  helpify "-d, --dest"                    "DIR"                                               "  Set destination directory"                       "Default is '${THEME_DIR}'"
+  helpify "-n, --name"                    "NAME"                                              "  Set theme name"                                  "Default is '${THEME_NAME}'"
+  helpify "-o, --opacity"                 "[$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"       "  Set theme opacity variants"                      "Repeatable. Default is all variants"
+  helpify "-c, --color"                   "[$(IFS='|'; echo "${COMMAND_COLOR_VARIANTS[*]}")]" "  Set theme color variants"                        "Repeatable. Default is all variants"
+  helpify "-a, --alt"                     "[$(IFS='|'; echo "${ALT_VARIANTS[*]}")|all]"       "  Set window control buttons variant"              "Repeatable. Default is 'normal'"
+  helpify "-t, --theme"                   "[$(IFS='|'; echo "${THEME_VARIANTS[*]}")|all]"     "  Set theme accent color"                          "Repeatable. Default is Tahoe-like theme"
+  helpify "-s, --scheme"                  "[$(IFS='|'; echo "${SCHEME_VARIANTS[*]}")]"        "  Set theme colorscheme style"                     "Repeatable. Default is 'standard'"
 
+  helpify "-b, --blur"                    ""                                                  "  Install blur verison (more transparent)"         "Blur-my-shell extension required"
   helpify "-l, --libadwaita"              ""                                                  "  Install theme into gtk4.0 config for libadwaita" "Default is dark version"
   helpify "-f, --fixed"                   ""                                                  "  Install fixed accent color version"              "Default is adaptive version"
   helpify "-HD, --highdefinition"         ""                                                  "  Set to High Definition size"                     "Default is laptop size"
@@ -118,6 +119,8 @@ while [[ $# -gt 0 ]]; do
       compact="false"; shift ;;
     -l|--libadwaita)
       libadwaita="true"; shift ;;
+    -b|--blur)
+      blur="true"; shift ;;
     -f|--fixed)
       accent_type="fixed"; shift ;;
     -r|--remove|-u|-uninstall)

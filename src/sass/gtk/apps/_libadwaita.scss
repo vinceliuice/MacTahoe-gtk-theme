@@ -616,10 +616,15 @@ toolbarview.undershoot-bottom scrolledwindow {
 .sidebar-pane,
 .content-pane .sidebar-pane,
 .sidebar-pane .content-pane {
-  background-color: gtkmix($fg_color, $base_color, if($variant == 'light', 2%, 1.5%));
   background-image: linear-gradient(to bottom, rgba(black, 0.03), transparent 80%, rgba(white, 0.03));
   color: $dark_sidebar_fg;
   border-radius: $wm_radius - $container_padding;
+
+  @if $blur == 'false' {
+    background-color: gtkalpha($fg_color, if($variant =='light', 0.02, 0.015));
+  } @else {
+    background-color: transparent;
+  }
 
   flap,
   leaflet,
@@ -640,7 +645,7 @@ toolbarview.undershoot-bottom scrolledwindow {
   &:dir(ltr), &.end:dir(rtl) {
     margin: $container_padding 0 $container_padding $container_padding;
     &, banner > revealer > widget {
-      box-shadow: 2px 3px 12px rgba(black, 0.1), inset 0 0 0 1px $sidebar_highlight_color;
+      box-shadow: 9000px 0 0 9999px $base_color, 2px 3px 12px rgba(black, 0.1), inset 0 0 0 1px $sidebar_highlight_color;
       border-right: none;
     }
   }
@@ -648,7 +653,7 @@ toolbarview.undershoot-bottom scrolledwindow {
   &:dir(rtl), &.end:dir(ltr) {
     margin: $container_padding $container_padding $container_padding 0;
     &, banner > revealer > widget {
-      box-shadow: -2px 3px 12px rgba(black, 0.1), inset 0 0 0 1px $sidebar_highlight_color;
+      box-shadow: -9000px 0 0 9999px $base_color, -2px 3px 12px rgba(black, 0.1), inset 0 0 0 1px $sidebar_highlight_color;
       border-left: none;
     }
   }
@@ -954,16 +959,37 @@ floating-sheet {
                 0 7px 12px $wm_shadow,
                 0 12px 20px $wm_shadow,
                 $wm_outline;
+
+    &.background {
+      background-color: $dialog_bg_color;
+    }
+  }
+}
+
+bottom-sheet {
+  > sheet {
+    border-radius: $wm_radius $wm_radius 0 0;
+
+    &.background {
+      background-color: $dialog_bg_color;
+    }
+
+    > outline {
+      border-radius: $wm_radius $wm_radius 0 0;
+      box-shadow: $wm_outline;
+      border: 1px solid $highlight_color;
+      border-bottom: none;
+    }
   }
 }
 
 dialog.bottom-sheet {
-  &.landscape sheet {
+  &:not(.narrow) sheet {
     margin-left: 30px;
     margin-right: 30px;
 
-    > outline {
-      &.flush-left, &.flush-right, &.flush-left.flush-right {
+    &.flush-left, &.flush-right, &.flush-left.flush-right {
+      > outline {
         box-shadow: $wm_outline;
       }
     }

@@ -3,10 +3,6 @@
 // Nautilus
 //
 
-$nautilus_header_image: image($header_bg);
-$nautilus_header_borders_image: image($header_border);
-$nautilus_borders_color: if($variant=='light', gtkmix(black, $dark_sidebar_bg, 12%), $header_border);
-
 %nautilus_view {
   border-radius: $bd_radius;
   transition: background-color $longer_duration $deceleration_curve;
@@ -38,6 +34,7 @@ $nautilus_borders_color: if($variant=='light', gtkmix(black, $dark_sidebar_bg, 1
 .nautilus-window {
   headerbar > windowhandle > box {
     > widget > box.start > stack > widget > box {
+      margin-left: $container_padding * 2;
       padding: $container_padding / 2;
       border-radius: $circular_radius;
       background-image: $header_button_image;
@@ -65,11 +62,23 @@ $nautilus_borders_color: if($variant=='light', gtkmix(black, $dark_sidebar_bg, 1
 
   .sidebar-pane {
     &:dir(ltr), &.end:dir(rtl) {
-      margin-right: 0;
+      &, banner > revealer > widget {
+        box-shadow: 0 0 0 $container_padding $base_color,
+                    0 32px 0 $container_padding $base_color,
+                    0 -32px 0 $container_padding $base_color,
+                    2px 3px 12px rgba(black, 0.1),
+                    inset 0 0 0 1px $sidebar_highlight_color;
+      }
     }
 
     &:dir(rtl), &.end:dir(ltr) {
-      margin-left: 0;
+      &, banner > revealer > widget {
+        box-shadow: 0 0 0 $container_padding $base_color,
+                    0 32px 0 $container_padding $base_color,
+                    0 -32px 0 $container_padding $base_color,
+                    -2px 3px 12px rgba(black, 0.1),
+                    inset 0 0 0 1px $sidebar_highlight_color;
+      }
     }
 
     placessidebar {
@@ -97,6 +106,14 @@ $nautilus_borders_color: if($variant=='light', gtkmix(black, $dark_sidebar_bg, 1
 
     > separator.horizontal {
       background-color: $header_border;
+    }
+  }
+
+  .content-pane {
+    background-color: $base_color;
+
+    &:backdrop {
+      background-color: $backdrop_color;
     }
   }
 

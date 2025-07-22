@@ -878,6 +878,26 @@ revert_dash_to_dock_theme() {
 }
 
 ###############################################################################
+#                              BLUR MY SHELL                                  #
+###############################################################################
+
+blur_my_shell() {
+  if has_command dbus-launch; then
+    udo dbus-launch dconf write /org/gnome/shell/extensions/blur-my-shell/panel/blur false
+    udo dbus-launch dconf write /org/gnome/shell/extensions/blur-my-shell/applications/blur true
+    udo dbus-launch dconf write /org/gnome/shell/extensions/blur-my-shell/applications/opacity 255
+    udo dbus-launch dconf write /org/gnome/shell/extensions/blur-my-shell/applications/sigma 50
+    udo dbus-launch dconf write /org/gnome/shell/extensions/blur-my-shell/dash-to-dock/blur true
+    udo dbus-launch dconf write /org/gnome/shell/extensions/blur-my-shell/dash-to-dock/brightness 1
+    udo dbus-launch dconf write /org/gnome/shell/extensions/blur-my-shell/dash-to-dock/static-blur false
+    udo dbus-launch dconf write /org/gnome/shell/extensions/blur-my-shell/overview/blur true
+    udo dbus-launch dconf write /org/gnome/shell/extensions/blur-my-shell/overview/style-components 0
+    udo dbus-launch dconf write /org/gnome/shell/extensions/blur-my-shell/appfolder/brightness 1
+    udo dbus-launch dconf write /org/gnome/shell/extensions/blur-my-shell/appfolder/style-dialogs 2
+  fi
+}
+
+###############################################################################
 #                              FLATPAK & SNAP                                 #
 ###############################################################################
 
@@ -920,6 +940,7 @@ gtk_base() {
 
   # Theme base options
   if [[ "${compact}" == 'false' ]]; then
+    prompt -s "Changing Definition mode to HD (Bigger font, Bigger size) ...\n"
     sed $SED_OPT "/\$laptop/s/true/false/"                                      "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   fi
 
@@ -1010,7 +1031,7 @@ customize_theme() {
     sed $SED_OPT "/\$activities/s/default/icon/"                                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
-  # Change panel font color
+  # Change tab style
   if [[ "${monterey}" == 'true' ]]; then
     black_font="true"
     prompt -s "Changing to Monterey style ...\n"
@@ -1024,8 +1045,10 @@ customize_theme() {
     sed $SED_OPT "/\$panel_font/s/white/black/"                                 "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
-  if [[ "${compact}" == 'false' ]]; then
-    prompt -s "Changing Definition mode to HD (Bigger font, Bigger size) ..."
+  if [[ "${blur}" == 'true' ]]; then
+    prompt -s "Changing opacity more transparent for blur version ...\n"
+    blur_my_shell
+    sed $SED_OPT "/\$blur/s/false/true/"                                        "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   if [[ "${scale}" == 'x2' ]]; then

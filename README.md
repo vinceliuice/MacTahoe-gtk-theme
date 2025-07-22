@@ -92,6 +92,9 @@ OPTIONS:
   -s, --scheme [standard|nord]
    Set theme colorscheme style. Repeatable. Default is 'standard'
 
+  -b, --blur 
+   Install blur verison (more transparent). Blur-my-shell extension required
+
   -l, --libadwaita 
    Install theme into gtk4.0 config for libadwaita. Default is dark version
 

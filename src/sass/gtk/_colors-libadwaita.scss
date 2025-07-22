@@ -306,6 +306,8 @@ $dark_5: #000000;
   $menu_fg: gtkcolor(popover_fg_color);
   $menu_bd: if($variant == 'light', gtkalpha(currentColor, 0.08), gtkalpha(currentColor, 0.07));
 
+  $window_bg: gtkcolor(window_bg_color);
+
   // $wm_shadow: gtkcolor(headerbar_shade_color);
   // $wm_shadow_backdrop: gtkcolor(sidebar_shade_color);
   $wm_outline: 0 0 0 2px rgba(black, 0.03), 0 0 0 1px gtkcolor(headerbar_darker_shade_color);
@@ -315,5 +317,7 @@ $dark_5: #000000;
     $bg_color: color-mix(in srgb, gtkcolor(window_bg_color) 96%, transparent);
     $dark_sidebar_bg: color-mix(in srgb, gtkcolor(sidebar_bg_color) 96%, transparent);
     $menu_bg: color-mix(in srgb, gtkcolor(popover_bg_color) 96%, transparent);
+    $dialog_bg_color: color-mix(in srgb, gtkcolor(dialog_bg_color) 96%, transparent);
+    $window_bg: color-mix(in srgb, gtkcolor(window_bg_color) if($blur =='true', 75%, 96%), transparent),
   }
 }

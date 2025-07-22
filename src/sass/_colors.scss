@@ -158,8 +158,8 @@ $header_button_image:               if($variant == 'light', linear-gradient(to b
 $dark_sidebar_bg: white;
 $opacity: 0.96;
 
-@if $trans=='true' {
-  @if $variant=='light' {
+@if $trans == 'true' {
+  @if $variant == 'light' {
     $dark_sidebar_bg:                 rgba(if($scheme == 'nord', #eeeff2, #fefefe), $opacity);
   } @else {
     @if $scheme == 'nord' {
@@ -169,7 +169,7 @@ $opacity: 0.96;
     }
   }
 } @else {
-  @if $variant=='light' {
+  @if $variant == 'light' {
     $dark_sidebar_bg:                 if($scheme == 'nord', #eeeff2, #fefefe);
   } @else {
     @if $scheme == 'nord' {
@@ -187,7 +187,7 @@ $sidebar_theme_color:               gtkalpha(currentColor, 0.08);
 //dialog
 $dialog_bg_color:                   if($variant == 'light', $bg_color, $base_color);
 
-@if $trans=='true' {
+@if $trans == 'true' {
   $dialog_bg_color:                 if($variant == 'light', gtkalpha($bg_color, $opacity), gtkalpha($base_color, $opacity));
 }
 
@@ -288,6 +288,7 @@ $button_shadow: 0 6px 20px rgba(black, if($variant == 'light', 0.1, 0.15)), inse
 $button_hover_shadow: 0 8px 26px rgba(black, if($variant == 'light', 0.15, 0.2)), inset 1px 2px 1px -1px $button_outline, inset -1px -1px 1px 0 $button_outline;
 
 // WM colors
+$window_bg:                         if($trans == 'true', gtkalpha($base_color, if($blur == 'true', $secondary_opacity, $opacity)), $base_color);
 $wm_outline_light:                  0 0 0 2px rgba(black, 0.03), 0 0 0 1px rgba(black, 0.12);
 $wm_outline_dark:                   0 0 0 2px rgba(black, 0.1), 0 0 0 1px rgba(black, 0.75);
 $wm_border:                         if($variant=='light', rgba(black, 0.15), rgba(black, 0.75));
