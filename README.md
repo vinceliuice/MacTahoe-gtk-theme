@@ -195,6 +195,8 @@ Example:
 ./install.sh -b -l            # install blur verison of libadwaita
 ```
 
+<p align="center"> <img src="screenshot02.jpeg"/> </p>
+
 ## <p align="center"> <b> Explore more customization features! </b> </p>
 You can run `./install.sh -h` to explore more customization features we have
 like changing panel opacity, theme opacity (normal and solid variant), window
