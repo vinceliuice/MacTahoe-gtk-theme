@@ -1047,7 +1047,7 @@ customize_theme() {
 
   if [[ "${blur}" == 'true' ]]; then
     prompt -s "Changing opacity more transparent for blur version ...\n"
-    blur_my_shell
+    # blur_my_shell
     sed $SED_OPT "/\$blur/s/false/true/"                                        "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
