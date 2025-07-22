@@ -177,6 +177,24 @@ Example:
 ./install.sh -t all            # install all available theme accents
 ```
 
+## <p align="center"> <b> Blur my shell version </b> </p>
+
+#### - My blur-my-shell settings
+
+<p align="center"> <img src="blur-my-shell.png"/> </p>
+
+#### - Install blur-my-shell version
+
+[blur-my-shell](https://extensions.gnome.org/extension/3193/blur-my-shell)
+
+Parameter: `--blur` `-b` (repeatable)
+
+Example:
+
+```bash
+./install.sh -b -l            # install blur verison of libadwaita
+```
+
 ## <p align="center"> <b> Explore more customization features! </b> </p>
 You can run `./install.sh -h` to explore more customization features we have
 like changing panel opacity, theme opacity (normal and solid variant), window
