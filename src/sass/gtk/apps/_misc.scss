@@ -372,29 +372,6 @@ window.background:not(.solid-csd) {
   }
 }
 
-#combobox.linked {
-  > entry.combo {
-    border: 1px solid $dark_borders_color;
-    border-right: none;
-
-    &:focus {
-      border-color: $entry_highlight;
-      @if $variant == 'dark' { box-shadow: inset 0 0 0 1px $entry_highlight; }
-      @if $variant == 'light' { box-shadow: 0 1px 1px 0 transparent, inset 0 0 0 1px $entry_highlight; }
-
-      + button.combo {
-        border-left-color: $entry_highlight;
-      }
-    }
-
-    &:drop(active) {
-      border-color: $drop_target_color;
-      @if $variant == 'dark' { box-shadow: inset 0 0 0 1px $drop_target_color; }
-      @if $variant == 'light' { box-shadow: 0 1px 1px 0 transparent, inset 0 0 0 1px $drop_target_color; }
-    }
-  }
-}
-
 // Fix libreoffice toolbar button background color
 toolbar.toolbar {
   box:not(.linked) > button {
