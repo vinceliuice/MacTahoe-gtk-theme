@@ -91,9 +91,7 @@
       background-image: $header_button_image;
       box-shadow: $button_shadow;
       background-image: $header_button_image, image($borders_color);
-      background-size:
-        auto,
-        1px 18px;
+      background-size: auto, 1px 18px;
       background-position: center center;
       background-repeat: no-repeat;
       border-spacing: 4px;
