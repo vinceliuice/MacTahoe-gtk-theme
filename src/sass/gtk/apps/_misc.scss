@@ -812,3 +812,36 @@ window.background:not(.csd) {
     }
   }
 }
+
+//
+// Gsconnect
+//
+
+window.background.csd {
+  > stack > grid.horizontal > list {
+    background-color: transparent;
+    padding: $container_padding;
+
+    > row {
+      border-radius: $bt_radius;
+
+      + row {
+        margin-top: $container_padding / 2;
+      }
+    }
+
+    > separator {
+      margin-top: $container_padding;
+      margin-bottom: $container_padding / 2;
+    }
+  }
+
+  > stack > grid > stack frame {
+    > border { border: none; }
+    > list {
+      @extend %circular_list;
+
+      > row { border-radius: $mn_radius; }
+    }
+  }
+}

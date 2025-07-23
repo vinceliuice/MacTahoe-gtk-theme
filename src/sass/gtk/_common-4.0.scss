@@ -3937,17 +3937,17 @@ $list_background: if($variant == 'light', rgba(black, 0.02), rgba(black, 0.12));
   border: none;
 
   &:first-child {
-    border-top-left-radius: $mn_radius + 2px;
-    border-top-right-radius: $mn_radius + 2px;
+    border-top-left-radius: $mn_radius + 1px;
+    border-top-right-radius: $mn_radius + 1px;
   }
 
   &:last-child { // Not use ?
-    border-bottom-left-radius: $mn_radius + 2px;
-    border-bottom-right-radius: $mn_radius + 2px;
+    border-bottom-left-radius: $mn_radius + 1px;
+    border-bottom-right-radius: $mn_radius + 1px;
   }
 
   &:only-child {
-    border-radius: $mn_radius + 2px;
+    border-radius: $mn_radius + 1px;
   }
 
   & + row {

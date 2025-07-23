@@ -66,37 +66,38 @@ $side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light',
 }
 
 $list_shadow: if($variant == 'light', none, inset 0 0 8px rgba(black, 0.03));
+$list_border: if($variant =='light', rgba(black, 0.05), rgba(black, 0.15));
+$list_background: if($variant =='light', rgba(black, 0.02), rgba(black, 0.12));
 
 %circular_list {
-  border-radius: $bd_radius;
+  border-radius: $mn_radius;
   box-shadow: $list_shadow;
-  background-color: if($variant == 'light', rgba(black, 0.03), rgba(white, 0.05));
-  border: 1px solid $dark_borders_color;
+  background-color: $list_background;
+  border: 1px solid $list_border;
   color: $text_color;
   background-clip: border-box;
 
-  @if $scheme == 'nord' {
-    background-color: if($variant == 'light', rgba(#2e3440, 0.06), rgba(#4c566a, 0.25));
+  > separator {
+    min-height: 0;
+    background-color: transparent;
   }
-
-  > separator { background: none; min-height: 0; }
 }
 
 %circular_row {
   border: none;
 
   &:first-child {
-    border-top-left-radius: $mn_radius + 2px;
-    border-top-right-radius: $mn_radius + 2px;
+    border-top-left-radius: $mn_radius + 1px;
+    border-top-right-radius: $mn_radius + 1px;
   }
 
   &:last-child { // Not use ?
-    border-bottom-left-radius: $mn_radius + 2px;
-    border-bottom-right-radius: $mn_radius + 2px;
+    border-bottom-left-radius: $mn_radius + 1px;
+    border-bottom-right-radius: $mn_radius + 1px;
   }
 
   &:only-child {
-    border-radius: $mn_radius + 2px;
+    border-radius: $mn_radius + 1px;
   }
 
   & + row {
@@ -741,14 +742,6 @@ button {
       transition-duration: 350ms;
 
       &:active { transition: $button_transition; }
-    }
-
-    &.toggle.popup:not(.colored):not(.circular) {
-      min-width: $menuitem_size - 8px;
-    }
-
-    &.toggle.popup.colored {
-      min-width: $menuitem_size - 4px;
     }
   }
 
@@ -3424,6 +3417,11 @@ row {
 
   &.activatable {
     @extend %row_activatable;
+  }
+
+  spinbutton {
+    margin-top: $container_padding;
+    margin-bottom: $container_padding;
   }
 }
 
