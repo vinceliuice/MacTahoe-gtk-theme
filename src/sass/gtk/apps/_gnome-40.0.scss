@@ -1,4 +1,3 @@
-
 //
 // Nautilus
 //
@@ -25,9 +24,13 @@
     color: $fg_color;
     background-color: $visit_color;
 
-    &:hover { background-color: $track_color; }
+    &:hover {
+      background-color: $track_color;
+    }
 
-    &:active { background-color: $active_color; }
+    &:active {
+      background-color: $active_color;
+    }
   }
 }
 
@@ -51,7 +54,9 @@
     background-color: transparent;
 
     columnview.view,
-    statuspage.view { background-color: transparent; }
+    statuspage.view {
+      background-color: transparent;
+    }
 
     listview.view {
       padding: 0;
@@ -76,7 +81,8 @@
   }
 }
 
-.nautilus-window, #NautilusFileChooser {
+.nautilus-window,
+#NautilusFileChooser {
   headerbar > windowhandle > box {
     > widget > box.start > stack > widget > box {
       margin-left: $container_padding * 2;
@@ -85,7 +91,9 @@
       background-image: $header_button_image;
       box-shadow: $button_shadow;
       background-image: $header_button_image, image($borders_color);
-      background-size: auto, 1px 18px;
+      background-size:
+        auto,
+        1px 18px;
       background-position: center center;
       background-repeat: no-repeat;
       border-spacing: 4px;
@@ -105,26 +113,34 @@
     }
   }
 
-  overlay-split-view.view { background-color: transparent; }
+  overlay-split-view.view {
+    background-color: transparent;
+  }
 
   .sidebar-pane {
-    &:dir(ltr), &.end:dir(rtl) {
-      &, banner > revealer > widget {
-        box-shadow: 0 0 0 $container_padding $base_color,
-                    0 32px 0 $container_padding $base_color,
-                    0 -32px 0 $container_padding $base_color,
-                    2px 3px 12px rgba(black, 0.1),
-                    inset 0 0 0 1px $sidebar_highlight_color;
+    &:dir(ltr),
+    &.end:dir(rtl) {
+      &,
+      banner > revealer > widget {
+        box-shadow:
+          0 0 0 $container_padding $base_color,
+          0 32px 0 $container_padding $base_color,
+          0 -32px 0 $container_padding $base_color,
+          2px 3px 12px rgba(black, 0.1),
+          inset 0 0 0 1px $sidebar_highlight_color;
       }
     }
 
-    &:dir(rtl), &.end:dir(ltr) {
-      &, banner > revealer > widget {
-        box-shadow: 0 0 0 $container_padding $base_color,
-                    0 32px 0 $container_padding $base_color,
-                    0 -32px 0 $container_padding $base_color,
-                    -2px 3px 12px rgba(black, 0.1),
-                    inset 0 0 0 1px $sidebar_highlight_color;
+    &:dir(rtl),
+    &.end:dir(ltr) {
+      &,
+      banner > revealer > widget {
+        box-shadow:
+          0 0 0 $container_padding $base_color,
+          0 32px 0 $container_padding $base_color,
+          0 -32px 0 $container_padding $base_color,
+          -2px 3px 12px rgba(black, 0.1),
+          inset 0 0 0 1px $sidebar_highlight_color;
       }
     }
 
@@ -140,10 +156,10 @@
 
           &.sidebar-row {
             .sidebar-icon {
-              @if $gnome_version == 'old' {
-                color: if($variant == 'light', $selected_bg_color, lighten($selected_bg_color, 20%));
+              @if $gnome_version == "old" {
+                color: if($variant == "light", $selected_bg_color, lighten($selected_bg_color, 20%));
               } @else {
-                color: if($variant == 'light', $selected_bg_color, color-mix(in srgb, #ffffff 20%, $selected_bg_color));
+                color: if($variant == "light", $selected_bg_color, color-mix(in srgb, #ffffff 20%, $selected_bg_color));
               }
             }
           }
@@ -167,12 +183,15 @@
 
 // Floating Bar
 .floating-bar {
-  padding: 2px;
+  padding: $container_padding / 2;
+  min-height: 24px;
   background-color: $selected_bg_color;
   color: $selected_fg_color;
   border-radius: $circular_radius;
   margin: $container_padding;
-  box-shadow: $shadow_5, inset 0 0 0 1px $highlight_color;
+  box-shadow:
+    $shadow_5,
+    inset 0 0 0 1px $highlight_color;
 
   > button.circular.flat {
     border-radius: $circular_radius;
@@ -190,10 +209,13 @@
   }
 }
 
-#NautilusQueryEditor { // search entry
+#NautilusQueryEditor {
+  // search entry
   padding-right: $container_padding / 2;
 
-  > image, > box, > text {
+  > image,
+  > box,
+  > text {
     margin: 0;
   }
 
@@ -235,7 +257,8 @@
     &.current-dir {
       color: $header_fg;
 
-      &:hover, &:active {
+      &:hover,
+      &:active {
         background: none;
         box-shadow: none;
       }
@@ -245,7 +268,7 @@
   > menubutton {
     margin: 0;
 
-    > button { 
+    > button {
       min-height: 24px;
       min-width: 24px;
       padding: $container_padding / 2;
@@ -273,7 +296,8 @@ navigation-view-page > toolbarview > scrolledwindow > viewport > clamp {
 
 window.background.csd {
   > contents,
-  > widget { // 44.0
+  > widget {
+    // 44.0
     > leaflet.unfolded > box {
       > headerbar {
         @extend %side_headerbar_left;
@@ -299,10 +323,14 @@ window.background.csd {
           }
         }
 
-        > box > list.navigation-sidebar { background-color: $dark_sidebar_bg; }
+        > box > list.navigation-sidebar {
+          background-color: $dark_sidebar_bg;
+        }
       }
 
-      > stack.background { background-color: $base_color; }
+      > stack.background {
+        background-color: $base_color;
+      }
     }
   }
 }
@@ -314,7 +342,10 @@ preferencesgroup > box {
     outline-offset: 0;
     border-radius: $bt_radius + $container_padding / 2;
 
-    &, &:hover, &:active, &:checked {
+    &,
+    &:hover,
+    &:active,
+    &:checked {
       background: none;
       border: none;
       box-shadow: none;
@@ -353,9 +384,11 @@ preferencesgroup > box {
     }
   }
 
-  .cutout-button { background-color: $dialog_bg_color; }
+  .cutout-button {
+    background-color: $dialog_bg_color;
+  }
 
-  @if $gnome_version == 'new' {
+  @if $gnome_version == "new" {
     button.accent-button {
       min-height: 24px;
       min-width: 24px;
@@ -367,11 +400,23 @@ preferencesgroup > box {
       box-shadow: none;
       border: none;
 
-      &:hover { box-shadow: 0 0 0 3px $divider_color; }
+      &:hover {
+        box-shadow: 0 0 0 3px $divider_color;
+      }
 
-      &:checked { box-shadow: 0 0 0 3px var(--accent-bg-color); }
+      &:checked {
+        box-shadow: 0 0 0 3px var(--accent-bg-color);
+      }
 
-      &.blue, &.teal, &.green, &.yellow, &.orange, &.red, &.pink, &.purple, &.slate {
+      &.blue,
+      &.teal,
+      &.green,
+      &.yellow,
+      &.orange,
+      &.red,
+      &.pink,
+      &.purple,
+      &.slate {
         --accent-color: oklab(from var(--accent-bg-color) var(--standalone-color-oklab));
       }
 
@@ -414,19 +459,20 @@ preferencesgroup > box {
   }
 }
 
-
 //
 // Gnome Calendar / Gnome Contacts
 //
 
 window.background {
   > contents > toastoverlay > leaflet,
-  > widget > toastoverlay > leaflet { // 44.0
+  > widget > toastoverlay > leaflet {
+    // 44.0
     > box {
       background-color: $base_color;
 
       > headerbar {
-        &, &:backdrop {
+        &,
+        &:backdrop {
           background: none;
           border: none;
         }
@@ -440,7 +486,8 @@ window.background {
         }
       }
 
-      > .view, list:not(.boxed-list) {
+      > .view,
+      list:not(.boxed-list) {
         background-color: transparent;
       }
 
@@ -448,19 +495,22 @@ window.background {
         padding: $container_padding;
         border-left: 1px solid $borders_color;
 
-        &, & > text {
+        &,
+        & > text {
           background: none;
         }
       }
     }
   }
 
-  &.maximized, &.tiled {
+  &.maximized,
+  &.tiled {
     > contents > toastoverlay > leaflet,
     > widget > toastoverlay > leaflet {
       > box {
         > headerbar {
-          &, &:backdrop {
+          &,
+          &:backdrop {
             background: none;
             border: none;
           }
@@ -474,7 +524,7 @@ datechooser {
   .current-week {
     background-color: $fill_color;
   }
-  
+
   button.circular.day {
     border: none;
     box-shadow: none;
@@ -510,7 +560,8 @@ menubutton.flat.popup.sources-button {
       font-weight: normal;
     }
 
-    .title, .subtitle {
+    .title,
+    .subtitle {
       padding: 2px 0 2px $container_padding;
     }
 
@@ -541,7 +592,9 @@ menubutton.flat.popup.sources-button {
 // Calculator
 //
 
-.history-view { background-color: $base_color; }
+.history-view {
+  background-color: $base_color;
+}
 
 .card {
   &.display-container {
@@ -783,7 +836,7 @@ flowboxchild.card:not(.category-tile) {
     }
 
     &:active {
-      background: linear-gradient(180deg, shade(#ce8cd7, .95) 0%, shade(#2861c6, .95) 100%);
+      background: linear-gradient(180deg, shade(#ce8cd7, 0.95) 0%, shade(#2861c6, 0.95) 100%);
       color: white;
     }
   }
@@ -798,7 +851,7 @@ flowboxchild.card:not(.category-tile) {
     }
 
     &:active {
-      background-color: shade(#5e5c64, .95);
+      background-color: shade(#5e5c64, 0.95);
       color: white;
     }
   }
@@ -813,7 +866,7 @@ flowboxchild.card:not(.category-tile) {
     }
 
     &:active {
-      background: linear-gradient(180deg, shade(#2ec27e, .95) 30%, shade(#27a66c, .95) 100%);
+      background: linear-gradient(180deg, shade(#2ec27e, 0.95) 30%, shade(#27a66c, 0.95) 100%);
       color: white;
     }
   }
@@ -828,7 +881,7 @@ flowboxchild.card:not(.category-tile) {
     }
 
     &:active {
-      background: linear-gradient(75deg, shade(#f9e2a7, .97) 0%, shade(#eb5ec3, .95) 50%, shade(#6d53e0, 1.07) 100%);
+      background: linear-gradient(75deg, shade(#f9e2a7, 0.97) 0%, shade(#eb5ec3, 0.95) 50%, shade(#6d53e0, 1.07) 100%);
       color: #393484;
     }
   }
@@ -843,7 +896,7 @@ flowboxchild.card:not(.category-tile) {
     }
 
     &:active {
-      background: linear-gradient(90deg, shade(#ef4e9b, .95) 0%, shade(#f77466, .95) 100%);
+      background: linear-gradient(90deg, shade(#ef4e9b, 0.95) 0%, shade(#f77466, 0.95) 100%);
       color: #fac7d1;
     }
   }
@@ -851,24 +904,28 @@ flowboxchild.card:not(.category-tile) {
   &.category-work {
     padding: 1px; /* FIXME: work around https://gitlab.gnome.org/GNOME/gtk/-/issues/4324 */
     color: #1c71d8;
-    background-color:#fdf8d7;
+    background-color: #fdf8d7;
     background-image: linear-gradient($borders_color 1px, transparent 1px),
-             linear-gradient(90deg, $borders_color 1px, transparent 1px);
-    background-size: 10px 10px, 10px 10px;
-    background-position: -1px -4px, center -1px;
+      linear-gradient(90deg, $borders_color 1px, transparent 1px);
+    background-size:
+      10px 10px,
+      10px 10px;
+    background-position:
+      -1px -4px,
+      center -1px;
 
     &:hover {
       color: #1c71d8;
       background-color: lighten(#fdf8d7, 5%);
       background-image: linear-gradient($borders_color 1px, transparent 1px),
-               linear-gradient(90deg, $borders_color 1px, transparent 1px);
+        linear-gradient(90deg, $borders_color 1px, transparent 1px);
     }
 
     &:active {
       color: #1c71d8;
       background-color: darken(#fdf8d7, 5%);
       background-image: linear-gradient($borders_color 1px, transparent 1px),
-               linear-gradient(90deg, $borders_color 1px, transparent 1px);
+        linear-gradient(90deg, $borders_color 1px, transparent 1px);
     }
   }
 }
@@ -894,7 +951,8 @@ clamp.large .category-tile:not(.category-tile-iconless) {
 }
 
 .application-details-infobar {
-  &, &.info {
+  &,
+  &.info {
     background-color: $fill_color;
     color: $fg_color;
     border: 1px solid $borders_color;
@@ -908,9 +966,15 @@ clamp.large .category-tile:not(.category-tile-iconless) {
 }
 
 @keyframes install-progress-unknown-move {
-  0% { background-position: 0%; }
-  50% { background-position: 100%; }
-  100% { background-position: 0%; }
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
+  }
 }
 
 .application-details-description .button {
@@ -926,13 +990,17 @@ clamp.large .category-tile:not(.category-tile-iconless) {
   transition: none;
 }
 
-.install-progress:dir(rtl) { background-position: 100% bottom; }
+.install-progress:dir(rtl) {
+  background-position: 100% bottom;
+}
 
 .review-row > * {
   margin: $container_padding * 2;
 }
 
-.review-row button { font-size: smaller; }
+.review-row button {
+  font-size: smaller;
+}
 
 .review-row .vote-buttons button {
   margin-right: -1px;
@@ -1038,12 +1106,16 @@ scrolledwindow.list-page > viewport > clamp > box {
   margin-top: $container_padding * 3;
 }
 
-.section > label:not(:first-child) { margin-top: $container_padding; }
+.section > label:not(:first-child) {
+  margin-top: $container_padding;
+}
 
-.section > box:not(:first-child) { margin-top: $container_padding * 2; }
+.section > box:not(:first-child) {
+  margin-top: $container_padding * 2;
+}
 
 clamp.status-page {
-	margin: $container_padding * 6 $container_padding * 2;
+  margin: $container_padding * 6 $container_padding * 2;
 }
 
 clamp.status-page .iconbox {
@@ -1098,7 +1170,7 @@ app-context-bar {
 
   &.horizontal .context-tile,
   &.vertical box:first-child .context-tile {
-  	border-top: none;
+    border-top: none;
   }
 
   > box:not(:first-child) > button.flat {
@@ -1138,8 +1210,8 @@ carousel.card {
   &.large {
     font-size: 24px;
     padding: 16px;
-    min-width: 24px;  /* 60px minus the left and right padding */
-    min-height: 24px;  /* 60px minus the top and bottom padding */
+    min-width: 24px; /* 60px minus the left and right padding */
+    min-height: 24px; /* 60px minus the top and bottom padding */
   }
 
   &.wide-image image {
@@ -1147,14 +1219,17 @@ carousel.card {
     margin-bottom: -28px;
   }
 
-  image { -gtk-icon-style: symbolic; }
+  image {
+    -gtk-icon-style: symbolic;
+  }
 
   &.grey {
     color: $fg_color;
     background-color: $divider_color;
   }
 
-  &.green, &.details-rating-0 {
+  &.green,
+  &.details-rating-0 {
     color: darken($theme_color_green, 15%);
     background-color: gtkalpha($theme_color_green, 0.15);
   }
@@ -1165,17 +1240,19 @@ carousel.card {
     background-color: gtkalpha($theme_color_blue, 0.15);
   }
 
-  &.yellow, &.details-rating-12 {
+  &.yellow,
+  &.details-rating-12 {
     color: darken($theme_color_yellow, 15%);
     background-color: gtkalpha($theme_color_yellow, 0.15);
   }
 
   &.details-rating-15 {
     color: $theme_color_orange;
-    background-color: gtkalpha($theme_color_orange, .15);
+    background-color: gtkalpha($theme_color_orange, 0.15);
   }
 
-  &.red, &.details-rating-18 {
+  &.red,
+  &.details-rating-18 {
     color: darken($theme_color_red, 15%);
     background-color: gtkalpha($theme_color_red, 0.15);
   }
@@ -1199,10 +1276,18 @@ window.narrow .app-developer {
   font-feature-settings: "tnum";
 }
 
-scrolledwindow.fake-adw-status-page > viewport > box { margin: $container_padding * 6 $container_padding * 2; }
-scrolledwindow.fake-adw-status-page > viewport > box > clamp:not(:last-child) > box { margin-bottom: $container_padding * 6; }
-scrolledwindow.fake-adw-status-page > viewport > box > clamp > box > .icon:not(:last-child) { margin-bottom: $container_padding * 6; }
-scrolledwindow.fake-adw-status-page > viewport > box > clamp > box > .title:not(:last-child) { margin-bottom: $container_padding * 2; }
+scrolledwindow.fake-adw-status-page > viewport > box {
+  margin: $container_padding * 6 $container_padding * 2;
+}
+scrolledwindow.fake-adw-status-page > viewport > box > clamp:not(:last-child) > box {
+  margin-bottom: $container_padding * 6;
+}
+scrolledwindow.fake-adw-status-page > viewport > box > clamp > box > .icon:not(:last-child) {
+  margin-bottom: $container_padding * 6;
+}
+scrolledwindow.fake-adw-status-page > viewport > box > clamp > box > .title:not(:last-child) {
+  margin-bottom: $container_padding * 2;
+}
 
 window.info scrollbar.vertical {
   margin-top: 48px;
@@ -1237,17 +1322,26 @@ row.app label.warning {
 
 // Ensure the spinner is hidden before the animation is triggered.
 @keyframes pre-delay {
-  from { opacity: 0; }
-  to { opacity: 0; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes fade-in {
-  from { filter: opacity(0%); }
+  from {
+    filter: opacity(0%);
+  }
 }
 
 /* Give a fade-in animation to spinners. */
 spinner.fade-in:checked {
-  animation: pre-delay 0.5s linear 1, fade-in 1s linear 1, spin 1s linear infinite;
+  animation:
+    pre-delay 0.5s linear 1,
+    fade-in 1s linear 1,
+    spin 1s linear infinite;
   animation-delay: 0s, 0.5s, 0.5s;
 }
 
@@ -1288,7 +1382,10 @@ window.background.csd {
 //
 
 popover.background.global-search {
-  > arrow, > contents { padding: 0; }
+  > arrow,
+  > contents {
+    padding: 0;
+  }
 }
 
 popover.background.pages-popover {
@@ -1316,7 +1413,7 @@ panelresizer .top-bar {
   border: none;
   border-bottom: 1px solid $borders_color;
 
-  @if $gnome_version == 'old' {
+  @if $gnome_version == "old" {
     background-color: gtkmix(black, $base_color, 6%);
 
     &:backdrop {
@@ -1346,7 +1443,9 @@ panelresizer .top-bar {
 }
 
 panelframeswitcher:not(.vertical) {
-  &.frameheader.header { padding: 0 $base_padding; }
+  &.frameheader.header {
+    padding: 0 $base_padding;
+  }
 
   > button.toggle.image-button {
     border: none;
@@ -1398,7 +1497,11 @@ panelwidget entry.statusbar {
   button.toggle {
     padding: 0;
 
-    &, &:hover, &:focus, &:active, &:checked {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &:checked {
       background: none;
       outline: none;
       border: none;
@@ -1436,7 +1539,9 @@ popover.details-popover {
   .actions {
     border-spacing: 6px;
 
-    > button { padding: 8px; }
+    > button {
+      padding: 8px;
+    }
   }
 }
 
@@ -1486,21 +1591,25 @@ dialog-host > widget > widget > toolbarview {
 // Chrome
 //
 
-$chrome_bg_color: if($variant == 'light', #dedede, #242424);
-$chrome_fg_color: if($variant == 'light', #242424, #dedede);
+$chrome_bg_color: if($variant == "light", #dedede, #242424);
+$chrome_fg_color: if($variant == "light", #242424, #dedede);
 
 window.background.chromium {
-  box-shadow: 0 12px 20px rgba(black, 0.35),
-              0 0 0 1px rgba(black, 0.75);
+  box-shadow:
+    0 12px 20px rgba(black, 0.35),
+    0 0 0 1px rgba(black, 0.75);
 
   &:backdrop {
     transition: $shadow_transition;
-    box-shadow: 0 7px 12px rgba(black, 0.15),
-                0 0 0 1px rgba(black, 0.65);
+    box-shadow:
+      0 7px 12px rgba(black, 0.15),
+      0 0 0 1px rgba(black, 0.65);
   }
 
-  &, headerbar {
-    &, &:backdrop {
+  &,
+  headerbar {
+    &,
+    &:backdrop {
       background-color: $chrome_bg_color;
       color: $chrome_fg_color;
     }
@@ -1512,7 +1621,8 @@ window.background.chromium {
     box-shadow: inset 0 1px rgba(white, 0.1);
     border-radius: $wm_radius $wm_radius 0 0;
 
-    button.titlebutton { // title-buttons
+    button.titlebutton {
+      // title-buttons
       // define global titlebutton class sizing
       min-width: 22px;
       min-height: 22px;
@@ -1537,7 +1647,8 @@ window.background.chromium {
   }
 
   // internal region of toolbar's entry widget
-  > textview.view, textview {
+  > textview.view,
+  textview {
     background-color: gtkalpha(currentColor, 0.1);
     color: $chrome_fg_color;
   }
