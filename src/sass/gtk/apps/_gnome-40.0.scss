@@ -1544,6 +1544,16 @@ popover.details-popover {
 }
 
 //
+// Gnome shortcuts
+//
+
+window.shortcuts {
+  headerbar > windowhandle {
+    padding: 0;
+  }
+}
+
+//
 // Ptyxis
 //
 

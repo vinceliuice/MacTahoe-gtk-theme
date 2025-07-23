@@ -1996,12 +1996,12 @@ headerbar {
   }
 
   .title {
-    padding: 2px $container_padding * 2;
+    padding: 0 $container_padding * 2;
   }
 
   .subtitle {
     font-size: smaller;
-    padding: 2px $container_padding * 2;
+    padding: 0 $container_padding * 2;
     margin-top: -3px;
     @extend %dim-label;
   }
