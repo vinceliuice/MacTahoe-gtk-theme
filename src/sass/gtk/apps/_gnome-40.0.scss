@@ -84,7 +84,8 @@
 .nautilus-window,
 #NautilusFileChooser {
   headerbar > windowhandle > box {
-    > widget > box.start > stack > widget > box {
+    > widget > box.start > stack > widget > box,
+    > widget > box.start > box > stack > widget > box {
       margin-left: $container_padding * 2;
       padding: $container_padding / 2;
       border-radius: $circular_radius;

@@ -38,7 +38,7 @@ $toggle_checked_bg_color: rgba(white, 0.15);
   background-color: $toggle_bg_color !important;
   border-radius: $circular_radius;
   color: white;
-  padding: 0 $base_padding * 3;
+  padding: $base_padding * 3 !important;
 
   &:hover {
     background-color: $toggle_hover_bg_color !important;
@@ -89,7 +89,7 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 .quick-menu-toggle {
   background-color: $toggle_bg_color !important;
   border-radius: $circular_radius;
-  padding: $base_padding 0;
+  padding: $base_padding 0 !important;
 
   &:hover {
     background-color: $toggle_hover_bg_color !important;
@@ -106,6 +106,7 @@ $toggle_checked_bg_color: rgba(white, 0.15);
   & .quick-toggle {
     min-width: auto;
     max-width: auto;
+    padding: $base_padding * 2 0 !important;
 
     &, &:hover, &:active, &:checked {
       background: none !important;
@@ -146,7 +147,7 @@ $toggle_checked_bg_color: rgba(white, 0.15);
     padding: 0;
     min-width: 2.4em;
     min-height: 2.4em;
-    margin: 1em;
+    margin: 1.1em;
     border-radius: $circular_radius;
     border: none;
     color: white;
@@ -160,11 +161,6 @@ $toggle_checked_bg_color: rgba(white, 0.15);
     &:active {
       background-color: $toggle_active_bg_color;
       color: white;
-    }
-
-    &:checked {
-      background-color: white !important;
-      color: $primary_color;
     }
 
     &:ltr {
