@@ -642,21 +642,44 @@ toolbarview.undershoot-bottom scrolledwindow {
     }
   }
 
-  &:dir(ltr), &.end:dir(rtl) {
+  &:dir(ltr) {
     margin: $container_padding 0 $container_padding $container_padding;
+  }
 
+  &:dir(rtl) {
+    margin: $container_padding $container_padding $container_padding 0;
+  }
+
+  &:dir(ltr) {
     &, banner > revealer > widget {
       box-shadow: 2px 3px 12px rgba(black, 0.1), inset 0 0 0 1px $sidebar_highlight_color;
       border-right: none;
     }
   }
 
-  &:dir(rtl), &.end:dir(ltr) {
-    margin: $container_padding $container_padding $container_padding 0;
-
+  &:dir(rtl) {
     &, banner > revealer > widget {
       box-shadow: -2px 3px 12px rgba(black, 0.1), inset 0 0 0 1px $sidebar_highlight_color;
       border-left: none;
+    }
+  }
+
+  &.end:dir(rtl), &.end:dir(ltr) {
+    margin: 0;
+    border-radius: 0;
+  }
+
+  &.end:dir(rtl) {
+    &, banner > revealer > widget {
+      box-shadow: none;
+      border-right: 1px solid $header_border;
+    }
+  }
+
+  &.end:dir(ltr) {
+    &, banner > revealer > widget {
+      box-shadow: none;
+      border-left: 1px solid $header_border;
     }
   }
 
