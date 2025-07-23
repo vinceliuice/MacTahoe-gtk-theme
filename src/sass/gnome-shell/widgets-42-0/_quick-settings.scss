@@ -103,7 +103,7 @@ $toggle_checked_bg_color: rgba(white, 0.15);
     background-color: $toggle_checked_bg_color !important;
   }
 
-  .quick-toggle-arrow {
+  & .quick-toggle {
     min-width: auto;
     max-width: auto;
 
@@ -140,6 +140,42 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 
     &:ltr:last-child { border-radius: $circular_radius; }
     &:rtl:last-child { border-radius: $circular_radius; }
+  }
+
+  .quick-toggle-arrow {
+    padding: 0;
+    min-width: 2.4em;
+    min-height: 2.4em;
+    margin: 1em;
+    border-radius: $circular_radius;
+    border: none;
+    color: white;
+    background-color: transparent;
+
+    &:hover {
+      background-color: $toggle_hover_bg_color;
+      color: white;
+    }
+
+    &:active {
+      background-color: $toggle_active_bg_color;
+      color: white;
+    }
+
+    &:checked {
+      background-color: white !important;
+      color: $primary_color;
+    }
+
+    &:ltr {
+      border-radius: $circular_radius;
+      border-left-width: 0;
+    }
+
+    &:rtl {
+      border-radius: $circular_radius;
+      border-right-width: 0;
+    }
   }
 }
 
