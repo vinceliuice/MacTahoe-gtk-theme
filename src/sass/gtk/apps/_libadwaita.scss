@@ -620,10 +620,10 @@ toolbarview.undershoot-bottom scrolledwindow {
   color: $dark_sidebar_fg;
   border-radius: $wm_radius - $container_padding;
 
-  @if $blur == 'false' {
-    background-color: gtkalpha($fg_color, if($variant =='light', 0.02, 0.015));
-  } @else {
+  @if $blur == 'true' or $trans == 'true' {
     background-color: transparent;
+  } @else {
+    background-color: gtkalpha($fg_color, if($variant =='light', 0.02, 0.015));
   }
 
   flap,
@@ -644,6 +644,7 @@ toolbarview.undershoot-bottom scrolledwindow {
 
   &:dir(ltr), &.end:dir(rtl) {
     margin: $container_padding 0 $container_padding $container_padding;
+
     &, banner > revealer > widget {
       box-shadow: 2px 3px 12px rgba(black, 0.1), inset 0 0 0 1px $sidebar_highlight_color;
       border-right: none;
@@ -652,26 +653,29 @@ toolbarview.undershoot-bottom scrolledwindow {
 
   &:dir(rtl), &.end:dir(ltr) {
     margin: $container_padding $container_padding $container_padding 0;
+
     &, banner > revealer > widget {
       box-shadow: -2px 3px 12px rgba(black, 0.1), inset 0 0 0 1px $sidebar_highlight_color;
       border-left: none;
     }
   }
 
-  &:first-child {
-    &:dir(ltr),
-    &.end:dir(rtl) {
-      &, banner > revealer > widget {
-        box-shadow: 9000px 0 0 9999px $base_color, 2px 3px 12px rgba(black, 0.1), inset 0 0 0 1px $sidebar_highlight_color;
-        border-right: none;
+  @if $trans == 'true' {
+    &:first-child {
+      &:dir(ltr),
+      &.end:dir(rtl) {
+        &, banner > revealer > widget {
+          box-shadow: 9000px 0 0 9999px $base_color, 2px 3px 12px rgba(black, 0.1), inset 0 0 0 1px $sidebar_highlight_color;
+          border-right: none;
+        }
       }
-    }
-
-    &:dir(rtl),
-    &.end:dir(ltr) {
-      &, banner > revealer > widget {
-        box-shadow: -9000px 0 0 9999px $base_color, -2px 3px 12px rgba(black, 0.1), inset 0 0 0 1px $sidebar_highlight_color;
-        border-left: none;
+  
+      &:dir(rtl),
+      &.end:dir(ltr) {
+        &, banner > revealer > widget {
+          box-shadow: -9000px 0 0 9999px $base_color, -2px 3px 12px rgba(black, 0.1), inset 0 0 0 1px $sidebar_highlight_color;
+          border-left: none;
+        }
       }
     }
   }
