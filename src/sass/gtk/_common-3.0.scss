@@ -2782,6 +2782,51 @@ radio {
   margin: 3px;
   padding: 1px;
   @extend %check_and_radio;
+
+  menu > menuitem & {
+    padding: 0;
+    margin: 0;
+    transition: none;
+
+    &:hover {
+      background-color: rgba($selected_fg_color, 0.25);
+      transition: none;
+    }
+
+    &:checked,
+    &:indeterminate {
+      &:hover,
+      &:active {
+        color: $selected_bg_color;
+        background-color: rgba($selected_fg_color, 0.75);
+      }
+    }
+  }
+
+  treeview.view & {
+    background-image: image($button_bg);
+
+    &:hover {
+      background-image: image($button_hover_bg);
+    }
+
+    &:active {
+      background-image: image($button_active_bg);
+    }
+
+    &:disabled {
+      background-image: image($button_disabled_bg);
+    }
+
+    &:selected {
+      &:checked, &:indeterminate {
+        &, &:hover, &:active {
+          color: $selected_bg_color;
+          background-image: image(rgba($selected_fg_color, 0.65));
+        }
+      }
+    }
+  }
 }
 
 //
