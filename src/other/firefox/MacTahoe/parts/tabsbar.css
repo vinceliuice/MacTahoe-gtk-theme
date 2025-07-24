@@ -10,7 +10,7 @@
 
 #TabsToolbar {
 	min-height: 36px !important;
-	padding-bottom: 6px !important;
+	margin-bottom: 6px !important;
 }
 
 #TabsToolbar #tabbrowser-tabs,
@@ -42,9 +42,18 @@
 	width: 8px !important;
 }
 
+#tabbrowser-tabs {
+  &[orient="horizontal"] {
+    /* Make it easier to drag tabs by expanding the drag area downwards. */
+    &[movingtab] {
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
+    }
+  }
+}
+
 #TabsToolbar #tabbrowser-tabs {
 	background: var(--gnome-tabbar-tab-background) !important;
-	padding: 0 !important;
 	border-radius: 999px !important;
 }
 
