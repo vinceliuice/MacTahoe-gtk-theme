@@ -549,7 +549,7 @@ config_gtk4() {
 }
 
 reset_gtk_base() {
-  libadwaita='true'
+  libadwaita='false'
   accent_type='fixed'
 }
 

@@ -19,7 +19,7 @@
 	--toggle-dot-width: 22px !important;
 	--toggle-dot-background-color: #ffffff !important;
 	--toggle-dot-background-color-on-pressed: #ffffff !important;
-	--toggle-dot-margin: 1px !important;
+	--toggle-dot-margin: 2px !important;
 	border: none !important;
 }
 

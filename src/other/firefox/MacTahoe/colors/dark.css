@@ -31,7 +31,7 @@
 	/* Sidebar */
 	--gnome-sidebar-background: #3b3b3b;
 	--gnome-inactive-sidebar-background: #3f3f3f;
-	--gnome-sidebar-border-color: color-mix(in srgb, #ffffff 12%, var(--gnome-sidebar-background));
+	--gnome-sidebar-border-color: rgba(0, 0, 0, 0.75);
 
 	/* Popups */
 	--gnome-menu-background: rgba(51, 51, 51, 0.95);
@@ -95,8 +95,8 @@
 	--gnome-headerbar-button-checked-background: rgba(255, 255, 255, 0.2);
 
 	/* URL bar */
-	--gnome-urlbar-background: #505050;
-	--gnome-focused-urlbar-background: #424242;
+	--gnome-urlbar-background: #303030;
+	--gnome-focused-urlbar-background: #323232;
 	--gnome-urlbar-border-color: #282828;
 	--gnome-urlbar-box-shadow: 0 3px 6px 1px rgba(0,0,0, .2), 0 5px 16px 3px rgba(0,0,0, .15), 0 0 0 1px rgba(0, 0, 0, 0.75);
 	--gnome-urlbar-color: #ffffff;
@@ -110,7 +110,7 @@
 	--gnome-private-urlbar-background: #25003e;
 
 	/* Tabs */
-	--gnome-tabbar-tab-background: rgba(255, 255, 255, 0.03);
+	--gnome-tabbar-tab-background: rgba(255, 255, 255, 0.02);
 	--gnome-tabbar-tab-color: #909090;
 	--gnome-tabbar-tab-hover-background: rgba(255, 255, 255, 0.05);
 	--gnome-tabbar-tab-hover-color: #c8c8c8;

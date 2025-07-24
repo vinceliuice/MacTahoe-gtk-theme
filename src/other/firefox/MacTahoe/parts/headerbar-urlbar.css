@@ -101,8 +101,21 @@ toolbarspring {
 }
 
 .urlbarView-row-inner {
-	padding-block: 5px !important;
-	border-radius: 5px !important;
+	padding-block: 6px !important;
+	border-radius: 10px !important;
+}
+
+.urlbarView-row {
+  border: none !important;
+  border-radius: 10px !important;
+
+  &[row-selectable]:not([selected]):hover {
+    background-color: var(--gnome-button-hover-color) !important;
+  }
+
+  &[selected] {
+    background-color: var(--gnome-button-active-color) !important;
+  }
 }
 
 .urlbarView-action {

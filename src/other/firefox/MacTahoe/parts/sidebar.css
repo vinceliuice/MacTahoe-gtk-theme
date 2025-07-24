@@ -50,7 +50,7 @@ fxview-search-textbox {
 #sidebar-header {
 	padding: 8px;
 	border-bottom: 1px solid var(--gnome-sidebar-border-color) !important;
-	background: var(--sidebar-background-color) !important;
+	background: var(--gnome-toolbar-background) !important;
 }
 
 .sidebar-splitter {
