@@ -1,50 +1,20 @@
 
 ## <p align="center"> <b> Firefox Safari theme </b> </p>
-![01](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox.png?raw=true)
-<p align="center">A MacOSX Safari theme for Firefox 80+</p>
+![01](preview.png?raw=true)
+<p align="center">A MacOSX Tahoe Safari theme for Firefox 120+</p>
 
 ## Description
 
-This is a bunch of CSS code to make Firefox look closer to MacOSX Safari theme.
+This is a bunch of CSS code to make Firefox look closer to MacOSX Tahoe Safari theme.
 Based on https://github.com/rafaelmardojai/firefox-gnome-theme
 
 ## Installation
 
 Run: `./tweaks.sh -f`
 
-if you want to use `Monterey` style then:
-
-Run: `./tweaks.sh -f monterey`
-
-### Tips about monterey options (Fix the urlbar attached tabs issue)
-
-1. Remove all space separators on left of urlbar
-2. Make sure how many buttons on side of urlbar, a: left side buttons number(3-5), b: right side buttons number(3-5).
-3. then run: `./tweaks.sh -f monterey a+b` for example: `./tweaks.sh -f monterey 5+5`
-
 or you can edit the config file
 
-1. run: `./tweaks.sh -f monterey -e`
-
-```
-/*--------------Configure your Monterey theme--------------
- * ONLY for Monterey theme
- * Enable one of these options and disable the other ones.
- */
-
-/* How many buttons on left headerbar */
-@import "Monterey/left_header_button_3.css"; /**/
-/*@import "Monterey/left_header_button_4.css"; /**/
-/*@import "Monterey/left_header_button_5.css"; /**/
-
-/* How many buttons on right headerbar */
-@import "Monterey/right_header_button_3.css"; /**/
-/*@import "Monterey/right_header_button_4.css"; /**/
-/*@import "Monterey/right_header_button_5.css"; /**/
-
-```
-
-2. Choose the right buttons number config then remove `/*` to enable it and add `/*` to disable the default one
+Run: `./tweaks.sh -e`
 
 ### Adaptive version support now!
 
