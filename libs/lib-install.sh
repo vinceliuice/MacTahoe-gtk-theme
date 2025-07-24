@@ -730,30 +730,10 @@ install_firefox_theme() {
   cp -rf "${FIREFOX_SRC_DIR}/${theme_name}"                                                   "${TARGET_DIR}"
   [[ -f "${TARGET_DIR}"/customChrome.css ]] && mv "${TARGET_DIR}"/customChrome.css            "${TARGET_DIR}"/customChrome.css.bak
   cp -rf "${FIREFOX_SRC_DIR}"/customChrome.css                                                "${TARGET_DIR}"
-  cp -rf "${FIREFOX_SRC_DIR}"/common/{icons,pages}                                            "${TARGET_DIR}/${theme_name}"
-
-  if [[ "${colorscheme}" == '-nord' ]]; then
-    cp -rf "${FIREFOX_SRC_DIR}"/common/titlebuttons-nord                                      "${TARGET_DIR}/${theme_name}"/titlebuttons
-  else
-    cp -rf "${FIREFOX_SRC_DIR}"/common/titlebuttons                                           "${TARGET_DIR}/${theme_name}"
-  fi
-
-  cp -rf "${FIREFOX_SRC_DIR}"/common/*.css                                                    "${TARGET_DIR}/${theme_name}"
-  cp -rf "${FIREFOX_SRC_DIR}"/common/parts/*.css                                              "${TARGET_DIR}/${theme_name}"/parts
   [[ -f "${TARGET_DIR}"/userChrome.css ]] && mv "${TARGET_DIR}"/userChrome.css                "${TARGET_DIR}"/userChrome.css.bak
-  cp -rf "${FIREFOX_SRC_DIR}"/userChrome-"${theme_name}${theme_type}".css                     "${TARGET_DIR}"/userChrome.css
+  cp -rf "${FIREFOX_SRC_DIR}"/userChrome"${theme_type}".css                                   "${TARGET_DIR}"/userChrome.css
   [[ -f "${TARGET_DIR}"/userContent.css ]] && mv "${TARGET_DIR}"/userContent.css              "${TARGET_DIR}"/userContent.css.bak
-  cp -rf "${FIREFOX_SRC_DIR}"/userContent-"${theme_name}${theme_type}".css                    "${TARGET_DIR}"/userContent.css
-
-  if [[ "${firefoxtheme}" == 'Flat' && "${theme_name}" == 'Monterey' ]]; then
-    cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey-alt"${theme_type}".css                    "${TARGET_DIR}"/userChrome.css
-    cp -rf "${FIREFOX_SRC_DIR}"/MACTAHOE/parts/headerbar-urlbar.css                           "${TARGET_DIR}"/Monterey/parts/headerbar-urlbar-alt.css
-  fi
-
-  if [[ "${window}" == "alt" ]]; then
-    sed -i "s|titlebutton-light|titlebutton-light-alt|" "${TARGET_DIR}/${theme_name}"/theme*.css
-    sed -i "s|titlebutton-dark|titlebutton-dark-alt|" "${TARGET_DIR}/${theme_name}"/theme*.css
-  fi
+  cp -rf "${FIREFOX_SRC_DIR}"/userContent"${theme_type}".css                                  "${TARGET_DIR}"/userContent.css
 
   config_firefox
 }

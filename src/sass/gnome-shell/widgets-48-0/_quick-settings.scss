@@ -26,9 +26,9 @@ $toggle_active_bg_color: rgba(white, 0.25);
 $toggle_checked_bg_color: rgba(white, 0.15);
 
 .quick-toggle, .quick-toggle-has-menu {
-  min-width: 13em;
-  max-width: 13em;
-  min-height: 3.4em;
+  min-width: 100px;
+  max-width: 100px;
+  min-height: 40px;
   border: none;
   box-shadow: inset 0 0 4px rgba(white, 0.35) !important;
   color: white;
@@ -38,7 +38,7 @@ $toggle_checked_bg_color: rgba(white, 0.15);
   background-color: $toggle_bg_color !important;
   border-radius: $circular_radius;
   color: white;
-  padding: 0 $base_padding * 3;
+  padding: $base_padding * 3 !important;
 
   &:hover {
     background-color: $toggle_hover_bg_color !important;
@@ -97,7 +97,7 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 .quick-toggle-has-menu {
   background-color: $toggle_bg_color !important;
   border-radius: $circular_radius;
-  padding: $base_padding 0;
+  padding: $base_padding 0 !important;
 
   &:hover {
     background-color: $toggle_hover_bg_color !important;
@@ -114,6 +114,7 @@ $toggle_checked_bg_color: rgba(white, 0.15);
   & .quick-toggle {
     min-width: auto;
     max-width: auto;
+    padding: $base_padding * 2 0 !important;
 
     &, &:hover, &:active, &:checked {
       background: none !important;
@@ -123,8 +124,8 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 
     .quick-toggle-icon {
       border-radius: $circular_radius;
-      min-height: 3.4em !important;
-      min-width: 3.4em !important;
+      min-height: 40px !important;
+      min-width: 40px !important;
       background-color: $toggle_bg_color;
     }
 
@@ -142,9 +143,9 @@ $toggle_checked_bg_color: rgba(white, 0.15);
     }
 
     &:ltr { border-radius: $circular_radius; }
-    &:ltr > StBoxLayout { padding-left: $base_padding * 3; padding-right: $base_padding * 2; }
+    &:ltr > StBoxLayout { padding-left: $base_padding * 3; padding-right: $base_padding; }
     &:rtl { border-radius: $circular_radius; }
-    &:rtr > StBoxLayout { padding-left: $base_padding * 2; padding-right: $base_padding * 3; }
+    &:rtr > StBoxLayout { padding-left: $base_padding; padding-right: $base_padding * 3; }
 
     &:ltr:last-child { border-radius: $circular_radius; }
     &:rtl:last-child { border-radius: $circular_radius; }
@@ -152,9 +153,9 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 
   & .quick-toggle-menu-button {
     padding: 0;
-    min-width: 2.4em;
-    min-height: 2.4em;
-    margin: 1em;
+    min-width: 36px;
+    min-height: 36px;
+    margin: $base_padding * 3;
     border-radius: $circular_radius;
     border: none;
     color: white;
@@ -172,10 +173,12 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 
     &:ltr {
       border-radius: $circular_radius;
+      margin-left: 0;
     }
 
     &:rtl {
       border-radius: $circular_radius;
+      margin-right: 0;
     }
   }
 
@@ -188,13 +191,15 @@ $toggle_checked_bg_color: rgba(white, 0.15);
   background-color: $toggle_bg_color;
   border-radius: $wm_radius;
   box-shadow: inset 0 0 4px rgba(white, 0.35) !important;
-  padding: $scaled_padding * 4 $scaled_padding * 2;
+  min-height: 40px;
+  padding: $base_padding * 3 !important;
   color: white;
 
   & > StBoxLayout { spacing: $base_padding; }
 
   .icon-button {
-    padding: $scaled_padding * 1.5;
+    padding: $base_padding * 1.5;
+    margin: $base_padding * 2 0;
     color: white;
 
     &:hover {
@@ -284,7 +289,7 @@ $toggle_checked_bg_color: rgba(white, 0.15);
     border-radius: $circular_radius;
     min-height: $menuitem_size !important;
     min-width: $menuitem_size !important;
-    padding: $scaled_padding * 2;
+    padding: $base_padding * 3;
     box-shadow: inset 0 0 4px rgba(white, 0.35) !important;
 
     &:hover { background-color: $toggle_hover_bg_color; }
@@ -334,8 +339,8 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 // background apps
 
 .background-apps-quick-toggle {
-  min-height: 38px;
-  padding: $scaled_padding * 2 !important;
+  min-height: 40px;
+  padding: $base_padding * 2 !important;
   background-color: transparent;
 
   & StIcon { icon-size: $base_icon_size !important; }

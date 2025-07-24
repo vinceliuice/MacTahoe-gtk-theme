@@ -46,15 +46,11 @@ usage() {
   sec_helpify "7. -nb, -noblur"            ""                                                  "  Don't blur '${THEME_NAME}' GDM theme background image"            ""
 
   helpify "" "" "Tweaks for firefox" "options"
-  sec_title "-f, --firefox" "        [(monterey|flat)|alt|(darker|adaptive)]"       "  Without options default theme will install..."                      "  Options:"
-  sec_helpify "1. monterey" "      [3+3|3+4|3+5|4+3|4+4|4+5|5+3|5+4|5+5]"           "  Topbar buttons number: 'a+b'"                                                "  a: left side buttons number, b: right side buttons number"
-  sec_helpify "2. flat" "          Monterey alt version"                            ""                                                                              "  Flat round tabs..."
-  sec_helpify "3. alt" "           Alt windows button version"                      ""                                                                              "  Alt windows button style like gtk theme"
-  sec_helpify "4. darker" "        Darker Firefox theme version"                    ""                                                                              "  Darker Firefox theme version"
-  sec_helpify "5. nord" "          Nord Firefox colorscheme version"                ""                                                                              "  Nord Firefox colorscheme version"
-  sec_helpify "6. adaptive" "      Adaptive color version"                          "  You need install adaptive-tab-bar-colour plugin first"                       "  https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/"
+  sec_title "-f, --firefox" "        [default|adaptive]"                            "  Without options default theme will install..."                               "  Options:"
+  sec_helpify "1. default"  "      default version"                                 ""                                                                              ""
+  sec_helpify "2. adaptive" "      Adaptive color version"                          "  You need install adaptive-tab-bar-colour plugin first"                       "  https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/"
 
-  helpify "-e, --edit-firefox"  "[(monterey|flat)|alt|(darker|adaptive)]"           "  Edit '${THEME_NAME}' theme for Firefox settings and also connect the theme to the current Firefox profiles" ""
+  helpify "-e, --edit-firefox"  "[default|adaptive]"                                "  Edit '${THEME_NAME}' theme for Firefox settings and also connect the theme to the current Firefox profiles" ""
 
   helpify "" "" "Others" "options"
   sec_title "-F, --flatpak"     "Support options: [-o, -c, -t...]"                             "  Connect '${THEME_NAME}' theme to Flatpak"                         "Without options will only install default themes"
@@ -117,67 +113,6 @@ while [[ $# -gt 0 ]]; do
         case "${variant}" in
           default)
             firefoxtheme="MacTahoe"
-            shift ;;
-          monterey)
-            firefoxtheme="Monterey"
-            theme_name="Monterey"
-            shift
-            for button in "${@}"; do
-              case "${button}" in
-                3+3)
-                  left_button="3"
-                  right_button="3"
-                  shift ;;
-                3+4)
-                  left_button="3"
-                  right_button="4"
-                  shift ;;
-                3+5)
-                  left_button="3"
-                  right_button="5"
-                  shift ;;
-                4+3)
-                  left_button="4"
-                  right_button="3"
-                  shift ;;
-                4+4)
-                  left_button="4"
-                  right_button="4"
-                  shift ;;
-                4+5)
-                  left_button="4"
-                  right_button="5"
-                  shift ;;
-                5+3)
-                  left_button="5"
-                  right_button="3"
-                  shift ;;
-                5+4)
-                  left_button="5"
-                  right_button="4"
-                  shift ;;
-                5+5)
-                  left_button="5"
-                  right_button="5"
-                  shift ;;
-              esac
-            done
-            prompt -s "Left side topbar button number: $left_button, right side topbar button number: $right_button.\n" ;;
-          flat)
-            firefoxtheme="Flat"
-            theme_name="Monterey"
-            shift ;;
-          alt)
-            window="alt"
-            prompt -i "Alt windows button version...\n"
-            shift ;;
-          darker)
-            darker="-darker"
-            prompt -i "Darker Firefox theme version...\n"
-            shift ;;
-          nord)
-            colorscheme="-nord"
-            prompt -i "Nord Firefox colorscheme version...\n"
             shift ;;
           adaptive)
             adaptive="-adaptive"
