@@ -191,6 +191,7 @@ NOTE: If you have issues with blur, then:
 The following extensions are known to be incompatible (as of now):
 - Rounded Window Corners (reborn)
 - Desaturate Windows
+- "AppIndicator and KStatusNotifierItem Support"
 
 #### - Install blur-my-shell version
 
