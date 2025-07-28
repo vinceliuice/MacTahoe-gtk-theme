@@ -188,6 +188,10 @@ NOTE: If you have issues with blur, then:
 4. If it still doesn't, make sure HDR is disabled. This is a known issue with Blur-My-Shell
 5. If you still have problems, open an issue. Do NOT open it in Blur My Shell's repository unless confirmed it's a problem with the extension!
 
+The following extensions are known to be incompatible (as of now):
+- Rounded Window Corners (reborn)
+- Desaturate Windows
+
 #### - Install blur-my-shell version
 
 [blur-my-shell](https://extensions.gnome.org/extension/3193/blur-my-shell)
