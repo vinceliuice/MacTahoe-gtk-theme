@@ -50,3 +50,35 @@
   --toggle-dot-background-color: var(--gnome-switch-slider-background) !important;
   --toggle-dot-background-color-on-pressed: var(--gnome-switch-slider-background) !important;
 }
+
+:host {
+  --input-text-min-height: var(--button-min-height);
+  --input-text-border-color: var(--gnome-urlbar-border-color) !important;
+  --input-text-border-color-disabled: var(--gnome-inactive-urlbar-border-color) !important;
+  --input-text-border: var(--border-width) solid var(--input-text-border-color);
+  --input-text-border-radius: 8px !important;
+  --input-text-background-color: var(--gnome-urlbar-background) !important;
+  --input-text-color: FieldText;
+  --input-text-background-color-disabled: var(--gnome-inactive-urlbar-background) !important;
+  --input-text-opacity-disabled: var(--button-opacity-disabled);
+}
+
+#input {
+  border: 1px solid var(--gnome-hover-urlbar-border-color) !important;
+  border-radius: 8px !important;
+  box-sizing: border-box;
+  background-color: var(--gnome-urlbar-background) !important;
+  outline: 2px solid transparent  !important;
+  outline-offset: -2px  !important;
+
+  &:focus {
+    border: 1px solid transparent !important;
+    border-radius: 8px !important;
+    outline: 2px solid var(--gnome-focused-urlbar-border-color) !important;
+  }
+
+  &:disabled {
+    border-color: var(--gnome-inactive-urlbar-border-color) !important;
+    background-color: var(--gnome-inactive-urlbar-background) !important;
+  }
+}

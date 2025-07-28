@@ -110,19 +110,16 @@ OPTIONS:
      1. -i, -icon [apple|simple|gnome|ubuntu|tux|arch|manjaro|fedora|debian|void|opensuse|popos|mxlinux|zorin|budgie|gentoo]
      Set gnome-shell panel 'Activities' icon. Default is 'standard'
 
-     2. -b, -background [default|blank|IMAGE_PATH]
-     Set gnome-shell background image. Default is Tahoe-like wallpaper
-
-     3. -p, -panelopacity [default|30|45|60|75]
+     2. -p, -panelopacity [default|30|45|60|75]
      Set gnome-shell panel transparency. Default is 15%
 
-     4. -h, -panelheight [default|smaller|bigger]
+     3. -h, -panelheight [default|smaller|bigger]
      Set gnome-shell panel height size. Default is 32px
 
-     5. -sf, -smallerfont 
+     4. -sf, -smallerfont 
      Set gnome-shell font size to smaller (10pt). Default is 11pt
 
-     6. normal, -normal 
+     5. normal, -normal 
      Set gnome-shell show apps button style to normal. Default is macOS icon
 
   --round, --roundedmaxwindow 
@@ -337,7 +334,7 @@ Example:
 ##
 
 ### <p align="center"> <b> Install and customize GDM theme </b> </p>
-<p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/gdm.png"/> </p>
+<p align="center"> <img src="gdm-theme.png"/> </p>
 
 #### - Install GDM theme
 Parameter: `--gdm` `-g` (requires to be run as root)

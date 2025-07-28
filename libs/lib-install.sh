@@ -321,31 +321,35 @@ install_flatpak_deps() {
 ###############################################################################
 
 install_beggy() {
+  local TARGET_DIR="${1}"
+  local color="$(destify ${2})"
   local CONVERT_OPT=""
+
+  if [[ "${color}" == '-Light' ]]; then
+    local IMG_COLOR='-day'
+  elif [[ "${color}" == '-Dark' ]]; then
+    local IMG_COLOR='-night'
+  fi
 
   [[ "${no_blur}" == "false" ]] && CONVERT_OPT+=" -scale 1280x -blur 0x50 "
   [[ "${no_darken}" == "false" ]] && CONVERT_OPT+=" -fill black -colorize 45% "
 
+  mkdir -p                                                                                     "${TARGET_DIR}/assets"
+
   case "${background}" in
     blank)
-      cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blank.jpeg"            "${MACTAHOE_TMP_DIR}/beggy.jpeg" ;;
+      cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blank.jpeg"            "${TARGET_DIR}/assets/background.jpeg"
+      ;;
     default)
-      if [[ "${no_blur}" == "false" && "${no_darken}" == "true" ]]; then
-        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blur.jpeg"           "${MACTAHOE_TMP_DIR}/beggy.jpeg"
-      elif [[ "${no_blur}" == "false" && "${no_darken}" == "false" ]]; then
-        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blur-darken.jpeg"    "${MACTAHOE_TMP_DIR}/beggy.jpeg"
-      elif [[ "${no_blur}" == "true" && "${no_darken}" == "true" ]]; then
-        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-default.jpeg"        "${MACTAHOE_TMP_DIR}/beggy.jpeg"
-      else
-        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-darken.jpeg"         "${MACTAHOE_TMP_DIR}/beggy.jpeg"
-      fi
+      install_beggy_deps
+      magick ${REPO_DIR}/wallpaper/MacTahoe${IMG_COLOR}.jpeg ${CONVERT_OPT} ${TARGET_DIR}/assets/background.jpeg
       ;;
     *)
       if [[ "${no_blur}" == "false" || "${darken}" == "true" ]]; then
         install_beggy_deps
-        convert "${background}" ${CONVERT_OPT}                                                 "${MACTAHOE_TMP_DIR}/beggy.jpeg"
+        magick ${background} ${CONVERT_OPT} ${TARGET_DIR}/assets/background.jpeg
       else
-        cp -r "${background}"                                                                  "${MACTAHOE_TMP_DIR}/beggy.jpeg"
+        cp -r "${background}"                                                                  "${TARGET_DIR}/assets/background.jpeg"
       fi
       ;;
   esac
@@ -377,7 +381,7 @@ install_shelly() {
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/theme${theme}${scheme}/"*".svg"                  "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg"                "${TARGET_DIR}/assets/activities.svg"
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg"                "${TARGET_DIR}/assets/activities-white.svg"
-  cp -r "${MACTAHOE_TMP_DIR}/beggy.jpeg"                                                      "${TARGET_DIR}/assets/background.jpeg"
+  cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blank.jpeg"               "${TARGET_DIR}/assets/background.jpeg"
 
   (
     cd "${TARGET_DIR}"
@@ -590,17 +594,28 @@ install_themes() {
   # "install_theemy" and "install_shelly" require "gtk_base", so multithreading
   # isn't possible
 
-  install_theme_deps; start_animation; install_beggy
+  install_theme_deps; start_animation
 
   for color in "${colors[@]}"; do
     for opacity in "${opacities[@]}"; do
       for alt in "${alts[@]}"; do
         for theme in "${themes[@]}"; do
           for scheme in "${schemes[@]}"; do
-            gtk_base
-            install_theemy "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}"
-            shell_base
+            gtk_base; shell_base
             install_shelly "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}" "${icon}"
+          done
+        done
+      done
+    done
+  done
+
+  for color in "${colors[@]}"; do
+    for opacity in "${opacities[@]}"; do
+      for alt in "${alts[@]}"; do
+        for theme in "${themes[@]}"; do
+          for scheme in "${schemes[@]}"; do
+            gtk_base; reset_gtk_base
+            install_theemy "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}"
           done
         done
       done
@@ -648,10 +663,11 @@ install_gdm_theme() {
 
   # Let's go!
   install_theme_deps
-  rm -rf "${MACTAHOE_GS_DIR}"; install_beggy
+  rm -rf "${MACTAHOE_GS_DIR}"
   gtk_base && shell_base
 
   if check_theme_file "${COMMON_CSS_FILE}"; then # CSS-based theme
+    install_beggy "${MACTAHOE_GS_DIR}" "${colors[0]}"
     install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${schemes[0]}" "${icon}" "${MACTAHOE_GS_DIR}"
     sed $SED_OPT "s|assets|${MACTAHOE_GS_DIR}/assets|" "${MACTAHOE_GS_DIR}/gnome-shell.css"
 
@@ -672,6 +688,7 @@ install_gdm_theme() {
     # Fix previously installed MACTAHOE
     restore_file "${ETC_CSS_FILE}"
   else # GR-based theme
+    install_beggy "${MACTAHOE_TMP_DIR}/shelly" "${colors[0]}"
     install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${schemes[0]}" "${icon}" "${MACTAHOE_TMP_DIR}/shelly"
     sed $SED_OPT "s|assets|resource:///org/gnome/shell/theme/assets|" "${MACTAHOE_TMP_DIR}/shelly/gnome-shell.css"
 
@@ -694,12 +711,16 @@ install_gdm_theme() {
 }
 
 revert_gdm_theme() {
-  rm -rf "${MACTAHOE_GS_DIR}"
-  restore_file "${COMMON_CSS_FILE}"; restore_file "${UBUNTU_CSS_FILE}"
-  restore_file "${ZORIN_CSS_FILE}"; restore_file "${ETC_CSS_FILE}"
-  restore_file "${POP_OS_GR_FILE}"; restore_file "${YARU_GR_FILE}"
-  restore_file "${MISC_GR_FILE}"; restore_file "${ETC_GR_FILE}"
-  restore_file "${ZORIN_GR_FILE}"
+  sudo rm -rf "${MACTAHOE_GS_DIR}"
+  restore_file "${COMMON_CSS_FILE}" "sudo"
+  restore_file "${UBUNTU_CSS_FILE}" "sudo"
+  restore_file "${ZORIN_CSS_FILE}" "sudo"
+  restore_file "${ETC_CSS_FILE}" "sudo"
+  restore_file "${POP_OS_GR_FILE}" "sudo"
+  restore_file "${YARU_GR_FILE}" "sudo"
+  restore_file "${MISC_GR_FILE}" "sudo"
+  restore_file "${ETC_GR_FILE}" "sudo"
+  restore_file "${ZORIN_GR_FILE}" "sudo"
 }
 
 ###############################################################################

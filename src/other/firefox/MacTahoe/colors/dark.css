@@ -97,7 +97,7 @@
 	/* URL bar */
 	--gnome-urlbar-background: #303030;
 	--gnome-focused-urlbar-background: #323232;
-	--gnome-urlbar-border-color: #282828;
+	--gnome-urlbar-border-color: #181818;
 	--gnome-urlbar-box-shadow: 0 3px 6px 1px rgba(0,0,0, .2), 0 5px 16px 3px rgba(0,0,0, .15), 0 0 0 1px rgba(0, 0, 0, 0.75);
 	--gnome-urlbar-color: #ffffff;
 	--gnome-hover-urlbar-border-color: #565656;

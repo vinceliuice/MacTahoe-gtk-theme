@@ -27,7 +27,7 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 
 .quick-toggle, .quick-toggle-has-menu {
   min-width: 100px;
-  max-width: 100px;
+  max-width: 172px;
   min-height: 40px;
   border: none;
   box-shadow: inset 0 0 4px rgba(white, 0.35) !important;
@@ -153,8 +153,8 @@ $toggle_checked_bg_color: rgba(white, 0.15);
 
   & .quick-toggle-menu-button {
     padding: 0;
-    min-width: 36px;
-    min-height: 36px;
+    min-width: 32px;
+    min-height: 32px;
     margin: $base_padding * 3;
     border-radius: $circular_radius;
     border: none;

@@ -38,11 +38,10 @@ usage() {
 
   helpify "--shell, --gnomeshell"         ""                                                  "  Tweaks for gnome-shell"                          "Options:"
   helpify "   1. -i, -icon"               "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"          "    Set gnome-shell panel 'Activities' icon"       "Default is 'standard'"
-  helpify "   2. -b, -background"         "[default|blank|IMAGE_PATH]"                        "    Set gnome-shell background image"              "Default is Tahoe-like wallpaper"
-  helpify "   3. -p, -panelopacity"       "[$(IFS='|'; echo "${PANEL_OPACITY_VARIANTS[*]}")]" "    Set gnome-shell panel transparency"            "Default is 15%"
-  helpify "   4. -h, -panelheight"        "[$(IFS='|'; echo "${PANEL_SIZE_VARIANTS[*]}")]"    "    Set gnome-shell panel height size"             "Default is 32px"
-  helpify "   5. -sf, -smallerfont"       ""                                                  "    Set gnome-shell font size to smaller (10pt)"   "Default is 11pt"
-  helpify "   6. normal, -normal"         ""                                                  "    Set gnome-shell show apps button style to normal" "Default is macOS icon"
+  helpify "   2. -p, -panelopacity"       "[$(IFS='|'; echo "${PANEL_OPACITY_VARIANTS[*]}")]" "    Set gnome-shell panel transparency"            "Default is 15%"
+  helpify "   3. -h, -panelheight"        "[$(IFS='|'; echo "${PANEL_SIZE_VARIANTS[*]}")]"    "    Set gnome-shell panel height size"             "Default is 32px"
+  helpify "   4. -sf, -smallerfont"       ""                                                  "    Set gnome-shell font size to smaller (10pt)"   "Default is 11pt"
+  helpify "   5. normal, -normal"         ""                                                  "    Set gnome-shell show apps button style to normal" "Default is macOS icon"
 
   helpify "--round, --roundedmaxwindow"   ""                                                  "  Set maximized window to rounded"                 "Default is square"
   helpify "--darker, --darkercolor"       ""                                                  "  Install darker '${THEME_NAME}' dark themes"      ""
@@ -95,8 +94,6 @@ while [[ $# -gt 0 ]]; do
           -i|-icon)
             activities_icon="true";
             check_param "${1}" "${1}" "${2}" "must" "must" "must" && shift 2 || shift ;;
-          -b|-background)
-            check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
           -p|-panelopacity)
             check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
           -h|-panelheight)
@@ -154,8 +151,9 @@ if [[ "${uninstall}" == 'true' ]]; then
     prompt -s "Done! All '${name}' gtk themes have been removed."
   fi
 
-  if [[ -f "${MISC_GR_FILE}.bak" ]]; then
-    prompt -e "Find installed GDM theme, you need to run: 'sudo ./tweaks.sh -g -r' to remove it!"
+if [[ -f "${MISC_GR_FILE}.bak" ]]; then
+    prompt -e "Find installed GDM theme, remove it now !"
+    revert_gdm_theme
   fi
 else
   #prompt -w "Removing the old '${name}' themes...\n"
@@ -174,7 +172,7 @@ else
 
   if [[ "${libadwaita}" == 'true' ]]; then
     if [[ "$UID" != '0' ]]; then
-      install_libadwaita && reset_gtk_base
+      install_libadwaita
       echo; prompt -w "Some colorsheme extension will re-writes config files in '${HOME}/.config/gtk-4.0' like: 'custom-accent-colors' you need to disable it!"
     else
       echo; prompt -e "Do not run '--libadwaita' option with sudo!"

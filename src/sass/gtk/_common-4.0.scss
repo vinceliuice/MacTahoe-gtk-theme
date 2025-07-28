@@ -60,6 +60,16 @@ $side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light',
   }
 }
 
+%selection_items {
+  color: $fg_color;
+
+  @if $gnome_version == 'old' {
+    background-color: gtkalpha($selected_bg_color, 0.25);
+  } @else {
+    background-color: color-mix(in srgb, $selected_bg_color 25%, transparent);
+  }
+}
+
 %nobg_selected_items {
   color: $selected_fg_color;
 
@@ -241,7 +251,7 @@ textview {
   > text {
     background-color: $base_color;
     // @extend %view;
-    selection { &:focus, & { @extend %selected_items; }}
+    selection { &:focus, & { @extend %selection_items; }}
   }
 
   border {
@@ -333,8 +343,7 @@ label {
   }
 
   > selection {
-    color: $selected_fg_color;
-    background-color: gtkmix($selected_fg_color, $selected_bg_color, 15%);
+    @extend %selection_items;
   }
 
   &:disabled {
@@ -343,11 +352,7 @@ label {
     color: $disabled_fg_color;
 
     selection {
-      @if $gnome_version == 'old' {
-        color: gtkmix($selected_fg_color, $selected_bg_color, 50%);
-      } @else {
-        color: color-mix(in srgb, $selected_fg_color 50%, $selected_bg_color);
-      }
+      color: $disabled_fg_color;
     }
   }
 }
@@ -539,7 +544,7 @@ entry {
     }
   }
 
-  > text > selection { @extend %selected_items; }
+  > text > selection { @extend %selection_items; }
 
   // error and warning style
   @each $e_type, $e_color, $e_fg_color in (warning, $warning_color, $light_fg_color),
@@ -1105,7 +1110,8 @@ menubutton {
   &.flat > button { @extend %flat_button; }
   &.pill > button { @extend %pill_button; }
 
-  &.popup > button:not(.image-button) {
+  &.popup > button.arrow-button.image-button,
+  &.popup > button.toggle:not(.image-button) {
     padding-left: $container_padding * 2;
     padding-right: $container_padding * 2;
   }
@@ -1492,8 +1498,7 @@ spinbutton {
     background-clip: padding-box;
 
     > selection {
-      background-color: $selected_bg_color;
-      color: $selected_fg_color;
+      @extend %selection_items;
     }
 
     &:focus-within {
@@ -2112,6 +2117,7 @@ headerbar {
     }
 
     > button,
+    > button button,
     > menubutton > button {
       @extend %headerbar_buttons_flat;
     }
@@ -2121,15 +2127,24 @@ headerbar {
       min-width: 1px;
       margin: $container_padding 2px;
     }
-  
+
+    > button,
+    > button.image-button,
     > menubutton > button,
-    > menubutton.popup > button:not(.image-button),
+    > menubutton.popup > button,
+    &.image-button > menubutton.popup > button.toggle:not(.image-button),
     &.image-button > button,
     &.text-button.image-button > button,
     &.image-text-button > button {
       min-height: 24px;
       min-width: 24px;
       padding: $container_padding / 2;
+    }
+
+    > button button {
+      min-height: 24px;
+      min-width: 24px;
+      padding: 0;
     }
 
     > button:not(:only-child):not(:first-child):not(:last-child),

@@ -445,6 +445,13 @@ tabbar {
   .start-action,
   .end-action {
     padding: $container_padding;
+
+    button {
+      min-height: $menuitem_size;
+      min-width: $menuitem_size;
+      padding: $container_padding - 4px;
+      border-radius: $circular_radius;
+    }
   }
 
   .start-action:dir(ltr),
@@ -473,6 +480,16 @@ tabbar {
     > .start-action,
     > .end-action {
       filter: opacity(0.5);
+    }
+  }
+
+  &.inline {
+    .box {
+      min-height: $menuitem_size;
+      margin: 0;
+      padding: $container_padding / 2;
+      background-color: transparent;
+      border-radius: 0;
     }
   }
 
@@ -602,7 +619,7 @@ toolbarview.undershoot-bottom scrolledwindow {
   }
 
   .navigation-sidebar:not(.view) {
-    padding: $container_padding;
+    padding: $container_padding + 4px;
 
     > row {
       &:selected {
@@ -862,7 +879,11 @@ toolbarview {
 
       tabbar {
         padding-top: 0;
-        padding-bottom: $container_padding - 2px;
+        padding-bottom: 0;
+
+        .box {
+          margin-bottom: $container_padding;
+        }
       }
     }
 

@@ -34,53 +34,6 @@
   }
 }
 
-.nautilus-window {
-  .nautilus-grid-view {
-    background-color: transparent;
-
-    gridview.view {
-      background-color: transparent;
-
-      > child.activatable {
-        @extend %nautilus_view;
-      }
-    }
-  }
-
-  .nautilus-list-view {
-    padding: 0;
-    margin: 0;
-    border-spacing: 0;
-    background-color: transparent;
-
-    columnview.view,
-    statuspage.view {
-      background-color: transparent;
-    }
-
-    listview.view {
-      padding: 0;
-      margin: 0;
-      border-spacing: $container_padding / 2;
-      background-color: transparent;
-
-      > row.activatable {
-        padding: 0;
-        margin: 0;
-        @extend %nautilus_view;
-
-        > cell {
-          padding: 0;
-
-          > widget#NautilusViewCell {
-            padding: $container_padding $container_padding * 1.5;
-          }
-        }
-      }
-    }
-  }
-}
-
 .nautilus-window,
 #NautilusFileChooser {
   headerbar > windowhandle > box {
@@ -112,15 +65,49 @@
     }
   }
 
-  overlay-split-view.view {
+  .view { background-color: transparent; }
+
+  .nautilus-grid-view {
     background-color: transparent;
+
+    gridview.view {
+      > child.activatable {
+        @extend %nautilus_view;
+      }
+    }
+  }
+
+  .nautilus-list-view {
+    padding: 0;
+    margin: 0;
+    border-spacing: 0;
+    background-color: transparent;
+
+    listview.view {
+      padding: 0;
+      margin: 0;
+      border-spacing: $container_padding / 2;
+
+      > row.activatable {
+        padding: 0;
+        margin: 0;
+        @extend %nautilus_view;
+
+        > cell {
+          padding: 0;
+
+          > widget#NautilusViewCell {
+            padding: $container_padding $container_padding * 1.5;
+          }
+        }
+      }
+    }
   }
 
   .sidebar-pane {
     &:dir(ltr),
     &.end:dir(rtl) {
-      &,
-      banner > revealer > widget {
+      &, banner > revealer > widget {
         box-shadow:
           0 0 0 $container_padding $base_color,
           0 32px 0 $container_padding $base_color,
@@ -132,14 +119,29 @@
 
     &:dir(rtl),
     &.end:dir(ltr) {
-      &,
-      banner > revealer > widget {
+      &, banner > revealer > widget {
         box-shadow:
           0 0 0 $container_padding $base_color,
           0 32px 0 $container_padding $base_color,
           0 -32px 0 $container_padding $base_color,
           -2px 3px 12px rgba(black, 0.1),
           inset 0 0 0 1px $sidebar_highlight_color;
+      }
+    }
+
+    &:backdrop {
+      &:dir(ltr),
+      &.end:dir(rtl) {
+        &, banner > revealer > widget {
+          box-shadow: none;
+        }
+      }
+
+      &:dir(rtl),
+      &.end:dir(ltr) {
+        &, banner > revealer > widget {
+          box-shadow: none;
+        }
       }
     }
 
@@ -150,17 +152,7 @@
         > row {
           &:selected {
             background-color: $sidebar_theme_color;
-            color: $fg_color;
-          }
-
-          &.sidebar-row {
-            .sidebar-icon {
-              @if $gnome_version == "old" {
-                color: if($variant == "light", $selected_bg_color, lighten($selected_bg_color, 20%));
-              } @else {
-                color: if($variant == "light", $selected_bg_color, color-mix(in srgb, #ffffff 20%, $selected_bg_color));
-              }
-            }
+            color: $selected_bg_color;
           }
         }
       }
@@ -1403,52 +1395,37 @@ popover.background.pages-popover {
 }
 
 panelresizer .top-bar {
-  box-shadow: inset 0 -1px $borders_color;
+  border-bottom: 1px solid $header_border;
 }
 
-.frameheader.header:not(.vertical) {
-  min-height: $medium_size;
+panelframetabbar.frameheader.header {
+  min-height: $menuitem_size;
   padding: 0;
   border: none;
   border-bottom: 1px solid $borders_color;
 
-  @if $gnome_version == "old" {
-    background-color: gtkmix(black, $base_color, 6%);
-
-    &:backdrop {
-      background-color: gtkmix(black, $base_color, 7%);
-    }
-  } @else {
-    background-color: color-mix(in srgb, black 6%, $base_color);
-
-    &:backdrop {
-      background-color: color-mix(in srgb, black 7%, $base_color);
-    }
-  }
-
   tabbar.inline {
-    tabbox {
-      min-height: $medium_size;
-    }
-
     .start-action {
-      padding: $container_padding / 2 $container_padding / 2 $container_padding / 2 $container_padding;
+      padding: 0 $container_padding / 2;
     }
 
     .end-action {
-      padding: $container_padding / 2 $container_padding $container_padding / 2 $container_padding / 2;
+      padding: 0 $container_padding / 2;
     }
   }
 }
 
 panelframeswitcher:not(.vertical) {
   &.frameheader.header {
-    padding: 0 $base_padding;
+    min-height: $menuitem_size;
+    padding: $container_padding - 1px $container_padding;
+    border: none;
   }
 
   > button.toggle.image-button {
     border: none;
-    margin: $base_padding 0;
+    min-height: $menuitem_size - $container_padding;
+    padding: $container_padding - 4px $container_padding;
   }
 }
 
@@ -1479,13 +1456,6 @@ panelwidget entry.statusbar {
 
   &:focus-within {
     outline: none;
-  }
-}
-
-.IdeTweaksWindow,
-.org-gnome-Builder {
-  .boxed-list {
-    box-shadow: inset 0 0 0 1px gtkalpha(currentColor, 0.08);
   }
 }
 

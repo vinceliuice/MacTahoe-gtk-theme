@@ -6,11 +6,11 @@ $barlevel_active_bg_color: white;
 $slider_size: 8px;
 
 .slider {
-  height: $slider_size;
-  color: $slider_color;
+  height: $slider_size * 2;
+  color: transparent;
   border-radius: $slider_size;
 
-  -slider-handle-radius: $slider_size * 0.5;
+  -slider-handle-radius: $slider_size;
 
   // barlevels are for >= 3.29.90
   -barlevel-height: $slider_size;
@@ -21,5 +21,7 @@ $slider_size: 8px;
 
   &:hover {
     color: $slider_color;
+    -barlevel-active-background-color: rgba($barlevel_active_bg_color, 0.5);
+    transition: all 0.2s ease-in-out;
   }
 }

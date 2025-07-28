@@ -2136,6 +2136,7 @@ menubar,
 
   &:backdrop {
     color: transparentize($header_fg, 0.2);
+    background-color: $header_bg_backdrop;
   }
 
   > menuitem {
