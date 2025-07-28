@@ -180,6 +180,14 @@ Example:
 
 <p align="center"> <img src="blur-my-shell.png"/> </p>
 
+
+NOTE: If you have issues with blur, then:
+1. Make sure you have the correct Blur My Shell settings
+2. Disable ALL extensions except for Blur My Shell, Dash-To-Dock and User Themes, and see if it works.
+3. If it works, the problem is an incompatibility with one of your other extensions. Enable them one-by-one to see the culprit.
+4. If it still doesn't, make sure HDR is disabled. This is a known issue with Blur-My-Shell
+5. If you still have problems, open an issue. Do NOT open it in Blur My Shell's repository unless confirmed it's a problem with the extension!
+
 #### - Install blur-my-shell version
 
 [blur-my-shell](https://extensions.gnome.org/extension/3193/blur-my-shell)
