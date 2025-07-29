@@ -525,8 +525,11 @@ entry {
     color: $alt_fg_color;
   }
 
-  > text > placeholder {
-    @extend .dim-label;
+  > text {
+    &:diasabled,
+    > placeholder {
+      @extend .dim-label;
+    }
   }
 
   &.flat {
