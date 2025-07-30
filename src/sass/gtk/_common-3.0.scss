@@ -29,17 +29,18 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
 }
 
 $side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light', 0.02, 0.06)), transparent 6px);
+$sidebar_bg_color: if($blur =='true', rgba($dark_sidebar_bg, $side_blur_opacity), $dark_sidebar_bg);
 
 %side_style_left {
   background-image: $side_style_shadow;
-  background-color: $dark_sidebar_bg;
+  background-color: $sidebar_bg_color;
   box-shadow: none;
   border: none;
 }
 
 %side_headerbar_left {
   background-image: $side_style_shadow;
-  background-color: $dark_sidebar_bg;
+  background-color: $sidebar_bg_color;
   box-shadow: inset 0 1px $highlight_color;
   border: none;
 }
@@ -52,7 +53,7 @@ $side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light',
 
 %side_searchbar {
   > revealer > box {
-    background-color: $dark_sidebar_bg;
+    background-color: $sidebar_bg_color;
     background-image: $side_style_shadow;
   }
 }
@@ -256,10 +257,14 @@ $maximized_radius_style: 0 0 $maximized_radius $maximized_radius;
 
   &.csd {
     border-radius: $background_radius_style; // Set csd windows botttom border radius
-    background-color: rgba($base_color, 0.999);
+    background-color: rgba($base_color, if($blur == 'true', $side_blur_opacity, 0.999));
 
     &.maximized, &.tiled, &.fullscreen {
       border-radius: $maximized_radius_style; // Set csd windows botttom border radius
+    }
+
+    &:backdrop {
+      background-color: $backdrop_color;
     }
   }
 
@@ -1495,6 +1500,10 @@ headerbar {
   background-color: $header_bg;
   border-bottom: 1px solid $header_border;
 
+  @if $blur =='true' {
+    background-color: rgba($header_bg, $side_blur_opacity);
+  }
+
   &:backdrop {
     transition: $backdrop_transition;
     color: transparentize($header_fg, 0.3);
@@ -1749,7 +1758,7 @@ headerbar {
   &.default-decoration {
     min-height: $medium_size;
     padding: 0 $container_padding * 2;
-    background-color: $header_bg;
+    // background-color: $header_bg;
 
     .tiled &,
     .maximized &,
@@ -1846,6 +1855,12 @@ headerbar {
 }
 
 .titlebar {
+  @if $blur =='true' {
+    background-color: rgba($header_bg, $side_blur_opacity);
+  } @else {
+    background-color: $header_bg;
+  }
+
   &, &.background {
     border-top-left-radius: $wm_radius;
     border-top-right-radius: $wm_radius;
@@ -2133,6 +2148,10 @@ menubar,
   background-color: $header_bg;
   color: $header_fg;
   box-shadow: inset 0 -1px $borders_color;
+
+  @if $blur =='true' {
+    .csd & { background-color: transparent; }
+  }
 
   &:backdrop {
     color: transparentize($header_fg, 0.2);

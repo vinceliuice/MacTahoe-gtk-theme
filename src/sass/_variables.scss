@@ -33,6 +33,9 @@ $lower_opacity: 0.3;
 $secondary_opacity: 0.75;
 $hint_opacity: 0.6;
 $disabled_opacity: 0.45;
+$trans_opacity: 0.96;
+$blur_opacity: 0.65;
+$side_blur_opacity: 0.75;
 
 // sizes
 $small_size: if($laptop == 'false', 24px, 20px);

@@ -1050,6 +1050,9 @@ customize_theme() {
     prompt -s "Changing opacity more transparent for blur version ...\n"
     # blur_my_shell
     sed $SED_OPT "/\$blur/s/false/true/"                                        "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    if [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
+      sed $SED_OPT "/\$desktop/s/default/plasma/"                               "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    fi
   fi
 
   if [[ "${scale}" == 'x2' ]]; then

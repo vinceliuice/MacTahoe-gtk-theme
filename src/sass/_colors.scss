@@ -155,16 +155,15 @@ $header_button_image:               if($variant == 'light', linear-gradient(to b
 
 // Sidebar colors
 $dark_sidebar_bg: white;
-$opacity: 0.96;
 
 @if $trans == 'true' {
   @if $variant == 'light' {
-    $dark_sidebar_bg:                 rgba(if($scheme == 'nord', #eeeff2, #fefefe), $opacity);
+    $dark_sidebar_bg:                 rgba(if($scheme == 'nord', #eeeff2, #fefefe), $trans_opacity);
   } @else {
     @if $scheme == 'nord' {
-      $dark_sidebar_bg:               rgba(if($darker == 'true', #22262e, #2b303b), $opacity);
+      $dark_sidebar_bg:               rgba(if($darker == 'true', #22262e, #2b303b), $trans_opacity);
     } @else {
-      $dark_sidebar_bg:               rgba(if($darker == 'true', #282828, #333333), $opacity);
+      $dark_sidebar_bg:               rgba(if($darker == 'true', #282828, #333333), $trans_opacity);
     }
   }
 } @else {
@@ -187,7 +186,7 @@ $sidebar_theme_color:               if($variant =='light', rgba(black, 0.06), rg
 $dialog_bg_color:                   if($variant == 'light', $bg_color, $base_color);
 
 @if $trans == 'true' {
-  $dialog_bg_color:                 if($variant == 'light', gtkalpha($bg_color, $opacity), gtkalpha($base_color, $opacity));
+  $dialog_bg_color:                 if($variant == 'light', gtkalpha($bg_color, $trans_opacity), gtkalpha($base_color, $trans_opacity));
 }
 
 //OSD colors
@@ -198,11 +197,11 @@ $solid_osd_bg_color:                if($darker == 'true', #1a1a1a, #2a2a2a);
   $solid_osd_bg_color:              if($darker == 'true', #16191e, #222730);
 }
 
-$osd_bg_color:                      if($trans == 'true', rgba($solid_osd_bg_color, $opacity), $solid_osd_bg_color);
+$osd_bg_color:                      if($trans == 'true', rgba($solid_osd_bg_color, $trans_opacity), $solid_osd_bg_color);
 
-$osd_button_bg:                     rgba(lighten($solid_osd_bg_color, 22%), $opacity);
+$osd_button_bg:                     rgba(lighten($solid_osd_bg_color, 22%), $trans_opacity);
 $osd_button_border:                 $dark_borders_color;
-$osd_entry_bg:                      rgba(lighten($solid_osd_bg_color, 22%), $opacity);
+$osd_entry_bg:                      rgba(lighten($solid_osd_bg_color, 22%), $trans_opacity);
 $osd_entry_border:                  $dark_borders_color;
 $osd_disabled_bg_color:             darken($solid_osd_bg_color, 3%);
 $osd_disabled_fg_color:             rgba($solid_osd_bg_color, 0.35);
@@ -213,7 +212,7 @@ $menu_bg:                           if($variant == 'light', $base_color, $bg_col
 $menu_bd:                           if($variant == 'light', rgba(black, 0.07), rgba(white, 0.05));
 
 @if $trans == 'true' {
-  $menu_bg:                         if($variant == 'light', rgba($base_color, $opacity), rgba($bg_color, $opacity));
+  $menu_bg:                         if($variant == 'light', rgba($base_color, $trans_opacity), rgba($bg_color, $trans_opacity));
 }
 
 $popover_opacity:                   if($trans == 'false', 1, if($shell_version == 'new', 0.92, 0.96));
@@ -287,7 +286,7 @@ $button_shadow: 0 6px 20px rgba(black, if($variant == 'light', 0.1, 0.15)), inse
 $button_hover_shadow: 0 8px 26px rgba(black, if($variant == 'light', 0.15, 0.2)), inset 1px 2px 1px -1px $button_outline, inset -1px -1px 1px 0 $button_outline;
 
 // WM colors
-$window_bg:                         if($trans == 'true', gtkalpha($base_color, if($blur == 'true', $secondary_opacity, $opacity)), $base_color);
+$window_bg:                         if($trans == 'true', gtkalpha($base_color, if($blur == 'true', $secondary_opacity, $trans_opacity)), $base_color);
 $wm_outline_light:                  0 0 0 2px rgba(black, 0.03), 0 0 0 1px rgba(black, 0.12);
 $wm_outline_dark:                   0 0 0 2px rgba(black, 0.1), 0 0 0 1px rgba(black, 0.75);
 $wm_border:                         if($variant=='light', rgba(black, 0.15), rgba(black, 0.75));

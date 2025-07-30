@@ -31,9 +31,9 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
 }
 
 @if $trans == 'true' {
-  $menu_bg:                         if($variant == 'light', rgba($base_color, $opacity), rgba($bg_color, $opacity));
-  $osd_bg_color:                    rgba($solid_osd_bg_color, $opacity);
-  $dialog_bg_color:                 if($variant == 'light', rgba($bg_color, $opacity), rgba($base_color, $opacity));
+  $menu_bg:                         if($variant == 'light', rgba($base_color, $trans_opacity), rgba($bg_color, $trans_opacity));
+  $osd_bg_color:                    rgba($solid_osd_bg_color, $trans_opacity);
+  $dialog_bg_color:                 if($variant == 'light', rgba($bg_color, $trans_opacity), rgba($base_color, $trans_opacity));
 }
 
 $active_color:                      if($variant == 'light', rgba(black, 0.26), rgba(white, 0.2));

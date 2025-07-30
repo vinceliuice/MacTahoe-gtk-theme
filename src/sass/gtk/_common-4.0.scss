@@ -5,10 +5,11 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
 /* #{$cakeisalie} */
 
 $side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light', 0.02, 0.06)), transparent 6px);
+$sidebar_bg_color: if($blur =='true', transparent, $dark_sidebar_bg);
 
 %side_style_left {
   background-image: $side_style_shadow;
-  background-color: if($blur == 'true', transparent, $dark_sidebar_bg);
+  background-color: $sidebar_bg_color;
   box-shadow: none;
   border: none;
 }
@@ -16,7 +17,7 @@ $side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light',
 %side_headerbar_left {
   &, &:backdrop {
     background-image: $side_style_shadow;
-    background-color: if($blur =='true', transparent, $dark_sidebar_bg);
+    background-color: $sidebar_bg_color;
     border: none;
   }
 
@@ -33,7 +34,7 @@ $side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light',
 
 %side_searchbar {
   > revealer > box {
-    background-color: if($blur =='true', transparent, $dark_sidebar_bg);
+    background-color: $sidebar_bg_color;
     border-color: $dark_sidebar_border;
   }
 }
@@ -552,27 +553,30 @@ entry {
   // error and warning style
   @each $e_type, $e_color, $e_fg_color in (warning, $warning_color, $light_fg_color),
                                           (error, $error_color, $light_fg_color),
+                                          (success, $success_color, $light_fg_color),
                                           (search-missing, $error_color, $light_fg_color) { // entry.search-missing for Gnome-Builder
     &.#{$e_type} {
-      color: $e_fg_color;
+      color: $e_color;
       @if $gnome_version == 'old' {
-        color: gtkmix($bg_color, $base_color, 60%);
+        background-color: gtkmix($e_color, transparent, 60%);
       } @else {
-        color: color-mix(in srgb, $base_color 60%, $base_color);
+        background-color: color-mix(in srgb, $e_color 15%, transparent);
       }
-      border-image: none;
 
-      image { color: $e_fg_color; }
+      image { color: $e_color; }
 
       &:focus-within {
         color: $e_fg_color;
         background-color: $e_color;
         box-shadow: none;
+        outline: none;
+
+        image { color: $e_fg_color; }
       }
 
-      > selection {
-        background-color: $e_fg_color;
+      text > selection {
         color: $e_color;
+        background-color: $e_fg_color;
       }
     }
   }

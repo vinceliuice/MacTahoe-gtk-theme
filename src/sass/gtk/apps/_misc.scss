@@ -200,6 +200,8 @@ window.background.chromium {
 
   headerbar.titlebar {
     padding: 0 $container_padding * 2;
+    background-color: $chrome_bg_color;
+    color: $text_color;
 
     button.toggle { // account-button (> 64.0.3282?)
       border: none;
