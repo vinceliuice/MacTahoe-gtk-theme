@@ -2,13 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="120"
-   height="120"
-   viewBox="0 0 120 120"
+   width="137"
+   height="137"
+   viewBox="0 0 137 137"
    version="1.1"
    id="svg5"
    inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
-   sodipodi:docname="menu.svg"
+   sodipodi:docname="menu_x1.75.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -25,14 +25,14 @@
      showgrid="false"
      units="px"
      width="120px"
-     inkscape:zoom="4.08367"
-     inkscape:cx="49.34287"
-     inkscape:cy="62.198953"
-     inkscape:window-width="1920"
-     inkscape:window-height="1007"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
+     inkscape:zoom="1.4437954"
+     inkscape:cx="83.114271"
+     inkscape:cy="88.308913"
+     inkscape:window-width="1317"
+     inkscape:window-height="556"
+     inkscape:window-x="45"
+     inkscape:window-y="29"
+     inkscape:window-maximized="0"
      inkscape:current-layer="layer1"
      showguides="true"
      inkscape:guide-bbox="true"
@@ -46,11 +46,6 @@
        spacingy="1"
        spacingx="1"
        units="px" />
-    <sodipodi:guide
-       position="64.586715,93.853636"
-       orientation="0,-1"
-       id="guide1"
-       inkscape:locked="false" />
   </sodipodi:namedview>
   <defs
      id="defs2">
@@ -81,6 +76,6 @@
        y="1.4859"
        rx="2.0895615"
        ry="2.0895615"
-       transform="matrix(7.1605405,0,0,7.1605405,-0.62591139,-1.405706e-7)" />
+       transform="matrix(8.1888173,0,0,8.1888173,-0.83198443,-1.0153305e-7)" />
   </g>
 </svg>

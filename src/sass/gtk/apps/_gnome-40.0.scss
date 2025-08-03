@@ -97,8 +97,12 @@
           padding: 0;
 
           > widget#NautilusViewCell {
-            padding: $container_padding $container_padding * 1.5;
+            padding: $container_padding / 2 $container_padding * 1.5;
           }
+        }
+
+        &:nth-child(odd):not(:disabled) {
+          background-image: image(gtkalpha(currentColor, 0.03));
         }
       }
     }

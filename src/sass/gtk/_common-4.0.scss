@@ -527,7 +527,7 @@ entry {
   }
 
   > text {
-    &:diasabled,
+    &:disabled,
     > placeholder {
       @extend .dim-label;
     }

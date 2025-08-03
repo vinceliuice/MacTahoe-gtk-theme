@@ -1059,4 +1059,9 @@ customize_theme() {
     prompt -s "Changing GDM scaling to 200% ...\n"
     sed $SED_OPT "/\$scale/s/default/x2/"                                       "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
+
+  if [[ -f "$HOME/.config/monitors.xml" ]]; then
+    factor="$(sed -n '/<scale>/p' $HOME/.config/monitors.xml | cut -d '>' -f 2 | cut -d '<' -f 1)"
+    sed $SED_OPT "/\$scaling_factor/s/2/${factor}/"                             "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
 }
