@@ -206,6 +206,7 @@ toolbarspring {
 }
 
 .urlbar-page-action,
+.urlbar-revert-button,
 #urlbar-go-button,
 .urlbar-go-button,
 .search-go-button,
@@ -222,6 +223,7 @@ toolbarspring {
   max-width: calc(30px + 13em) !important;
 }
 
+.urlbar-revert-button,
 #star-button-box {
 	margin-right: 0 !important;
 }
