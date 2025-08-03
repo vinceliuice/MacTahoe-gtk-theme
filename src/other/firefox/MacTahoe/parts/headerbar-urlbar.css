@@ -13,6 +13,8 @@ toolbarspring {
 	--urlbar-container-height: 36px !important;
 	--urlbar-toolbar-height: 36px !important;
 	--urlbar-inner-padding: 0 !important;
+	--urlbar-box-hover-bgcolor: var(--gnome-headerbar-button-hover-background) !important;
+	--urlbar-box-active-bgcolor: var(--gnome-headerbar-button-active-background) !important;
 	box-shadow: none !important;
 	border: none !important;
 	padding: 0 !important;
@@ -230,6 +232,7 @@ toolbarspring {
 
 #tracking-protection-icon-container:hover,
 .urlbar-page-action:hover,
+.urlbar-revert-button:hover,
 #urlbar-go-button:hover,
 .urlbar-go-button:hover,
 .search-go-button:hover,
@@ -239,6 +242,7 @@ toolbarspring {
 
 #tracking-protection-icon-container:active,
 .urlbar-page-action:active,
+.urlbar-revert-button:active,
 #urlbar-go-button:active,
 .urlbar-go-button:active,
 .search-go-button:active,
@@ -248,6 +252,7 @@ toolbarspring {
 
 #tracking-protection-icon-container[open="true"],
 .urlbar-page-action[open="true"],
+.urlbar-revert-button[open="true"],
 #urlbar-go-button[open="true"],
 .urlbar-go-button[open="true"],
 .search-go-button[open="true"],
@@ -256,7 +261,6 @@ toolbarspring {
 }
 
 /* Search mode indicator */
-
 #nav-bar #urlbar toolbarbutton#urlbar-searchmode-switcher:not(#urlbar-zoom-button):not(.subviewbutton):not(.titlebar-button):not(.close-button) {
 	appearance: none;
 	border-radius: 999px !important;
