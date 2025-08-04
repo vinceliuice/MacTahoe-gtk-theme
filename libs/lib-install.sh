@@ -1061,7 +1061,7 @@ customize_theme() {
   fi
 
   if [[ -f "$HOME/.config/monitors.xml" ]]; then
-    factor="$(sed -n '/<scale>/p' $HOME/.config/monitors.xml | cut -d '>' -f 2 | cut -d '<' -f 1)"
+    factor="$(sed -n '7p' $HOME/.config/monitors.xml | cut -d '>' -f 2 | cut -d '<' -f 1)"
     sed $SED_OPT "/\$scaling_factor/s/2/${factor}/"                             "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 }
