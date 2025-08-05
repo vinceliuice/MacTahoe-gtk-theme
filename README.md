@@ -219,27 +219,13 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 
 ```bash
 
-OPTIONS:
-  -o, --opacity [normal|solid]
-   Set 'MacTahoe' GDM/Flatpak theme opacity variants. Default is 'normal'
-
-  -c, --color [light|dark]
-   Set 'MacTahoe' GDM/Flatpak theme color variants. Default is 'light'
-
-  -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]
-   Set 'MacTahoe' GDM/Flatpak theme accent color. Default is BigSur-like theme
-
-  -s, --scheme [standard|nord]
-   Set 'MacTahoe' GDM/Flatpak theme colorscheme style. Default is 'standard'
-
-   
  Tweaks for GDM theme. options
 
   -g, --gdm    Without options default GDM theme will install... 
 
       1. -i, -icon [apple|simple|gnome|ubuntu|tux|arch|manjaro|fedora|debian|void|opensuse|popos|mxlinux|zorin|budgie|gentoo]   Set GDM panel 'Activities' icon Default is 'standard'
 
-      2. -b, -background [default|blank|IMAGE_PATH]   Set GDM background image Default is BigSur-like wallpaper
+      2. -b, -background [default|blank|IMAGE_PATH]   Set GDM background image Default is MacOS wallpaper
 
       3. -p, -panelopacity [default|30|45|60|75]   Set GDM panel transparency Default is 15%
 
@@ -251,24 +237,24 @@ OPTIONS:
 
       7. -nb, -noblur    Don't blur 'MacTahoe' GDM theme background image 
 
+      8.  -o, --opacity [normal|solid]   Set 'MacTahoe' GDM theme opacity variants Default is 'normal'
+
+      9.  -c, --color [Light|Dark]   Set 'MacTahoe' GDM theme color variants Default is 'dark'
+
+      10. -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]   Set 'MacTahoe' GDM theme accent color Default is 'blue'
+
+      11. -s, --scheme [standard|nord]   Set 'MacTahoe' GDM theme colorscheme style Default is 'standard'
+
    
  Tweaks for firefox. options
 
-  -f, --firefox         [(monterey|flat)|alt|(darker|adaptive)]   Without options default MacTahoe theme will install...   Options:
+  -f, --firefox         [default|adaptive]   Without options default theme will install...   Options:
 
-      1. monterey       [3+3|3+4|3+5|4+3|4+4|4+5|5+3|5+4|5+5]   Topbar buttons number: 'a+b'   a: left side buttons number, b: right side buttons number
+      1. default       default version  
 
-      2. flat           Monterey alt version    Flat round tabs...
+      2. adaptive       Adaptive color version   You need install adaptive-tab-bar-colour plugin first   https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/
 
-      3. alt            Alt windows button version    Alt windows button style like gtk theme
-
-      4. darker         Darker Firefox theme version    Darker Firefox theme version
-
-      5. nord           Nord Firefox colorscheme version    Nord Firefox colorscheme version
-
-      6. adaptive       Adaptive color version   You need install adaptive-tab-bar-colour plugin first   https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/
-
-  -e, --edit-firefox [(monterey|flat)|alt|(darker|adaptive)]
+  -e, --edit-firefox [default|adaptive]
    Edit 'MacTahoe' theme for Firefox settings and also connect the theme to the current Firefox profiles. 
 
    
@@ -280,7 +266,7 @@ OPTIONS:
 
       2.  -c, --color [Light|Dark]   Set 'MacTahoe' flatpak theme color variants Default is 'light'
 
-      3.  -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]   Set 'MacTahoe' flatpak theme accent color Default is BigSur-like theme
+      3.  -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]   Set 'MacTahoe' flatpak theme accent color Default is 'blue'
 
       4.  -s, --scheme [standard|nord]   Set 'MacTahoe' flatpak theme colorscheme style Default is 'standard'
 
