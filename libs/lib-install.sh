@@ -331,7 +331,7 @@ install_beggy() {
     local IMG_COLOR='-night'
   fi
 
-  [[ "${no_blur}" == "false" ]] && CONVERT_OPT+=" -blur 0x50 "
+  [[ "${no_blur}" == "false" ]] && CONVERT_OPT+=" -scale 1280x -blur 0x50 "
   [[ "${no_darken}" == "false" ]] && CONVERT_OPT+=" -fill black -colorize 45% "
 
   mkdir -p                                                                                     "${TARGET_DIR}"
@@ -723,6 +723,19 @@ install_only_gdm_theme() {
   mkdir -p                                                                                    "${TARGET_DIR}"
   cp -r "${REPO_DIR}/other/gdm/theme"                                                         "${TARGET_DIR}"
   cp -r "${MACTAHOE_TMP_DIR}/background.png"                                                  "${TARGET_DIR}/theme/background.png"
+
+  # For Kali Linux GDM >>>
+
+  local KALI_BACKGROUND_FOLDER="/usr/share/desktop-base/kali-theme/login"
+
+  if [[ -f "${KALI_BACKGROUND_FOLDER}/background.png" ]]; then
+    backup_file "${KALI_BACKGROUND_FOLDER}"
+    mkdir -p "${KALI_BACKGROUND_FOLDER}"
+    cp -rf "${MACTAHOE_TMP_DIR}/background.png"                                               "${KALI_BACKGROUND_FOLDER}/background-blurred"
+    cp -rf "${REPO_DIR}/wallpaper/MacTahoe-night.jpeg"                                        "${KALI_BACKGROUND_FOLDER}/background"
+  fi
+
+  # For Kali Linux GDM <<<
 
   backup_file "${TARGET}"
   glib-compile-resources --sourcedir="${TARGET_DIR}/theme" --target="${TARGET}" "${GDM_GR_XML_FILE}"
