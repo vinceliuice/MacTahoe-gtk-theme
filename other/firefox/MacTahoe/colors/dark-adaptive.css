@@ -96,6 +96,7 @@
 	--gnome-headerbar-button-background: linear-gradient(to bottom, rgba(0, 0, 0, 0.13), rgba(0, 0, 0, 0.15));
 	--gnome-headerbar-button-box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15), inset 1px 2px 1px -1px rgba(255, 255, 255, 0.08), inset -1px -1px 1px 0 rgba(255, 255, 255, 0.08);
 	--gnome-headerbar-button-hover-box-shadow: 0 8px 26px rgba(0, 0, 0, 0.2), inset 1px 2px 1px -1px rgba(255, 255, 255, 0.08), inset -1px -1px 1px 0 rgba(255, 255, 255, 0.08);
+	--gnome-headerbar-button-active-box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 	--gnome-headerbar-button-combined-background: color-mix(in srgb, currentColor 6%, transparent);
 	--gnome-headerbar-button-hover-background: color-mix(in srgb, currentColor 12%, transparent);
 	--gnome-headerbar-button-active-background: color-mix(in srgb, currentColor 18%, transparent);

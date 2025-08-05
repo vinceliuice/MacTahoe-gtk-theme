@@ -59,7 +59,7 @@
 #TabsToolbar .toolbarbutton-1:active, #TabsToolbar .toolbarbutton-1[open],
 #tabs-newtab-button:active, #TabsToolbar #new-tab-button:active {
 	background: var(--gnome-headerbar-button-active-background) !important;
-	box-shadow: none !important;
+	box-shadow: var(--gnome-headerbar-button-active-box-shadow) !important;
 }
 
 /* Disabled headerbar buttons */
