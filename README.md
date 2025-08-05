@@ -314,7 +314,7 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 <img src="other/firefox/preview.png"/>
 </a> </p>
 
-#### - [Install Firefox theme](src/other/firefox)
+#### - [Install Firefox theme](other/firefox)
 Parameter: `--firefox` `-f`
 
 Example: `./tweaks.sh -f`
