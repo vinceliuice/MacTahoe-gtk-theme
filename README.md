@@ -325,7 +325,7 @@ OPTIONS:
 ### <p align="center"> <b> Install and edit Firefox theme </b> </p>
 
 <p align="center"> <a href="src/other/firefox">
-<img src="src/other/firefox/preview.png"/>
+<img src="other/firefox/preview.png"/>
 </a> </p>
 
 #### - [Install Firefox theme](src/other/firefox)

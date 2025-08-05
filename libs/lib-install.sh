@@ -331,7 +331,7 @@ install_beggy() {
     local IMG_COLOR='-night'
   fi
 
-  [[ "${no_blur}" == "false" ]] && CONVERT_OPT+=" -scale 1280x -blur 0x50 "
+  [[ "${no_blur}" == "false" ]] && CONVERT_OPT+=" -blur 0x50 "
   [[ "${no_darken}" == "false" ]] && CONVERT_OPT+=" -fill black -colorize 45% "
 
   mkdir -p                                                                                     "${TARGET_DIR}/assets"
@@ -345,7 +345,7 @@ install_beggy() {
       magick ${REPO_DIR}/wallpaper/MacTahoe${IMG_COLOR}.jpeg ${CONVERT_OPT} ${TARGET_DIR}/assets/background.jpeg
       ;;
     *)
-      if [[ "${no_blur}" == "false" || "${darken}" == "true" ]]; then
+      if [[ "${no_blur}" == "false" || "${no_darken}" == "false" ]]; then
         install_beggy_deps
         magick ${background} ${CONVERT_OPT} ${TARGET_DIR}/assets/background.jpeg
       else
@@ -514,7 +514,7 @@ install_theemy() {
   ( cd "${TARGET_DIR}/metacity-1" && ln -s "metacity-theme-1.xml" "metacity-theme-2.xml" )
 
   mkdir -p                                                                                    "${TARGET_DIR}/plank"
-  cp -r "${THEME_SRC_DIR}/other/plank/theme${color}/"*".theme"                                "${TARGET_DIR}/plank"
+  cp -r "${REPO_DIR}/other/plank/theme${color}/"*".theme"                                     "${TARGET_DIR}/plank"
 
   cp -r "${THEME_SRC_DIR}/assets/unity"                                                       "${TARGET_DIR}"
 }
@@ -663,12 +663,12 @@ install_gdm_theme() {
 
   # Let's go!
   install_theme_deps
-  rm -rf "${MACTAHOE_GS_DIR}"
   gtk_base && shell_base
 
   if check_theme_file "${COMMON_CSS_FILE}"; then # CSS-based theme
-    install_beggy "${MACTAHOE_GS_DIR}" "${colors[0]}"
-    install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${schemes[0]}" "${icon}" "${MACTAHOE_GS_DIR}"
+    rm -rf "${MACTAHOE_GS_DIR}"
+    install_beggy "${MACTAHOE_GS_DIR}" "${colors[1]}"
+    install_shelly "${colors[1]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${schemes[0]}" "${icon}" "${MACTAHOE_GS_DIR}"
     sed $SED_OPT "s|assets|${MACTAHOE_GS_DIR}/assets|" "${MACTAHOE_GS_DIR}/gnome-shell.css"
 
     if check_theme_file "${UBUNTU_CSS_FILE}"; then
@@ -678,18 +678,18 @@ install_gdm_theme() {
     fi
 
     backup_file "${COMMON_CSS_FILE}"
-    ln -sf "${WHITESUR_GS_DIR}/gnome-shell.css" "${COMMON_CSS_FILE}"
+    ln -sf "${MACTAHOE_GS_DIR}/gnome-shell.css" "${COMMON_CSS_FILE}"
 
     if [[ "${TARGET}" != '' ]]; then
       backup_file "${TARGET}"
-      ln -sf "${WHITESUR_GS_DIR}/gnome-shell.css" "${TARGET}"
+      ln -sf "${MACTAHOE_GS_DIR}/gnome-shell.css" "${TARGET}"
     fi
 
     # Fix previously installed MACTAHOE
     restore_file "${ETC_CSS_FILE}"
   else # GR-based theme
-    install_beggy "${MACTAHOE_TMP_DIR}/shelly" "${colors[0]}"
-    install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${schemes[0]}" "${icon}" "${MACTAHOE_TMP_DIR}/shelly"
+    install_beggy "${MACTAHOE_TMP_DIR}/shelly" "${colors[1]}"
+    install_shelly "${colors[1]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${schemes[0]}" "${icon}" "${MACTAHOE_TMP_DIR}/shelly"
     sed $SED_OPT "s|assets|resource:///org/gnome/shell/theme/assets|" "${MACTAHOE_TMP_DIR}/shelly/gnome-shell.css"
 
     if check_theme_file "$POP_OS_GR_FILE"; then
@@ -708,6 +708,25 @@ install_gdm_theme() {
     # Fix previously installed MACTAHOE
     restore_file "${ETC_GR_FILE}"
   fi
+}
+
+install_only_gdm_theme() {
+  if check_theme_file "$MISC_GR_FILE"; then
+    TARGET="${MISC_GR_FILE}"
+  else
+    prompt -e "\n  $MISC_GR_FILE File not found! exit..."; exit 1
+  fi
+
+  install_theme_deps; install_beggy "${MACTAHOE_TMP_DIR}" "${colors[0]}"
+
+  local TARGET_DIR="${MACTAHOE_TMP_DIR}/gdm"
+
+  mkdir -p                                                                                    "${TARGET_DIR}"
+  cp -r "${REPO_DIR}/other/gdm/theme"                                                         "${TARGET_DIR}"
+  cp -r "${MACTAHOE_TMP_DIR}/assets/background.jpeg"                                          "${TARGET_DIR}/theme/background.jpeg"
+
+  backup_file "${TARGET}"
+  glib-compile-resources --sourcedir="${TARGET_DIR}/theme" --target="${TARGET}" "${GDM_GR_XML_FILE}"
 }
 
 revert_gdm_theme() {

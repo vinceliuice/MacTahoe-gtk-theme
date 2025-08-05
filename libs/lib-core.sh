@@ -56,40 +56,6 @@ fi
 
 SUDO_BIN="$(which sudo)"
 
-#------------Directories--------------#
-THEME_SRC_DIR="${REPO_DIR}/src"
-DASH_TO_DOCK_SRC_DIR="${REPO_DIR}/src/other/dash-to-dock"
-DASH_TO_DOCK_DIR_ROOT="/usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com"
-DASH_TO_DOCK_DIR_HOME="${MY_HOME}/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com"
-GNOME_SHELL_EXTENSION_DIR="${MY_HOME}/.local/share/gnome-shell/extensions"
-FIREFOX_SRC_DIR="${REPO_DIR}/src/other/firefox"
-FIREFOX_DIR_HOME="${MY_HOME}/.mozilla/firefox"
-FIREFOX_THEME_DIR="${MY_HOME}/.mozilla/firefox/firefox-themes"
-FIREFOX_FLATPAK_DIR_HOME="${MY_HOME}/.var/app/org.mozilla.firefox/.mozilla/firefox"
-FIREFOX_FLATPAK_THEME_DIR="${MY_HOME}/.var/app/org.mozilla.firefox/.mozilla/firefox/firefox-themes"
-FIREFOX_SNAP_DIR_HOME="${MY_HOME}/snap/firefox/common/.mozilla/firefox"
-FIREFOX_SNAP_THEME_DIR="${MY_HOME}/snap/firefox/common/.mozilla/firefox/firefox-themes"
-export MACTAHOE_TMP_DIR="/tmp/WhiteSur.lock"
-
-if [[ -w "/root" ]]; then
-  THEME_DIR="/usr/share/themes"
-else
-  THEME_DIR="$HOME/.themes"
-fi
-
-#--------------GDM----------------#
-MACTAHOE_GS_DIR="/usr/share/gnome-shell/theme/WhiteSur"
-COMMON_CSS_FILE="/usr/share/gnome-shell/theme/gnome-shell.css"
-UBUNTU_CSS_FILE="/usr/share/gnome-shell/theme/ubuntu.css"
-ZORIN_CSS_FILE="/usr/share/gnome-shell/theme/zorin.css"
-ETC_CSS_FILE="/etc/alternatives/gdm3.css"
-ETC_GR_FILE="/etc/alternatives/gdm3-theme.gresource"
-YARU_GR_FILE="/usr/share/gnome-shell/theme/Yaru/gnome-shell-theme.gresource"
-POP_OS_GR_FILE="/usr/share/gnome-shell/theme/Pop/gnome-shell-theme.gresource"
-ZORIN_GR_FILE="/usr/share/gnome-shell/theme/ZorinBlue-Light/gnome-shell-theme.gresource"
-MISC_GR_FILE="/usr/share/gnome-shell/gnome-shell-theme.gresource"
-GS_GR_XML_FILE="${THEME_SRC_DIR}/main/gnome-shell/gnome-shell-theme.gresource.xml"
-
 #-------------Theme---------------#
 THEME_NAME="MacTahoe"
 COMMAND_COLOR_VARIANTS=('light' 'dark')
@@ -102,6 +68,41 @@ ICON_VARIANTS=('apple' 'simple' 'gnome' 'ubuntu' 'tux' 'arch' 'manjaro' 'fedora'
 PANEL_OPACITY_VARIANTS=('default' '30' '45' '60' '75')
 PANEL_SIZE_VARIANTS=('default' 'smaller' 'bigger')
 
+#------------Directories--------------#
+THEME_SRC_DIR="${REPO_DIR}/src"
+DASH_TO_DOCK_SRC_DIR="${REPO_DIR}/other/dash-to-dock"
+DASH_TO_DOCK_DIR_ROOT="/usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com"
+DASH_TO_DOCK_DIR_HOME="${MY_HOME}/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com"
+GNOME_SHELL_EXTENSION_DIR="${MY_HOME}/.local/share/gnome-shell/extensions"
+FIREFOX_SRC_DIR="${REPO_DIR}/other/firefox"
+FIREFOX_DIR_HOME="${MY_HOME}/.mozilla/firefox"
+FIREFOX_THEME_DIR="${MY_HOME}/.mozilla/firefox/firefox-themes"
+FIREFOX_FLATPAK_DIR_HOME="${MY_HOME}/.var/app/org.mozilla.firefox/.mozilla/firefox"
+FIREFOX_FLATPAK_THEME_DIR="${MY_HOME}/.var/app/org.mozilla.firefox/.mozilla/firefox/firefox-themes"
+FIREFOX_SNAP_DIR_HOME="${MY_HOME}/snap/firefox/common/.mozilla/firefox"
+FIREFOX_SNAP_THEME_DIR="${MY_HOME}/snap/firefox/common/.mozilla/firefox/firefox-themes"
+export MACTAHOE_TMP_DIR="/tmp/$THEME_NAME.lock"
+
+if [[ -w "/root" ]]; then
+  THEME_DIR="/usr/share/themes"
+else
+  THEME_DIR="$HOME/.themes"
+fi
+
+#--------------GDM----------------#
+MACTAHOE_GS_DIR="/usr/share/gnome-shell/theme/$THEME_NAME"
+COMMON_CSS_FILE="/usr/share/gnome-shell/theme/gnome-shell.css"
+UBUNTU_CSS_FILE="/usr/share/gnome-shell/theme/ubuntu.css"
+ZORIN_CSS_FILE="/usr/share/gnome-shell/theme/zorin.css"
+ETC_CSS_FILE="/etc/alternatives/gdm3.css"
+ETC_GR_FILE="/etc/alternatives/gdm3-theme.gresource"
+YARU_GR_FILE="/usr/share/gnome-shell/theme/Yaru/gnome-shell-theme.gresource"
+POP_OS_GR_FILE="/usr/share/gnome-shell/theme/Pop/gnome-shell-theme.gresource"
+ZORIN_GR_FILE="/usr/share/gnome-shell/theme/ZorinBlue-Light/gnome-shell-theme.gresource"
+MISC_GR_FILE="/usr/share/gnome-shell/gnome-shell-theme.gresource"
+GS_GR_XML_FILE="${THEME_SRC_DIR}/main/gnome-shell/gnome-shell-theme.gresource.xml"
+GDM_GR_XML_FILE="${REPO_DIR}/other/gdm/gnome-shell-theme.gresource.xml"
+
 #--------Customization, default values----------#
 dest="${THEME_DIR}"
 name="${THEME_NAME}"
@@ -113,7 +114,7 @@ schemes=("${SCHEME_VARIANTS[0]}")
 icon="${ICON_VARIANTS[0]}"
 panel_opacity="${PANEL_OPACITY_VARIANTS[0]}"
 panel_size="${PANEL_SIZE_VARIANTS[0]}"
-background="blank"
+background="default"
 compact="true"
 
 #--Ambigous arguments checking and overriding default values--#
