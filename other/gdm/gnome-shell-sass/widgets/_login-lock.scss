@@ -2,6 +2,12 @@ $_gdm_bg: $system_base_color;
 $_gdm_fg: $system_fg_color;
 $_gdm_dialog_width: 25em;
 
+#lockDialogGroup {
+  background-color: $_gdm_bg;
+  background-image: url("resource:///org/gnome/shell/theme/background.png");
+  background-size: cover;
+}
+
 // common style for login and lockscreen
 .login-dialog,
 .unlock-dialog {
@@ -230,12 +236,6 @@ $_gdm_dialog_width: 25em;
 .screen-shield-background { // just the shadow, really
   background: black;
   box-shadow: 0 2px 4px rgba(0,0,0,0.6);
-}
-
-#lockDialogGroup {
-  background-color: $_gdm_bg;
-  background-image: url("resource:///org/gnome/shell/theme/background.jpeg");
-  background-size: cover;
 }
 
 // Clock

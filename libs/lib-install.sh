@@ -334,22 +334,22 @@ install_beggy() {
   [[ "${no_blur}" == "false" ]] && CONVERT_OPT+=" -blur 0x50 "
   [[ "${no_darken}" == "false" ]] && CONVERT_OPT+=" -fill black -colorize 45% "
 
-  mkdir -p                                                                                     "${TARGET_DIR}/assets"
+  mkdir -p                                                                                     "${TARGET_DIR}"
 
   case "${background}" in
     blank)
-      cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blank.jpeg"            "${TARGET_DIR}/assets/background.jpeg"
+#      cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background.png"                 "${TARGET_DIR}/background.png"
       ;;
     default)
       install_beggy_deps
-      magick ${REPO_DIR}/wallpaper/MacTahoe${IMG_COLOR}.jpeg ${CONVERT_OPT} ${TARGET_DIR}/assets/background.jpeg
+      magick ${REPO_DIR}/wallpaper/MacTahoe${IMG_COLOR}.jpeg ${CONVERT_OPT} ${TARGET_DIR}/background.png
       ;;
     *)
       if [[ "${no_blur}" == "false" || "${no_darken}" == "false" ]]; then
         install_beggy_deps
-        magick ${background} ${CONVERT_OPT} ${TARGET_DIR}/assets/background.jpeg
+        magick ${background} ${CONVERT_OPT} ${TARGET_DIR}/background.png
       else
-        cp -r "${background}"                                                                  "${TARGET_DIR}/assets/background.jpeg"
+        cp -r "${background}"                                                                  "${TARGET_DIR}/background.png"
       fi
       ;;
   esac
@@ -376,12 +376,11 @@ install_shelly() {
   cp -r "${THEME_SRC_DIR}/main/gnome-shell/pad-osd.css"                                       "${TARGET_DIR}"
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gnome-shell/gnome-shell${color}.scss"             "${TARGET_DIR}/gnome-shell.css"
 
-  cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/"*".svg"                           "${TARGET_DIR}/assets"
-  cp -r "${THEME_SRC_DIR}/assets/gnome-shell/assets${color}/"*".svg"                          "${TARGET_DIR}/assets"
-  cp -r "${THEME_SRC_DIR}/assets/gnome-shell/theme${theme}${scheme}/"*".svg"                  "${TARGET_DIR}/assets"
+  cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/"*                                 "${TARGET_DIR}/assets"
+  cp -r "${THEME_SRC_DIR}/assets/gnome-shell/assets${color}/"*                                "${TARGET_DIR}/assets"
+  cp -r "${THEME_SRC_DIR}/assets/gnome-shell/theme${theme}${scheme}/"*                        "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg"                "${TARGET_DIR}/assets/activities.svg"
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg"                "${TARGET_DIR}/assets/activities-white.svg"
-  cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blank.jpeg"               "${TARGET_DIR}/assets/background.jpeg"
 
   (
     cd "${TARGET_DIR}"
@@ -667,8 +666,8 @@ install_gdm_theme() {
 
   if check_theme_file "${COMMON_CSS_FILE}"; then # CSS-based theme
     rm -rf "${MACTAHOE_GS_DIR}"
-    install_beggy "${MACTAHOE_GS_DIR}" "${colors[1]}"
     install_shelly "${colors[1]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${schemes[0]}" "${icon}" "${MACTAHOE_GS_DIR}"
+    install_beggy "${MACTAHOE_GS_DIR}/assets" "${colors[1]}"
     sed $SED_OPT "s|assets|${MACTAHOE_GS_DIR}/assets|" "${MACTAHOE_GS_DIR}/gnome-shell.css"
 
     if check_theme_file "${UBUNTU_CSS_FILE}"; then
@@ -688,8 +687,8 @@ install_gdm_theme() {
     # Fix previously installed MACTAHOE
     restore_file "${ETC_CSS_FILE}"
   else # GR-based theme
-    install_beggy "${MACTAHOE_TMP_DIR}/shelly" "${colors[1]}"
     install_shelly "${colors[1]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${schemes[0]}" "${icon}" "${MACTAHOE_TMP_DIR}/shelly"
+    install_beggy "${MACTAHOE_TMP_DIR}/shelly/assets" "${colors[1]}"
     sed $SED_OPT "s|assets|resource:///org/gnome/shell/theme/assets|" "${MACTAHOE_TMP_DIR}/shelly/gnome-shell.css"
 
     if check_theme_file "$POP_OS_GR_FILE"; then
@@ -723,7 +722,7 @@ install_only_gdm_theme() {
 
   mkdir -p                                                                                    "${TARGET_DIR}"
   cp -r "${REPO_DIR}/other/gdm/theme"                                                         "${TARGET_DIR}"
-  cp -r "${MACTAHOE_TMP_DIR}/assets/background.jpeg"                                          "${TARGET_DIR}/theme/background.jpeg"
+  cp -r "${MACTAHOE_TMP_DIR}/background.png"                                                  "${TARGET_DIR}/theme/background.png"
 
   backup_file "${TARGET}"
   glib-compile-resources --sourcedir="${TARGET_DIR}/theme" --target="${TARGET}" "${GDM_GR_XML_FILE}"

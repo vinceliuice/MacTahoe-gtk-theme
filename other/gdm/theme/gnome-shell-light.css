@@ -4332,6 +4332,12 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   color: st-lighten(-st-accent-fg-color, 5%);
 }
 
+#lockDialogGroup {
+  background-color: #222226;
+  background-image: url("resource:///org/gnome/shell/theme/background.png");
+  background-size: cover;
+}
+
 .login-dialog,
 .unlock-dialog {
   color: #fafafb;
@@ -4577,12 +4583,6 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 .screen-shield-background {
   background: black;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-}
-
-#lockDialogGroup {
-  background-color: #222226;
-  background-image: url("resource:///org/gnome/shell/theme/background.jpeg");
-  background-size: cover;
 }
 
 .unlock-dialog-clock {
