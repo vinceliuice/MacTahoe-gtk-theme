@@ -310,7 +310,7 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 ## There's more themes you can try!
 ### <p align="center"> <b> Install and edit Firefox theme </b> </p>
 
-<p align="center"> <a href="src/other/firefox">
+<p align="center"> <a href="other/firefox">
 <img src="other/firefox/preview.png"/>
 </a> </p>
 
