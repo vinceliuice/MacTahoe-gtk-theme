@@ -196,13 +196,6 @@ toolbarspring {
 	fill-opacity: 1 !important;
 }
 
-#notification-popup-box {
-	height: 30px !important;
-	width: 30px !important;
-	padding: 7px !important;
-	border-radius: 999px !important;
-}
-
 .notification-anchor-icon {
 	padding: 0 !important;
 }
@@ -213,6 +206,7 @@ toolbarspring {
 .urlbar-go-button,
 .search-go-button,
 .identity-box-button,
+#notification-popup-box,
 #tracking-protection-icon-container {
 	min-width: 30px !important;
 	min-height: 30px !important;
