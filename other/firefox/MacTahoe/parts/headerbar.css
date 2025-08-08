@@ -33,7 +33,7 @@
 	background: var(--gnome-headerbar-button-background) !important;
 }
 
-#nav-bar .toolbaritem-combined-buttons toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not(.titlebar-button):not(.close-button) {
+#nav-bar .toolbaritem-combined-buttons:not(.unified-extensions-item) toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not(.titlebar-button):not(.close-button) {
 	margin: 0 !important;
 	box-shadow: none !important;
 	background: none !important;
@@ -41,6 +41,10 @@
 	max-width: 30px !important;
 	min-height: 30px !important;
 	min-width: 30px !important;
+
+	&:hover {
+		box-shadow: none !important;
+	}
 }
 
 /* Hover headerbar buttons */
@@ -60,6 +64,14 @@
 #tabs-newtab-button:active, #TabsToolbar #new-tab-button:active {
 	background: var(--gnome-headerbar-button-active-background) !important;
 	box-shadow: var(--gnome-headerbar-button-active-box-shadow) !important;
+}
+
+/*  Reset combined buttons */
+#nav-bar .toolbaritem-combined-buttons:not(.unified-extensions-item) toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not(.titlebar-button):not(.close-button):not([disabled]):hover,
+#nav-bar .toolbaritem-combined-buttons:not(.unified-extensions-item) toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button):not(.close-button):not([disabled]):not(#hack):active,
+#nav-bar .toolbaritem-combined-buttons:not(.unified-extensions-item) toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button):not(.close-button):not([disabled])[open],
+#nav-bar .toolbaritem-combined-buttons:not(.unified-extensions-item) toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button):not(.close-button):not([disabled])[checked] {
+	box-shadow: none !important;
 }
 
 /* Disabled headerbar buttons */
