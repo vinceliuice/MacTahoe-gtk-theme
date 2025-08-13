@@ -764,13 +764,8 @@ revert_gdm_theme() {
 ###############################################################################
 
 install_firefox_theme() {
-  if has_snap_app firefox; then
-    local TARGET_DIR="${FIREFOX_SNAP_THEME_DIR}"
-  elif has_flatpak_app org.mozilla.firefox; then
-    local TARGET_DIR="${FIREFOX_FLATPAK_THEME_DIR}"
-  else
-    local TARGET_DIR="${FIREFOX_THEME_DIR}"
-  fi
+  local TARGET_DIR="${1}"
+  local FIREFOX_DIR="${2}"
 
   if [[ "${colorscheme}" == '-nord' && "${adaptive}" == '-adaptive' ]]; then
     local theme_type="${adaptive}"
@@ -778,7 +773,11 @@ install_firefox_theme() {
     local theme_type="${darker}${adaptive}${colorscheme}"
   fi
 
-  remove_firefox_theme
+  backup_file "${TARGET_DIR}"/customChrome.css
+  backup_file "${TARGET_DIR}"/userChrome.css
+  backup_file "${TARGET_DIR}"/userContent.css
+
+  rm -rf "${TARGET_DIR}/${theme_name}"
 
   udo mkdir -p                                                                                "${TARGET_DIR}"
   udo cp -rf "${FIREFOX_SRC_DIR}"/customChrome.css                                            "${TARGET_DIR}"
@@ -792,73 +791,43 @@ install_firefox_theme() {
   [[ -f "${TARGET_DIR}"/userContent.css ]] && mv "${TARGET_DIR}"/userContent.css              "${TARGET_DIR}"/userContent.css.bak
   cp -rf "${FIREFOX_SRC_DIR}"/userContent"${theme_type}".css                                  "${TARGET_DIR}"/userContent.css
 
-  config_firefox
-}
-
-config_firefox() {
-  if has_snap_app firefox; then
-    local TARGET_DIR="${FIREFOX_SNAP_THEME_DIR}"
-    local FIREFOX_DIR="${FIREFOX_SNAP_DIR_HOME}"
-  elif has_flatpak_app org.mozilla.firefox; then
-    local TARGET_DIR="${FIREFOX_FLATPAK_THEME_DIR}"
-    local FIREFOX_DIR="${FIREFOX_FLATPAK_DIR_HOME}"
-  else
-    local TARGET_DIR="${FIREFOX_THEME_DIR}"
-    local FIREFOX_DIR="${FIREFOX_DIR_HOME}"
-  fi
-
   killall "firefox" "firefox-bin" &> /dev/null || true
 
-  for d in "${FIREFOX_DIR}/"*"default"*; do
-    rm -rf                                                                                  "${d}/chrome"
-    udo ln -sf "${TARGET_DIR}"                                                              "${d}/chrome"
-    rm -rf                                                                                  "${d}/user.js"
-    udoify_file                                                                             "${d}/user.js"
+  for config_dir in "${FIREFOX_DIR}/"*"default"*; do
+    rm -rf                                                                                  "${config_dir}/chrome"
+    udo ln -sf "${TARGET_DIR}"                                                              "${config_dir}/chrome"
+    rm -rf                                                                                  "${config_dir}/user.js"
+    udoify_file                                                                             "${config_dir}/user.js"
     #  Enable customChrome.css
-    echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >>     "${d}/user.js"
-    echo "user_pref(\"browser.tabs.drawInTitlebar\", true);"                         >>     "${d}/user.js"
+    echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >>     "${config_dir}/user.js"
+    echo "user_pref(\"browser.tabs.drawInTitlebar\", true);"                         >>     "${config_dir}/user.js"
     # Set UI density to normal
-    echo "user_pref(\"browser.uidensity\", 0);"                                      >>     "${d}/user.js"
-    echo "user_pref(\"layers.acceleration.force-enabled\", true);"                   >>     "${d}/user.js"
-    echo "user_pref(\"mozilla.widget.use-argb-visuals\", true);"                     >>     "${d}/user.js"
+    echo "user_pref(\"browser.uidensity\", 0);"                                      >>     "${config_dir}/user.js"
+    echo "user_pref(\"layers.acceleration.force-enabled\", true);"                   >>     "${config_dir}/user.js"
+    echo "user_pref(\"mozilla.widget.use-argb-visuals\", true);"                     >>     "${config_dir}/user.js"
     # Enable rounded bottom window corners
-    echo "user_pref(\"widget.gtk.rounded-bottom-corners.enabled\", true);"           >>     "${d}/user.js"
+    echo "user_pref(\"widget.gtk.rounded-bottom-corners.enabled\", true);"           >>     "${config_dir}/user.js"
     # Enable SVG context-propertes
-    echo "user_pref(\"svg.context-properties.content.enabled\", true);"              >>     "${d}/user.js"
+    echo "user_pref(\"svg.context-properties.content.enabled\", true);"              >>     "${config_dir}/user.js"
   done
 }
 
 edit_firefox_theme_prefs() {
-  if has_snap_app firefox; then
-    local TARGET_DIR="${FIREFOX_SNAP_THEME_DIR}"
-  elif has_flatpak_app org.mozilla.firefox; then
-    local TARGET_DIR="${FIREFOX_FLATPAK_THEME_DIR}"
-  else
-    local TARGET_DIR="${FIREFOX_THEME_DIR}"
-  fi
+  local TARGET_DIR="${1}"
 
-  [[ ! -d "${TARGET_DIR}" ]] && install_firefox_theme ; config_firefox
+  [[ ! -d "${TARGET_DIR}" ]] && install_firefox_theme
   udo ${EDITOR:-nano}                                                                         "${TARGET_DIR}/userChrome.css"
   udo ${EDITOR:-nano}                                                                         "${TARGET_DIR}/customChrome.css"
 }
 
 remove_firefox_theme() {
-  if has_snap_app firefox; then
-    local TARGET_DIR="${FIREFOX_SNAP_THEME_DIR}"
-  elif has_flatpak_app org.mozilla.firefox; then
-    local TARGET_DIR="${FIREFOX_FLATPAK_THEME_DIR}"
-  else
-    local TARGET_DIR="${FIREFOX_THEME_DIR}"
-  fi
+  local TARGET_DIR="${1}"
 
-  [[ -f "${TARGET_DIR}"/customChrome.css && ! -f "${TARGET_DIR}"/customChrome.css.bak ]] && cp -r "${TARGET_DIR}"/customChrome.css "${TARGET_DIR}"/customChrome.css.bak
-  [[ -f "${TARGET_DIR}"/userChrome.css && ! -f "${TARGET_DIR}"/userChrome.css.bak ]] && cp -r "${TARGET_DIR}"/userChrome.css "${TARGET_DIR}"/userChrome.css.bak
-  [[ -f "${TARGET_DIR}"/userContent.css && ! -f "${TARGET_DIR}"/userContent.css.bak ]] && cp -r "${TARGET_DIR}"/userContent.css "${TARGET_DIR}"/userContent.css.bak
+  restore_file "${TARGET_DIR}"/customChrome.css
+  restore_file "${TARGET_DIR}"/userChrome.css
+  restore_file "${TARGET_DIR}"/userContent.css
 
   rm -rf "${TARGET_DIR}/${theme_name}"
-  rm -rf "${TARGET_DIR}"/customChrome.css
-  rm -rf "${TARGET_DIR}"/userChrome.css
-  rm -rf "${TARGET_DIR}"/userContent.css
 }
 
 ###############################################################################

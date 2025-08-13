@@ -24,6 +24,9 @@ adaptive=''
 theme_name="$THEME_NAME"
 firefoxtheme="$THEME_NAME"
 
+FIREFOX_TARGET_DIR=''
+FIREFOX_CONFIG_DIR=''
+
 usage() {
   # Please specify their default value manually, some of them are come from _variables.scss
   # You also have to check and update them regurally
@@ -217,10 +220,52 @@ if [[ "${uninstall}" == 'true' ]]; then
     prompt -s "Done! Dash to Dock theme has reverted to default. \n"
   fi
 
+  if has_snap_app firefox; then
+    FIREFOX_TARGET_DIR="${FIREFOX_SNAP_THEME_DIR}"
+  elif has_flatpak_app org.mozilla.firefox; then
+    FIREFOX_TARGET_DIR="${FIREFOX_FLATPAK_THEME_DIR}"
+  elif has_command firefox; then
+    FIREFOX_TARGET_DIR="${FIREFOX_THEME_DIR}"
+  else
+    prompt -i "No Firefox found! skip...\n"
+  fi
+
   if [[ "${firefox}" == 'true' && "${gdm}" != 'true' ]]; then
     prompt -i "Removing '${firefoxtheme}' Firefox theme... \n"
-    remove_firefox_theme
+    remove_firefox_theme "${FIREFOX_TARGET_DIR}"
     prompt -s "Done! '${firefoxtheme}' Firefox theme has been removed. \n"
+  fi
+
+  if has_flatpak_app io.gitlab.librewolf-community; then
+    FIREFOX_TARGET_DIR="${LIBREWOLF_FLATPAK_THEME_DIR}"
+    LIBREWOLF='true'
+  elif has_command librewolf; then
+    FIREFOX_TARGET_DIR="${LIBREWOLF_THEME_DIR}"
+    LIBREWOLF='true'
+  else
+    prompt -i "No librewolf found! skip...\n"
+  fi
+
+  if [[ "${firefox}" == 'true' && "${gdm}" != 'true' && "${LIBREWOLF}" == 'true' ]]; then
+    prompt -i "Removing '${firefoxtheme}' librewolf theme... \n"
+    remove_firefox_theme "${FIREFOX_TARGET_DIR}"
+    prompt -s "Done! '${firefoxtheme}' librewolf theme has been removed. \n"
+  fi
+
+  if has_flatpak_app one.ablaze.floorp; then
+    FIREFOX_TARGET_DIR="${FLOORP_FLATPAK_THEME_DIR}"
+    FLOORP='true'
+  elif has_command floorp; then
+    FIREFOX_TARGET_DIR="${FLOORP_THEME_DIR}"
+    FLOORP='true'
+  else
+    prompt -i "No floorp found! skip...\n"
+  fi
+
+  if [[ "${firefox}" == 'true' && "${gdm}" != 'true' && "${FLOORP}" == 'true' ]]; then
+    prompt -i "Removing '${firefoxtheme}' floorp theme... \n"
+    remove_firefox_theme "${FIREFOX_TARGET_DIR}"
+    prompt -s "Done! '${firefoxtheme}' floorp theme has been removed. \n"
   fi
 else
   customize_theme
@@ -260,16 +305,77 @@ else
       darker=''
     fi
 
+    if has_snap_app firefox; then
+      FIREFOX_TARGET_DIR="${FIREFOX_SNAP_THEME_DIR}"
+      FIREFOX_CONFIG_DIR="${FIREFOX_SNAP_DIR_HOME}"
+    elif has_flatpak_app org.mozilla.firefox; then
+      FIREFOX_TARGET_DIR="${FIREFOX_FLATPAK_THEME_DIR}"
+      FIREFOX_CONFIG_DIR="${FIREFOX_FLATPAK_DIR_HOME}"
+    elif has_command firefox; then
+      FIREFOX_TARGET_DIR="${FIREFOX_THEME_DIR}"
+      FIREFOX_CONFIG_DIR="${FIREFOX_DIR_HOME}"
+    else
+      prompt -i "No Firefox found! skip...\n"
+    fi
+
     if [[ "${firefox}" == 'true' && "${gdm}" != 'true' ]]; then
       prompt -i "Installing '${firefoxtheme}' Firefox theme... \n"
-      install_firefox_theme
+      install_firefox_theme "${FIREFOX_TARGET_DIR}" "${FIREFOX_CONFIG_DIR}"
       prompt -s "Done! '${firefoxtheme}' Firefox theme has been installed. \n"
     fi
 
     if [[ "${edit_firefox}" == 'true' && "${gdm}" != 'true' ]]; then
       prompt -i "Editing '${firefoxtheme}' Firefox theme preferences... \n"
-      edit_firefox_theme_prefs
+      edit_firefox_theme_prefs "${FIREFOX_TARGET_DIR}"
       prompt -s "Done! '${firefoxtheme}' Firefox theme preferences has been edited. \n"
+    fi
+
+    if has_flatpak_app io.gitlab.librewolf-community; then
+      FIREFOX_TARGET_DIR="${LIBREWOLF_FLATPAK_THEME_DIR}"
+      FIREFOX_CONFIG_DIR="${LIBREWOLF_FLATPAK_DIR_HOME}"
+      LIBREWOLF='true'
+    elif has_command librewolf; then
+      FIREFOX_TARGET_DIR="${LIBREWOLF_THEME_DIR}"
+      FIREFOX_CONFIG_DIR="${LIBREWOLF_DIR_HOME}"
+      LIBREWOLF='true'
+    else
+      prompt -i "No librewolf found! skip...\n"
+    fi
+
+    if [[ "${firefox}" == 'true' && "${gdm}" != 'true' && "${LIBREWOLF}" == 'true' ]]; then
+      prompt -i "Installing '${firefoxtheme}' librewolf theme... \n"
+      install_firefox_theme "${FIREFOX_TARGET_DIR}" "${FIREFOX_CONFIG_DIR}"
+      prompt -s "Done! '${firefoxtheme}' librewolf theme has been installed. \n"
+    fi
+
+    if [[ "${edit_firefox}" == 'true' && "${gdm}" != 'true' && "${LIBREWOLF}" == 'true' ]]; then
+      prompt -i "Editing '${firefoxtheme}' librewolf theme preferences... \n"
+      edit_firefox_theme_prefs "${FIREFOX_TARGET_DIR}"
+      prompt -s "Done! '${firefoxtheme}' librewolf theme preferences has been edited. \n"
+    fi
+
+    if has_flatpak_app one.ablaze.floorp; then
+      FIREFOX_TARGET_DIR="${FLOORP_FLATPAK_THEME_DIR}"
+      FIREFOX_CONFIG_DIR="${FLOORP_FLATPAK_DIR_HOME}"
+      FLOORP='true'
+    elif has_command floorp; then
+      FIREFOX_TARGET_DIR="${FLOORP_THEME_DIR}"
+      FIREFOX_CONFIG_DIR="${FLOORP_DIR_HOME}"
+      FLOORP='true'
+    else
+      prompt -i "No floorp found! skip...\n"
+    fi
+
+    if [[ "${firefox}" == 'true' && "${gdm}" != 'true' && "${FLOORP}" == 'true' ]]; then
+      prompt -i "Installing '${firefoxtheme}' floorp theme... \n"
+      install_firefox_theme "${FIREFOX_TARGET_DIR}" "${FIREFOX_CONFIG_DIR}"
+      prompt -s "Done! '${firefoxtheme}' floorp theme has been installed. \n"
+    fi
+
+    if [[ "${edit_firefox}" == 'true' && "${gdm}" != 'true' && "${FLOORP}" == 'true' ]]; then
+      prompt -i "Editing '${firefoxtheme}' floorp theme preferences... \n"
+      edit_firefox_theme_prefs "${FIREFOX_TARGET_DIR}"
+      prompt -s "Done! '${firefoxtheme}' floorp theme preferences has been edited. \n"
     fi
 
     if [[ "${gdm}" == "false" ]]; then

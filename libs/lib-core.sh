@@ -74,6 +74,8 @@ DASH_TO_DOCK_SRC_DIR="${REPO_DIR}/other/dash-to-dock"
 DASH_TO_DOCK_DIR_ROOT="/usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com"
 DASH_TO_DOCK_DIR_HOME="${MY_HOME}/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com"
 GNOME_SHELL_EXTENSION_DIR="${MY_HOME}/.local/share/gnome-shell/extensions"
+
+# Firefox
 FIREFOX_SRC_DIR="${REPO_DIR}/other/firefox"
 FIREFOX_DIR_HOME="${MY_HOME}/.mozilla/firefox"
 FIREFOX_THEME_DIR="${MY_HOME}/.mozilla/firefox/firefox-themes"
@@ -81,6 +83,20 @@ FIREFOX_FLATPAK_DIR_HOME="${MY_HOME}/.var/app/org.mozilla.firefox/.mozilla/firef
 FIREFOX_FLATPAK_THEME_DIR="${MY_HOME}/.var/app/org.mozilla.firefox/.mozilla/firefox/firefox-themes"
 FIREFOX_SNAP_DIR_HOME="${MY_HOME}/snap/firefox/common/.mozilla/firefox"
 FIREFOX_SNAP_THEME_DIR="${MY_HOME}/snap/firefox/common/.mozilla/firefox/firefox-themes"
+
+# Librewolf
+LIBREWOLF_DIR_HOME="${MY_HOME}/.librewolf"
+LIBREWOLF_THEME_DIR="${MY_HOME}/.librewolf/themes"
+LIBREWOLF_FLATPAK_DIR_HOME="${MY_HOME}/.var/app/io.gitlab.librewolf-community/.librewolf"
+LIBREWOLF_FLATPAK_THEME_DIR="${MY_HOME}/.var/app/io.gitlab.librewolf-community/.librewolf/themes"
+
+# Floorp
+FLOORP_DIR_HOME="${MY_HOME}/.floorp"
+FLOORP_THEME_DIR="${MY_HOME}/.floorp/themes"
+FLOORP_FLATPAK_DIR_HOME="${MY_HOME}/.var/app/one.ablaze.floorp/.floorp"
+FLOORP_FLATPAK_THEME_DIR="${MY_HOME}/.var/app/one.ablaze.floorp/.floorp/themes"
+
+# Other
 export MACTAHOE_TMP_DIR="/tmp/$THEME_NAME.lock"
 
 if [[ -w "/root" ]]; then
