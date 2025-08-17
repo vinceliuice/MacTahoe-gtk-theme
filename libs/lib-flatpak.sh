@@ -32,7 +32,7 @@ pakitheme_gtk3() {
   if [[ -n "$theme_path" ]]; then
     prompt -i "Converting theme: $FLATPAK_THEME... \n"
   elif [[ "${theme}" == '' ]]; then
-    prompt -e "Find other variant themes but could not locate deafult theme! \n"
+    prompt -e "Find other variant themes but could not locate default theme! \n" # fixed the typo
     prompt -s "You can run './install.sh' install theme first! \n"
     prompt -s "Run this with right options! >>> \n"
     prompt -i "-o, --opacity [$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"
