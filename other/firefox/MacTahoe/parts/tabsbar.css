@@ -74,6 +74,7 @@
 		transparent 100%) 1 !important;
 }
 
+#TabsToolbar tab-group .tabbrowser-tab + .tabbrowser-tab:not([selected], :hover),
 #TabsToolbar .tabbrowser-tab[selected] + .tabbrowser-tab,
 #TabsToolbar .tabbrowser-tab:hover + .tabbrowser-tab,
 #TabsToolbar .tabbrowser-tab[pinned] + .tabbrowser-tab:not([pinned]){
@@ -419,4 +420,20 @@ tab[selected]:-moz-window-inactive .tab-label {
 #firefox-view-button > .toolbarbutton-icon {
 	box-shadow: none !important;
 	outline: none !important;
+}
+
+/*Tab Group*/
+tab-group {
+  #tabbrowser-tabs[orient="horizontal"] &[collapsed] > .tabbrowser-tab {
+    min-width: 0 !important;
+    max-width: 0 !important;
+    padding: 0;
+    overflow-clip-margin: 0;
+  }
+}
+
+.tab-group-line {
+  #tabbrowser-tabs[orient="horizontal"] & {
+    height: var(--tab-group-line-thickness);
+    margin-bottom: -2px !important;
 }

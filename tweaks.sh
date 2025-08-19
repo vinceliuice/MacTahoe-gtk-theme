@@ -242,7 +242,7 @@ if [[ "${uninstall}" == 'true' ]]; then
   elif has_command librewolf; then
     FIREFOX_TARGET_DIR="${LIBREWOLF_THEME_DIR}"
     LIBREWOLF='true'
-  else
+  elif [[ "${firefox}" == 'true' && "${gdm}" != 'true' ]]; then
     prompt -i "No librewolf found! skip...\n"
   fi
 
@@ -258,7 +258,7 @@ if [[ "${uninstall}" == 'true' ]]; then
   elif has_command floorp; then
     FIREFOX_TARGET_DIR="${FLOORP_THEME_DIR}"
     FLOORP='true'
-  else
+  elif [[ "${firefox}" == 'true' && "${gdm}" != 'true' ]]; then
     prompt -i "No floorp found! skip...\n"
   fi
 
