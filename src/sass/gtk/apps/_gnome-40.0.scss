@@ -285,6 +285,16 @@ navigation-view-page > toolbarview > scrolledwindow > viewport > clamp {
   }
 }
 
+popover.background.entry-completion {
+  margin: $container_padding;
+
+  treeview.view {
+    &:selected {
+      background-image: image($selected_bg_color);
+    }
+  }
+}
+
 //
 // Gnome Control Center
 //
@@ -1548,7 +1558,7 @@ panelwidget entry.statusbar {
 
 popover.details-popover {
   .actions {
-    border-spacing: 6px;
+    border-spacing: $container_padding;
 
     > button {
       padding: 8px;

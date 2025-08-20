@@ -2543,10 +2543,7 @@ treeview.view {
   acceleditor > label { background-color: $selected_bg_color; }
 
   &:selected {
-    &, &:focus {
-      border-radius: 0;
-      @extend %selected_items;
-    }
+    @extend %selected_items;
   }
 
   &:disabled {
@@ -2593,7 +2590,7 @@ treeview.view {
     border-radius: $bt_radius;
     background-color: $progress_color;
 
-    &:selected, &:selected:focus {
+    &:selected {
       color: $selected_bg_color;
       box-shadow: none;
       background-color: $selected_fg_color;
@@ -2606,7 +2603,7 @@ treeview.view {
     border-radius: $bt_radius;
     border-width: 0;
 
-    &:selected, &:selected:focus {
+    &:selected {
       color: $selected_fg_color;
       background-color: transparentize(black, 0.8);
       border-radius: $bt_radius;
@@ -2728,6 +2725,10 @@ popover {
   &.background {
     background-color: transparent;
     font: initial;
+
+    &:backdrop {
+      background-color: transparent;
+    }
   }
 
   > arrow,
@@ -5186,6 +5187,10 @@ tooltip {
     color: $osd_fg_color;
     border: 1px solid $wm_shadow;
     box-shadow: inset 0 0 0 1px $highlight_color;
+
+    &:backdrop {
+      background-color: $osd_bg_color;
+    }
 
     label { padding: $container_padding; }
   }
