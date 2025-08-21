@@ -54,7 +54,6 @@ echo "Opacity variants : $( IFS=';'; echo "${opacities[*]}" )" >> ${RELEASE_DIR}
 echo "Alt variants     : $( IFS=';'; echo "${alts[*]}" )" >> ${RELEASE_DIR}/release-info.txt
 echo "Scheme variants  : $( IFS=';'; echo "${SCHEME_VARIANTS[*]}" )" >> ${RELEASE_DIR}/release-info.txt
 echo "Start icon style : ${icon}" >> ${RELEASE_DIR}/release-info.txt
-echo "Nautilus style   : ${nautilus_style}" >> ${RELEASE_DIR}/release-info.txt
 }
 
 #GNOME_VERSION="3-28"
