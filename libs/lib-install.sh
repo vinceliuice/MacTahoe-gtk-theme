@@ -695,8 +695,10 @@ install_gdm_theme() {
       TARGET="${POP_OS_GR_FILE}"
     elif check_theme_file "$YARU_GR_FILE"; then
       TARGET="${YARU_GR_FILE}"
-    elif check_theme_file "$ZORIN_GR_FILE"; then
-      TARGET="${ZORIN_GR_FILE}"
+    elif check_theme_file "$ZORIN_GR_DARK_FILE"; then
+      TARGET="${ZORIN_GR_DARK_FILE}"
+    elif check_theme_file "$ZORIN_GR_LIGHT_FILE"; then
+      TARGET="${ZORIN_GR_LIGHT_FILE}"
     elif check_theme_file "$MISC_GR_FILE"; then
       TARGET="${MISC_GR_FILE}"
     fi
@@ -719,19 +721,27 @@ install_gdm_theme() {
 }
 
 install_only_gdm_theme() {
-  if check_theme_file "$MISC_GR_FILE"; then
+  if check_theme_file "$POP_OS_GR_FILE"; then
+    TARGET="${POP_OS_GR_FILE}"
+  elif check_theme_file "$YARU_GR_FILE"; then
+    TARGET="${YARU_GR_FILE}"
+  elif check_theme_file "$ZORIN_GR_DARK_FILE"; then
+    TARGET="${ZORIN_GR_DARK_FILE}"
+  elif check_theme_file "$ZORIN_GR_LIGHT_FILE"; then
+    TARGET="${ZORIN_GR_LIGHT_FILE}"
+  elif check_theme_file "$MISC_GR_FILE"; then
     TARGET="${MISC_GR_FILE}"
   else
-    prompt -e "\n  $MISC_GR_FILE File not found! exit..."; exit 1
+    prompt -e "\n  GDM Theme File not found! exit..."; exit 1
   fi
 
   install_theme_deps; install_beggy "${MACTAHOE_TMP_DIR}" "${colors[0]}"
 
-  local TARGET_DIR="${MACTAHOE_TMP_DIR}/gdm"
+  local GDM_TMP_DIR="${MACTAHOE_TMP_DIR}/gdm"
 
-  mkdir -p                                                                                    "${TARGET_DIR}"
-  cp -r "${REPO_DIR}/other/gdm/theme"                                                         "${TARGET_DIR}"
-  cp -r "${MACTAHOE_TMP_DIR}/background.png"                                                  "${TARGET_DIR}/theme/background.png"
+  mkdir -p                                                                                    "${GDM_TMP_DIR}"
+  cp -r "${REPO_DIR}/other/gdm/theme"                                                         "${GDM_TMP_DIR}"
+  cp -r "${MACTAHOE_TMP_DIR}/background.png"                                                  "${GDM_TMP_DIR}/theme/background.png"
 
   # For Kali Linux GDM >>>
   local KALI_BACKGROUND_FOLDER="/usr/share/desktop-base/kali-theme/login"
@@ -743,7 +753,7 @@ install_only_gdm_theme() {
   # For Kali Linux GDM <<<
 
   backup_file "${TARGET}"
-  glib-compile-resources --sourcedir="${TARGET_DIR}/theme" --target="${TARGET}" "${GDM_GR_XML_FILE}"
+  glib-compile-resources --sourcedir="${GDM_TMP_DIR}/theme" --target="${TARGET}" "${GDM_GR_XML_FILE}"
 }
 
 revert_gdm_theme() {
