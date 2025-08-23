@@ -63,7 +63,7 @@
   --input-text-opacity-disabled: var(--button-opacity-disabled);
 }
 
-#input {
+#input:not(.toggle-button) {
   border: 1px solid var(--gnome-hover-urlbar-border-color) !important;
   border-radius: 8px !important;
   box-sizing: border-box;
