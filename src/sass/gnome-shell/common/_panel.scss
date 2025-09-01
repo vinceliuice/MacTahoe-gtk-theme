@@ -158,15 +158,15 @@ $panel_height: $menuitem_size;
 
     .popup-menu-arrow { width: 0; height: 0; } // Remove arrow on panel button
 
-    &, &:hover, &:active, &:overview, &:focus, &:checked {
-      text-shadow: $panel_asset_shadow;
+    // &, &:hover, &:active, &:overview, &:focus, &:checked {
+    //   text-shadow: $panel_asset_shadow;
 
-      .system-status-icon,
-      .app-menu-icon > StIcon,
-      .popup-menu-arrow {
-        icon-shadow: $panel_asset_shadow;
-      }
-    }
+    //   .system-status-icon,
+    //   .app-menu-icon > StIcon,
+    //   .popup-menu-arrow {
+    //     icon-shadow: $panel_asset_shadow;
+    //   }
+    // }
 
     &:hover {
       color: $panel_fg;
