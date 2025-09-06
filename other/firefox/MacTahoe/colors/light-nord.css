@@ -33,14 +33,17 @@
 	--gnome-sidebar-border-color: color-mix(in srgb, #000000 12%, var(--gnome-sidebar-background));
 
 	/* Popups */
-	--gnome-menu-background: rgba(255, 255, 255, 0.95);
+	--gnome-menu-background: rgba(251, 252, 253, 0.95);
 	--gnome-menu-border-color: rgba(0, 0, 0, 0.12);
-	--gnome-popover-background: rgba(255, 255, 255, 0.95);
+	--gnome-popover-background: rgba(251, 252, 253, 0.95);
 	--gnome-popover-border-color: rgba(0, 0, 0, 0.12);
 	--gnome-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
 	--gnome-popover-button-hover-background: rgba(0, 0, 0, 0.1);
 	--gnome-popover-button-active-background: rgba(0, 0, 0, 0.2);
 	--gnome-popover-separator-color: rgba(0, 0, 0, 0.1);
+
+	--gnome-menu-solid-background: #fbfcfd;
+	--gnome-popover-solid-background: #fbfcfd;
 
 	/* Header bar */
 	--gnome-headerbar-background: #fbfcfd;

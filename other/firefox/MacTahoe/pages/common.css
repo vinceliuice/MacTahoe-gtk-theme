@@ -39,6 +39,33 @@
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  @media not (forced-colors) {
+    html|dialog,
+    .dialogBox {
+      --in-content-page-background: var(--gnome-content-page-dialog-background) !important;
+    }
+  }
+}
+
+/* Dialog */
+.dialogBox {
+	margin: 0 !important;
+	background-color: var(--gnome-content-page-dialog-background) !important;
+	border-radius: 12px !important;
+	border: none !important;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+}
+
+.dialogBox window, .dialogBox dialog {
+	background: none !important;
+}
+
+.close-icon {
+	border-radius: 100px !important;
+	list-style-image: url("../icons/window-close-symbolic.svg") !important;
+}
+
 .toggle-button {
   --toggle-background-color: var(--gnome-switch-background) !important;
   --toggle-background-color-hover: var(--gnome-switch-hover-background) !important;

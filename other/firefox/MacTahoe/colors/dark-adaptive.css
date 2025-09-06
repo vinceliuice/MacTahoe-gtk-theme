@@ -44,6 +44,9 @@
 	--gnome-popover-button-active-background: color-mix(in srgb, currentColor 15%, transparent);
 	--gnome-popover-separator-color: color-mix(in srgb, currentColor 8%, transparent);
 
+	--gnome-menu-solid-background: var(--toolbar-field-focus-background-color);
+	--gnome-popover-solid-background: var(--toolbar-field-focus-background-color);
+
 	/* Header bar */
 	--gnome-headerbar-background: var(--lwt-accent-color, #363636);
 	--gnome-headerbar-border-color: color-mix(in srgb, currentColor 12%, transparent);

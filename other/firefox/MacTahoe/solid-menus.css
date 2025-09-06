@@ -1,0 +1,13 @@
+
+menupopup, panel {
+	--panel-background: var(--gnome-menu-solid-background) !important;
+	--arrowpanel-background: var(--gnome-menu-solid-background) !important;
+}
+
+panel:not([remote]), #BMB_bookmarksPopup {
+	--arrowpanel-background: var(--gnome-popover-solid-background) !important;
+}
+
+.urlbarView {
+	background: var(--gnome-popover-solid-background) !important;
+}

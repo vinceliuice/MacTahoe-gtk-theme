@@ -7,6 +7,9 @@
 
 /*--------------Configure common theme features--------------*/
 
+/* Solid menus version. */
+/*@import "MacTahoe/solid-menus.css"; /**/
+
 /* Move tab close button to left. */
 /*@import "MacTahoe/left-tab-close-button.css"; /**/
 

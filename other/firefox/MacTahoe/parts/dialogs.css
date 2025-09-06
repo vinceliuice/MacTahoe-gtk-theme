@@ -27,11 +27,6 @@ window {
 }
 
 /* Dialog */
-.dialogBox {
-	border-radius: 12px !important;
-	margin: 0 !important;
-}
-
 window[role="dialog"] {
 	background: none !important;
 	border: none !important;
@@ -55,10 +50,17 @@ dialog[subdialog] {
 }
 
 .dialogBox {
+	border-radius: 12px !important;
+	margin: 0 !important;
+
 	&:not(.spotlightBox) {
 		box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px #000000 !important;
 		border-radius: 12px !important;
 	}
+}
+
+.dialogBox window, .dialogBox dialog {
+	background: none !important;
 }
 
 /* Content */
