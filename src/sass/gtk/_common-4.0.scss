@@ -3250,6 +3250,8 @@ switch {
   font-size: 0;
   padding: 0;
   box-shadow: none;
+  border: none;
+  outline: none;
 
   &:disabled {
     filter: opacity($disabled_opacity);
@@ -3285,6 +3287,7 @@ switch {
     border-radius: $circular_radius;
     background-color: white;
     box-shadow: 0 1px 2px rgba(black, 0.15);
+    border: none;
   }
 
   &:checked > slider {

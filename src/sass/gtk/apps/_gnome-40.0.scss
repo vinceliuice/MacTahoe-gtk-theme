@@ -1714,29 +1714,29 @@ $title_style: 'macos'; // 'normal' or 'macos'
 }
 
 window.background.chromium {
-  background-color: $chrome_bg_color;
-  color: $chrome_fg_color;
+  // background-color: $chrome_bg_color;
+  // color: $chrome_fg_color;
   box-shadow: 0 12px 20px rgba(black, 0.35), 0 0 0 1px rgba(black, 0.75);
-  border-color: $borders_color;
+  // border-color: $borders_color;
 
   &:backdrop {
-    background-color: gtkmix($chrome_fg_color, $chrome_bg_color, 10%);
-    color: rgba($chrome_fg_color, 0.5);
+    // background-color: gtkmix($chrome_fg_color, $chrome_bg_color, 10%);
+    // color: rgba($chrome_fg_color, 0.5);
     transition: $shadow_transition;
     box-shadow: 0 7px 12px rgba(black, 0.15), 0 0 0 1px rgba(black, 0.65);
   }
 
   headerbar.header-bar.titlebar {
     padding: 0 $container_padding * 2;
-    background-color: gtkmix($chrome_fg_color, $chrome_bg_color, 10%);
-    color: $chrome_fg_color;
+    // background-color: gtkmix($chrome_fg_color, $chrome_bg_color, 10%);
+    // color: $chrome_fg_color;
     box-shadow: inset 0 1px rgba(white, 0.1);
     border-radius: $wm_radius $wm_radius 0 0;
 
-    &:backdrop {
-      background-color: $chrome_bg_color;
-      color: rgba($chrome_fg_color, 0.5);
-    }
+    // &:backdrop {
+    //   background-color: $chrome_bg_color;
+    //   color: rgba($chrome_fg_color, 0.5);
+    // }
 
     button.titlebutton {
       @if $title_style =='normal' {
@@ -1750,10 +1750,10 @@ window.background.chromium {
   }
 
   // internal region of toolbar's entry widget
-  > textview.view, textview {
-    background-color: gtkmix($chrome_fg_color, $chrome_bg_color, 10%);
-    color: $chrome_fg_color;
-  }
+  // > textview.view, textview {
+  //   background-color: gtkmix($chrome_fg_color, $chrome_bg_color, 10%);
+  //   color: $chrome_fg_color;
+  // }
 }
 
 //
