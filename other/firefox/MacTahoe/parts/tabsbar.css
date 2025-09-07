@@ -356,10 +356,10 @@ tab[selected]:-moz-window-inactive .tab-label {
 	display: flex;
 }
 
-#TabsToolbar #alltabs-button {
-	padding: 0 !important;
-	visibility: collapse !important;
-}
+/*#TabsToolbar #alltabs-button {*/
+/*	padding: 0 !important;*/
+/*	visibility: collapse !important;*/
+/*}*/
 
 #TabsToolbar .toolbarbutton-1,
 #TabsToolbar #tabs-newtab-button,
@@ -378,6 +378,11 @@ tab[selected]:-moz-window-inactive .tab-label {
 	padding: 0 !important;
 	height: 16px !important;
 	width: 16px !important;
+}
+
+#TabsToolbar .toolbarbutton-1 > .toolbarbutton-icon,
+#TabsToolbar .toolbarbutton-1 > .toolbarbutton-badge-stack {
+	padding: 0 !important;
 }
 
 #TabsToolbar #scrollbutton-up,
