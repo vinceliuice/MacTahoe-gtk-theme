@@ -37,6 +37,7 @@
 .nautilus-window,
 #NautilusFileChooser {
   headerbar > windowhandle > box {
+
     > widget > box.start > stack > widget > box,
     > widget > box.start > box > stack > widget > box {
       margin-left: $container_padding * 2;
@@ -65,7 +66,9 @@
     }
   }
 
-  .view { background-color: transparent; }
+  .view {
+    background-color: transparent;
+  }
 
   .nautilus-grid-view {
     background-color: transparent;
@@ -109,6 +112,7 @@
   }
 
   .sidebar-pane {
+
     &:dir(ltr),
     &.end:dir(rtl) {
       &, banner > revealer > widget {
@@ -134,6 +138,7 @@
     }
 
     &:backdrop {
+
       &:dir(ltr),
       &.end:dir(rtl) {
         &, banner > revealer > widget {
@@ -300,8 +305,10 @@ popover.background.entry-completion {
 //
 
 window.background.csd {
+
   > contents,
   > widget {
+
     // 44.0
     > leaflet.unfolded > box {
       > headerbar {
@@ -392,74 +399,75 @@ preferencesgroup > box {
   .cutout-button {
     background-color: $dialog_bg_color;
   }
+}
 
-  @if $gnome_version == "new" {
-    button.accent-button {
-      min-height: 24px;
-      min-width: 24px;
-      padding: $base_padding / 2;
-      border-radius: $circular_radius;
-      background: var(--accent-bg-color);
-      outline: none;
-      background-clip: content-box;
-      box-shadow: none;
-      border: none;
+@if $gnome_version =="new" {
+  button.accent, // GDM Setting
+  button.accent-button {
+    min-height: 24px;
+    min-width: 24px;
+    padding: $base_padding / 2;
+    border-radius: $circular_radius;
+    background: var(--accent-bg-color);
+    outline: none;
+    background-clip: content-box;
+    box-shadow: none;
+    border: none;
 
-      &:hover {
-        box-shadow: 0 0 0 3px $divider_color;
-      }
+    &:hover {
+      box-shadow: 0 0 0 3px $divider_color;
+    }
 
-      &:checked {
-        box-shadow: 0 0 0 3px var(--accent-bg-color);
-      }
+    &:checked {
+      box-shadow: 0 0 0 3px var(--accent-bg-color);
+    }
 
-      &.blue,
-      &.teal,
-      &.green,
-      &.yellow,
-      &.orange,
-      &.red,
-      &.pink,
-      &.purple,
-      &.slate {
-        --accent-color: oklab(from var(--accent-bg-color) var(--standalone-color-oklab));
-      }
+    &.blue,
+    &.teal,
+    &.green,
+    &.yellow,
+    &.orange,
+    &.red,
+    &.pink,
+    &.purple,
+    &.slate {
+      --accent-color: oklab(from var(--accent-bg-color) var(--standalone-color-oklab));
+    }
 
-      &.blue {
-        --accent-bg-color: var(--accent-blue);
-      }
+    &.blue {
+      --accent-bg-color: var(--accent-blue);
+    }
 
-      &.teal {
-        --accent-bg-color: var(--accent-teal);
-      }
+    &.teal {
+      --accent-bg-color: var(--accent-teal);
+    }
 
-      &.green {
-        --accent-bg-color: var(--accent-green);
-      }
+    &.green {
+      --accent-bg-color: var(--accent-green);
+    }
 
-      &.yellow {
-        --accent-bg-color: var(--accent-yellow);
-      }
+    &.yellow {
+      --accent-bg-color: var(--accent-yellow);
+    }
 
-      &.orange {
-        --accent-bg-color: var(--accent-orange);
-      }
+    &.orange {
+      --accent-bg-color: var(--accent-orange);
+    }
 
-      &.red {
-        --accent-bg-color: var(--accent-red);
-      }
+    &.red {
+      --accent-bg-color: var(--accent-red);
+    }
 
-      &.pink {
-        --accent-bg-color: var(--accent-pink);
-      }
+    &.pink {
+      --accent-bg-color: var(--accent-pink);
+    }
 
-      &.purple {
-        --accent-bg-color: var(--accent-purple);
-      }
+    &.purple {
+      --accent-bg-color: var(--accent-purple);
+    }
 
-      &.slate {
-        --accent-bg-color: var(--accent-slate);
-      }
+    &.slate {
+      --accent-bg-color: var(--accent-slate);
     }
   }
 }
@@ -469,13 +477,16 @@ preferencesgroup > box {
 //
 
 window.background {
+
   > contents > toastoverlay > leaflet,
   > widget > toastoverlay > leaflet {
+
     // 44.0
     > box {
       background-color: $base_color;
 
       > headerbar {
+
         &,
         &:backdrop {
           background: none;
@@ -510,10 +521,12 @@ window.background {
 
   &.maximized,
   &.tiled {
+
     > contents > toastoverlay > leaflet,
     > widget > toastoverlay > leaflet {
       > box {
         > headerbar {
+
           &,
           &:backdrop {
             background: none;
@@ -945,7 +958,8 @@ flowboxchild.card:not(.category-tile) {
   }
 
   &.category-work {
-    padding: 1px; /* FIXME: work around https://gitlab.gnome.org/GNOME/gtk/-/issues/4324 */
+    padding: 1px;
+    /* FIXME: work around https://gitlab.gnome.org/GNOME/gtk/-/issues/4324 */
     color: #1c71d8;
     background-color: #fdf8d7;
     background-image: linear-gradient($borders_color 1px, transparent 1px),
@@ -994,6 +1008,7 @@ clamp.large .category-tile:not(.category-tile-iconless) {
 }
 
 .application-details-infobar {
+
   &,
   &.info {
     background-color: $fill_color;
@@ -1012,9 +1027,11 @@ clamp.large .category-tile:not(.category-tile-iconless) {
   0% {
     background-position: 0%;
   }
+
   50% {
     background-position: 100%;
   }
+
   100% {
     background-position: 0%;
   }
@@ -1253,8 +1270,10 @@ carousel.card {
   &.large {
     font-size: 24px;
     padding: 16px;
-    min-width: 24px; /* 60px minus the left and right padding */
-    min-height: 24px; /* 60px minus the top and bottom padding */
+    min-width: 24px;
+    /* 60px minus the left and right padding */
+    min-height: 24px;
+    /* 60px minus the top and bottom padding */
   }
 
   &.wide-image image {
@@ -1322,12 +1341,15 @@ window.narrow .app-developer {
 scrolledwindow.fake-adw-status-page > viewport > box {
   margin: $container_padding * 6 $container_padding * 2;
 }
+
 scrolledwindow.fake-adw-status-page > viewport > box > clamp:not(:last-child) > box {
   margin-bottom: $container_padding * 6;
 }
+
 scrolledwindow.fake-adw-status-page > viewport > box > clamp > box > .icon:not(:last-child) {
   margin-bottom: $container_padding * 6;
 }
+
 scrolledwindow.fake-adw-status-page > viewport > box > clamp > box > .title:not(:last-child) {
   margin-bottom: $container_padding * 2;
 }
@@ -1368,6 +1390,7 @@ row.app label.warning {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 0;
   }
@@ -1425,6 +1448,7 @@ window.background.csd {
 //
 
 popover.background.global-search {
+
   > arrow,
   > contents {
     padding: 0;
