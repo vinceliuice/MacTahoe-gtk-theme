@@ -146,10 +146,6 @@ panelview {
 	stroke: transparent !important;
 }
 
-.PanelUI-subView toolbarseparator:not([orient="vertical"]) {
-	margin: 8px 6px !important;
-}
-
 .panel-header {
 	padding-bottom: 10px !important;
 }
@@ -379,6 +375,9 @@ toolbarseparator::before, menuseparator::before {
 	color: transparent !important;
 	background: none !important;
 	border: none !important;
+}
+.PanelUI-subView toolbarseparator:not([orient="vertical"]) {
+	margin: 8px 6px !important;
 }
 menupopup menuseparator {
 	margin: 6px !important;
