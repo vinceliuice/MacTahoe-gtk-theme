@@ -22,7 +22,12 @@ toolbarspring {
 	padding-inline: 0 !important;
 }
 
-#urlbar-background {
+#urlbar:-moz-window-inactive {
+	border-color: var(--gnome-inactive-headerbar-background) !important;
+}
+
+#urlbar-background,
+.urlbar-background {
 	box-shadow: none !important;
 	border: none !important;
 	background: transparent !important;
@@ -35,10 +40,6 @@ toolbarspring {
 	border: none !important;
 	padding: 0 3px !important;
 	background: none !important;
-}
-
-#urlbar:-moz-window-inactive {
-	border-color: var(--gnome-inactive-headerbar-background) !important;
 }
 
 #urlbar[breakout][breakout-extend] {
@@ -63,7 +64,8 @@ toolbarspring {
 	max-height: 36px !important;
 }
 
-#urlbar-input {
+#urlbar-input,
+.urlbar-input {
 	text-align: center !important;
 	padding: 0 28px 0 0 !important;
 }
