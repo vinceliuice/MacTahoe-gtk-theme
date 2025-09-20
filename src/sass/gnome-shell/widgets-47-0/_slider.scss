@@ -1,8 +1,8 @@
 /* Slider */
 
-$slider_color: white;
-$barlevel_bg_color: rgba(white, 0.1);
-$barlevel_active_bg_color: white;
+$slider_color: if($trans == 'true', white, $primary_color);
+$barlevel_bg_color: if($trans =='true', rgba(white, 0.1), $divider_color);
+$barlevel_active_bg_color: if($trans =='true', white, $primary_color);
 $slider_size: 8px;
 
 .slider {
@@ -21,7 +21,10 @@ $slider_size: 8px;
 
   &:hover {
     color: $slider_color;
-    -barlevel-active-background-color: rgba($barlevel_active_bg_color, 0.5);
     transition: all 0.2s ease-in-out;
+
+    @if $trans == 'true' {
+      -barlevel-active-background-color: rgba(white, 0.5);
+    }
   }
 }
