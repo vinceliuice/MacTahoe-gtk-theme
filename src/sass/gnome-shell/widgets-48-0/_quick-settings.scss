@@ -22,6 +22,7 @@
 
 $toggle_fg_color: if($trans == 'true', white, $fg_color);
 $toggle_bg_color: if($trans == 'true', rgba(white, 0.15), $popover_bg_color);
+$toggle_menu_bg_color: if($trans =='true', rgba(white, 0.25), $popover_bg_color);
 $toggle_hover_bg_color: if($trans == 'true', rgba(white, 0.2), mix($fg_color, $popover_bg_color, 10%));
 $toggle_active_bg_color: if($trans =='true', rgba(white, 0.25), mix($fg_color, $popover_bg_color, 15%));
 $toggle_checked_bg_color: if($trans =='true', rgba(white, 0.15), mix($fg_color, $popover_bg_color, 12%));
@@ -129,6 +130,7 @@ $toggle_shadow: if($trans == 'true', inset 0 0 4px rgba(white, 0.35), none);
       min-height: 40px !important;
       min-width: 40px !important;
       background-color: $toggle_bg_color;
+      transition: none;
     }
 
     &:hover .quick-toggle-icon {
@@ -224,9 +226,8 @@ $toggle_shadow: if($trans == 'true', inset 0 0 4px rgba(white, 0.35), none);
 }
 
 .quick-toggle-menu {
-  // background-color: rgba($toggle_fg_color, 0.35) !important;
-  // color: $toggle_fg_color !important;
-  background-color: $popover_bg_color !important;
+  color: $toggle_fg_color !important;
+  background-color: $toggle_menu_bg_color !important;
   border-radius: $popop_menuitem_radius + $base_padding * 3;
   padding: $base_padding * 3;
   margin: $base_padding * 2 $base_padding * 7 0;
@@ -237,15 +238,16 @@ $toggle_shadow: if($trans == 'true', inset 0 0 4px rgba(white, 0.35), none);
     // border-radius: $base_border_radius !important;
     min-height: 20px;
     padding: $base_padding * 2 $base_padding * 3;
+    color: $toggle_fg_color !important;
 
     &:focus, &:hover, &:selected {
-      background-color: $divider_color !important;
-      color: $fg_color !important;
+      background-color: $toggle_hover_bg_color !important;
+      color: $toggle_fg_color !important;
     }
 
     &:active {
-      background-color: $track_color !important;
-      color: $fg_color !important;
+      background-color: $toggle_active_bg_color !important;
+      color: $toggle_fg_color !important;
     }
 
     > StIcon {
@@ -257,14 +259,14 @@ $toggle_shadow: if($trans == 'true', inset 0 0 4px rgba(white, 0.35), none);
     spacing-rows: 0.5 * $base_padding;
     spacing-columns: $base_padding * 2;
     padding-bottom: 2 * $base_padding;
-    color: $fg_color;
+    color: $toggle_fg_color;
 
     & .icon {
       icon-size: $base_icon_size; // a non-standard symbolic size but ok
       border-radius: $circular_radius;
       padding: $base_padding * 2.5;
-      background-color: $fill_color;
-      color: $fg_color;
+      background-color: $toggle_bg_color;
+      color: $toggle_fg_color;
 
       &.active {
         background-color: $selected_bg_color;
@@ -359,11 +361,15 @@ $toggle_shadow: if($trans == 'true', inset 0 0 4px rgba(white, 0.35), none);
   & .icon-button {
     @extend .icon-button;
     padding: $base_padding;
+
+    @if $trans == 'true' {
+      color: $toggle_fg_color !important;
+    }
   }
 
   & .spinner {
     padding: $base_padding;
   }
 
-  &.popup-inactive-menu-item { color: $fg_color; }
+  &.popup-inactive-menu-item { color: $toggle_fg_color; }
 }
