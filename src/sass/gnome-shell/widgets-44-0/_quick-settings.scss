@@ -25,8 +25,8 @@ $toggle_bg_color: if($trans =='true', rgba(white, 0.15), $popover_bg_color);
 $toggle_menu_bg_color: if($trans =='true', rgba(white, 0.25), $popover_bg_color);
 $toggle_hover_bg_color: if($trans =='true', rgba(white, 0.2), mix($fg_color, $popover_bg_color, 10%));
 $toggle_active_bg_color: if($trans =='true', rgba(white, 0.25), mix($fg_color, $popover_bg_color, 15%));
-$toggle_checked_bg_color: if($trans =='true', rgba(white, 0.15), mix($fg_color, $popover_bg_color, 12%));
-$toggle_shadow: if($trans =='true', inset 0 0 4px rgba(white, 0.35), none);
+$toggle_checked_bg_color: if($trans =='true', rgba(white, 0.15), $popover_bg_color);
+$toggle_shadow: if($trans =='true', inset 0 0 4px rgba(white, 0.35), 0 5px 10px 0 rgba(black, 0.18));
 
 .quick-toggle, .quick-menu-toggle {
   min-width: 13em;

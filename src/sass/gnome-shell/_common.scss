@@ -108,7 +108,7 @@ stage {
 %numeric { font-feature-settings: "tnum"; }
 
 %quickmenu_shadow {
-  @if $menu_shadow == 'default' {
+  @if $menu_shadow == 'default' and $trans == 'true' {
     border-image: url("assets/menu_x#{$scaling_factor}.svg") 30 30 30 30;
   } @else {
     border-image: none;
