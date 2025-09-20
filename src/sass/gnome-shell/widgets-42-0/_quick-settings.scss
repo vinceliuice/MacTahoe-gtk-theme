@@ -6,7 +6,7 @@
   background: none;
   border: none;
   box-shadow: none;
-  border-image: url("assets/menu.svg") 30 30 30 30;
+  @extend %quickmenu_shadow;
 
   .icon-button, .button {
     padding: $container_padding;

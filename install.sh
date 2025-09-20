@@ -41,7 +41,8 @@ usage() {
   helpify "   2. -p, -panelopacity"       "[$(IFS='|'; echo "${PANEL_OPACITY_VARIANTS[*]}")]" "    Set gnome-shell panel transparency"            "Default is 15%"
   helpify "   3. -h, -panelheight"        "[$(IFS='|'; echo "${PANEL_SIZE_VARIANTS[*]}")]"    "    Set gnome-shell panel height size"             "Default is 32px"
   helpify "   4. -sf, -smallerfont"       ""                                                  "    Set gnome-shell font size to smaller (10pt)"   "Default is 11pt"
-  helpify "   5. normal, -normal"         ""                                                  "    Set gnome-shell show apps button style to normal" "Default is macOS icon"
+  helpify "   5. -ns, -noshadow"          ""                                                  "    Remove quickmenu shadow"                       ""
+  helpify "   6. normal, -normal"         ""                                                  "    Set gnome-shell show apps button style to normal" "Default is macOS icon"
 
   helpify "--round, --roundedmaxwindow"   ""                                                  "  Set maximized window to rounded"                 "Default is square"
   helpify "--darker, --darkercolor"       ""                                                  "  Install darker '${THEME_NAME}' dark themes"      ""
@@ -100,6 +101,8 @@ while [[ $# -gt 0 ]]; do
             check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
           -sf|-smallerfont)
             smaller_font="true"; shift ;;
+          -ns|-noshadow)
+            no_shadow="true"; shift ;;
           normal|-normal)
             showapps_normal="true"; shift ;;
         esac

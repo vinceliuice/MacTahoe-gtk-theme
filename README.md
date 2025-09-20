@@ -119,7 +119,10 @@ OPTIONS:
      4. -sf, -smallerfont 
      Set gnome-shell font size to smaller (10pt). Default is 11pt
 
-     5. normal, -normal 
+     5. -ns, -noshadow 
+     Remove quickmenu shadow. 
+
+     6. normal, -normal 
      Set gnome-shell show apps button style to normal. Default is macOS icon
 
   --round, --roundedmaxwindow 

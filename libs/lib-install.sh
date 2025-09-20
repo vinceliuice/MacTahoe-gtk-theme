@@ -1038,6 +1038,12 @@ customize_theme() {
     sed $SED_OPT "/\$activities/s/default/icon/"                                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
+  # Change gnome-shell quickmenu shadow style
+  if [[ "${no_shadow}" == 'true' ]]; then
+    prompt -s "Remove quickmenu shadow...\n"
+    sed $SED_OPT "/\$menu_shadow/s/default/none/"                                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
   # Change tab style
   if [[ "${monterey}" == 'true' ]]; then
     black_font="true"
