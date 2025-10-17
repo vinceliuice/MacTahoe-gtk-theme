@@ -71,11 +71,23 @@
   }
 
   .nautilus-grid-view {
-    background-color: transparent;
+    background-color: $base_color;
 
-    gridview.view {
-      > child.activatable {
-        @extend %nautilus_view;
+    child.activatable {
+      padding: 0;
+      @extend %nautilus_view;
+
+      #NautilusViewCell {
+        padding: 0;
+
+        .icon-ui-labels-box {
+          margin: 0 0 $base_padding * 2;
+          border-spacing: 0;
+        }
+
+        .dim-label {
+          border-spacing: 0;
+        }
       }
     }
   }
@@ -403,6 +415,7 @@ preferencesgroup > box {
 
 @if $gnome_version =="new" {
   button.accent, // GDM Setting
+
   button.accent-button {
     min-height: 24px;
     min-width: 24px;

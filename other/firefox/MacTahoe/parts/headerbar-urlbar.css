@@ -35,6 +35,19 @@ toolbarspring {
 	padding: 0 !important;
 }
 
+[focused]:not([suppress-focus-border]) > .urlbar-background,
+#searchbar:focus-within {
+	outline-color: var(--gnome-focused-urlbar-border-color) !important;
+	-moz-outline-radius: 999px !important;
+	border-radius: 999px !important;
+}
+
+[focused]:not([suppress-focus-border]):hover > .urlbar-background,
+#searchbar:focus-within:hover {
+		outline-color: transparent !important;
+	}
+}
+
 #urlbar-input-container,
 .urlbar-input-container {
 	border: none !important;
