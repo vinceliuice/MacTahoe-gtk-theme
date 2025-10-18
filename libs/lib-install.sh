@@ -324,6 +324,7 @@ install_beggy() {
   local TARGET_DIR="${1}"
   local color="$(destify ${2})"
   local CONVERT_OPT=""
+  local IM_CMD=""
 
   if [[ "${color}" == '-Light' ]]; then
     local IMG_COLOR='-day'
@@ -336,18 +337,31 @@ install_beggy() {
 
   mkdir -p                                                                                     "${TARGET_DIR}"
 
+  # Resolve ImageMagick command: prefer 'magick' (ImageMagick 7+), fallback to 'convert' (ImageMagick 6)
+  IM_CMD="$(command -v magick || command -v convert || true)"
+  if [[ -z "${IM_CMD}" ]]; then
+    # Try to install imagemagick via distro package helpers
+    install_beggy_deps
+    IM_CMD="$(command -v magick || command -v convert || true)"
+  fi
+
+  if [[ -z "${IM_CMD}" ]]; then
+    prompt -e "DEPS ERROR: ImageMagick not found after installation attempt.\n"
+    exit 1
+  fi
+
   case "${background}" in
     blank)
 #      cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background.png"                 "${TARGET_DIR}/background.png"
       ;;
     default)
-      install_beggy_deps
-      magick ${REPO_DIR}/wallpaper/MacTahoe${IMG_COLOR}.jpeg ${CONVERT_OPT} ${TARGET_DIR}/background.png
+  install_beggy_deps
+  "${IM_CMD}" ${REPO_DIR}/wallpaper/MacTahoe${IMG_COLOR}.jpeg ${CONVERT_OPT} ${TARGET_DIR}/background.png
       ;;
     *)
       if [[ "${no_blur}" == "false" || "${no_darken}" == "false" ]]; then
         install_beggy_deps
-        magick ${background} ${CONVERT_OPT} ${TARGET_DIR}/background.png
+        "${IM_CMD}" ${background} ${CONVERT_OPT} ${TARGET_DIR}/background.png
       else
         cp -r "${background}"                                                                  "${TARGET_DIR}/background.png"
       fi
