@@ -214,10 +214,27 @@
   }
 }
 
-#NautilusViewCell {
-  clamp box {
-    margin: 0;
-    border-spacing: 0;
+.nautilus-grid-view {
+  child.activatable {
+    padding: 0;
+
+    #NautilusViewCell {
+      padding: 0;
+
+      clamp box {
+        margin: 0;
+        border-spacing: 0;
+      }
+
+      .icon-ui-labels-box {
+        margin: 0 0 $container_padding * 2;
+        border-spacing: 0;
+      }
+
+      .dim-label {
+        border-spacing: 0;
+      }
+    }
   }
 }
 
