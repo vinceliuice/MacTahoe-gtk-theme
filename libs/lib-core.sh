@@ -670,6 +670,21 @@ restore_file() {
   fi
 }
 
+remove_file() {
+  if [[ -f "${1}.bak" || -d "${1}.bak" ]]; then
+    case "${2}" in
+      sudo)
+        sudo rm -rf "${1}"; sudo mv "${1}"{".bak",""} ;;
+      udo)
+        udo rm -rf "${1}"; udo mv "${1}"{".bak",""} ;;
+      *)
+        rm -rf "${1}"; mv "${1}"{".bak",""} ;;
+    esac
+  else
+    rm -rf "${1}"
+  fi
+}
+
 backup_file() {
   if [[ -f "${1}.bak" || -d "${1}.bak" ]]; then
     case "${2}" in

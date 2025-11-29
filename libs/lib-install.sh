@@ -779,23 +779,17 @@ install_firefox_theme() {
     local theme_type="${darker}${adaptive}${colorscheme}"
   fi
 
+  rm -rf "${TARGET_DIR}/${theme_name}"
+
+  mkdir -p                                                                                  "${TARGET_DIR}"
   backup_file "${TARGET_DIR}"/customChrome.css
   backup_file "${TARGET_DIR}"/userChrome.css
   backup_file "${TARGET_DIR}"/userContent.css
 
-  rm -rf "${TARGET_DIR}/${theme_name}"
-
-  udo mkdir -p                                                                                "${TARGET_DIR}"
-  udo cp -rf "${FIREFOX_SRC_DIR}"/customChrome.css                                            "${TARGET_DIR}"
-
-  mkdir -p                                                                                    "${TARGET_DIR}"
-  cp -rf "${FIREFOX_SRC_DIR}/${theme_name}"                                                   "${TARGET_DIR}"
-  [[ -f "${TARGET_DIR}"/customChrome.css ]] && mv "${TARGET_DIR}"/customChrome.css            "${TARGET_DIR}"/customChrome.css.bak
-  cp -rf "${FIREFOX_SRC_DIR}"/customChrome.css                                                "${TARGET_DIR}"
-  [[ -f "${TARGET_DIR}"/userChrome.css ]] && mv "${TARGET_DIR}"/userChrome.css                "${TARGET_DIR}"/userChrome.css.bak
-  cp -rf "${FIREFOX_SRC_DIR}"/userChrome"${theme_type}".css                                   "${TARGET_DIR}"/userChrome.css
-  [[ -f "${TARGET_DIR}"/userContent.css ]] && mv "${TARGET_DIR}"/userContent.css              "${TARGET_DIR}"/userContent.css.bak
-  cp -rf "${FIREFOX_SRC_DIR}"/userContent"${theme_type}".css                                  "${TARGET_DIR}"/userContent.css
+  cp -rf "${FIREFOX_SRC_DIR}/${theme_name}"                                                 "${TARGET_DIR}"
+  cp -rf "${FIREFOX_SRC_DIR}"/customChrome.css                                              "${TARGET_DIR}"
+  cp -rf "${FIREFOX_SRC_DIR}"/userChrome"${theme_type}".css                                 "${TARGET_DIR}"/userChrome.css
+  cp -rf "${FIREFOX_SRC_DIR}"/userContent"${theme_type}".css                                "${TARGET_DIR}"/userContent.css
 
   killall "firefox" "firefox-bin" &> /dev/null || true
 
@@ -829,9 +823,9 @@ edit_firefox_theme_prefs() {
 remove_firefox_theme() {
   local TARGET_DIR="${1}"
 
-  restore_file "${TARGET_DIR}"/customChrome.css
-  restore_file "${TARGET_DIR}"/userChrome.css
-  restore_file "${TARGET_DIR}"/userContent.css
+  remove_file "${TARGET_DIR}"/customChrome.css
+  remove_file "${TARGET_DIR}"/userChrome.css
+  remove_file "${TARGET_DIR}"/userContent.css
 
   rm -rf "${TARGET_DIR}/${theme_name}"
 }
