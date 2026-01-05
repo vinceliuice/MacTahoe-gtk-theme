@@ -426,10 +426,14 @@ preferencesgroup > box {
 
     &:hover {
       box-shadow: 0 0 0 3px $divider_color;
+      background: var(--accent-bg-color);
+      background-clip: content-box;
     }
 
-    &:checked {
+    &:checked, &:checked:hover {
       box-shadow: 0 0 0 3px var(--accent-bg-color);
+      background: var(--accent-bg-color);
+      background-clip: content-box;
     }
 
     &.blue,
