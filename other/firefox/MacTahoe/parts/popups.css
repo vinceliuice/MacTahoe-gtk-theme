@@ -441,5 +441,16 @@ panel[type="autocomplete-richlistbox"] {
 
 /* Fixes for menu scrollbox */
 arrowscrollbox.menupopup-arrowscrollbox {
-	height: 100%;
+	height: auto;
+	min-height: 0;
+	max-height: calc(100vh - 24px) !important;
+}
+
+/* Keep long bookmark menus inside viewport and allow scroll buttons to appear */
+menupopup[placespopup="true"]::part(arrowscrollbox),
+#BMB_bookmarksPopup::part(arrowscrollbox),
+#BMB_bookmarksPopup menupopup::part(arrowscrollbox),
+menupopup[placespopup="true"] .menupopup-arrowscrollbox,
+#BMB_bookmarksPopup .menupopup-arrowscrollbox {
+	max-height: min(70vh, 540px) !important;
 }
