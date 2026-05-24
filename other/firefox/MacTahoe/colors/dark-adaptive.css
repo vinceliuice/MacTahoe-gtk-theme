@@ -10,6 +10,8 @@
 	/* Browser area before a page starts loading */
 	--gnome-browser-before-load-background: color-mix(in srgb, #000000 6%, var(--lwt-accent-color, #282828));
 	--gnome-browser-content-box-background: var(--lwt-accent-color, #323232);
+	--gnome-content-page-dialog-background: #424242;
+	--gnome-content-page-color: #fdfdfd;
 	--theme-primary-color: #315bef;
 	--theme-primary-hover-color: #5073f1;
 	--theme-primary-active-color: #6584f3;

@@ -130,9 +130,15 @@ toolbarspring {
 		background-color: var(--gnome-button-hover-color) !important;
 	}
 
-	&[selected] {
-		background-color: var(--gnome-button-active-color) !important;
-	}
+  &[selected] {
+		background-color: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.16)) !important;
+		color: light-dark(#1f1f1f, #f5f5f5) !important;
+  }
+}
+
+.urlbarView-row[selected] > .urlbarView-row-inner,
+.urlbarView-row[selected] :is(.urlbarView-title, .urlbarView-title-separator, .urlbarView-url, .urlbarView-action, .urlbarView-secondary) {
+	color: inherit !important;
 }
 
 .urlbarView-action {
