@@ -125,6 +125,7 @@ while [[ $# -gt 0 ]]; do
         prompt -e "'${1}' ERROR: There's no Firefox installed in your system"
         has_any_error="true"
       elif [[ ! -d "${FIREFOX_DIR_HOME}" && ! -d "${FIREFOX_FLATPAK_DIR_HOME}" && ! -d "${FIREFOX_SNAP_DIR_HOME}" ]]; then
+        echo "${FIREFOX_DIR_HOME}"
         prompt -e "'${1}' ERROR: Firefox is installed but not yet initialized."
         prompt -w "'${1}': Don't forget to close it after you run/initialize it"
         has_any_error="true"

@@ -78,11 +78,16 @@ GNOME_SHELL_EXTENSION_DIR="${MY_HOME}/.local/share/gnome-shell/extensions"
 # Firefox
 FIREFOX_SRC_DIR="${REPO_DIR}/other/firefox"
 FIREFOX_DIR_HOME="${MY_HOME}/.mozilla/firefox"
-FIREFOX_THEME_DIR="${MY_HOME}/.mozilla/firefox/firefox-themes"
+
+if [[ -d "$HOME/.config/mozilla/firefox" ]]; then
+  FIREFOX_DIR_HOME="${MY_HOME}/.config/mozilla/firefox"
+fi
+
+FIREFOX_THEME_DIR="${FIREFOX_DIR_HOME}/firefox-themes"
 FIREFOX_FLATPAK_DIR_HOME="${MY_HOME}/.var/app/org.mozilla.firefox/.mozilla/firefox"
-FIREFOX_FLATPAK_THEME_DIR="${MY_HOME}/.var/app/org.mozilla.firefox/.mozilla/firefox/firefox-themes"
+FIREFOX_FLATPAK_THEME_DIR="${FIREFOX_FLATPAK_DIR_HOME}/.mozilla/firefox/firefox-themes"
 FIREFOX_SNAP_DIR_HOME="${MY_HOME}/snap/firefox/common/.mozilla/firefox"
-FIREFOX_SNAP_THEME_DIR="${MY_HOME}/snap/firefox/common/.mozilla/firefox/firefox-themes"
+FIREFOX_SNAP_THEME_DIR="${FIREFOX_SNAP_DIR_HOME}/firefox-themes"
 
 # Librewolf
 LIBREWOLF_DIR_HOME="${MY_HOME}/.librewolf"
