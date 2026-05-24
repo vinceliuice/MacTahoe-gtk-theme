@@ -425,6 +425,7 @@ preferencesgroup > box {
 
 @if $gnome_version =="new" {
   preferencesgroup button.accent, // GDM Setting
+
   preferencesgroup button.accent-button {
     min-height: 24px;
     min-width: 24px;
@@ -615,6 +616,26 @@ menubutton.flat.popup.sources-button {
   }
 }
 
+//
+// Gnome Monitor
+//
+
+#gnome-system-monitor scrolledwindow {
+  &.default {
+    border-radius: $bt_radius;
+
+    > treeview.view {
+      border-radius: $mn_radius;
+      border: 1px solid $borders_color;
+    }
+  }
+
+  > columnview.view {
+    border-radius: $mn_radius;
+    border: 1px solid $borders_color;
+  }
+}
+
 // Contacts
 .contacts-editor-address {
   > entry.flat {
@@ -645,7 +666,7 @@ menubutton.flat.popup.sources-button {
     border: 1px solid $borders_color;
   }
 
-  #displayitem {
+  mathdisplay > box {
     border-top: 1px solid $borders_color;
   }
 
