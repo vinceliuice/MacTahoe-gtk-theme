@@ -3,16 +3,16 @@
 
 $panel_height: $menuitem_size;
 
-@if $panel_size == 'smaller' {
+@if $panel_size =='smaller' {
   $panel_height: $menuitem_size - 4px;
 }
 
-@if $panel_size == 'bigger' {
+@if $panel_size =='bigger' {
   $panel_height: $menuitem_size + 4px;
 }
 
 #panel.login-screen {
-  @if $scale != 'default' {
+  @if $scale !='default' {
     @include fontsize($base_font_size * 2 - 2);
     height: $panel_height * 2 !important;
 
@@ -22,7 +22,9 @@ $panel_height: $menuitem_size;
       border-radius: $bt_radius * 2 !important;
 
       &.clock-display {
-        StLabel { padding: 0 $base_padding * 2 !important; }
+        StLabel {
+          padding: 0 $base_padding * 2 !important;
+        }
 
         .clock {
           border-radius: $bt_radius * 2 !important;
@@ -36,9 +38,13 @@ $panel_height: $menuitem_size;
         margin: 0 $base_padding * 2 !important;
       }
 
-      .panel-status-menu-box StLabel { padding: 0 0 0 $base_padding !important; }
+      .panel-status-menu-box StLabel {
+        padding: 0 0 0 $base_padding !important;
+      }
 
-      .appindicator-trayicons-box { margin: 0 $base_padding * 2 !important; }
+      .appindicator-trayicons-box {
+        margin: 0 $base_padding * 2 !important;
+      }
 
       StIcon {
         icon-size: 32px !important;
@@ -80,7 +86,9 @@ $panel_height: $menuitem_size;
   color: transparent;
   font-size: 0;
 
-  > * { width: $medium_size; }
+  > * {
+    width: $medium_size;
+  }
 
   StBoxLayout {
     spacing: 0;
@@ -95,10 +103,12 @@ $panel_height: $menuitem_size;
     color: transparent;
   }
 
-  &:overview { background-color: transparent; }
+  &:overview {
+    background-color: transparent;
+  }
 
-  @if $variant == 'light' {
-    @if $panel_font == 'black' or $trans == 'false' {
+  @if $variant =='light' {
+    @if $panel_font =='black' or $trans =='false' {
       &:overview {
         background-image: url("assets/activities-white.svg");
       }
@@ -114,10 +124,12 @@ $panel_height: $menuitem_size;
   // @include font(body-1);
   // box-shadow: 0 5px 16px rgba(black, 0.05);
 
-  @if $panel_style == 'default' {
+  @if $panel_style =='default' {
     height: $panel_height + $container_padding * 2 !important;
     background-color: transparent;
-  } @else {
+  }
+
+  @else {
     height: $panel_height !important;
     background-color: $panel_bg;
   }
@@ -139,14 +151,16 @@ $panel_height: $menuitem_size;
     color: $panel_fg;
     transition-duration: 150ms;
 
-    @if $panel_style == 'default' {
+    @if $panel_style =='default' {
       border: $container_padding solid transparent !important;
       border-radius: $circular_radius;
 
-      @if $trans == 'false' {
+      @if $trans =='false' {
         box-shadow: inset 0 0 0 1000px $panel_bg;
       }
-    } @else {
+    }
+
+    @else {
       border: none;
       border-radius: $bt_radius;
     }
@@ -156,7 +170,12 @@ $panel_height: $menuitem_size;
       margin: 0;
     }
 
-    .popup-menu-arrow { width: 0; height: 0; } // Remove arrow on panel button
+    .popup-menu-arrow {
+      width: 0;
+      height: 0;
+    }
+
+    // Remove arrow on panel button
 
     // &, &:hover, &:active, &:overview, &:focus, &:checked {
     //   text-shadow: $panel_asset_shadow;
@@ -201,7 +220,9 @@ $panel_height: $menuitem_size;
     .unlock-screen &,
     .login-screen &,
     .lock-screen & {
-      &, &:focus, &:hover, &:active { color: $panel_fg; }
+      &, &:focus, &:hover, &:active {
+        color: $panel_fg;
+      }
     }
 
     .login-screen &,
@@ -227,9 +248,13 @@ $panel_height: $menuitem_size;
         margin: 0 !important;
         border: $container_padding solid transparent !important;
 
-        @if $panel_style == 'default' and $trans == 'false' {
+        @if $panel_style =='default' and $trans =='false' {
           box-shadow: inset 0 0 0 1000px $panel_bg;
-        } @else { box-shadow: none; }
+        }
+
+        @else {
+          box-shadow: none;
+        }
       }
 
       .messages-indicator {
@@ -238,6 +263,7 @@ $panel_height: $menuitem_size;
     }
 
     &:hover, &:active, &:overview, &:focus, &:checked {
+
       // The clock display needs to have the background on .clock because
       // we want to exclude the do-not-disturb indicator from the background
       &.clock-display {
@@ -254,11 +280,17 @@ $panel_height: $menuitem_size;
     }
 
     // .panel-status-menu-box .system-status-icon { margin: 0; }
-    .panel-status-menu-box StLabel { padding: 0 0 0 $base_padding / 2; }
+    .panel-status-menu-box StLabel {
+      padding: 0 0 0 $base_padding / 2;
+    }
 
-    .appindicator-trayicons-box { margin: 0 $base_padding; }
+    .appindicator-trayicons-box {
+      margin: 0 $base_padding;
+    }
 
-    // .appindicator-box { margin: 0; }
+    .appindicator-box {
+      margin-left: $base_padding * 3;
+    }
 
     // .panel-status-indicators-box,
     // .panel-status-menu-box {
@@ -276,13 +308,16 @@ $panel_height: $menuitem_size;
       // dimensions of the icon are hardcoded
     }
 
-    &#panelActivities { // Activities button
+    &#panelActivities {
+      // Activities button
       background-gradient-direction: none;
       // border: none;
 
-      @if $activities == 'icon' {
+      @if $activities =='icon' {
         @extend %apple_activites;
-      } @else {
+      }
+
+      @else {
         @extend %normal_activites;
       }
     }
@@ -337,16 +372,27 @@ $panel_height: $menuitem_size;
 
   Gjs_ui_panel_AppMenuButton.panel-button,
   // .menubar-button, // For Fildem global menu
-  .desktop-name-label { // For Unite
+  .desktop-name-label {
+    // For Unite
     font-weight: bold !important;
   }
 
   // Input indicators
-  Gjs_status_keyboard_InputSourceIndicator.panel-button, // Ibus
-  Gjs_appindicatorsupport_rgcjonas_gmail_com_indicatorStatusIcon_IndicatorStatusIcon.panel-button,
-  Gjs_appindicatorsupport_rgcjonas_gmail_com_indicatorStatusIcon_AppIndicatorsIndicatorStatusIcon.panel-button { // Fcitx
+  Gjs_status_keyboard_InputSourceIndicator.panel-button {
+    // Ibus
     -natural-hpadding: 12px + $base_padding !important;
     -minimum-hpadding: 12px + $base_padding !important;
+  }
+
+  Gjs_appindicatorsupport_rgcjonas_gmail_com_indicatorStatusIcon_IndicatorStatusIcon.panel-button,
+  Gjs_appindicatorsupport_rgcjonas_gmail_com_indicatorStatusIcon_AppIndicatorsIndicatorStatusIcon.panel-button {
+    // Fcitx
+    -natural-hpadding: $base_padding * 2 !important;
+    -minimum-hpadding: $base_padding * 2 !important;
+
+    .appindicator-box {
+      margin: 0 $base_padding;
+    }
   }
 
   // transparent panel on lock & login screens
@@ -357,7 +403,9 @@ $panel_height: $menuitem_size;
     background-color: transparent;
     box-shadow: none;
 
-    StLabel, StIcon { color: $light_alt_fg_color; }
+    StLabel, StIcon {
+      color: $light_alt_fg_color;
+    }
 
     .panel-button {
       box-shadow: none;
@@ -396,7 +444,7 @@ $panel_height: $menuitem_size;
         }
       }
 
-      @if $activities == 'default' {
+      @if $activities =='default' {
         &#panelActivities {
           color: $light_fg_color;
 
@@ -418,5 +466,7 @@ $panel_height: $menuitem_size;
   .screencast-indicator,
   .remote-access-indicator,
   // important privacy related indicators
-  .privacy-indicator { color: $warning_color; }
+  .privacy-indicator {
+    color: $warning_color;
+  }
 }
