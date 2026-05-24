@@ -435,6 +435,14 @@ tab[selected]:-moz-window-inactive .tab-label {
 	width: 16px !important;
 }
 
+.tab-audio-button {
+	--button-border-radius: 999px !important;
+
+	.button-background {
+		border-radius: 999px !important;
+	}
+}
+
 /* firefox-view-button */
 :root:not([privatebrowsingmode], [firefoxviewhidden]) :is(toolbarbutton, toolbarpaletteitem) + #tabbrowser-tabs,
 :root[privatebrowsingmode]:not([firefoxviewhidden]) :is(toolbarbutton:not(#firefox-view-button),
@@ -485,3 +493,4 @@ tab-group {
 		height: var(--tab-group-line-thickness);
 		margin-bottom: -2px !important;
 	}
+}

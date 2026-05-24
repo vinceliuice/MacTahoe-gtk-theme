@@ -423,7 +423,7 @@ toolbarspring {
 	width: auto !important;
 }
 
-.button-background {
+#main-button .button-background.labelled {
 	min-height: 30px !important;
 	min-width: 30px !important;
 	background: var(--gnome-headerbar-button-hover-background) !important;
