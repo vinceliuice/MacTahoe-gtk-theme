@@ -1655,6 +1655,46 @@ window.shortcuts {
   vte-terminal {
     background: none;
   }
+
+  .thumbnail {
+    button.tab-close-button {
+      padding: 0;
+
+      &, &:hover, &:active {
+        background: none;
+        border: none;
+      }
+    }
+  }
+}
+
+preferencesgroup {
+  flowbox > flowboxchild {
+    padding: 0;
+    border: none;
+    border-radius: $bd_radius + 3px;
+
+    > button.palette {
+      margin: 3px;
+      padding: 0;
+      border-radius: $bd_radius;
+      border: 1px solid $borders_color;
+
+      &.selected {
+        border-color: $primary_color;
+        box-shadow: 0 0 0 2px $primary_color;
+      }
+
+      > palettepreview {
+        border-radius: $bd_radius;
+        margin: 0;
+
+        palettepreviewcolor {
+          border-radius: 3px;
+        }
+      }
+    }
+  }
 }
 
 //

@@ -880,6 +880,12 @@ button {
     &.popup { padding-right: $container_padding; padding-left: $container_padding; }
   }
 
+  &.suggested-action,
+  &.destructive-action {
+    padding-left: $container_padding * 2;
+    padding-right: $container_padding * 2;
+  }
+
   &.arrow-button {
     padding-left: $container_padding * 1.5;
     padding-right: $container_padding * 1.5;
