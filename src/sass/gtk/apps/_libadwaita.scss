@@ -933,6 +933,13 @@ toolbarview {
       box-shadow: 0 -1px $header_border;
     }
   }
+
+  fullscreenbox & > .top-bar,
+  fullscreenbox & > .bottom-bar {
+    &, &.raised {
+      background-color: gtkalpha($base_color, 0.9);
+    }
+  }
 }
 
 // reset
