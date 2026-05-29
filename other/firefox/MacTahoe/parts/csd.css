@@ -94,9 +94,9 @@
 
 	#nav-bar .titlebar-button,
 	#titlebar .titlebar-button {
-		height: 24px;
-		width: 24px;
-		margin: 12px 4px !important;
+		height: 20px;
+		width: 20px;
+		margin-right: 12px !important;
 		padding: 0 !important;
 	}
 
