@@ -251,7 +251,11 @@ toolbarspring {
 
 .urlbar-page-action,
 .urlbar-revert-button,
-#star-button-box, {
+#star-button-box,
+#urlbar-go-button,
+.urlbar-go-button:not(.urlbar-icon) {
+	width: 30px !important;
+	height: 30px !important;
 	min-width: 30px !important;
 	min-height: 30px !important;
 	margin: 3px 0 3px 3px !important;
@@ -259,14 +263,12 @@ toolbarspring {
 	border-radius: 999px !important;
 }
 
-/*This had to be moved away from the star-button due to size issues*/
-#urlbar-go-button,
-.urlbar-go-button {
-	min-width: 16px !important;
-	min-height: 16px !important;
-	margin: 3px 0 3px 3px !important;
-	padding: 1px !important;
+.urlbar-go-button.urlbar-icon {
+	width: 16px !important;
+	height: 16px !important;
+	padding: 7px !important;
 	border-radius: 999px !important;
+	margin: 3px 0 !important;
 }
 
 #identity-icon-box.identity-box-button {
