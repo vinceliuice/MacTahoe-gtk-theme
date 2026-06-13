@@ -10,4 +10,14 @@
     <pcolor>#51a2da</pcolor>
     <scolor>#294172</scolor>
   </wallpaper>
+
+  <wallpaper deleted="false">
+    <name>MacTahoe Monterey Stock Black</name>
+    <filename>@BACKGROUNDDIR@/MacTahoe/MacTahoe-monterey-stock-black-dark.jpg</filename>
+    <filename-dark>@BACKGROUNDDIR@/MacTahoe/MacTahoe-monterey-stock-black-dark.jpg</filename-dark>
+    <options>zoom</options>
+    <shade_type>solid</shade_type>
+    <pcolor>#000000</pcolor>
+    <scolor>#000000</scolor>
+  </wallpaper>
 </wallpapers>
