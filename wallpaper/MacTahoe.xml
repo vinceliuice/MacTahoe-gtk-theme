@@ -13,8 +13,8 @@
 
   <wallpaper deleted="false">
     <name>MacTahoe Monterey Stock Black</name>
-    <filename>@BACKGROUNDDIR@/MacTahoe/MacTahoe-monterey-stock-black-dark.jpg</filename>
-    <filename-dark>@BACKGROUNDDIR@/MacTahoe/MacTahoe-monterey-stock-black-dark.jpg</filename-dark>
+    <filename>@BACKGROUNDDIR@/MacTahoe/MacTahoe-monterey-stock-black-dark.jpeg</filename>
+    <filename-dark>@BACKGROUNDDIR@/MacTahoe/MacTahoe-monterey-stock-black-dark.jpeg</filename-dark>
     <options>zoom</options>
     <shade_type>solid</shade_type>
     <pcolor>#000000</pcolor>
