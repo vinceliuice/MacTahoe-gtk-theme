@@ -271,6 +271,13 @@ toolbarspring {
 	margin: 3px 0 !important;
 }
 
+#identity-box[pageproxystate="valid"]:is(.notSecureText, .chromeUI, .extensionPage) > .identity-box-button,
+#urlbar-label-box {
+	background-color: var(--gnome-headerbar-button-combined-background) !important;
+	color: var(--gnome-urlbar-color) !important;
+	border-radius: 999px !important;
+}
+	
 #identity-icon-box.identity-box-button {
 	max-width: calc(30px + 13em) !important;
 }
@@ -281,7 +288,9 @@ toolbarspring {
 #urlbar-go-button:hover,
 .urlbar-go-button:hover,
 .search-go-button:hover,
-.identity-box-button:hover {
+.identity-box-button:hover,
+#identity-box[pageproxystate="valid"]:is(.notSecureText, .chromeUI, .extensionPage) > .identity-box-button:hover,
+#urlbar-label-box:hover {
 	background: var(--gnome-headerbar-button-hover-background) !important;
 }
 
@@ -291,7 +300,9 @@ toolbarspring {
 #urlbar-go-button:active,
 .urlbar-go-button:active,
 .search-go-button:active,
-.identity-box-button:active {
+.identity-box-button:active,
+#identity-box[pageproxystate="valid"]:is(.notSecureText, .chromeUI, .extensionPage) > .identity-box-button:active,
+#urlbar-label-box:active {
 	background: var(--gnome-headerbar-button-active-background) !important;
 }
 
