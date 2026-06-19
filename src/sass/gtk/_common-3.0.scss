@@ -2363,6 +2363,15 @@ popover.background {
     }
   }
 
+  list.new-item-list {
+    background-color: transparent;
+
+    row {
+      padding: 2px $container_padding;
+      border-radius: $bt_radius;
+    }
+  }
+
   &, .csd & {
     &.osd, &.magnifier { @extend %osd; }
     &.touch-selection { font: initial; }
