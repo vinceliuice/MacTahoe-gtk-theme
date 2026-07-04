@@ -43,6 +43,7 @@ if command -v gnome-shell &> /dev/null; then
   fi
 else
   GNOME_VERSION="48-0"
+  SHELL_VERSION="48"
 fi
 
 #----------Program options-------------#
