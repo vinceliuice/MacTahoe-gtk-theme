@@ -14,14 +14,8 @@ If you like my project, you can buy me a coffee, many thanks ❤️ !
 |:---:|:---:|:---:|
 |[![paypal](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/paypal.png?raw=true "paypal")](https://www.paypal.me/vinceliuice)| [![wechat](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/wechat.png?raw=true  "wechat")](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/wechat.jpg?raw=true)|[![alipay](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/alipay.png?raw=true  "alipay")](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/alipay.jpg?raw=true)|
 
-### screenshot
+## ScreenShot
 <p align="center"> <img src="screenshot01.jpeg"/> </p>
-
-## Donate
-
-If you like my project, you can buy me a coffee, many thanks ❤️ !
-
-<span class="paypal"><a href="https://www.paypal.me/vinceliuice" title="Donate to this project using Paypal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" alt="PayPal donate button" /></a></span>
 
 # Installation is easy!
 <details> <summary> Required dependencies <b>(click to open)</b> </summary>
