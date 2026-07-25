@@ -6,11 +6,13 @@ A macOS Tahoe like theme for Linux GTK Desktops
 Based on WhiteSur GTK Theme:
 [https://github.com/vinceliuice/WhiteSur-gtk-theme](https://github.com/vinceliuice/WhiteSur-gtk-theme)
 
+## Donate
 
+If you like my project, you can buy me a coffee, many thanks ❤️ !
 
-
-
-
+| PayPal | WeChat | AliPay |
+|:---:|:---:|:---:|
+|[![paypal](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/paypal.png?raw=true "paypal")](https://www.paypal.me/vinceliuice)| [![wechat](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/wechat.png?raw=true  "wechat")](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/wechat.jpg?raw=true)|[![alipay](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/alipay.png?raw=true  "alipay")](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/alipay.jpg?raw=true)|
 
 ### screenshot
 <p align="center"> <img src="screenshot01.jpeg"/> </p>
