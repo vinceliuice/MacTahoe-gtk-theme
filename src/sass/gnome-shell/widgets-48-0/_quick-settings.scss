@@ -3,10 +3,12 @@
   padding-top: $base_padding * 2 !important;
   border-radius: 21px + $base_padding * 3 !important;
   margin-top: $base_padding * 2 !important;
-  background: none;
+  margin-bottom: $base_padding * 2 + 20px !important;
+  margin-left: $base_padding * 2 + 20px !important;
+  background-color: rgba(black, 0.0);
   border: none;
-  box-shadow: none;
-  @extend %quickmenu_shadow;
+  box-shadow: 0 0 30px -20px rgba(black, 0.25) !important;
+  // @extend %quickmenu_shadow;
 
   .icon-button, .button {
     padding: $base_padding * 1.75;
