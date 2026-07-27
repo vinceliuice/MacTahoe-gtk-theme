@@ -5,9 +5,9 @@
   margin-top: $base_padding * 2 !important;
   margin-bottom: $base_padding * 2 + 20px !important;
   margin-left: $base_padding * 2 + 20px !important;
-  background-color: rgba(black, 0.0);
+  background-color: rgba(black, 0.01);
   border: none;
-  box-shadow: 0 0 30px -20px rgba(black, 0.25) !important;
+  box-shadow: 0 0 30px -30px rgba(black, 0.2) !important;
   // @extend %quickmenu_shadow;
 
   .icon-button, .button {
