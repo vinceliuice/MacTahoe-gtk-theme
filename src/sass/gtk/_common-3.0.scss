@@ -2242,6 +2242,10 @@ menu {
       color: $disabled_fg_color;
     }
 
+    menu > menuitem {
+      transition: none;
+    }
+
     //submenu indicators
     arrow {
       min-height: 16px;

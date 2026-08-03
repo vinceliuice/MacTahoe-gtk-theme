@@ -3480,7 +3480,7 @@ scale {
       min-height: 20px;
 
       &:active {
-        margin: -11px;
+        margin: -11px -13px;
         min-width: 40px;
         min-height: 26px;
         background-image: -gtk-recolor(url('assets/scalable/slider-glass.svg'));
@@ -3498,7 +3498,7 @@ scale {
       min-height: 30px;
 
       &:active {
-        margin: -11px;
+        margin: -13px -11px;
         min-width: 26px;
         min-height: 40px;
         background-image: -gtk-recolor(url('assets/scalable/slider-glass-vertical.svg'));
@@ -3657,12 +3657,8 @@ scale {
                   margin-top: -14px;
 
                   $_scale_slider_bg_pos: top;
-                }
-
-                @else { margin-bottom: -14px; }
-              }
-
-              @else {
+                } @else { margin-bottom: -14px; }
+              } @else {
                 min-height: 24px;
                 min-width: 26px;
 
@@ -3670,9 +3666,7 @@ scale {
                   margin-left: -14px;
 
                   $_scale_slider_bg_pos: left bottom;
-                }
-
-                @else {
+                } @else {
                   margin-right: -14px;
 
                   $_scale_slider_bg_pos: right bottom;
@@ -3690,15 +3684,9 @@ scale {
             margin: -7px;
 
             @if $dir_class == 'horizontal' {
-              @if $marks_infix == 'scale-has-marks-above' { margin-top: -11px; }
-
-              @else { margin-bottom: -11px; }
-            }
-
-            @else {
-              @if $marks_infix == 'scale-has-marks-above' { margin-left: -11px; }
-
-              @else { margin-right: -11px; }
+              @if $marks_infix == 'scale-has-marks-above' { margin-top: -11px; } @else { margin-bottom: -11px; }
+            } @else {
+              @if $marks_infix == 'scale-has-marks-above' { margin-left: -11px; } @else { margin-right: -11px; }
             }
           }
         }

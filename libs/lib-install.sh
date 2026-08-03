@@ -526,6 +526,10 @@ install_theemy() {
   cp -r "${THEME_SRC_DIR}/assets/metacity-1/thumbnail${color}${scheme}.png"                   "${TARGET_DIR}/metacity-1/thumbnail.png"
   ( cd "${TARGET_DIR}/metacity-1" && ln -s "metacity-theme-1.xml" "metacity-theme-2.xml" )
 
+  mkdir -p                                                                                    "${TARGET_DIR}/labwc"
+  cp -r "${THEME_SRC_DIR}/assets/labwc/assets${color}${scheme}/"*".svg"                       "${TARGET_DIR}/labwc"
+  cp -r "${THEME_SRC_DIR}/main/labwc/themerc${color}${scheme}"                                "${TARGET_DIR}/labwc/themerc"
+
   mkdir -p                                                                                    "${TARGET_DIR}/plank"
   cp -r "${REPO_DIR}/other/plank/theme${color}/"*".theme"                                     "${TARGET_DIR}/plank"
 
