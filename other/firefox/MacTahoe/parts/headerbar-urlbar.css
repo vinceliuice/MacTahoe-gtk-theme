@@ -223,6 +223,10 @@ toolbarspring {
 	padding: 0 !important;
 }
 
+#tracking-protection-icon-container, #identity-box, #trust-icon-container, #urlbar-label-box {
+	height: 30px !important;
+}
+
 .search-go-button,
 .identity-box-button,
 #notification-popup-box,
@@ -230,8 +234,8 @@ toolbarspring {
 #trust-icon-container {
 	min-width: 30px !important;
 	min-height: 30px !important;
-	margin: 3px 3px 3px 0 !important;
 	padding: 7px !important;
+	margin: 0 !important;
 	border-radius: 999px !important;
 }
 
@@ -445,7 +449,6 @@ toolbarspring {
 }
 
 #main-button .button-background.labelled {
-	min-height: 30px !important;
 	min-width: 30px !important;
 	background: var(--gnome-headerbar-button-hover-background) !important;
 	border: none !important;
