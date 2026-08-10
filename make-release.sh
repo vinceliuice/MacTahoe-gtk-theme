@@ -42,7 +42,7 @@ compress() {
 release_info() {
 rm -rf ${RELEASE_DIR}/release-info.txt
 
-echo >> release-info.txt
+echo >> "${RELEASE_DIR}/release-info.txt"
 echo "VERSION: (GNOME-SHELL) ${RELEASE_VERSION}" >> ${RELEASE_DIR}/release-info.txt
 echo >> ${RELEASE_DIR}/release-info.txt
 echo "RELEASE TIME: $(date)" >> ${RELEASE_DIR}/release-info.txt
