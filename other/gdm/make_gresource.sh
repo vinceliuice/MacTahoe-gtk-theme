@@ -11,9 +11,9 @@ if ! has_command glib-compile-resources; then
     if has_command zypper; then
       sudo zypper in -y glib2-devel
     elif has_command swupd; then
-      prepare_swupd && sudo swupd bundle-add libglib
+      sudo swupd bundle-add libglib
     elif has_command apt; then
-      prepare_install_apt_packages libglib2.0-dev-bin
+      sudo apt install -y libglib2.0-dev-bin
     elif has_command dnf; then
       sudo dnf install -y glib2-devel
     elif has_command yum; then
@@ -21,7 +21,7 @@ if ! has_command glib-compile-resources; then
     elif has_command pacman; then
       sudo pacman -Syyu --noconfirm --needed glib2
     elif has_command xbps-install; then
-      prepare_xbps && sudo xbps-install -Sy glib-devel
+      sudo xbps-install -Sy glib-devel
     elif has_command eopkg; then
       sudo eopkg -y upgrade; sudo eopkg -y install glib2
     fi
