@@ -7,6 +7,8 @@ src/main/gtk-4.0/gtk*.css
 src/main/cinnamon/cinnamon*.css
 src/main/gnome-shell/gnome-shell-Dark.css
 src/main/gnome-shell/gnome-shell-Light.css
-src/other/dash-to-dock/stylesheet.css
-src/other/dash-to-dock/stylesheet-dark.css
+other/dash-to-dock/stylesheet.css
+other/dash-to-dock/stylesheet-dark.css
 other/gdm/gnome-shell-theme.gresource
+other/gdm/theme/*.css
+release/
