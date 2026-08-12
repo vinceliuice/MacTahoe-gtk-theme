@@ -55,7 +55,7 @@ else
   SED_OPT="-i"
 fi
 
-SUDO_BIN="$(which sudo)"
+SUDO_BIN="$(command -v sudo)"
 
 #-------------Theme---------------#
 THEME_NAME="MacTahoe"

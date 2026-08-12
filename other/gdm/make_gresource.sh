@@ -2,7 +2,7 @@
 
 # Check command availability
 function has_command() {
-  command -v $1 > /dev/null
+  command -v "$1" > /dev/null
 }
 
 if ! has_command glib-compile-resources; then
