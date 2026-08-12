@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-INKSCAPE="/usr/bin/inkscape"
-OPTIPNG="/usr/bin/optipng"
+INKSCAPE="$(command -v inkscape)" || true
+OPTIPNG="$(command -v optipng)" || true
 
-# check command avalibility
+# check command availability
 has_command() {
-  "$1" -v $1 > /dev/null 2>&1
+  command -v "$1" > /dev/null 2>&1
 }
 
 if ! has_command inkscape; then

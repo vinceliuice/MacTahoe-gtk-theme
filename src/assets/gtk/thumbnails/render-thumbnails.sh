@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-INKSCAPE="/usr/bin/inkscape"
-OPTIPNG="/usr/bin/optipng"
+INKSCAPE="$(command -v inkscape)" || true
+OPTIPNG="$(command -v optipng)" || true
 
 ./make-thumbnails.sh
 
