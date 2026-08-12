@@ -1,11 +1,13 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
-INKSCAPE="/usr/bin/inkscape"
-OPTIPNG="/usr/bin/optipng"
+set -euo pipefail
+
+INKSCAPE="$(command -v inkscape)" || true
+OPTIPNG="$(command -v optipng)" || true
 
 INDEX="assets.txt"
 
-for i in `cat $INDEX`; do
+for i in $(cat "$INDEX"); do
   for color in '-Dark' '-Light'; do
     for theme in '' '-nord'; do
       for screen in '' '-hdpi' '-xhdpi'; do
@@ -24,18 +26,18 @@ for i in `cat $INDEX`; do
               ;;
         esac
 
-        mkdir -p $ASSETS_DIR
+        mkdir -p "$ASSETS_DIR"
 
-        if [ -f $ASSETS_DIR/$i.png ]; then
-          echo $ASSETS_DIR/$i.png exists.
+        if [[ -f "$ASSETS_DIR/$i.png" ]]; then
+          echo "$ASSETS_DIR/$i.png exists."
         else
           echo
-          echo Rendering $ASSETS_DIR/$i.png
-          $INKSCAPE --export-id=$i \
-                    --export-id-only \
-                    --export-dpi=$DPI \
-                    --export-filename=$ASSETS_DIR/$i.png $SRC_FILE >/dev/null \
-          && $OPTIPNG -o7 --quiet $ASSETS_DIR/$i.png
+          echo "Rendering $ASSETS_DIR/$i.png"
+          "$INKSCAPE" --export-id="$i" \
+                      --export-id-only \
+                      --export-dpi="$DPI" \
+                      --export-filename="$ASSETS_DIR/$i.png" "$SRC_FILE" >/dev/null \
+          && "$OPTIPNG" -o7 --quiet "$ASSETS_DIR/$i.png"
         fi
       done
     done

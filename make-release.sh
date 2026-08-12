@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
 readonly REPO_DIR="$(dirname "$(readlink -m "${0}")")"
 readonly RELEASE_DIR="${REPO_DIR}/release"

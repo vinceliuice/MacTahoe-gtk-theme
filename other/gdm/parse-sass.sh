@@ -1,11 +1,11 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
 # Check command availability
 function has_command() {
-  command -v $1 > /dev/null
+  command -v "$1" > /dev/null
 }
 
-if [ ! "$(which sassc 2> /dev/null)" ]; then
+if ! has_command sassc; then
   echo sassc needs to be installed to generate the css.
   if has_command zypper; then
     sudo zypper in sassc
