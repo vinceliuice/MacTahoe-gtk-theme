@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
 RENDER_SVG="$(command -v rendersvg)" || true
 INKSCAPE="$(command -v inkscape)" || true

@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
 # WARNING: Please make this shell not working-directory dependant, for example
 # instead of using 'ls blabla', use 'ls "${REPO_DIR}/blabla"'

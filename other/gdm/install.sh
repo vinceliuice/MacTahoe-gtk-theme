@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
 GR_FILE="/usr/share/gnome-shell/gnome-shell-theme.gresource"
 
