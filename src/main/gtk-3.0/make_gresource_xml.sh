@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
 INDEX="../../assets/gtk/common-assets/assets.txt"
 SINDEX="../../assets/gtk/common-assets/sidebar-assets.txt"
