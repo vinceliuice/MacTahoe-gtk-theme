@@ -70,6 +70,26 @@
     background-color: transparent;
   }
 
+  .mc-toggle-group {
+    padding: $container_padding / 2;
+    border-radius: $circular_radius;
+    background-image: $header_button_image;
+    box-shadow: $button_shadow;
+    background-color: transparent;
+
+    &:backdrop {
+      @include button(header-backdrop);
+    }
+
+    > button {
+      min-height: 24px;
+      min-width: 24px;
+      padding: $container_padding / 2;
+      border-radius: $circular_radius;
+      @extend %headerbar_buttons_flat;
+    }
+  }
+
   .nautilus-grid-view {
     background-color: transparent;
 
