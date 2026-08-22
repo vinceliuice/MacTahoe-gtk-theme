@@ -443,31 +443,56 @@ preferencesgroup > box {
   }
 }
 
-@if $gnome_version =="new" {
-  preferencesgroup button.accent, // GDM Setting
+preferencesgroup button.accent, // GDM Setting
 
-  preferencesgroup button.accent-button {
+preferencesgroup button.accent-button {
+  box-shadow: none;
+
+  &, &:hover, &:active, &:checked {
+    background-clip: content-box;
     min-height: 24px;
     min-width: 24px;
     padding: $base_padding / 2;
     border-radius: $circular_radius;
-    background: var(--accent-bg-color);
     outline: none;
-    background-clip: content-box;
-    box-shadow: none;
     border: none;
+  }
+
+  &:checked {
+    -gtk-icon-source: -gtk-icontheme("object-select-symbolic");
+    color: white;
+  }
+
+  @if $gnome_version =="old" {
+    background: $selected_bg_color;
+
+    &:hover {
+      box-shadow: 0 0 0 3px $divider_color;
+      background: $selected_bg_color;
+    }
+
+    &:checked, &:checked:hover {
+      box-shadow: 0 0 0 3px rgba($selected_bg_color, 0.5);
+      background: $selected_bg_color;
+    }
+  }
+
+  @else {
+    background: var(--accent-bg-color);
 
     &:hover {
       box-shadow: 0 0 0 3px $divider_color;
       background: var(--accent-bg-color);
-      background-clip: content-box;
     }
 
     &:checked, &:checked:hover {
-      box-shadow: 0 0 0 3px var(--accent-bg-color);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-bg-color) 50%, transparent);
+      ;
       background: var(--accent-bg-color);
-      background-clip: content-box;
     }
+  }
+
+  @if $gnome_version =="new" {
 
     &.blue,
     &.teal,
