@@ -162,14 +162,14 @@ if [[ "${uninstall}" == 'true' ]]; then
     remove_themes; remove_libadwaita
     prompt -s "Done! All '${name}' gtk themes have been removed."
   fi
-  
+
   if [[ "${remove_app}" == 'true' ]]; then
-    echo -e "\nUninstall 'gnome-theme-switcher' app..."
+    prompt -i "\n  Uninstall 'gnome-theme-switcher' app..."
     rm -rf "${BIN_DIR}/gnome-theme-switcher"
     rm -rf "${APP_DIR}/org.gnome.GTK4ThemeSwitcher.desktop"
   fi
 
-if [[ -f "${MISC_GR_FILE}.bak" ]]; then
+  if [[ -f "${MISC_GR_FILE}.bak" ]]; then
     prompt -e "Find installed GDM theme, remove it now !"
     revert_gdm_theme
   fi
@@ -180,8 +180,6 @@ else
 
   prompt -w "Installing '${name}' themes in '${dest}'...\n";
 
-  install_app
-
   prompt -t "--->>> GTK | GNOME Shell | Cinnamon | Metacity | XFWM | Plank <<<---"
   prompt -i "Color variants   : $( IFS=';'; echo "${colors[*]}" )"
   prompt -i "Theme variants   : $( IFS=';'; echo "${themes[*]}" )"
@@ -189,6 +187,12 @@ else
   prompt -i "Alt variants     : $( IFS=';'; echo "${alts[*]}" )"
   prompt -i "Scheme variants  : $( IFS=';'; echo "${schemes[*]}" )"
   prompt -i "Start icon style : ${icon}"
+
+  if has_command gnome-shell; then
+    prompt -i "Desktop          : $(gnome-shell --version)"
+  fi
+
+  install_app
 
   if [[ "${libadwaita}" == 'true' ]]; then
     if [[ "$UID" != '0' ]]; then

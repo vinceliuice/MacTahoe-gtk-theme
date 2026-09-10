@@ -591,7 +591,7 @@ remove_libadwaita() {
 ############################
 
 install_app() {
-  prompt -w "Installing 'gnome-theme-switcher' app...\n";
+  prompt -w "\n  Installing 'gnome-theme-switcher' app...\n";
 
   [[ -f "${BIN_DIR}/gnome-theme-switcher" ]] && rm -rf "${BIN_DIR}/gnome-theme-switcher"
   [[ -f "${APP_DIR}/org.gnome.GTK4ThemeSwitcher.desktop" ]] && rm -rf "${APP_DIR}/org.gnome.GTK4ThemeSwitcher.desktop"
