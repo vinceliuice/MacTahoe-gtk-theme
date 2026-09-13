@@ -7,8 +7,7 @@
   margin-left: $base_padding * 2 + 20px !important;
   background-color: rgba(black, 0.01);
   border: none;
-  box-shadow: 0 0 30px -30px rgba(black, 0.2) !important;
-  // @extend %quickmenu_shadow;
+  @extend %quickmenu_shadow;
 
   .icon-button, .button {
     padding: $base_padding * 1.75;
