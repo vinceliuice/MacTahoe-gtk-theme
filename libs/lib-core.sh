@@ -85,8 +85,8 @@ if [[ -d "$HOME/.config/mozilla/firefox" ]]; then
 fi
 
 FIREFOX_THEME_DIR="${FIREFOX_DIR_HOME}/firefox-themes"
-FIREFOX_FLATPAK_DIR_HOME="${MY_HOME}/.var/app/org.mozilla.firefox/.mozilla/firefox"
-FIREFOX_FLATPAK_THEME_DIR="${FIREFOX_FLATPAK_DIR_HOME}/.mozilla/firefox/firefox-themes"
+FIREFOX_FLATPAK_DIR_HOME="${MY_HOME}/.var/app/org.mozilla.firefox/config/mozilla/firefox"
+FIREFOX_FLATPAK_THEME_DIR="${FIREFOX_FLATPAK_DIR_HOME}/firefox-themes"
 FIREFOX_SNAP_DIR_HOME="${MY_HOME}/snap/firefox/common/.mozilla/firefox"
 FIREFOX_SNAP_THEME_DIR="${FIREFOX_SNAP_DIR_HOME}/firefox-themes"
 
