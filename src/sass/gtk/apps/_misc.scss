@@ -199,7 +199,11 @@ window.background.chromium {
   color: $text_color;
 
   headerbar.titlebar {
-    padding: 0 $container_padding * 2;
+    // Chromium adds its own hard-coded 6px spacing around the window controls,
+    // so this padding is not the final distance to the window edge.  Using
+    // $container_padding + 2px keeps the traffic lights at the same distance
+    // from the edge as the native decoration (headerbar + box padding).
+    padding: 0 $container_padding + 2px;
     background-color: $chrome_bg_color;
     color: $text_color;
 
@@ -215,7 +219,11 @@ window.background.chromium {
     // from nav_button_provider_gtk3.cc (> 62.0.3202?)
     button.titlebutton { // title-buttons
       // define global titlebutton class sizing
-      min-width: 16px;
+      // Chromium lays these buttons out itself with a hard-coded 6px spacing
+      // and ignores their margins, so the 2x1px margin of the native
+      // decoration has to be added to the button width instead.  With the
+      // assets being 16px wide this keeps the dots 10px apart, like GTK3.
+      min-width: 18px;
       min-height: 16px;
       margin: 0; // unset margins
       padding: 0;
