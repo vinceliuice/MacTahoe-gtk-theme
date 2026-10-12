@@ -437,7 +437,7 @@
     @if $gnome_version == 'old' {
       border-color: if($variant == 'light', darken($actionb_bg, 6%), $dark_borders_color);
     } @else {
-      border-color: if($variant == 'light', color-mix(in srgb, black 6% $actionb_bg), $dark_borders_color);
+      border-color: if($variant == 'light', color-mix(in srgb, black 6%, $actionb_bg), $dark_borders_color);
     }
   }
 
