@@ -453,3 +453,55 @@ $toggle_shadow: if($trans =='true', inset 0 0 4px rgba(white, 0.35), 0 5px 10px 
     color: $toggle_fg_color;
   }
 }
+
+// Keep quick settings tiles translucent when the shell theme uses transparency.
+@if $trans =='true' {
+  .quick-settings .quick-toggle,
+  .quick-settings .quick-toggle-has-menu,
+  .quick-settings .quick-slider,
+  .quick-settings-system-item .icon-button {
+    background-color: rgba(220, 230, 245, 0.08) !important;
+    box-shadow: inset 0 0 0 1px rgba(white, 0.12) !important;
+  }
+
+  .quick-settings .quick-toggle:hover,
+  .quick-settings .quick-toggle-has-menu:hover,
+  .quick-settings .quick-slider:hover,
+  .quick-settings-system-item .icon-button:hover {
+    background-color: rgba(220, 230, 245, 0.13) !important;
+  }
+
+  .quick-settings .quick-toggle:active,
+  .quick-settings .quick-toggle-has-menu:active,
+  .quick-settings-system-item .icon-button:active {
+    background-color: rgba(220, 230, 245, 0.16) !important;
+  }
+
+  .quick-settings .quick-toggle:checked,
+  .quick-settings .quick-toggle-has-menu:checked {
+    background-color: rgba(220, 230, 245, 0.14) !important;
+    color: #ffffff !important;
+  }
+
+  .quick-settings .quick-toggle-has-menu .quick-toggle,
+  .quick-settings .quick-toggle-has-menu .quick-toggle:hover,
+  .quick-settings .quick-toggle-has-menu .quick-toggle:active,
+  .quick-settings .quick-toggle-has-menu .quick-toggle:checked {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .quick-settings .quick-toggle-has-menu .quick-toggle .quick-toggle-icon {
+    background-color: rgba(white, 0.10) !important;
+  }
+
+  .quick-settings .quick-toggle-has-menu .quick-toggle:checked .quick-toggle-icon {
+    background-color: rgba(220, 230, 245, 0.14) !important;
+    color: #ffffff !important;
+  }
+
+  .quick-settings .quick-slider .slider {
+    -barlevel-background-color: rgba(white, 0.12) !important;
+    -barlevel-active-background-color: rgba(white, 0.78) !important;
+  }
+}
