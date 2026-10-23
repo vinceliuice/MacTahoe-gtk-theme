@@ -146,10 +146,6 @@
       offset-y: 0 !important;
     }
 
-    StWidget.focused .app-grid-running-dot {
-      background-color: $primary_color;
-    }
-
     .show-apps,
     .overview-tile {
       &:hover .overview-icon,
@@ -208,10 +204,6 @@
 
     .app-grid-running-dot {
       background-color: $light_alt_fg_color;
-    }
-
-    StWidget.focused .app-grid-running-dot {
-      background-color: $primary_color;
     }
   }
 
