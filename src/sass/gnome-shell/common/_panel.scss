@@ -288,8 +288,11 @@ $panel_height: $menuitem_size;
       margin: 0 $base_padding;
     }
 
+    // Split evenly so the icon stays centred in the button's hover pill; a
+    // one-sided margin pushed it 6px off-centre. The rgcjonas-specific
+    // override below never matches Ubuntu's appindicators fork.
     .appindicator-box {
-      margin-left: $base_padding * 3;
+      margin: 0 $base_padding * 1.5;
     }
 
     // .panel-status-indicators-box,
