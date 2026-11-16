@@ -1,8 +1,8 @@
 .quick-settings {
-  padding: $base_padding * 5 !important;
+  padding: $base_padding * 3 !important;
   padding-top: $base_padding * 2 !important;
-  border-radius: 21px + $base_padding * 3 !important;
-  margin-top: $base_padding * 2 !important;
+  border-radius: 32px !important;
+  margin-top: $base_padding * 1.5 !important;
   margin-bottom: $base_padding * 2 + 20px !important;
   margin-left: $base_padding * 2 + 20px !important;
   background-color: rgba(black, 0.01);
@@ -19,25 +19,31 @@
 }
 
 .quick-settings-grid {
-  spacing-rows: $container_padding * 2;
-  spacing-columns: $container_padding * 2;
+  spacing-rows: $container_padding * 3;
+  spacing-columns: $container_padding * 3;
 }
 
+// macOS 26 Control Center: translucent "glass" pills with a white icon badge
 $toggle_fg_color: if($trans =='true', white, $fg_color);
-$toggle_bg_color: if($trans =='true', rgba(white, 0.15), $popover_bg_color);
+$toggle_bg_color: if($trans =='true', rgba(white, 0.16), rgba(white, 0.075));
 $toggle_menu_bg_color: if($trans =='true', rgba(white, 0.25), $popover_bg_color);
-$toggle_hover_bg_color: if($trans =='true', rgba(white, 0.2), mix($fg_color, $popover_bg_color, 10%));
-$toggle_active_bg_color: if($trans =='true', rgba(white, 0.25), mix($fg_color, $popover_bg_color, 15%));
-$toggle_checked_bg_color: if($trans =='true', white, $primary_color);
-$toggle_checked_fg_color: if($trans =='true', $primary_color, white);
-$toggle_menu_checked_bg_color: if($trans =='true', rgba(white, 0.15), $popover_bg_color);
-$toggle_shadow: if($trans =='true', inset 0 0 4px rgba(white, 0.35), 0 5px 10px 0 rgba(black, 0.18));
+$toggle_hover_bg_color: if($trans =='true', rgba(white, 0.24), rgba(white, 0.14));
+$toggle_active_bg_color: if($trans =='true', rgba(white, 0.32), rgba(white, 0.22));
+$toggle_checked_bg_color: $primary_color;
+$toggle_checked_fg_color: white;
+$toggle_menu_checked_bg_color: $primary_color;
+$toggle_border_color: if($trans =='true', rgba(white, 0.2), rgba(white, 0.1));
+$toggle_checked_border_color: rgba(white, 0.32);
+$toggle_badge_bg_color: rgba(white, 0.94);
+$toggle_badge_fg_color: $primary_color;
+$toggle_shadow: none;
 
 .quick-toggle, .quick-toggle-has-menu {
-  min-width: 100px;
+  min-width: 172px;
   max-width: 172px;
-  min-height: 40px;
-  border: none;
+  min-height: 52px;
+  border: 1px solid $toggle_border_color;
+  border-radius: $circular_radius;
   box-shadow: $toggle_shadow !important;
   color: $toggle_fg_color;
 }
@@ -46,7 +52,7 @@ $toggle_shadow: if($trans =='true', inset 0 0 4px rgba(white, 0.35), 0 5px 10px 
   background-color: $toggle_bg_color !important;
   border-radius: $circular_radius;
   color: $toggle_fg_color;
-  padding: $base_padding * 3 !important;
+  padding: 0 !important;
 
   &:hover {
     background-color: $toggle_hover_bg_color !important;
@@ -60,6 +66,7 @@ $toggle_shadow: if($trans =='true', inset 0 0 4px rgba(white, 0.35), 0 5px 10px 
 
   &:checked {
     background-color: $toggle_checked_bg_color !important;
+    border-color: $toggle_checked_border_color;
     color: $toggle_checked_fg_color;
 
     &:hover {
@@ -102,15 +109,18 @@ $toggle_shadow: if($trans =='true', inset 0 0 4px rgba(white, 0.35), 0 5px 10px 
   }
 
   &:ltr > StBoxLayout {
-    padding-left: $base_padding * 5;
+    padding-left: $base_padding * 2 + 2px;
   }
 
   &:rtl > StBoxLayout {
-    padding-right: $base_padding * 5;
+    padding-right: $base_padding * 2 + 2px;
   }
 
   .quick-toggle-title {
     @extend %heading;
+    // 12px medium: long labels ("Do Not Disturb") have to fit next to the badge
+    font-weight: 500;
+    font-size: 12px;
   }
 
   .quick-toggle-subtitle {
@@ -118,15 +128,22 @@ $toggle_shadow: if($trans =='true', inset 0 0 4px rgba(white, 0.35), 0 5px 10px 
     font-weight: normal;
   }
 
+  // white circular badge behind the icon, as in macOS Control Center
   .quick-toggle-icon {
     icon-size: $base_icon_size;
+    min-width: 32px;
+    min-height: 32px;
+    padding: $base_padding * 2;
+    border-radius: $circular_radius;
+    background-color: $toggle_badge_bg_color;
+    color: $toggle_badge_fg_color;
   }
 }
 
 .quick-toggle-has-menu {
   background-color: $toggle_bg_color !important;
   border-radius: $circular_radius;
-  padding: $base_padding 0 !important;
+  padding: 0 !important;
 
   &:hover {
     background-color: $toggle_hover_bg_color !important;
@@ -138,113 +155,119 @@ $toggle_shadow: if($trans =='true', inset 0 0 4px rgba(white, 0.35), 0 5px 10px 
 
   &:checked {
     background-color: $toggle_menu_checked_bg_color !important;
+    border-color: $toggle_checked_border_color;
   }
 
   & .quick-toggle {
-    min-width: auto;
-    max-width: auto;
-    padding: $base_padding * 2 0 !important;
+    min-width: 0;
+    max-width: 9999px;
+    padding: 0 !important;
+    border: none;
 
     &, &:hover, &:active, &:checked {
       background: none !important;
+      background-color: transparent !important;
       box-shadow: none !important;
       color: $toggle_fg_color;
     }
 
+    &:checked {
+      color: $toggle_checked_fg_color;
+    }
+
+    // the badge keeps its own surface, only the glyph colour changes
     .quick-toggle-icon {
+      icon-size: $base_icon_size;
+      min-height: 32px !important;
+      min-width: 32px !important;
+      padding: $base_padding * 2;
       border-radius: $circular_radius;
-      min-height: 40px !important;
-      min-width: 40px !important;
-      background-color: $toggle_bg_color;
+      background-color: $toggle_badge_bg_color;
+      color: $toggle_badge_fg_color;
       transition: none;
     }
 
-    &:hover .quick-toggle-icon {
-      background-color: $toggle_hover_bg_color;
-    }
-
-    &:active .quick-toggle-icon {
-      background-color: $toggle_active_bg_color;
-    }
-
+    &:hover .quick-toggle-icon,
+    &:active .quick-toggle-icon,
     &:checked .quick-toggle-icon {
-      color: $toggle_checked_fg_color;
-      background-color: $toggle_checked_bg_color;
-    }
-
-    &:ltr {
-      border-radius: $circular_radius;
+      background-color: $toggle_badge_bg_color;
+      color: $toggle_badge_fg_color;
     }
 
     &:ltr > StBoxLayout {
-      padding-left: $base_padding * 3;
+      padding-left: $base_padding * 2 + 2px;
       padding-right: $base_padding;
     }
 
-    &:rtl {
-      border-radius: $circular_radius;
-    }
-
-    &:rtr > StBoxLayout {
+    &:rtl > StBoxLayout {
       padding-left: $base_padding;
-      padding-right: $base_padding * 3;
-    }
-
-    &:ltr:last-child {
-      border-radius: $circular_radius;
-    }
-
-    &:rtl:last-child {
-      border-radius: $circular_radius;
+      padding-right: $base_padding * 2 + 2px;
     }
   }
 
+  // quiet chevron inside the pill instead of a second surface
   & .quick-toggle-menu-button {
     padding: 0;
-    min-width: 32px;
-    min-height: 32px;
-    margin: $base_padding * 3;
+    min-width: 24px;
+    min-height: 26px;
+    margin: 0 $base_padding * 2 0 0;
     border-radius: $circular_radius;
     border: none;
-    color: $toggle_fg_color;
+    color: rgba($toggle_fg_color, 0.72);
     background-color: transparent;
 
     &:hover {
-      background-color: $toggle_hover_bg_color;
+      background-color: transparent;
       color: $toggle_fg_color;
     }
 
     &:active {
-      background-color: $toggle_active_bg_color;
+      background-color: transparent;
       color: $toggle_fg_color;
     }
 
     &:ltr {
-      border-radius: $circular_radius;
       margin-left: 0;
+      margin-right: $base_padding * 2;
     }
 
     &:rtl {
-      border-radius: $circular_radius;
       margin-right: 0;
+      margin-left: $base_padding * 2;
+    }
+
+    &:checked {
+      color: $toggle_checked_fg_color;
     }
   }
 
   & .quick-toggle-separator {
     width: 0;
+    background-color: transparent;
   }
 }
 
 .quick-slider {
   background-color: $toggle_bg_color;
-  border-radius: $wm_radius;
+  border: 1px solid $toggle_border_color;
+  border-radius: 24px;
   box-shadow: $toggle_shadow !important;
-  min-height: 40px;
-  padding: $base_padding * 3 !important;
+  min-height: 52px;
+  padding: 0 $base_padding * 2 !important;
   color: $toggle_fg_color;
 
   & > StBoxLayout {
     spacing: $base_padding;
+  }
+
+  // macOS style slider: soft trough, white fill, round white knob
+  .slider {
+    color: white;
+    -barlevel-height: 5px;
+    -barlevel-background-color: rgba(white, 0.28);
+    -barlevel-active-background-color: rgba(white, 0.96);
+    -slider-handle-radius: 7px;
+    -slider-handle-border-width: 0;
   }
 
   .icon-button {
@@ -345,13 +368,16 @@ $toggle_shadow: if($trans =='true', inset 0 0 4px rgba(white, 0.35), 0 5px 10px 
     spacing: 2 * $base_padding;
   }
 
-  .icon-button {
+  .icon-button, .power-item {
     background-color: $toggle_bg_color;
+    border: 1px solid $toggle_border_color;
     color: $toggle_fg_color;
     border-radius: $circular_radius;
-    min-height: $menuitem_size !important;
-    min-width: $menuitem_size !important;
-    padding: $base_padding * 3;
+    min-height: 34px !important;
+    max-height: 34px !important;
+    min-width: 34px !important;
+    max-width: 34px !important;
+    padding: $base_padding * 2;
     box-shadow: $toggle_shadow !important;
 
     &:hover {
@@ -369,8 +395,9 @@ $toggle_shadow: if($trans =='true', inset 0 0 4px rgba(white, 0.35), 0 5px 10px 
   }
 
   & .power-item {
-    min-height: 0;
-    min-width: 0;
+    &:hover {
+      background-color: $toggle_hover_bg_color;
+    }
 
     &:insensitive {
       color: rgba($toggle_fg_color, 0.35);
